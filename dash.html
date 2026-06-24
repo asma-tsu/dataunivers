@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DataUnivers — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+/* ════════════════════════════════
+   TOKENS — identical to landing page
+════════════════════════════════ */
+:root {
+  --navy:       #0f2d5e;
+  --navy-deep:  #091e42;
+  --navy-mid:   #1a3d72;
+  --navy-light: #2a5298;
+  --navy-mist:  #e8eef7;
+  --gold:       #c9a84c;
+  --gold-light: #e8c96e;
+  --gold-dark:  #a07830;
+  --cream:      #faf8f4;
+  --cream2:     #f2ede4;
+  --white:      #ffffff;
+  --text:       #0f1e35;
+  --text-mid:   #3a4d6b;
+  --text-muted: #6b7a96;
+  --text-light: #9aa4b8;
+  --border:     #dde3ef;
+  --border-soft:#edf0f7;
+  --tag-bg:     #eef1f9;
+  --surface:    #ffffff;
+  --surface2:   #f5f7fc;
+  --nav-bg:     rgba(250,248,244,0.97);
+  --sidebar-bg: #ffffff;
+  --green:      #1a7a4a;
+  --green-bg:   #eaf5ee;
+  --amber:      #b45309;
+  --amber-bg:   #fef3e2;
+  --red:        #c0392b;
+  --red-bg:     #fdecea;
+}
+[data-theme="dark"] {
+  --cream:      #0d1b33;
+  --cream2:     #111f3a;
+  --white:      #152240;
+  --text:       #dde6f5;
+  --text-mid:   #9ab0d0;
+  --text-muted: #6a85aa;
+  --text-light: #4a6080;
+  --border:     #1e3358;
+  --border-soft:#162844;
+  --tag-bg:     #162540;
+  --surface:    #152240;
+  --surface2:   #1a2b4a;
+  --nav-bg:     rgba(13,27,51,0.97);
+  --sidebar-bg: #0f1e38;
+  --navy-mist:  #162540;
+  --green-bg:   #0e2a1c;
+  --amber-bg:   #2a1a06;
+  --red-bg:     #2a0e0c;
+}
+
+/* ════════════════════════════════
+   RESET
+════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.6;
+  transition:background .3s,color .3s;
+  display:flex;flex-direction:column;min-height:100vh;
+}
+
+/* ════════════════════════════════
+   LAYOUT SHELL
+════════════════════════════════ */
+.app-shell{display:flex;flex:1;min-height:0;}
+
+/* ════════════════════════════════
+   TOPBAR
+════════════════════════════════ */
+.topbar{
+  position:sticky;top:0;z-index:200;
+  background:var(--nav-bg);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:0 1.5rem 0 0;
+  display:flex;align-items:center;justify-content:space-between;
+  height:58px;
+  transition:background .3s;
+}
+.topbar-left{
+  display:flex;align-items:center;gap:0;
+  width:230px;flex-shrink:0;
+  border-right:1px solid var(--border);
+  height:100%;padding:0 1.5rem;
+}
+.topbar-logo{
+  display:flex;align-items:center;gap:9px;
+  text-decoration:none;
+  font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--navy);
+}
+[data-theme="dark"] .topbar-logo{color:var(--text);}
+.logo-mark{width:30px;height:30px;flex-shrink:0;}
+
+.topbar-search{
+  flex:1;display:flex;align-items:center;gap:10px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:7px 14px;
+  max-width:340px;
+  margin:0 1.5rem;
+}
+.topbar-search input{
+  background:none;border:none;outline:none;
+  font-family:inherit;font-size:.835rem;color:var(--text);
+  width:100%;
+}
+.topbar-search input::placeholder{color:var(--text-light);}
+.topbar-search svg{width:15px;height:15px;stroke:var(--text-muted);flex-shrink:0;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+.topbar-right{
+  display:flex;align-items:center;gap:.65rem;
+}
+.icon-btn{
+  width:34px;height:34px;border-radius:8px;
+  background:var(--surface2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;position:relative;
+  transition:background .2s;
+}
+.icon-btn:hover{background:var(--navy-mist);}
+.icon-btn svg{width:16px;height:16px;stroke:var(--text-muted);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.notif-dot{
+  position:absolute;top:6px;right:6px;
+  width:7px;height:7px;border-radius:50%;
+  background:var(--gold);border:1.5px solid var(--surface);
+}
+
+.lang-switcher{display:flex;gap:2px;background:var(--surface2);border-radius:7px;padding:2px;border:1px solid var(--border);}
+.lang-btn{background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:.72rem;font-weight:700;padding:4px 9px;border-radius:5px;font-family:inherit;transition:all .2s;letter-spacing:.04em;}
+.lang-btn.active{background:var(--navy);color:#fff;box-shadow:0 1px 4px rgba(15,45,94,.3);}
+.theme-toggle{
+  background:var(--surface2);border:1px solid var(--border);border-radius:7px;
+  width:34px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;transition:all .2s;
+}
+.theme-toggle:hover{background:var(--navy-mist);}
+
+.avatar-btn{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;font-weight:700;cursor:pointer;
+  letter-spacing:.03em;flex-shrink:0;
+  border:2px solid var(--border);
+  transition:transform .2s;
+}
+.avatar-btn:hover{transform:scale(1.06);}
+
+.btn-new-analysis{
+  background:var(--navy);color:#fff;
+  border:none;border-radius:8px;padding:8px 18px;
+  font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit;
+  display:flex;align-items:center;gap:7px;
+  transition:background .2s,transform .15s;
+  box-shadow:0 2px 8px rgba(15,45,94,.25);
+  white-space:nowrap;
+}
+.btn-new-analysis:hover{background:var(--navy-mid);transform:translateY(-1px);}
+.btn-new-analysis svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;}
+
+/* ════════════════════════════════
+   SIDEBAR
+════════════════════════════════ */
+.sidebar{
+  width:230px;flex-shrink:0;
+  background:var(--sidebar-bg);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  padding:1.5rem 0;
+  position:sticky;top:58px;
+  height:calc(100vh - 58px);
+  overflow-y:auto;
+  transition:background .3s;
+}
+.sidebar-section{margin-bottom:1.75rem;}
+.sidebar-label{
+  font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text-light);padding:0 1.4rem;margin-bottom:.6rem;
+}
+.sidebar-nav{list-style:none;}
+.sidebar-nav li a{
+  display:flex;align-items:center;gap:11px;
+  padding:9px 1.4rem;
+  text-decoration:none;
+  font-size:.845rem;font-weight:500;
+  color:var(--text-muted);
+  border-left:2.5px solid transparent;
+  transition:color .2s,background .2s,border-color .2s;
+}
+.sidebar-nav li a:hover{color:var(--navy);background:var(--navy-mist);border-left-color:var(--border);}
+.sidebar-nav li a.active{
+  color:var(--navy);
+  background:var(--navy-mist);
+  border-left-color:var(--navy);
+  font-weight:600;
+}
+[data-theme="dark"] .sidebar-nav li a:hover,
+[data-theme="dark"] .sidebar-nav li a.active{
+  background:var(--surface2);
+  color:var(--text);
+  border-left-color:var(--gold);
+}
+.sidebar-nav li a svg{
+  width:16px;height:16px;
+  stroke:currentColor;fill:none;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;
+}
+
+.sidebar-bottom{
+  margin-top:auto;border-top:1px solid var(--border);
+  padding-top:1rem;
+}
+
+/* ════════════════════════════════
+   MAIN CONTENT
+════════════════════════════════ */
+.main{flex:1;min-width:0;overflow-y:auto;}
+.main-inner{
+  max-width:1000px;
+  padding:2.5rem 2.5rem;
+  margin:0 auto;
+}
+
+/* ════════════════════════════════
+   PAGE HEADER
+════════════════════════════════ */
+.page-header{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  margin-bottom:2.2rem;
+}
+.page-greeting h1{
+  font-family:'Playfair Display',serif;
+  font-size:1.9rem;font-weight:900;
+  color:var(--navy);line-height:1.2;margin-bottom:4px;
+}
+[data-theme="dark"] .page-greeting h1{color:var(--text);}
+.page-greeting p{font-size:.84rem;color:var(--text-muted);}
+.header-date{
+  font-size:.75rem;color:var(--text-light);
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;padding:7px 14px;
+  font-weight:500;letter-spacing:.02em;
+  white-space:nowrap;
+}
+
+/* ════════════════════════════════
+   STAT CARDS
+════════════════════════════════ */
+.stat-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;
+  border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;
+  margin-bottom:2rem;
+  background:var(--border);
+}
+.stat-card{
+  background:var(--surface);padding:24px 22px;
+  border-right:1px solid var(--border);
+  transition:background .2s;
+}
+.stat-card:last-child{border-right:none;}
+.stat-card:hover{background:var(--navy-mist);}
+[data-theme="dark"] .stat-card:hover{background:var(--surface2);}
+.stat-icon-label{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:12px;
+}
+.stat-label{font-size:.72rem;font-weight:600;color:var(--text-muted);letter-spacing:.03em;}
+.stat-icon-box{
+  width:32px;height:32px;border-radius:8px;
+  background:var(--navy-mist);
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(15,45,94,.08);
+}
+.stat-icon-box svg{width:15px;height:15px;stroke:var(--navy);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+[data-theme="dark"] .stat-icon-box{background:var(--surface2);}
+[data-theme="dark"] .stat-icon-box svg{stroke:var(--gold);}
+.stat-value{
+  font-family:'Playfair Display',serif;
+  font-size:2.1rem;font-weight:900;color:var(--navy);line-height:1;
+  margin-bottom:4px;
+}
+[data-theme="dark"] .stat-value{color:var(--text);}
+.stat-delta{
+  font-size:.72rem;color:var(--text-muted);
+  display:flex;align-items:center;gap:4px;
+}
+.delta-up{color:var(--green);}
+.delta-dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;}
+
+/* ════════════════════════════════
+   SECTION TITLE ROW
+════════════════════════════════ */
+.section-row{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1rem;
+}
+.section-row h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:700;color:var(--navy);
+}
+[data-theme="dark"] .section-row h2{color:var(--text);}
+.view-all{
+  font-size:.77rem;font-weight:600;color:var(--gold-dark);
+  text-decoration:none;display:flex;align-items:center;gap:4px;
+  transition:color .2s;
+}
+[data-theme="dark"] .view-all{color:var(--gold);}
+.view-all:hover{color:var(--navy);}
+.view-all svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* ════════════════════════════════
+   RECENT ANALYSES TABLE
+════════════════════════════════ */
+.analyses-table{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;
+  margin-bottom:2rem;
+}
+.analysis-row{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 20px;
+  border-bottom:1px solid var(--border-soft);
+  transition:background .2s;
+  cursor:pointer;text-decoration:none;color:inherit;
+}
+.analysis-row:last-child{border-bottom:none;}
+.analysis-row:hover{background:var(--navy-mist);}
+[data-theme="dark"] .analysis-row:hover{background:var(--surface2);}
+.doc-thumb{
+  width:36px;height:44px;flex-shrink:0;
+  background:var(--navy-mist);border-radius:5px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(15,45,94,.1);
+}
+[data-theme="dark"] .doc-thumb{background:var(--surface2);}
+.doc-thumb svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+[data-theme="dark"] .doc-thumb svg{stroke:var(--gold);}
+.analysis-info{flex:1;min-width:0;}
+.analysis-title{font-size:.875rem;font-weight:600;color:var(--text);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.analysis-sub{font-size:.745rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.analysis-meta{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.analysis-time{font-size:.72rem;color:var(--text-light);white-space:nowrap;}
+.badge{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:.67rem;font-weight:700;padding:3px 10px;border-radius:20px;
+  letter-spacing:.04em;white-space:nowrap;
+}
+.badge-green{background:var(--green-bg);color:var(--green);}
+.badge-gold{background:var(--amber-bg);color:var(--amber);}
+.badge-red{background:var(--red-bg);color:var(--red);}
+.badge-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0;}
+.analysis-score{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;font-weight:900;color:var(--navy);
+  min-width:28px;text-align:right;
+}
+[data-theme="dark"] .analysis-score{color:var(--text);}
+.row-arrow{
+  width:20px;height:20px;flex-shrink:0;
+  stroke:var(--text-light);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+}
+
+/* ════════════════════════════════
+   BOTTOM TWO-COL
+════════════════════════════════ */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2rem;}
+
+/* ── Quick Upload Card ── */
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:26px 24px;
+  transition:box-shadow .2s;
+}
+.card:hover{box-shadow:0 6px 24px rgba(15,45,94,.08);}
+.card-title{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-weight:700;color:var(--navy);
+  margin-bottom:4px;
+}
+[data-theme="dark"] .card-title{color:var(--text);}
+.card-sub{font-size:.78rem;color:var(--text-muted);margin-bottom:1.25rem;line-height:1.6;}
+
+.upload-zone{
+  border:1.5px dashed var(--border);border-radius:10px;
+  padding:24px 16px;text-align:center;
+  cursor:pointer;
+  transition:border-color .2s,background .2s;
+  margin-bottom:.85rem;
+}
+.upload-zone:hover{border-color:var(--navy-light);background:var(--navy-mist);}
+[data-theme="dark"] .upload-zone:hover{background:var(--surface2);}
+.upload-icon{
+  width:42px;height:42px;border-radius:11px;
+  background:var(--navy-mist);border:1px solid rgba(15,45,94,.1);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 10px;
+}
+[data-theme="dark"] .upload-icon{background:var(--surface2);}
+.upload-icon svg{width:18px;height:18px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+[data-theme="dark"] .upload-icon svg{stroke:var(--gold);}
+.upload-text{font-size:.8rem;color:var(--text-muted);margin-bottom:5px;}
+.upload-text span{color:var(--navy);font-weight:600;}
+[data-theme="dark"] .upload-text span{color:var(--gold);}
+.upload-hint{font-size:.68rem;color:var(--text-light);}
+.upload-types{display:flex;gap:6px;justify-content:center;margin-top:8px;}
+.type-tag{
+  font-size:.62rem;font-weight:700;letter-spacing:.06em;
+  padding:2px 9px;border-radius:5px;
+  background:var(--tag-bg);color:var(--navy-light);
+  border:1px solid rgba(42,82,152,.1);
+}
+[data-theme="dark"] .type-tag{background:var(--surface2);color:var(--text-mid);}
+
+.upload-privacy{
+  background:var(--navy-mist);border-radius:8px;
+  padding:9px 13px;font-size:.71rem;color:var(--text-muted);
+  display:flex;align-items:flex-start;gap:8px;line-height:1.5;
+}
+[data-theme="dark"] .upload-privacy{background:var(--surface2);}
+.upload-privacy svg{width:13px;height:13px;stroke:var(--gold-dark);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;margin-top:1px;}
+[data-theme="dark"] .upload-privacy svg{stroke:var(--gold);}
+
+/* ── Progress Card ── */
+.progress-card{}
+.progress-month-label{
+  font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-dark);margin-bottom:.9rem;
+}
+[data-theme="dark"] .progress-month-label{color:var(--gold);}
+.progress-row{margin-bottom:14px;}
+.progress-row-head{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;
+}
+.progress-label{font-size:.77rem;color:var(--text-mid);font-weight:500;}
+.progress-pct{font-size:.75rem;font-weight:700;color:var(--navy);}
+[data-theme="dark"] .progress-pct{color:var(--text);}
+.bar-track{background:var(--border-soft);border-radius:6px;height:6px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:6px;transition:width .6s ease;}
+.bar-navy{background:linear-gradient(90deg,var(--navy-light),var(--navy));}
+.bar-gold{background:linear-gradient(90deg,var(--gold-light),var(--gold));}
+.bar-green{background:linear-gradient(90deg,#34d399,#059669);}
+.bar-red{background:linear-gradient(90deg,#f87171,#dc2626);}
+
+.score-summary{
+  margin-top:1.2rem;padding-top:1.1rem;border-top:1px solid var(--border-soft);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.score-summary-label{font-size:.73rem;color:var(--text-muted);}
+.score-summary-val{
+  font-family:'Playfair Display',serif;
+  font-size:2.4rem;font-weight:900;color:var(--navy);line-height:1;
+}
+[data-theme="dark"] .score-summary-val{color:var(--text);}
+.score-summary-sub{font-size:.64rem;color:var(--text-light);}
+.score-badge-row{display:flex;align-items:center;gap:6px;margin-top:4px;}
+.trend-pill{
+  display:inline-flex;align-items:center;gap:4px;
+  background:var(--green-bg);color:var(--green);
+  font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:20px;
+}
+.trend-pill svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;}
+
+/* ════════════════════════════════
+   MODULES SECTION
+════════════════════════════════ */
+.modules-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;background:var(--border);
+  border:1px solid var(--border);border-radius:14px;overflow:hidden;
+  margin-bottom:2rem;
+}
+.module-card{
+  background:var(--surface);padding:20px 18px;
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  transition:background .2s;cursor:pointer;
+}
+.module-card:hover{background:var(--navy-mist);}
+[data-theme="dark"] .module-card:hover{background:var(--surface2);}
+.module-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;}
+.module-icon{
+  width:36px;height:36px;border-radius:9px;
+  background:var(--navy-mist);
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(15,45,94,.08);
+}
+[data-theme="dark"] .module-icon{background:var(--surface2);}
+.module-icon svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+[data-theme="dark"] .module-icon svg{stroke:var(--gold);}
+.module-check{
+  width:18px;height:18px;border-radius:5px;
+  background:var(--navy);border:1.5px solid var(--navy);
+  display:flex;align-items:center;justify-content:center;
+}
+.module-check svg{width:10px;height:10px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.module-name{font-size:.83rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+.module-desc{font-size:.73rem;color:var(--text-muted);line-height:1.55;margin-bottom:9px;}
+.module-time{font-size:.67rem;color:var(--text-light);display:flex;align-items:center;gap:5px;}
+.module-time svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;}
+
+.modules-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--surface);border-top:1px solid var(--border);
+  padding:16px 20px;
+}
+.modules-selected{font-size:.8rem;color:var(--text-muted);}
+.modules-selected strong{color:var(--navy);font-weight:700;}
+[data-theme="dark"] .modules-selected strong{color:var(--text);}
+.modules-est{font-size:.72rem;color:var(--text-light);margin-top:2px;}
+.modules-actions{display:flex;gap:8px;}
+.btn-outline-sm{
+  background:none;border:1.5px solid var(--border);border-radius:7px;
+  padding:7px 16px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;
+  color:var(--text-mid);transition:border-color .2s,background .2s;
+}
+.btn-outline-sm:hover{border-color:var(--navy);background:var(--navy-mist);}
+.btn-filled-sm{
+  background:var(--navy);color:#fff;border:none;border-radius:7px;
+  padding:8px 20px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;
+  display:flex;align-items:center;gap:6px;
+  box-shadow:0 2px 8px rgba(15,45,94,.25);
+  transition:background .2s,transform .15s;
+}
+.btn-filled-sm:hover{background:var(--navy-mid);transform:translateY(-1px);}
+.btn-filled-sm svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;}
+
+/* ════════════════════════════════
+   EYEBROW / DIVIDER SECTIONS
+════════════════════════════════ */
+.eyebrow{
+  font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-dark);margin-bottom:.55rem;
+}
+[data-theme="dark"] .eyebrow{color:var(--gold);}
+
+/* ════════════════════════════════
+   REPORTS PAGE (hidden by default)
+════════════════════════════════ */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ════════════════════════════════
+   RESPONSIVE
+════════════════════════════════ */
+@media(max-width:1024px){
+  .stat-grid{grid-template-columns:1fr 1fr;}
+  .two-col{grid-template-columns:1fr;}
+  .modules-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:760px){
+  .sidebar{display:none;}
+  .main-inner{padding:1.5rem;}
+  .stat-grid{grid-template-columns:1fr 1fr;}
+  .modules-grid{grid-template-columns:1fr;}
+  .topbar-left{width:auto;}
+  .topbar-search{display:none;}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ TOPBAR ══════════════════════ -->
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="index.html" class="topbar-logo">
+      <svg class="logo-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 8 C17 8 12 6 10 9 C8.5 11 9 13 10 14 C8 14.5 7 16 7.5 18 C8 20 10 21 12 20.5 C12 22.5 13.5 24 15.5 24 C16.5 24 17 23.5 17 23.5" stroke="#0f2d5e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 8 C17 8 22 6 24 9 C25.5 11 25 13 24 14 C26 14.5 27 16 26.5 18 C26 20 24 21 22 20.5 C22 22.5 20.5 24 18.5 24 C17.5 24 17 23.5 17 23.5" stroke="#0f2d5e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="17" y1="8" x2="17" y2="23.5" stroke="#0f2d5e" stroke-width="1.2" stroke-dasharray="2 2"/>
+        <circle cx="22.5" cy="26.5" r="4" stroke="#c9a84c" stroke-width="1.7"/>
+        <line x1="25.5" y1="29.5" x2="28" y2="32" stroke="#c9a84c" stroke-width="1.7" stroke-linecap="round"/>
+        <circle cx="21" cy="25" r=".9" fill="#c9a84c" opacity=".6"/>
+      </svg>
+      DATAUNIVERS
+    </a>
+  </div>
+
+  <div class="topbar-search">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" placeholder="Search analyses, reports…" id="searchInput"/>
+  </div>
+
+  <div class="topbar-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('ar')">AR</button>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <div class="icon-btn" title="Notifications">
+      <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <div class="notif-dot"></div>
+    </div>
+    <div class="avatar-btn" title="Sara Amrani">SA</div>
+    <button class="btn-new-analysis" onclick="setPage('upload')">
+      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      <span data-i18n="new_analysis">New Analysis</span>
+    </button>
+  </div>
+</header>
+
+<!-- ══════════════════════ SHELL ══════════════════════ -->
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label" data-i18n="sb_main">Main</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="#" class="active" onclick="setPage('dashboard');return false;">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="sb_dashboard">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="setPage('upload');return false;">
+            <svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+            <span data-i18n="sb_upload">Upload Document</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="setPage('analyses');return false;">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span data-i18n="sb_analyses">Analyses</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="setPage('reports');return false;">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <span data-i18n="sb_reports">Reports</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label" data-i18n="sb_account">Account</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="#">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span data-i18n="sb_profile">Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="sb_settings">Settings</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-bottom">
+      <ul class="sidebar-nav">
+        <li>
+          <a href="index.html" style="color:var(--text-light);">
+            <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="sb_signout">Sign out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ══════════════════════ MAIN ══════════════════════ -->
+  <main class="main">
+
+    <!-- ── DASHBOARD PAGE ── -->
+    <div class="page active" id="page-dashboard">
+      <div class="main-inner">
+
+        <!-- Header -->
+        <div class="page-header">
+          <div class="page-greeting">
+            <h1 data-i18n="dash_hello">Good morning, Sara.</h1>
+            <p data-i18n="dash_sub">Here's an overview of your recent academic analyses.</p>
+          </div>
+          <div class="header-date" id="headerDate"></div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-icon-label">
+              <span class="stat-label" data-i18n="stat_docs">Documents Analyzed</span>
+              <div class="stat-icon-box">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+            </div>
+            <div class="stat-value">12</div>
+            <div class="stat-delta"><span class="delta-dot"></span><span class="delta-up" data-i18n="stat_docs_delta">+3 this month</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-label">
+              <span class="stat-label" data-i18n="stat_score">Average Score</span>
+              <div class="stat-icon-box">
+                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+            </div>
+            <div class="stat-value">84</div>
+            <div class="stat-delta"><span class="delta-dot"></span><span class="delta-up" data-i18n="stat_score_delta">Across all analyses</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-label">
+              <span class="stat-label" data-i18n="stat_issues">Issues Detected</span>
+              <div class="stat-icon-box">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+            </div>
+            <div class="stat-value">7</div>
+            <div class="stat-delta" data-i18n="stat_issues_delta">Across all documents</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-label">
+              <span class="stat-label" data-i18n="stat_compliant">Compliant Checks</span>
+              <div class="stat-icon-box">
+                <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/><path d="M9 12l2 2 4-4"/></svg>
+              </div>
+            </div>
+            <div class="stat-value">94<span style="font-size:1rem;font-weight:400;font-family:'Inter',sans-serif;color:var(--text-muted);">%</span></div>
+            <div class="stat-delta"><span class="delta-dot"></span><span class="delta-up" data-i18n="stat_compliant_delta">Pass rate this month</span></div>
+          </div>
+        </div>
+
+        <!-- Recent Analyses -->
+        <div class="section-row">
+          <div>
+            <div class="eyebrow" data-i18n="recent_eyebrow">RECENT WORK</div>
+            <h2 data-i18n="recent_title">Recent Analyses</h2>
+          </div>
+          <a href="#" class="view-all" onclick="setPage('analyses');return false;">
+            <span data-i18n="view_all">View all</span>
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+
+        <div class="analyses-table">
+          <a class="analysis-row" href="#">
+            <div class="doc-thumb">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="analysis-info">
+              <div class="analysis-title" data-i18n="row1_title">Mémoire de Fin d'études</div>
+              <div class="analysis-sub" data-i18n="row1_sub">Développement d'un Système AI pour l'Audit…</div>
+            </div>
+            <div class="analysis-meta">
+              <span class="analysis-time" data-i18n="row1_time">Today, 14:32</span>
+              <span class="badge badge-green"><span class="badge-dot"></span><span data-i18n="badge_excellent">Excellent</span></span>
+              <span class="analysis-score">96</span>
+              <svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </a>
+          <a class="analysis-row" href="#">
+            <div class="doc-thumb">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="analysis-info">
+              <div class="analysis-title" data-i18n="row2_title">Research Proposal — Machine Learning</div>
+              <div class="analysis-sub" data-i18n="row2_sub">Comparative study on neural network architectures…</div>
+            </div>
+            <div class="analysis-meta">
+              <span class="analysis-time" data-i18n="row2_time">Yesterday, 09:15</span>
+              <span class="badge badge-gold"><span class="badge-dot"></span><span data-i18n="badge_good">Good</span></span>
+              <span class="analysis-score">81</span>
+              <svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </a>
+          <a class="analysis-row" href="#">
+            <div class="doc-thumb">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="analysis-info">
+              <div class="analysis-title" data-i18n="row3_title">Literature Review Draft v2</div>
+              <div class="analysis-sub" data-i18n="row3_sub">Systematic review of renewable energy adoption…</div>
+            </div>
+            <div class="analysis-meta">
+              <span class="analysis-time">Jun 20, 2025</span>
+              <span class="badge badge-red"><span class="badge-dot"></span><span data-i18n="badge_needs">Needs work</span></span>
+              <span class="analysis-score">74</span>
+              <svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </a>
+        </div>
+
+        <!-- Two-col: Upload + Progress -->
+        <div class="two-col">
+
+          <!-- Upload card -->
+          <div class="card">
+            <div class="card-title" data-i18n="upload_card_title">Upload a new document</div>
+            <div class="card-sub" data-i18n="upload_card_sub">Submit a PDF or DOCX for a full academic quality analysis.</div>
+            <div class="upload-zone" onclick="setPage('upload')">
+              <div class="upload-icon">
+                <svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+              </div>
+              <div class="upload-text"><span data-i18n="upload_cta">Drop your file or browse</span></div>
+              <div class="upload-hint" data-i18n="upload_hint">Drag & drop or click to select</div>
+              <div class="upload-types">
+                <span class="type-tag">PDF</span>
+                <span class="type-tag">DOCX</span>
+                <span class="type-tag" data-i18n="max_size">Max 50 MB</span>
+              </div>
+            </div>
+            <div class="upload-privacy">
+              <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg>
+              <span data-i18n="upload_privacy">Your document is processed in a secure, encrypted environment. DataUnivers does not store, share, or use your document for any purpose other than producing your analysis report.</span>
+            </div>
+          </div>
+
+          <!-- Progress card -->
+          <div class="card progress-card">
+            <div class="progress-month-label" data-i18n="progress_eyebrow">YOUR PROGRESS THIS MONTH</div>
+            <div class="card-sub" style="margin-bottom:1.2rem;" data-i18n="progress_sub">Average score improved by +8 points compared to last month.</div>
+
+            <div class="progress-row">
+              <div class="progress-row-head">
+                <span class="progress-label" data-i18n="prog_compliance">Academic Compliance</span>
+                <span class="progress-pct">86%</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill bar-navy" style="width:86%"></div></div>
+            </div>
+            <div class="progress-row">
+              <div class="progress-row-head">
+                <span class="progress-label" data-i18n="prog_citations">Citation Quality</span>
+                <span class="progress-pct">75%</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill bar-navy" style="width:75%"></div></div>
+            </div>
+            <div class="progress-row">
+              <div class="progress-row-head">
+                <span class="progress-label" data-i18n="prog_quality">Research Quality</span>
+                <span class="progress-pct">69%</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill bar-gold" style="width:69%"></div></div>
+            </div>
+            <div class="progress-row">
+              <div class="progress-row-head">
+                <span class="progress-label" data-i18n="prog_plagiat">Plagiarism Risk</span>
+                <span class="progress-pct" style="color:var(--red)">12%</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill bar-red" style="width:12%"></div></div>
+            </div>
+
+            <div class="score-summary">
+              <div>
+                <div class="score-summary-label" data-i18n="overall_score">Overall Score</div>
+                <div class="score-summary-sub" data-i18n="out_of">out of 100</div>
+                <div class="score-badge-row">
+                  <div class="trend-pill">
+                    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+                    +8 pts
+                  </div>
+                </div>
+              </div>
+              <div class="score-summary-val">84</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /main-inner -->
+    </div><!-- /dashboard page -->
+
+
+    <!-- ── UPLOAD PAGE ── -->
+    <div class="page" id="page-upload">
+      <div class="main-inner">
+        <div class="page-header">
+          <div class="page-greeting">
+            <h1 data-i18n="upload_page_title">Upload your document</h1>
+            <p data-i18n="upload_page_sub">Submit your academic work for a comprehensive quality analysis.</p>
+          </div>
+        </div>
+
+        <!-- Upload zone -->
+        <div class="card" style="max-width:640px;margin:0 auto 2rem;">
+          <div class="upload-zone" style="padding:40px 24px;">
+            <div class="upload-icon" style="width:52px;height:52px;border-radius:13px;">
+              <svg viewBox="0 0 24 24" style="width:22px;height:22px;"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+            </div>
+            <div class="upload-text" style="font-size:.9rem;margin-bottom:6px;" data-i18n="drop_zone_title">Drop your academic document here</div>
+            <div class="upload-hint"><span data-i18n="or_browse">or</span> <span style="color:var(--navy);font-weight:600;cursor:pointer;" data-i18n="browse_files">browse files</span></div>
+            <div class="upload-types" style="margin-top:10px;">
+              <span class="type-tag">PDF</span>
+              <span class="type-tag">DOCX</span>
+              <span class="type-tag" data-i18n="max_size">Max 50 MB</span>
+            </div>
+          </div>
+          <div class="upload-privacy">
+            <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg>
+            <span data-i18n="upload_privacy">Your document is processed in a secure, encrypted environment. DataUnivers does not store, share, or use your document for any purpose other than producing your analysis report.</span>
+          </div>
+
+          <div style="margin-top:1.2rem;">
+            <div style="font-size:.78rem;font-weight:600;color:var(--text-muted);margin-bottom:.5rem;" data-i18n="doc_type_label">Document type</div>
+            <select style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:.845rem;color:var(--text);background:var(--surface);cursor:pointer;outline:none;">
+              <option data-i18n="doc_type_thesis">Master's Thesis / Mémoire</option>
+              <option data-i18n="doc_type_phd">PhD Dissertation</option>
+              <option data-i18n="doc_type_paper">Research Paper</option>
+              <option data-i18n="doc_type_proposal">Research Proposal</option>
+              <option data-i18n="doc_type_review">Literature Review</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Configure modules -->
+        <div class="section-row" style="max-width:640px;margin:0 auto 1rem;">
+          <div>
+            <div class="eyebrow" data-i18n="config_eyebrow">ANALYSIS MODULES</div>
+            <h2 data-i18n="config_title">Configure your analysis</h2>
+            <p style="font-size:.8rem;color:var(--text-muted);margin-top:3px;" data-i18n="config_sub">Select the verification modules you want to run on your document.</p>
+          </div>
+        </div>
+
+        <div class="modules-grid" style="max-width:640px;margin:0 auto 0;">
+          <!-- Row 1 -->
+          <div class="module-card">
+            <div class="module-top">
+              <div class="module-icon">
+                <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12l2 2 4-4"/></svg>
+              </div>
+              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="module-name" data-i18n="mod1_name">Academic Standards Check</div>
+            <div class="module-desc" data-i18n="mod1_desc">Verifies compliance with APA, MLA, IEEE, Harvard, and your institution's templates.</div>
+            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div>
+          </div>
+          <div class="module-card">
+            <div class="module-top">
+              <div class="module-icon">
+                <svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2.375-2-3H4c-1.25 0-2 1.125-2 2.5V11c0 1.25.75 2.375 2 3 1 .625 1 2 1 3"/><path d="M21 21c-3 0-7-1-7-8V5c0-1.25.75-2.375 2-3h4c1.25 0 2 1.125 2 2.5V11c0 1.25-.75 2.375-2 3-1 .625-1 2-1 3"/></svg>
+              </div>
+              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="module-name" data-i18n="mod2_name">Citation Analysis</div>
+            <div class="module-desc" data-i18n="mod2_desc">Detects missing references, evaluates citation quality, and flags inconsistencies.</div>
+            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~45s</div>
+          </div>
+          <!-- Row 2 -->
+          <div class="module-card">
+            <div class="module-top">
+              <div class="module-icon">
+                <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+              </div>
+              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="module-name" data-i18n="mod3_name">AI Content Detection</div>
+            <div class="module-desc" data-i18n="mod3_desc">Estimates the probability of AI-generated sections and highlights flagged passages.</div>
+            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~1 min</div>
+          </div>
+          <div class="module-card">
+            <div class="module-top">
+              <div class="module-icon">
+                <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              </div>
+              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="module-name" data-i18n="mod4_name">Plagiarism Screening</div>
+            <div class="module-desc" data-i18n="mod4_desc">Identifies suspicious similarities across global academic databases.</div>
+            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~13 min</div>
+          </div>
+          <!-- Row 3 -->
+          <div class="module-card">
+            <div class="module-top">
+              <div class="module-icon">
+                <svg viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+              </div>
+              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="module-name" data-i18n="mod5_name">Grammar &amp; Writing Quality</div>
+            <div class="module-desc" data-i18n="mod5_desc">Evaluates grammar, style clarity, and academic register.</div>
+            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div>
+          </div>
+          <div class="module-card">
+            <div class="module-top">
+              <div class="module-icon">
+                <svg viewBox="0 0 24 24"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14H4s-.5-1-.5-3 .5-3 .5-3h5"/><path d="M9 14v8"/></svg>
+              </div>
+              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="module-name" data-i18n="mod6_name">Methodology Validation</div>
+            <div class="module-desc" data-i18n="mod6_desc">Reviews the soundness and consistency of your research methodology section.</div>
+            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~1 min</div>
+          </div>
+          <!-- Row 4 -->
+          <div class="module-card">
+            <div class="module-top">
+              <div class="module-icon">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="module-name" data-i18n="mod7_name">Research Structure Analysis</div>
+            <div class="module-desc" data-i18n="mod7_desc">Checks overall structure, argument flow, and chapter organization.</div>
+            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~48s</div>
+          </div>
+          <div class="module-card">
+            <div class="module-top">
+              <div class="module-icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              </div>
+              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="module-name" data-i18n="mod8_name">Formatting Verification</div>
+            <div class="module-desc" data-i18n="mod8_desc">Ensures margins, headings, fonts, and spacing conform to academic standards.</div>
+            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div>
+          </div>
+          <!-- Row 5 -->
+          <div class="module-card">
+            <div class="module-top">
+              <div class="module-icon">
+                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="module-name" data-i18n="mod9_name">Research Quality Score</div>
+            <div class="module-desc" data-i18n="mod9_desc">Produces an overall academic quality score with detailed sub-scores.</div>
+            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div>
+          </div>
+          <div class="module-card">
+            <div class="module-top">
+              <div class="module-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg>
+              </div>
+              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="module-name" data-i18n="mod10_name">University Compliance Check</div>
+            <div class="module-desc" data-i18n="mod10_desc">Cross-references your institution's specific submission requirements.</div>
+            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~45s</div>
+          </div>
+        </div>
+
+        <!-- Footer bar -->
+        <div class="modules-footer" style="max-width:640px;margin:0 auto;border:1px solid var(--border);border-top:none;border-radius:0 0 14px 14px;">
+          <div>
+            <div class="modules-selected"><strong data-i18n="mods_selected">10 of 10 modules</strong> <span data-i18n="mods_selected2">selected</span></div>
+            <div class="modules-est" data-i18n="mods_est">⏱ Estimated time: ~5 min</div>
+          </div>
+          <div class="modules-actions">
+            <button class="btn-outline-sm" data-i18n="clear_all">Clear all</button>
+            <button class="btn-outline-sm" data-i18n="select_all">Select all</button>
+          </div>
+        </div>
+
+        <div style="max-width:640px;margin:1.5rem auto 0;">
+          <button class="btn-filled-sm" style="width:100%;justify-content:center;padding:14px 24px;font-size:.9rem;" onclick="setPage('dashboard')">
+            <span data-i18n="start_analysis">Start Analysis</span>
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+
+      </div><!-- /main-inner -->
+    </div><!-- /upload page -->
+
+
+    <!-- ── ANALYSES PAGE ── -->
+    <div class="page" id="page-analyses">
+      <div class="main-inner">
+        <div class="page-header">
+          <div class="page-greeting">
+            <h1 data-i18n="analyses_title">All Analyses</h1>
+            <p data-i18n="analyses_sub">Review every document you've submitted for analysis.</p>
+          </div>
+          <button class="btn-new-analysis" onclick="setPage('upload')">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span data-i18n="new_analysis">New Analysis</span>
+          </button>
+        </div>
+        <div class="analyses-table">
+          <a class="analysis-row" href="#"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="analysis-info"><div class="analysis-title">Mémoire de Fin d'études</div><div class="analysis-sub">Développement d'un Système AI pour l'Audit…</div></div><div class="analysis-meta"><span class="analysis-time">Today, 14:32</span><span class="badge badge-green"><span class="badge-dot"></span>Excellent</span><span class="analysis-score">96</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></a>
+          <a class="analysis-row" href="#"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="analysis-info"><div class="analysis-title">Research Proposal — Machine Learning</div><div class="analysis-sub">Comparative study on neural network architectures…</div></div><div class="analysis-meta"><span class="analysis-time">Yesterday, 09:15</span><span class="badge badge-gold"><span class="badge-dot"></span>Good</span><span class="analysis-score">81</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></a>
+          <a class="analysis-row" href="#"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="analysis-info"><div class="analysis-title">Literature Review Draft v2</div><div class="analysis-sub">Systematic review of renewable energy adoption…</div></div><div class="analysis-meta"><span class="analysis-time">Jun 20, 2025</span><span class="badge badge-red"><span class="badge-dot"></span>Needs work</span><span class="analysis-score">74</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></a>
+          <a class="analysis-row" href="#"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="analysis-info"><div class="analysis-title">Chapter 3 — Methodology</div><div class="analysis-sub">Revised methodology chapter with updated sampling approach…</div></div><div class="analysis-meta"><span class="analysis-time">Jun 17, 2025</span><span class="badge badge-gold"><span class="badge-dot"></span>Good</span><span class="analysis-score">79</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></a>
+          <a class="analysis-row" href="#"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="analysis-info"><div class="analysis-title">Abstract &amp; Introduction Draft</div><div class="analysis-sub">Introductory sections of the final thesis document…</div></div><div class="analysis-meta"><span class="analysis-time">Jun 14, 2025</span><span class="badge badge-green"><span class="badge-dot"></span>Excellent</span><span class="analysis-score">91</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></a>
+        </div>
+      </div>
+    </div><!-- /analyses page -->
+
+
+    <!-- ── REPORTS PAGE ── -->
+    <div class="page" id="page-reports">
+      <div class="main-inner">
+        <div class="page-header">
+          <div class="page-greeting">
+            <h1 data-i18n="reports_title">Reports</h1>
+            <p data-i18n="reports_sub">Download and review your detailed analysis reports.</p>
+          </div>
+        </div>
+        <div class="analyses-table">
+          <a class="analysis-row" href="#"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="12" x2="12" y2="17"/><polyline points="9 15 12 18 15 15"/></svg></div><div class="analysis-info"><div class="analysis-title">Report — Mémoire de Fin d'études</div><div class="analysis-sub">Full analysis report · 14 pages · Jun 24, 2025</div></div><div class="analysis-meta"><span class="badge badge-green"><span class="badge-dot"></span>Score 96</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></a>
+          <a class="analysis-row" href="#"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="12" x2="12" y2="17"/><polyline points="9 15 12 18 15 15"/></svg></div><div class="analysis-info"><div class="analysis-title">Report — Research Proposal ML</div><div class="analysis-sub">Full analysis report · 11 pages · Jun 23, 2025</div></div><div class="analysis-meta"><span class="badge badge-gold"><span class="badge-dot"></span>Score 81</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></a>
+          <a class="analysis-row" href="#"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="12" x2="12" y2="17"/><polyline points="9 15 12 18 15 15"/></svg></div><div class="analysis-info"><div class="analysis-title">Report — Literature Review Draft v2</div><div class="analysis-sub">Full analysis report · 9 pages · Jun 20, 2025</div></div><div class="analysis-meta"><span class="badge badge-red"><span class="badge-dot"></span>Score 74</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></a>
+        </div>
+      </div>
+    </div><!-- /reports page -->
+
+  </main>
+</div><!-- /app-shell -->
+
+<script>
+/* ════ TRANSLATIONS ════ */
+const T = {
+  en:{
+    new_analysis:"New Analysis",
+    sb_main:"Main",sb_dashboard:"Dashboard",sb_upload:"Upload Document",
+    sb_analyses:"Analyses",sb_reports:"Reports",sb_account:"Account",
+    sb_profile:"Profile",sb_settings:"Settings",sb_signout:"Sign out",
+    dash_hello:"Good morning, Sara.",dash_sub:"Here's an overview of your recent academic analyses.",
+    stat_docs:"Documents Analyzed",stat_docs_delta:"+3 this month",
+    stat_score:"Average Score",stat_score_delta:"Across all analyses",
+    stat_issues:"Issues Detected",stat_issues_delta:"Across all documents",
+    stat_compliant:"Compliant Checks",stat_compliant_delta:"Pass rate this month",
+    recent_eyebrow:"RECENT WORK",recent_title:"Recent Analyses",view_all:"View all",
+    row1_title:"Mémoire de Fin d'études",row1_sub:"Développement d'un Système AI pour l'Audit…",row1_time:"Today, 14:32",
+    row2_title:"Research Proposal — Machine Learning",row2_sub:"Comparative study on neural network architectures…",row2_time:"Yesterday, 09:15",
+    row3_title:"Literature Review Draft v2",row3_sub:"Systematic review of renewable energy adoption…",
+    badge_excellent:"Excellent",badge_good:"Good",badge_needs:"Needs work",
+    upload_card_title:"Upload a new document",upload_card_sub:"Submit a PDF or DOCX for a full academic quality analysis.",
+    upload_cta:"Drop your file or browse",upload_hint:"Drag & drop or click to select",max_size:"Max 50 MB",
+    upload_privacy:"Your document is processed in a secure, encrypted environment. DataUnivers does not store, share, or use your document for any purpose other than producing your analysis report.",
+    progress_eyebrow:"YOUR PROGRESS THIS MONTH",progress_sub:"Average score improved by +8 points compared to last month.",
+    prog_compliance:"Academic Compliance",prog_citations:"Citation Quality",prog_quality:"Research Quality",prog_plagiat:"Plagiarism Risk",
+    overall_score:"Overall Score",out_of:"out of 100",
+    upload_page_title:"Upload your document",upload_page_sub:"Submit your academic work for a comprehensive quality analysis.",
+    drop_zone_title:"Drop your academic document here",or_browse:"or",browse_files:"browse files",
+    doc_type_label:"Document type",doc_type_thesis:"Master's Thesis / Mémoire",doc_type_phd:"PhD Dissertation",
+    doc_type_paper:"Research Paper",doc_type_proposal:"Research Proposal",doc_type_review:"Literature Review",
+    config_eyebrow:"ANALYSIS MODULES",config_title:"Configure your analysis",config_sub:"Select the verification modules you want to run on your document.",
+    mod1_name:"Academic Standards Check",mod1_desc:"Verifies compliance with APA, MLA, IEEE, Harvard, and your institution's templates.",
+    mod2_name:"Citation Analysis",mod2_desc:"Detects missing references, evaluates citation quality, and flags inconsistencies.",
+    mod3_name:"AI Content Detection",mod3_desc:"Estimates the probability of AI-generated sections and highlights flagged passages.",
+    mod4_name:"Plagiarism Screening",mod4_desc:"Identifies suspicious similarities across global academic databases.",
+    mod5_name:"Grammar & Writing Quality",mod5_desc:"Evaluates grammar, style clarity, and academic register.",
+    mod6_name:"Methodology Validation",mod6_desc:"Reviews the soundness and consistency of your research methodology section.",
+    mod7_name:"Research Structure Analysis",mod7_desc:"Checks overall structure, argument flow, and chapter organization.",
+    mod8_name:"Formatting Verification",mod8_desc:"Ensures margins, headings, fonts, and spacing conform to academic standards.",
+    mod9_name:"Research Quality Score",mod9_desc:"Produces an overall academic quality score with detailed sub-scores.",
+    mod10_name:"University Compliance Check",mod10_desc:"Cross-references your institution's specific submission requirements.",
+    mods_selected:"10 of 10 modules",mods_selected2:"selected",mods_est:"⏱ Estimated time: ~5 min",
+    clear_all:"Clear all",select_all:"Select all",start_analysis:"Start Analysis",
+    analyses_title:"All Analyses",analyses_sub:"Review every document you've submitted for analysis.",
+    reports_title:"Reports",reports_sub:"Download and review your detailed analysis reports."
+  },
+  fr:{
+    new_analysis:"Nouvelle Analyse",
+    sb_main:"Principal",sb_dashboard:"Tableau de bord",sb_upload:"Déposer un document",
+    sb_analyses:"Analyses",sb_reports:"Rapports",sb_account:"Compte",
+    sb_profile:"Profil",sb_settings:"Paramètres",sb_signout:"Déconnexion",
+    dash_hello:"Bonjour, Sara.",dash_sub:"Voici un aperçu de vos analyses académiques récentes.",
+    stat_docs:"Documents analysés",stat_docs_delta:"+3 ce mois",
+    stat_score:"Score moyen",stat_score_delta:"Toutes analyses confondues",
+    stat_issues:"Problèmes détectés",stat_issues_delta:"Sur tous les documents",
+    stat_compliant:"Vérifications conformes",stat_compliant_delta:"Taux de réussite ce mois",
+    recent_eyebrow:"TRAVAUX RÉCENTS",recent_title:"Analyses récentes",view_all:"Tout voir",
+    row1_title:"Mémoire de Fin d'études",row1_sub:"Développement d'un Système AI pour l'Audit…",row1_time:"Aujourd'hui, 14:32",
+    row2_title:"Proposition de Recherche — ML",row2_sub:"Étude comparative sur les architectures de réseaux…",row2_time:"Hier, 09:15",
+    row3_title:"Revue de littérature v2",row3_sub:"Revue systématique de l'adoption des énergies…",
+    badge_excellent:"Excellent",badge_good:"Bien",badge_needs:"À améliorer",
+    upload_card_title:"Déposer un nouveau document",upload_card_sub:"Soumettez un PDF ou DOCX pour une analyse qualité complète.",
+    upload_cta:"Déposez votre fichier ou parcourez",upload_hint:"Glissez-déposez ou cliquez pour sélectionner",max_size:"Max 50 Mo",
+    upload_privacy:"Votre document est traité dans un environnement sécurisé et chiffré. DataUnivers ne stocke, partage ni utilise votre document à d'autres fins que la production de votre rapport d'analyse.",
+    progress_eyebrow:"VOS PROGRÈS CE MOIS",progress_sub:"Score moyen amélioré de +8 points par rapport au mois dernier.",
+    prog_compliance:"Conformité académique",prog_citations:"Qualité des citations",prog_quality:"Qualité de recherche",prog_plagiat:"Risque de plagiat",
+    overall_score:"Score global",out_of:"sur 100",
+    upload_page_title:"Déposez votre document",upload_page_sub:"Soumettez votre travail académique pour une analyse qualité complète.",
+    drop_zone_title:"Déposez votre document académique ici",or_browse:"ou",browse_files:"parcourir",
+    doc_type_label:"Type de document",doc_type_thesis:"Mémoire de master",doc_type_phd:"Thèse de doctorat",
+    doc_type_paper:"Article de recherche",doc_type_proposal:"Proposition de recherche",doc_type_review:"Revue de littérature",
+    config_eyebrow:"MODULES D'ANALYSE",config_title:"Configurez votre analyse",config_sub:"Sélectionnez les modules de vérification à exécuter sur votre document.",
+    mod1_name:"Vérification des normes académiques",mod1_desc:"Vérifie la conformité APA, MLA, IEEE, Harvard et les modèles institutionnels.",
+    mod2_name:"Analyse des citations",mod2_desc:"Détecte les références manquantes, évalue la qualité et signale les incohérences.",
+    mod3_name:"Détection du contenu IA",mod3_desc:"Estime la probabilité de contenu généré par IA et surligne les passages signalés.",
+    mod4_name:"Détection de plagiat",mod4_desc:"Identifie les similitudes suspectes dans les bases de données académiques mondiales.",
+    mod5_name:"Grammaire & qualité rédactionnelle",mod5_desc:"Évalue la grammaire, la clarté du style et le registre académique.",
+    mod6_name:"Validation méthodologique",mod6_desc:"Vérifie la solidité et la cohérence de votre section méthodologique.",
+    mod7_name:"Analyse de la structure",mod7_desc:"Vérifie la structure globale, le flux argumentatif et l'organisation des chapitres.",
+    mod8_name:"Vérification du formatage",mod8_desc:"Contrôle les marges, titres, polices et espacements selon les normes académiques.",
+    mod9_name:"Score qualité de recherche",mod9_desc:"Produit un score global de qualité académique avec des sous-scores détaillés.",
+    mod10_name:"Conformité institutionnelle",mod10_desc:"Croise les exigences de soumission spécifiques à votre institution.",
+    mods_selected:"10 modules sur 10",mods_selected2:"sélectionnés",mods_est:"⏱ Durée estimée : ~5 min",
+    clear_all:"Tout effacer",select_all:"Tout sélectionner",start_analysis:"Lancer l'analyse",
+    analyses_title:"Toutes les analyses",analyses_sub:"Consultez tous les documents soumis pour analyse.",
+    reports_title:"Rapports",reports_sub:"Téléchargez et consultez vos rapports d'analyse détaillés."
+  },
+  ar:{
+    new_analysis:"تحليل جديد",
+    sb_main:"الرئيسية",sb_dashboard:"لوحة التحكم",sb_upload:"رفع وثيقة",
+    sb_analyses:"التحليلات",sb_reports:"التقارير",sb_account:"الحساب",
+    sb_profile:"الملف الشخصي",sb_settings:"الإعدادات",sb_signout:"تسجيل الخروج",
+    dash_hello:"صباح الخير، سارة.",dash_sub:"إليك نظرة عامة على تحليلاتك الأكاديمية الأخيرة.",
+    stat_docs:"الوثائق المحللة",stat_docs_delta:"+3 هذا الشهر",
+    stat_score:"متوسط النتيجة",stat_score_delta:"عبر جميع التحليلات",
+    stat_issues:"المشكلات المكتشفة",stat_issues_delta:"عبر جميع الوثائق",
+    stat_compliant:"الفحوصات الممتثلة",stat_compliant_delta:"معدل النجاح هذا الشهر",
+    recent_eyebrow:"العمل الأخير",recent_title:"التحليلات الأخيرة",view_all:"عرض الكل",
+    row1_title:"مذكرة التخرج",row1_sub:"تطوير نظام ذكي للتدقيق…",row1_time:"اليوم، 14:32",
+    row2_title:"مقترح بحثي — التعلم الآلي",row2_sub:"دراسة مقارنة لبنيات الشبكات العصبية…",row2_time:"أمس، 09:15",
+    row3_title:"مراجعة الأدبيات - مسودة v2",row3_sub:"مراجعة منهجية لاعتماد الطاقة المتجددة…",
+    badge_excellent:"ممتاز",badge_good:"جيد",badge_needs:"يحتاج تحسين",
+    upload_card_title:"رفع وثيقة جديدة",upload_card_sub:"أرسل ملف PDF أو DOCX للحصول على تحليل جودة أكاديمي شامل.",
+    upload_cta:"أسقط ملفك أو تصفح",upload_hint:"اسحب وأفلت أو انقر للاختيار",max_size:"الحجم الأقصى 50 ميغابايت",
+    upload_privacy:"تتم معالجة وثيقتك في بيئة آمنة ومشفرة. لا تقوم DataUnivers بتخزين أو مشاركة أو استخدام وثيقتك لأي غرض آخر غير إنتاج تقرير التحليل الخاص بك.",
+    progress_eyebrow:"تقدمك هذا الشهر",progress_sub:"تحسّن متوسط النتيجة بمقدار +8 نقاط مقارنة بالشهر الماضي.",
+    prog_compliance:"الامتثال الأكاديمي",prog_citations:"جودة الاستشهادات",prog_quality:"جودة البحث",prog_plagiat:"خطر الانتحال",
+    overall_score:"النتيجة الإجمالية",out_of:"من 100",
+    upload_page_title:"ارفع وثيقتك",upload_page_sub:"أرسل عملك الأكاديمي للحصول على تحليل جودة شامل.",
+    drop_zone_title:"أسقط وثيقتك الأكاديمية هنا",or_browse:"أو",browse_files:"تصفح الملفات",
+    doc_type_label:"نوع الوثيقة",doc_type_thesis:"مذكرة الماستر",doc_type_phd:"أطروحة الدكتوراه",
+    doc_type_paper:"ورقة بحثية",doc_type_proposal:"مقترح بحثي",doc_type_review:"مراجعة الأدبيات",
+    config_eyebrow:"وحدات التحليل",config_title:"اضبط تحليلك",config_sub:"اختر وحدات التحقق التي تريد تشغيلها على وثيقتك.",
+    mod1_name:"فحص المعايير الأكاديمية",mod1_desc:"يتحقق من الامتثال لـ APA وMLA وIEEE وهارفارد والقوالب المؤسسية.",
+    mod2_name:"تحليل الاستشهادات",mod2_desc:"يكتشف المراجع المفقودة ويقيّم جودة الاستشهادات ويرصد التناقضات.",
+    mod3_name:"كشف محتوى الذكاء الاصطناعي",mod3_desc:"يقدّر احتمالية الأقسام المولَّدة بالذكاء الاصطناعي ويسلط الضوء على المقاطع المُعلَّمة.",
+    mod4_name:"فحص الانتحال",mod4_desc:"يرصد التشابهات المثيرة للريبة عبر قواعد البيانات الأكاديمية العالمية.",
+    mod5_name:"القواعد وجودة الكتابة",mod5_desc:"يقيّم القواعد ووضوح الأسلوب والمستوى الأكاديمي.",
+    mod6_name:"التحقق من المنهجية",mod6_desc:"يراجع سلامة واتساق قسم المنهجية البحثية لديك.",
+    mod7_name:"تحليل بنية البحث",mod7_desc:"يفحص البنية الكلية وتدفق الحجج وتنظيم الفصول.",
+    mod8_name:"فحص التنسيق",mod8_desc:"يضمن توافق الهوامش والعناوين والخطوط والتباعد مع المعايير الأكاديمية.",
+    mod9_name:"نقاط جودة البحث",mod9_desc:"يُنتج نقاطاً كلية لجودة البحث الأكاديمي مع نقاط فرعية تفصيلية.",
+    mod10_name:"فحص الامتثال المؤسسي",mod10_desc:"يتقاطع مع متطلبات التقديم الخاصة بمؤسستك.",
+    mods_selected:"10 من 10 وحدات",mods_selected2:"محددة",mods_est:"⏱ الوقت المقدر: ~5 دقائق",
+    clear_all:"مسح الكل",select_all:"تحديد الكل",start_analysis:"بدء التحليل",
+    analyses_title:"جميع التحليلات",analyses_sub:"راجع كل وثيقة قدمتها للتحليل.",
+    reports_title:"التقارير",reports_sub:"نزّل وراجع تقارير التحليل التفصيلية."
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang){
+  currentLang = lang;
+  const t = T[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(t[k] !== undefined) el.innerHTML = t[k];
+  });
+  const rtl = lang === 'ar';
+  document.documentElement.setAttribute('dir', rtl ? 'rtl' : 'ltr');
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
+  });
+}
+
+function toggleTheme(){
+  const html = document.documentElement;
+  const dark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', dark ? 'light' : 'dark');
+  document.getElementById('themeBtn').textContent = dark ? '🌙' : '☀️';
+}
+
+function setPage(name){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + name);
+  if(target) target.classList.add('active');
+  // update sidebar active state
+  document.querySelectorAll('.sidebar-nav a').forEach(a => {
+    a.classList.remove('active');
+    if(a.getAttribute('onclick') && a.getAttribute('onclick').includes("'" + name + "'")){
+      a.classList.add('active');
+    }
+  });
+}
+
+// Set date
+(function(){
+  const d = new Date();
+  const opts = {weekday:'long', year:'numeric', month:'long', day:'numeric'};
+  document.getElementById('headerDate').textContent = d.toLocaleDateString('en-US', opts);
+})();
+
+setLang('en');
+</script>
+</body>
+</html>
