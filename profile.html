@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DataUnivers — Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+/* ════════════════════════════════
+   TOKENS — identical to dashboard
+════════════════════════════════ */
+:root {
+  --navy:       #0f2d5e;
+  --navy-deep:  #091e42;
+  --navy-mid:   #1a3d72;
+  --navy-light: #2a5298;
+  --navy-mist:  #e8eef7;
+  --gold:       #c9a84c;
+  --gold-light: #e8c96e;
+  --gold-dark:  #a07830;
+  --cream:      #faf8f4;
+  --cream2:     #f2ede4;
+  --white:      #ffffff;
+  --text:       #0f1e35;
+  --text-mid:   #3a4d6b;
+  --text-muted: #6b7a96;
+  --text-light: #9aa4b8;
+  --border:     #dde3ef;
+  --border-soft:#edf0f7;
+  --tag-bg:     #eef1f9;
+  --surface:    #ffffff;
+  --surface2:   #f5f7fc;
+  --nav-bg:     rgba(250,248,244,0.97);
+  --sidebar-bg: #ffffff;
+  --green:      #1a7a4a;
+  --green-bg:   #eaf5ee;
+  --amber:      #b45309;
+  --amber-bg:   #fef3e2;
+  --red:        #c0392b;
+  --red-bg:     #fdecea;
+}
+[data-theme="dark"] {
+  --cream:      #0d1b33;
+  --cream2:     #111f3a;
+  --white:      #152240;
+  --text:       #dde6f5;
+  --text-mid:   #9ab0d0;
+  --text-muted: #6a85aa;
+  --text-light: #4a6080;
+  --border:     #1e3358;
+  --border-soft:#162844;
+  --tag-bg:     #162540;
+  --surface:    #152240;
+  --surface2:   #1a2b4a;
+  --nav-bg:     rgba(13,27,51,0.97);
+  --sidebar-bg: #0f1e38;
+  --navy-mist:  #162540;
+  --green-bg:   #0e2a1c;
+  --amber-bg:   #2a1a06;
+  --red-bg:     #2a0e0c;
+}
+
+/* ════════════════════════════════
+   RESET
+════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.6;
+  transition:background .3s,color .3s;
+  display:flex;flex-direction:column;min-height:100vh;
+}
+
+/* ════════════════════════════════
+   LAYOUT SHELL
+════════════════════════════════ */
+.app-shell{display:flex;flex:1;min-height:0;}
+
+/* ════════════════════════════════
+   TOPBAR
+════════════════════════════════ */
+.topbar{
+  position:sticky;top:0;z-index:200;
+  background:var(--nav-bg);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:0 1.5rem 0 0;
+  display:flex;align-items:center;justify-content:space-between;
+  height:58px;
+  transition:background .3s;
+}
+.topbar-left{
+  display:flex;align-items:center;gap:0;
+  width:230px;flex-shrink:0;
+  border-right:1px solid var(--border);
+  height:100%;padding:0 1.5rem;
+}
+.topbar-logo{
+  display:flex;align-items:center;gap:9px;
+  text-decoration:none;
+  font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--navy);
+}
+[data-theme="dark"] .topbar-logo{color:var(--text);}
+.logo-mark{width:30px;height:30px;flex-shrink:0;}
+
+.topbar-search{
+  flex:1;display:flex;align-items:center;gap:10px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:7px 14px;
+  max-width:340px;
+  margin:0 1.5rem;
+}
+.topbar-search input{
+  background:none;border:none;outline:none;
+  font-family:inherit;font-size:.835rem;color:var(--text);
+  width:100%;
+}
+.topbar-search input::placeholder{color:var(--text-light);}
+.topbar-search svg{width:15px;height:15px;stroke:var(--text-muted);flex-shrink:0;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+.topbar-right{
+  display:flex;align-items:center;gap:.65rem;
+}
+.icon-btn{
+  width:34px;height:34px;border-radius:8px;
+  background:var(--surface2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;position:relative;
+  transition:background .2s;
+}
+.icon-btn:hover{background:var(--navy-mist);}
+.icon-btn svg{width:16px;height:16px;stroke:var(--text-muted);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.notif-dot{
+  position:absolute;top:6px;right:6px;
+  width:7px;height:7px;border-radius:50%;
+  background:var(--gold);border:1.5px solid var(--surface);
+}
+
+.lang-switcher{display:flex;gap:2px;background:var(--surface2);border-radius:7px;padding:2px;border:1px solid var(--border);}
+.lang-btn{background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:.72rem;font-weight:700;padding:4px 9px;border-radius:5px;font-family:inherit;transition:all .2s;letter-spacing:.04em;}
+.lang-btn.active{background:var(--navy);color:#fff;box-shadow:0 1px 4px rgba(15,45,94,.3);}
+.theme-toggle{
+  background:var(--surface2);border:1px solid var(--border);border-radius:7px;
+  width:34px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;transition:all .2s;
+}
+.theme-toggle:hover{background:var(--navy-mist);}
+
+.avatar-btn{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;font-weight:700;cursor:pointer;
+  letter-spacing:.03em;flex-shrink:0;
+  border:2px solid var(--border);
+  transition:transform .2s;
+}
+.avatar-btn:hover{transform:scale(1.06);}
+
+.btn-new-analysis{
+  background:var(--navy);color:#fff;
+  border:none;border-radius:8px;padding:8px 18px;
+  font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit;
+  display:flex;align-items:center;gap:7px;
+  transition:background .2s,transform .15s;
+  box-shadow:0 2px 8px rgba(15,45,94,.25);
+  white-space:nowrap;
+}
+.btn-new-analysis:hover{background:var(--navy-mid);transform:translateY(-1px);}
+.btn-new-analysis svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;}
+
+/* ════════════════════════════════
+   SIDEBAR
+════════════════════════════════ */
+.sidebar{
+  width:230px;flex-shrink:0;
+  background:var(--sidebar-bg);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  padding:1.5rem 0;
+  position:sticky;top:58px;
+  height:calc(100vh - 58px);
+  overflow-y:auto;
+  transition:background .3s;
+}
+.sidebar-section{margin-bottom:1.75rem;}
+.sidebar-label{
+  font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text-light);padding:0 1.4rem;margin-bottom:.6rem;
+}
+.sidebar-nav{list-style:none;}
+.sidebar-nav li a{
+  display:flex;align-items:center;gap:11px;
+  padding:9px 1.4rem;
+  text-decoration:none;
+  font-size:.845rem;font-weight:500;
+  color:var(--text-muted);
+  border-left:2.5px solid transparent;
+  transition:color .2s,background .2s,border-color .2s;
+}
+.sidebar-nav li a:hover{color:var(--navy);background:var(--navy-mist);border-left-color:var(--border);}
+.sidebar-nav li a.active{
+  color:var(--navy);
+  background:var(--navy-mist);
+  border-left-color:var(--navy);
+  font-weight:600;
+}
+[data-theme="dark"] .sidebar-nav li a:hover,
+[data-theme="dark"] .sidebar-nav li a.active{
+  background:var(--surface2);
+  color:var(--text);
+  border-left-color:var(--gold);
+}
+.sidebar-nav li a svg{
+  width:16px;height:16px;
+  stroke:currentColor;fill:none;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;
+}
+
+.sidebar-bottom{
+  margin-top:auto;border-top:1px solid var(--border);
+  padding-top:1rem;
+}
+
+/* ════════════════════════════════
+   MAIN CONTENT
+════════════════════════════════ */
+.main{flex:1;min-width:0;overflow-y:auto;}
+.main-inner{
+  max-width:1000px;
+  padding:2.5rem 2.5rem;
+  margin:0 auto;
+}
+
+/* ════════════════════════════════
+   PAGE HEADER
+════════════════════════════════ */
+.page-header{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  margin-bottom:2.2rem;
+}
+.page-greeting h1{
+  font-family:'Playfair Display',serif;
+  font-size:1.9rem;font-weight:900;
+  color:var(--navy);line-height:1.2;margin-bottom:4px;
+}
+[data-theme="dark"] .page-greeting h1{color:var(--text);}
+.page-greeting p{font-size:.84rem;color:var(--text-muted);}
+
+/* ════════════════════════════════
+   EYEBROW
+════════════════════════════════ */
+.eyebrow{
+  font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-dark);margin-bottom:.55rem;
+}
+[data-theme="dark"] .eyebrow{color:var(--gold);}
+
+.section-row{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1rem;
+}
+.section-row h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:700;color:var(--navy);
+}
+[data-theme="dark"] .section-row h2{color:var(--text);}
+
+/* ════════════════════════════════
+   CARD
+════════════════════════════════ */
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:26px 24px;
+  transition:box-shadow .2s,background .3s,border-color .3s;
+}
+.card:hover{box-shadow:0 6px 24px rgba(15,45,94,.08);}
+.card-title{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-weight:700;color:var(--navy);
+  margin-bottom:4px;
+}
+[data-theme="dark"] .card-title{color:var(--text);}
+.card-sub{font-size:.78rem;color:var(--text-muted);margin-bottom:1.25rem;line-height:1.6;}
+
+/* ════════════════════════════════
+   PROFILE HERO CARD
+════════════════════════════════ */
+.profile-hero{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:30px 28px;
+  display:flex;align-items:center;gap:24px;
+  margin-bottom:2rem;
+  flex-wrap:wrap;
+}
+.profile-avatar-lg{
+  width:84px;height:84px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(160deg,var(--navy-light),var(--navy));
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:1.9rem;font-weight:700;letter-spacing:.02em;
+  border:3px solid var(--navy-mist);
+}
+.profile-hero-info{flex:1;min-width:200px;}
+.profile-hero-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;font-weight:900;color:var(--navy);
+  margin-bottom:4px;
+}
+[data-theme="dark"] .profile-hero-name{color:var(--text);}
+.profile-hero-role{font-size:.85rem;color:var(--text-muted);margin-bottom:10px;}
+.profile-hero-meta{display:flex;gap:18px;flex-wrap:wrap;}
+.profile-hero-meta-item{
+  display:flex;align-items:center;gap:6px;
+  font-size:.78rem;color:var(--text-mid);
+}
+.profile-hero-meta-item svg{width:14px;height:14px;stroke:var(--gold-dark);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+[data-theme="dark"] .profile-hero-meta-item svg{stroke:var(--gold);}
+.profile-hero-actions{display:flex;gap:10px;flex-shrink:0;}
+
+.btn-outline-sm{
+  background:none;border:1.5px solid var(--border);border-radius:7px;
+  padding:9px 18px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;
+  color:var(--text-mid);transition:border-color .2s,background .2s;
+  display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+}
+.btn-outline-sm:hover{border-color:var(--navy);background:var(--navy-mist);}
+.btn-outline-sm svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.btn-filled-sm{
+  background:var(--navy);color:#fff;border:none;border-radius:7px;
+  padding:9px 20px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  box-shadow:0 2px 8px rgba(15,45,94,.25);
+  transition:background .2s,transform .15s;
+}
+.btn-filled-sm:hover{background:var(--navy-mid);transform:translateY(-1px);}
+.btn-filled-sm svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;}
+
+/* ════════════════════════════════
+   STAT GRID (profile stats)
+════════════════════════════════ */
+.stat-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;
+  margin-bottom:2rem;background:var(--border);
+}
+.stat-card{
+  background:var(--surface);padding:22px 20px;
+  border-right:1px solid var(--border);
+  transition:background .2s;
+}
+.stat-card:last-child{border-right:none;}
+.stat-card:hover{background:var(--navy-mist);}
+[data-theme="dark"] .stat-card:hover{background:var(--surface2);}
+.stat-icon-label{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.stat-label{font-size:.7rem;font-weight:600;color:var(--text-muted);letter-spacing:.03em;}
+.stat-icon-box{
+  width:30px;height:30px;border-radius:8px;
+  background:var(--navy-mist);
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(15,45,94,.08);
+}
+.stat-icon-box svg{width:14px;height:14px;stroke:var(--navy);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+[data-theme="dark"] .stat-icon-box{background:var(--surface2);}
+[data-theme="dark"] .stat-icon-box svg{stroke:var(--gold);}
+.stat-value{
+  font-family:'Playfair Display',serif;
+  font-size:1.85rem;font-weight:900;color:var(--navy);line-height:1;margin-bottom:4px;
+}
+[data-theme="dark"] .stat-value{color:var(--text);}
+.stat-delta{font-size:.7rem;color:var(--text-muted);}
+
+/* ════════════════════════════════
+   TWO-COL LAYOUT
+════════════════════════════════ */
+.two-col{display:grid;grid-template-columns:1.3fr 1fr;gap:1.25rem;margin-bottom:2rem;}
+
+/* ── Form fields ── */
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.field-grid.full{grid-template-columns:1fr;}
+.field{margin-bottom:16px;}
+.field label{
+  display:block;font-size:.74rem;font-weight:600;color:var(--text-muted);
+  margin-bottom:6px;letter-spacing:.02em;
+}
+.field input,.field select,.field textarea{
+  width:100%;padding:10px 14px;
+  border:1.5px solid var(--border);border-radius:8px;
+  font-family:inherit;font-size:.84rem;color:var(--text);
+  background:var(--surface2);outline:none;
+  transition:border-color .2s,background .2s;
+}
+[data-theme="dark"] .field input,[data-theme="dark"] .field select,[data-theme="dark"] .field textarea{background:var(--cream2);}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--navy-light);}
+.field textarea{resize:vertical;min-height:80px;font-family:inherit;}
+.field-hint{font-size:.68rem;color:var(--text-light);margin-top:5px;}
+
+.divider-line{height:1px;background:var(--border-soft);margin:1.4rem 0;}
+
+/* ── toggle row ── */
+.toggle-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 0;border-bottom:1px solid var(--border-soft);
+}
+.toggle-row:last-child{border-bottom:none;}
+.toggle-row-info{flex:1;min-width:0;padding-right:16px;}
+.toggle-row-title{font-size:.83rem;font-weight:600;color:var(--text);margin-bottom:2px;}
+.toggle-row-desc{font-size:.73rem;color:var(--text-muted);line-height:1.5;}
+
+.switch{
+  position:relative;width:42px;height:24px;flex-shrink:0;
+}
+.switch input{opacity:0;width:0;height:0;position:absolute;}
+.switch-track{
+  position:absolute;inset:0;border-radius:24px;
+  background:var(--border);cursor:pointer;
+  transition:background .2s;
+}
+.switch-track::before{
+  content:'';position:absolute;top:3px;left:3px;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--surface);
+  box-shadow:0 1px 3px rgba(0,0,0,.2);
+  transition:transform .2s;
+}
+.switch input:checked + .switch-track{background:var(--navy);}
+.switch input:checked + .switch-track::before{transform:translateX(18px);}
+[data-theme="dark"] .switch input:checked + .switch-track{background:var(--gold);}
+
+/* ── Plan card ── */
+.plan-summary{
+  background:linear-gradient(160deg,var(--navy-mist),var(--surface));
+  border:1px solid var(--border);border-radius:12px;
+  padding:18px;margin-bottom:1rem;
+}
+[data-theme="dark"] .plan-summary{background:linear-gradient(160deg,var(--surface2),var(--surface));}
+.plan-summary-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.plan-badge{
+  font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--gold);color:var(--navy-deep);
+  padding:3px 10px;border-radius:20px;
+}
+.plan-name{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:800;color:var(--navy);margin-bottom:3px;}
+[data-theme="dark"] .plan-name{color:var(--text);}
+.plan-renew{font-size:.72rem;color:var(--text-muted);}
+
+.usage-row{margin-bottom:12px;}
+.usage-row:last-child{margin-bottom:0;}
+.usage-top{display:flex;justify-content:space-between;font-size:.74rem;margin-bottom:5px;}
+.usage-top .l{font-weight:600;color:var(--text-mid);}
+.usage-top .v{color:var(--text-muted);}
+.bar-track{background:var(--border-soft);border-radius:6px;height:6px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:6px;}
+.bar-navy{background:linear-gradient(90deg,var(--navy-light),var(--navy));}
+.bar-gold{background:linear-gradient(90deg,var(--gold-light),var(--gold));}
+
+/* ── Connected accounts ── */
+.connect-row{
+  display:flex;align-items:center;gap:12px;
+  padding:12px 0;border-bottom:1px solid var(--border-soft);
+}
+.connect-row:last-child{border-bottom:none;}
+.connect-icon{
+  width:36px;height:36px;border-radius:9px;flex-shrink:0;
+  background:var(--navy-mist);
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(15,45,94,.08);
+}
+[data-theme="dark"] .connect-icon{background:var(--surface2);}
+.connect-icon svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+[data-theme="dark"] .connect-icon svg{stroke:var(--gold);}
+.connect-info{flex:1;min-width:0;}
+.connect-name{font-size:.82rem;font-weight:600;color:var(--text);}
+.connect-status{font-size:.71rem;color:var(--text-muted);}
+.badge-green-sm{
+  font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:20px;
+  background:var(--green-bg);color:var(--green);white-space:nowrap;
+}
+
+/* ── Danger zone ── */
+.danger-zone{
+  border:1.5px solid var(--red-bg);border-radius:12px;padding:18px;
+  background:var(--red-bg);
+}
+.danger-title{font-size:.85rem;font-weight:700;color:var(--red);margin-bottom:4px;}
+.danger-desc{font-size:.74rem;color:var(--text-mid);margin-bottom:14px;line-height:1.55;}
+.btn-danger{
+  background:var(--red);color:#fff;border:none;border-radius:7px;
+  padding:9px 18px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;
+  transition:opacity .2s;
+}
+.btn-danger:hover{opacity:.88;}
+
+/* ════════════════════════════════
+   PAGE / TAB SWITCH
+════════════════════════════════ */
+.tab-bar{
+  display:flex;gap:6px;margin-bottom:1.75rem;
+  border-bottom:1px solid var(--border);
+}
+.tab-btn{
+  background:none;border:none;cursor:pointer;font-family:inherit;
+  padding:10px 6px;margin-right:18px;
+  font-size:.84rem;font-weight:600;color:var(--text-muted);
+  border-bottom:2px solid transparent;
+  transition:color .2s,border-color .2s;
+}
+.tab-btn:hover{color:var(--navy);}
+[data-theme="dark"] .tab-btn:hover{color:var(--text);}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--navy);}
+[data-theme="dark"] .tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+/* ════════════════════════════════
+   RESPONSIVE
+════════════════════════════════ */
+@media(max-width:1024px){
+  .stat-grid{grid-template-columns:1fr 1fr;}
+  .two-col{grid-template-columns:1fr;}
+}
+@media(max-width:760px){
+  .sidebar{display:none;}
+  .main-inner{padding:1.5rem;}
+  .stat-grid{grid-template-columns:1fr 1fr;}
+  .topbar-left{width:auto;}
+  .topbar-search{display:none;}
+  .field-grid{grid-template-columns:1fr;}
+  .profile-hero{padding:24px 20px;}
+  .profile-hero-actions{width:100%;}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;}
+}
+
+/* ════════════════════════════════
+   RTL ADJUSTMENTS
+════════════════════════════════ */
+[dir="rtl"] .field-hint,[dir="rtl"] .toggle-row-desc,[dir="rtl"]git status .card-sub{text-align:right;}
+[dir="rtl"] .toggle-row-info{padding-right:0;padding-left:16px;}
+[dir="rtl"] .switch input:checked + .switch-track::before{transform:translateX(-18px);}
+[dir="rtl"] .sidebar-nav li a{border-left:none;border-right:2.5px solid transparent;}
+[dir="rtl"] .sidebar-nav li a:hover,[dir="rtl"] .sidebar-nav li a.active{border-right-color:var(--navy);border-left-color:transparent;}
+[data-theme="dark"][dir="rtl"] .sidebar-nav li a:hover,
+[data-theme="dark"][dir="rtl"] .sidebar-nav li a.active{border-right-color:var(--gold);}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ TOPBAR ══════════════════════ -->
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="index.html" class="topbar-logo">
+      <svg class="logo-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 8 C17 8 12 6 10 9 C8.5 11 9 13 10 14 C8 14.5 7 16 7.5 18 C8 20 10 21 12 20.5 C12 22.5 13.5 24 15.5 24 C16.5 24 17 23.5 17 23.5" stroke="#0f2d5e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 8 C17 8 22 6 24 9 C25.5 11 25 13 24 14 C26 14.5 27 16 26.5 18 C26 20 24 21 22 20.5 C22 22.5 20.5 24 18.5 24 C17.5 24 17 23.5 17 23.5" stroke="#0f2d5e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="17" y1="8" x2="17" y2="23.5" stroke="#0f2d5e" stroke-width="1.2" stroke-dasharray="2 2"/>
+        <circle cx="22.5" cy="26.5" r="4" stroke="#c9a84c" stroke-width="1.7"/>
+        <line x1="25.5" y1="29.5" x2="28" y2="32" stroke="#c9a84c" stroke-width="1.7" stroke-linecap="round"/>
+        <circle cx="21" cy="25" r=".9" fill="#c9a84c" opacity=".6"/>
+      </svg>
+      DATAUNIVERS
+    </a>
+  </div>
+
+  <div class="topbar-search">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" data-i18n-placeholder="search_ph" placeholder="Search analyses, reports…" id="searchInput"/>
+  </div>
+
+  <div class="topbar-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('ar')">AR</button>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <div class="icon-btn" title="Notifications">
+      <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <div class="notif-dot"></div>
+    </div>
+    <div class="avatar-btn" title="Sara Amrani">SA</div>
+    <button class="btn-new-analysis" onclick="location.href='dashboard.html'">
+      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      <span data-i18n="new_analysis">New Analysis</span>
+    </button>
+  </div>
+</header>
+
+<!-- ══════════════════════ SHELL ══════════════════════ -->
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label" data-i18n="sb_main">Main</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="dashboard.html">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="sb_dashboard">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="dashboard.html">
+            <svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+            <span data-i18n="sb_upload">Upload Document</span>
+          </a>
+        </li>
+        <li>
+          <a href="dashboard.html">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span data-i18n="sb_analyses">Analyses</span>
+          </a>
+        </li>
+        <li>
+          <a href="dashboard.html">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <span data-i18n="sb_reports">Reports</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label" data-i18n="sb_account">Account</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="#" class="active">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span data-i18n="sb_profile">Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="sb_settings">Settings</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-bottom">
+      <ul class="sidebar-nav">
+        <li>
+          <a href="index.html" style="color:var(--text-light);">
+            <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="sb_signout">Sign out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ══════════════════════ MAIN ══════════════════════ -->
+  <main class="main">
+    <div class="main-inner">
+
+      <!-- Header -->
+      <div class="page-header">
+        <div class="page-greeting">
+          <h1 data-i18n="prof_title">My Profile</h1>
+          <p data-i18n="prof_sub">Manage your personal information, preferences, and account security.</p>
+        </div>
+      </div>
+
+      <!-- Profile hero card -->
+      <div class="profile-hero">
+        <div class="profile-avatar-lg">SA</div>
+        <div class="profile-hero-info">
+          <div class="profile-hero-name">Sara Amrani</div>
+          <div class="profile-hero-role" data-i18n="prof_role">PhD Candidate · University of Science and Technology</div>
+          <div class="profile-hero-meta">
+            <div class="profile-hero-meta-item">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              sara.amrani@univ-est.edu
+            </div>
+            <div class="profile-hero-meta-item">
+              <svg viewBox="0 0 24 24"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg>
+              <span data-i18n="prof_dept">Computer Science Department</span>
+            </div>
+            <div class="profile-hero-meta-item">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span data-i18n="prof_joined">Joined March 2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="profile-hero-actions">
+          <button class="btn-outline-sm">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            <span data-i18n="prof_edit_photo">Change photo</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-icon-label">
+            <span class="stat-label" data-i18n="stat_docs">Documents Analyzed</span>
+            <div class="stat-icon-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          </div>
+          <div class="stat-value">12</div>
+          <div class="stat-delta" data-i18n="stat_docs_delta">Since March 2024</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon-label">
+            <span class="stat-label" data-i18n="stat_score">Average Score</span>
+            <div class="stat-icon-box"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          </div>
+          <div class="stat-value">84</div>
+          <div class="stat-delta" data-i18n="stat_score_delta">Across all analyses</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon-label">
+            <span class="stat-label" data-i18n="stat_member">Membership</span>
+            <div class="stat-icon-box"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg></div>
+          </div>
+          <div class="stat-value" style="font-size:1.3rem;">Pro</div>
+          <div class="stat-delta" data-i18n="stat_member_delta">Renews Jul 14, 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon-label">
+            <span class="stat-label" data-i18n="stat_storage">Storage Used</span>
+            <div class="stat-icon-box"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+          </div>
+          <div class="stat-value">4.1<span style="font-size:1rem;font-weight:400;font-family:'Inter',sans-serif;color:var(--text-muted);">GB</span></div>
+          <div class="stat-delta" data-i18n="stat_storage_delta">of 10 GB</div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="general" data-i18n="tab_general">General</button>
+        <button class="tab-btn" data-tab="security" data-i18n="tab_security">Security</button>
+        <button class="tab-btn" data-tab="notifications" data-i18n="tab_notifications">Notifications</button>
+        <button class="tab-btn" data-tab="billing" data-i18n="tab_billing">Billing</button>
+      </div>
+
+      <!-- ════ GENERAL TAB ════ -->
+      <div class="tab-panel active" id="tab-general">
+        <div class="two-col">
+
+          <div class="card">
+            <div class="card-title" data-i18n="general_card_title">Personal information</div>
+            <div class="card-sub" data-i18n="general_card_sub">Update your name, contact details, and academic affiliation.</div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label data-i18n="lbl_first">First name</label>
+                <input type="text" value="Sara">
+              </div>
+              <div class="field">
+                <label data-i18n="lbl_last">Last name</label>
+                <input type="text" value="Amrani">
+              </div>
+            </div>
+
+            <div class="field-grid full">
+              <div class="field">
+                <label data-i18n="lbl_email">Email address</label>
+                <input type="email" value="sara.amrani@univ-est.edu">
+                <div class="field-hint" data-i18n="email_hint">Used for sign-in and report delivery.</div>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label data-i18n="lbl_university">University</label>
+                <input type="text" value="University of Science and Technology">
+              </div>
+              <div class="field">
+                <label data-i18n="lbl_dept">Department</label>
+                <input type="text" value="Computer Science">
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label data-i18n="lbl_role">I am a</label>
+                <select>
+                  <option data-i18n="role_phd">PhD Candidate</option>
+                  <option data-i18n="role_master">Master's Student</option>
+                  <option data-i18n="role_professor">Professor / Faculty</option>
+                  <option data-i18n="role_researcher">Independent Researcher</option>
+                </select>
+              </div>
+              <div class="field">
+                <label data-i18n="lbl_lang">Preferred language</label>
+                <select>
+                  <option data-i18n="lang_en">English</option>
+                  <option data-i18n="lang_fr">Français</option>
+                  <option data-i18n="lang_ar">العربية</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-grid full">
+              <div class="field">
+                <label data-i18n="lbl_bio">Bio</label>
+                <textarea data-i18n="bio_placeholder" placeholder="Tell us about your research interests…">Working on intelligent systems for academic quality assurance. Interested in NLP, citation graphs, and research integrity tools.</textarea>
+              </div>
+            </div>
+
+            <button class="btn-filled-sm" style="margin-top:6px;">
+              <span data-i18n="btn_save">Save changes</span>
+            </button>
+          </div>
+
+          <!-- Plan summary sidebar card -->
+          <div>
+            <div class="card" style="margin-bottom:1.25rem;">
+              <div class="card-title" data-i18n="plan_card_title">Plan &amp; usage</div>
+              <div class="card-sub" data-i18n="plan_card_sub">Your current subscription and resource usage.</div>
+
+              <div class="plan-summary">
+                <div class="plan-summary-top">
+                  <div>
+                    <div class="plan-name" data-i18n="plan_name">University Plan</div>
+                    <div class="plan-renew" data-i18n="plan_renew">Renews on July 14, 2026</div>
+                  </div>
+                  <span class="plan-badge" data-i18n="plan_badge">PRO</span>
+                </div>
+              </div>
+
+              <div class="usage-row">
+                <div class="usage-top"><span class="l" data-i18n="usage1_label">AI Analyses</span><span class="v">347 / 500</span></div>
+                <div class="bar-track"><div class="bar-fill bar-navy" style="width:69%"></div></div>
+              </div>
+              <div class="usage-row">
+                <div class="usage-top"><span class="l" data-i18n="usage2_label">Storage</span><span class="v">4.1 GB / 10 GB</span></div>
+                <div class="bar-track"><div class="bar-fill bar-gold" style="width:41%"></div></div>
+              </div>
+
+              <button class="btn-outline-sm" style="width:100%;justify-content:center;margin-top:14px;" onclick="switchTab('billing')">
+                <span data-i18n="btn_manage_plan">Manage plan</span>
+              </button>
+            </div>
+
+            <div class="card">
+              <div class="card-title" data-i18n="connect_card_title">Connected accounts</div>
+              <div class="card-sub" data-i18n="connect_card_sub">Link external services to streamline your workflow.</div>
+
+              <div class="connect-row">
+                <div class="connect-icon">
+                  <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div class="connect-info">
+                  <div class="connect-name">Google</div>
+                  <div class="connect-status" data-i18n="connect_google_status">sara.amrani@gmail.com</div>
+                </div>
+                <span class="badge-green-sm" data-i18n="connect_connected">Connected</span>
+              </div>
+
+              <div class="connect-row">
+                <div class="connect-icon">
+                  <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </div>
+                <div class="connect-info">
+                  <div class="connect-name" data-i18n="connect_orcid">ORCID</div>
+                  <div class="connect-status" data-i18n="connect_not_linked">Not linked</div>
+                </div>
+                <button class="btn-outline-sm" data-i18n="btn_connect">Connect</button>
+              </div>
+
+              <div class="connect-row">
+                <div class="connect-icon">
+                  <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div class="connect-info">
+                  <div class="connect-name" data-i18n="connect_university">University SSO</div>
+                  <div class="connect-status" data-i18n="connect_uni_status">University of Science and Technology</div>
+                </div>
+                <span class="badge-green-sm" data-i18n="connect_connected">Connected</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /tab-general -->
+
+      <!-- ════ SECURITY TAB ════ -->
+      <div class="tab-panel" id="tab-security">
+        <div class="two-col">
+
+          <div class="card">
+            <div class="card-title" data-i18n="security_card_title">Password</div>
+            <div class="card-sub" data-i18n="security_card_sub">Choose a strong password you don't use elsewhere.</div>
+
+            <div class="field-grid full">
+              <div class="field">
+                <label data-i18n="lbl_current_pwd">Current password</label>
+                <input type="password" placeholder="••••••••••">
+              </div>
+            </div>
+            <div class="field-grid">
+              <div class="field">
+                <label data-i18n="lbl_new_pwd">New password</label>
+                <input type="password" placeholder="••••••••••">
+              </div>
+              <div class="field">
+                <label data-i18n="lbl_confirm_pwd">Confirm new password</label>
+                <input type="password" placeholder="••••••••••">
+              </div>
+            </div>
+
+            <button class="btn-filled-sm" style="margin-top:6px;">
+              <span data-i18n="btn_update_pwd">Update password</span>
+            </button>
+
+            <div class="divider-line"></div>
+
+            <div class="toggle-row">
+              <div class="toggle-row-info">
+                <div class="toggle-row-title" data-i18n="tfa_title">Two-factor authentication</div>
+                <div class="toggle-row-desc" data-i18n="tfa_desc">Add an extra layer of security to your account using an authenticator app.</div>
+              </div>
+              <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-row-info">
+                <div class="toggle-row-title" data-i18n="login_alert_title">Login alerts</div>
+                <div class="toggle-row-desc" data-i18n="login_alert_desc">Get an email when your account is accessed from a new device.</div>
+              </div>
+              <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+            </div>
+          </div>
+
+          <div>
+            <div class="card" style="margin-bottom:1.25rem;">
+              <div class="card-title" data-i18n="sessions_card_title">Active sessions</div>
+              <div class="card-sub" data-i18n="sessions_card_sub">Devices currently signed in to your account.</div>
+
+              <div class="connect-row">
+                <div class="connect-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                <div class="connect-info">
+                  <div class="connect-name" data-i18n="session_current">This device — Windows · Chrome</div>
+                  <div class="connect-status" data-i18n="session_active_now">Active now</div>
+                </div>
+                <span class="badge-green-sm" data-i18n="session_current_badge">Current</span>
+              </div>
+              <div class="connect-row">
+                <div class="connect-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg></div>
+                <div class="connect-info">
+                  <div class="connect-name" data-i18n="session_iphone">iPhone 14 — Safari</div>
+                  <div class="connect-status" data-i18n="session_2days">Last active 2 days ago</div>
+                </div>
+                <button class="btn-outline-sm" data-i18n="btn_revoke">Revoke</button>
+              </div>
+            </div>
+
+            <div class="danger-zone">
+              <div class="danger-title" data-i18n="danger_title">Delete account</div>
+              <div class="danger-desc" data-i18n="danger_desc">This permanently deletes your account, documents, and analysis history. This action cannot be undone.</div>
+              <button class="btn-danger" data-i18n="btn_delete">Delete my account</button>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /tab-security -->
+
+      <!-- ════ NOTIFICATIONS TAB ════ -->
+      <div class="tab-panel" id="tab-notifications">
+        <div class="card" style="max-width:680px;">
+          <div class="card-title" data-i18n="notif_card_title">Notification preferences</div>
+          <div class="card-sub" data-i18n="notif_card_sub">Choose what you want to be notified about and how.</div>
+
+          <div class="toggle-row">
+            <div class="toggle-row-info">
+              <div class="toggle-row-title" data-i18n="notif1_title">Analysis completed</div>
+              <div class="toggle-row-desc" data-i18n="notif1_desc">Get notified by email when a document analysis finishes.</div>
+            </div>
+            <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+          </div>
+          <div class="toggle-row">
+            <div class="toggle-row-info">
+              <div class="toggle-row-title" data-i18n="notif2_title">Weekly summary</div>
+              <div class="toggle-row-desc" data-i18n="notif2_desc">A weekly digest of your research progress and scores.</div>
+            </div>
+            <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+          </div>
+          <div class="toggle-row">
+            <div class="toggle-row-info">
+              <div class="toggle-row-title" data-i18n="notif3_title">Product updates</div>
+              <div class="toggle-row-desc" data-i18n="notif3_desc">News about new features and improvements to DataUnivers.</div>
+            </div>
+            <label class="switch"><input type="checkbox"><span class="switch-track"></span></label>
+          </div>
+          <div class="toggle-row">
+            <div class="toggle-row-info">
+              <div class="toggle-row-title" data-i18n="notif4_title">Security alerts</div>
+              <div class="toggle-row-desc" data-i18n="notif4_desc">Important notices about your account's security. Cannot be disabled.</div>
+            </div>
+            <label class="switch"><input type="checkbox" checked disabled><span class="switch-track" style="opacity:.6;cursor:not-allowed;"></span></label>
+          </div>
+        </div>
+      </div><!-- /tab-notifications -->
+
+      <!-- ════ BILLING TAB ════ -->
+      <div class="tab-panel" id="tab-billing">
+        <div class="two-col">
+
+          <div class="card">
+            <div class="card-title" data-i18n="billing_card_title">Payment method</div>
+            <div class="card-sub" data-i18n="billing_card_sub">Manage the card used for your subscription.</div>
+
+            <div class="connect-row">
+              <div class="connect-icon"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+              <div class="connect-info">
+                <div class="connect-name">Visa •••• 4242</div>
+                <div class="connect-status" data-i18n="card_expiry">Expires 08/2028</div>
+              </div>
+              <button class="btn-outline-sm" data-i18n="btn_update">Update</button>
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="card-title" style="font-size:.9rem;" data-i18n="billing_history_title">Billing history</div>
+            <div class="connect-row">
+              <div class="connect-info"><div class="connect-name" data-i18n="invoice_jun">Invoice — June 2026</div><div class="connect-status">€9.00</div></div>
+              <button class="btn-outline-sm" data-i18n="btn_download">Download</button>
+            </div>
+            <div class="connect-row">
+              <div class="connect-info"><div class="connect-name" data-i18n="invoice_may">Invoice — May 2026</div><div class="connect-status">€9.00</div></div>
+              <button class="btn-outline-sm" data-i18n="btn_download">Download</button>
+            </div>
+            <div class="connect-row">
+              <div class="connect-info"><div class="connect-name" data-i18n="invoice_apr">Invoice — April 2026</div><div class="connect-status">€9.00</div></div>
+              <button class="btn-outline-sm" data-i18n="btn_download">Download</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title" data-i18n="current_plan_title">Current plan</div>
+            <div class="plan-summary">
+              <div class="plan-summary-top">
+                <div>
+                  <div class="plan-name" data-i18n="plan_name">University Plan</div>
+                  <div class="plan-renew" data-i18n="plan_price">€9 / month</div>
+                </div>
+                <span class="plan-badge" data-i18n="plan_badge">PRO</span>
+              </div>
+            </div>
+            <div class="card-sub" style="margin-bottom:1rem;" data-i18n="plan_includes">Includes unlimited AI analyses, priority support, and full citation verification tools.</div>
+            <button class="btn-outline-sm" style="width:100%;justify-content:center;margin-bottom:8px;" data-i18n="btn_change_plan">Change plan</button>
+            <button class="btn-outline-sm" style="width:100%;justify-content:center;color:var(--red);" data-i18n="btn_cancel_plan">Cancel subscription</button>
+          </div>
+
+        </div>
+      </div><!-- /tab-billing -->
+
+    </div><!-- /main-inner -->
+  </main>
+</div><!-- /app-shell -->
+
+<script>
+/* ════ TRANSLATIONS ════ */
+const T = {
+  en:{
+    new_analysis:"New Analysis",search_ph:"Search analyses, reports…",
+    sb_main:"Main",sb_dashboard:"Dashboard",sb_upload:"Upload Document",
+    sb_analyses:"Analyses",sb_reports:"Reports",sb_account:"Account",
+    sb_profile:"Profile",sb_settings:"Settings",sb_signout:"Sign out",
+    prof_title:"My Profile",prof_sub:"Manage your personal information, preferences, and account security.",
+    prof_role:"PhD Candidate · University of Science and Technology",
+    prof_dept:"Computer Science Department",prof_joined:"Joined March 2024",
+    prof_edit_photo:"Change photo",
+    stat_docs:"Documents Analyzed",stat_docs_delta:"Since March 2024",
+    stat_score:"Average Score",stat_score_delta:"Across all analyses",
+    stat_member:"Membership",stat_member_delta:"Renews Jul 14, 2026",
+    stat_storage:"Storage Used",stat_storage_delta:"of 10 GB",
+    tab_general:"General",tab_security:"Security",tab_notifications:"Notifications",tab_billing:"Billing",
+    general_card_title:"Personal information",general_card_sub:"Update your name, contact details, and academic affiliation.",
+    lbl_first:"First name",lbl_last:"Last name",lbl_email:"Email address",
+    email_hint:"Used for sign-in and report delivery.",
+    lbl_university:"University",lbl_dept:"Department",lbl_role:"I am a",lbl_lang:"Preferred language",
+    role_phd:"PhD Candidate",role_master:"Master's Student",role_professor:"Professor / Faculty",role_researcher:"Independent Researcher",
+    lang_en:"English",lang_fr:"Français",lang_ar:"العربية",
+    lbl_bio:"Bio",bio_placeholder:"Tell us about your research interests…",
+    btn_save:"Save changes",
+    plan_card_title:"Plan & usage",plan_card_sub:"Your current subscription and resource usage.",
+    plan_name:"University Plan",plan_renew:"Renews on July 14, 2026",plan_badge:"PRO",
+    usage1_label:"AI Analyses",usage2_label:"Storage",btn_manage_plan:"Manage plan",
+    connect_card_title:"Connected accounts",connect_card_sub:"Link external services to streamline your workflow.",
+    connect_google_status:"sara.amrani@gmail.com",connect_connected:"Connected",
+    connect_orcid:"ORCID",connect_not_linked:"Not linked",btn_connect:"Connect",
+    connect_university:"University SSO",connect_uni_status:"University of Science and Technology",
+    security_card_title:"Password",security_card_sub:"Choose a strong password you don't use elsewhere.",
+    lbl_current_pwd:"Current password",lbl_new_pwd:"New password",lbl_confirm_pwd:"Confirm new password",
+    btn_update_pwd:"Update password",
+    tfa_title:"Two-factor authentication",tfa_desc:"Add an extra layer of security to your account using an authenticator app.",
+    login_alert_title:"Login alerts",login_alert_desc:"Get an email when your account is accessed from a new device.",
+    sessions_card_title:"Active sessions",sessions_card_sub:"Devices currently signed in to your account.",
+    session_current:"This device — Windows · Chrome",session_active_now:"Active now",session_current_badge:"Current",
+    session_iphone:"iPhone 14 — Safari",session_2days:"Last active 2 days ago",btn_revoke:"Revoke",
+    danger_title:"Delete account",danger_desc:"This permanently deletes your account, documents, and analysis history. This action cannot be undone.",
+    btn_delete:"Delete my account",
+    notif_card_title:"Notification preferences",notif_card_sub:"Choose what you want to be notified about and how.",
+    notif1_title:"Analysis completed",notif1_desc:"Get notified by email when a document analysis finishes.",
+    notif2_title:"Weekly summary",notif2_desc:"A weekly digest of your research progress and scores.",
+    notif3_title:"Product updates",notif3_desc:"News about new features and improvements to DataUnivers.",
+    notif4_title:"Security alerts",notif4_desc:"Important notices about your account's security. Cannot be disabled.",
+    billing_card_title:"Payment method",billing_card_sub:"Manage the card used for your subscription.",
+    card_expiry:"Expires 08/2028",btn_update:"Update",
+    billing_history_title:"Billing history",
+    invoice_jun:"Invoice — June 2026",invoice_may:"Invoice — May 2026",invoice_apr:"Invoice — April 2026",
+    btn_download:"Download",
+    current_plan_title:"Current plan",plan_price:"€9 / month",
+    plan_includes:"Includes unlimited AI analyses, priority support, and full citation verification tools.",
+    btn_change_plan:"Change plan",btn_cancel_plan:"Cancel subscription"
+  },
+  fr:{
+    new_analysis:"Nouvelle Analyse",search_ph:"Rechercher analyses, rapports…",
+    sb_main:"Principal",sb_dashboard:"Tableau de bord",sb_upload:"Déposer un document",
+    sb_analyses:"Analyses",sb_reports:"Rapports",sb_account:"Compte",
+    sb_profile:"Profil",sb_settings:"Paramètres",sb_signout:"Déconnexion",
+    prof_title:"Mon profil",prof_sub:"Gérez vos informations personnelles, préférences et sécurité de compte.",
+    prof_role:"Doctorante · Université des Sciences et de la Technologie",
+    prof_dept:"Département d'Informatique",prof_joined:"Inscrite depuis mars 2024",
+    prof_edit_photo:"Changer la photo",
+    stat_docs:"Documents analysés",stat_docs_delta:"Depuis mars 2024",
+    stat_score:"Score moyen",stat_score_delta:"Toutes analyses confondues",
+    stat_member:"Abonnement",stat_member_delta:"Renouvellement le 14 juil. 2026",
+    stat_storage:"Stockage utilisé",stat_storage_delta:"sur 10 Go",
+    tab_general:"Général",tab_security:"Sécurité",tab_notifications:"Notifications",tab_billing:"Facturation",
+    general_card_title:"Informations personnelles",general_card_sub:"Mettez à jour votre nom, vos coordonnées et votre affiliation académique.",
+    lbl_first:"Prénom",lbl_last:"Nom",lbl_email:"Adresse e-mail",
+    email_hint:"Utilisée pour la connexion et l'envoi des rapports.",
+    lbl_university:"Université",lbl_dept:"Département",lbl_role:"Je suis",lbl_lang:"Langue préférée",
+    role_phd:"Doctorant(e)",role_master:"Étudiant(e) en master",role_professor:"Professeur / Enseignant",role_researcher:"Chercheur indépendant",
+    lang_en:"English",lang_fr:"Français",lang_ar:"العربية",
+    lbl_bio:"Bio",bio_placeholder:"Parlez-nous de vos centres d'intérêt en recherche…",
+    btn_save:"Enregistrer",
+    plan_card_title:"Forfait & utilisation",plan_card_sub:"Votre abonnement actuel et l'utilisation des ressources.",
+    plan_name:"Forfait Université",plan_renew:"Renouvellement le 14 juillet 2026",plan_badge:"PRO",
+    usage1_label:"Analyses IA",usage2_label:"Stockage",btn_manage_plan:"Gérer le forfait",
+    connect_card_title:"Comptes connectés",connect_card_sub:"Liez des services externes pour simplifier votre flux de travail.",
+    connect_google_status:"sara.amrani@gmail.com",connect_connected:"Connecté",
+    connect_orcid:"ORCID",connect_not_linked:"Non lié",btn_connect:"Connecter",
+    connect_university:"SSO universitaire",connect_uni_status:"Université des Sciences et de la Technologie",
+    security_card_title:"Mot de passe",security_card_sub:"Choisissez un mot de passe fort que vous n'utilisez pas ailleurs.",
+    lbl_current_pwd:"Mot de passe actuel",lbl_new_pwd:"Nouveau mot de passe",lbl_confirm_pwd:"Confirmer le nouveau mot de passe",
+    btn_update_pwd:"Mettre à jour le mot de passe",
+    tfa_title:"Authentification à deux facteurs",tfa_desc:"Ajoutez une couche de sécurité supplémentaire avec une application d'authentification.",
+    login_alert_title:"Alertes de connexion",login_alert_desc:"Recevez un e-mail lorsque votre compte est consulté depuis un nouvel appareil.",
+    sessions_card_title:"Sessions actives",sessions_card_sub:"Appareils actuellement connectés à votre compte.",
+    session_current:"Cet appareil — Windows · Chrome",session_active_now:"Actif maintenant",session_current_badge:"Actuel",
+    session_iphone:"iPhone 14 — Safari",session_2days:"Dernière activité il y a 2 jours",btn_revoke:"Révoquer",
+    danger_title:"Supprimer le compte",danger_desc:"Cette action supprime définitivement votre compte, vos documents et votre historique d'analyses. Action irréversible.",
+    btn_delete:"Supprimer mon compte",
+    notif_card_title:"Préférences de notification",notif_card_sub:"Choisissez ce dont vous voulez être informé et comment.",
+    notif1_title:"Analyse terminée",notif1_desc:"Recevez un e-mail lorsqu'une analyse de document se termine.",
+    notif2_title:"Résumé hebdomadaire",notif2_desc:"Un résumé hebdomadaire de vos progrès et scores.",
+    notif3_title:"Mises à jour produit",notif3_desc:"Actualités sur les nouvelles fonctionnalités de DataUnivers.",
+    notif4_title:"Alertes de sécurité",notif4_desc:"Notices importantes sur la sécurité de votre compte. Ne peut pas être désactivé.",
+    billing_card_title:"Moyen de paiement",billing_card_sub:"Gérez la carte utilisée pour votre abonnement.",
+    card_expiry:"Expire 08/2028",btn_update:"Mettre à jour",
+    billing_history_title:"Historique de facturation",
+    invoice_jun:"Facture — Juin 2026",invoice_may:"Facture — Mai 2026",invoice_apr:"Facture — Avril 2026",
+    btn_download:"Télécharger",
+    current_plan_title:"Forfait actuel",plan_price:"9 € / mois",
+    plan_includes:"Inclut des analyses IA illimitées, un support prioritaire et des outils complets de vérification des citations.",
+    btn_change_plan:"Changer de forfait",btn_cancel_plan:"Annuler l'abonnement"
+  },
+  ar:{
+    new_analysis:"تحليل جديد",search_ph:"البحث في التحليلات والتقارير…",
+    sb_main:"الرئيسية",sb_dashboard:"لوحة التحكم",sb_upload:"رفع وثيقة",
+    sb_analyses:"التحليلات",sb_reports:"التقارير",sb_account:"الحساب",
+    sb_profile:"الملف الشخصي",sb_settings:"الإعدادات",sb_signout:"تسجيل الخروج",
+    prof_title:"ملفي الشخصي",prof_sub:"إدارة معلوماتك الشخصية وتفضيلاتك وأمان حسابك.",
+    prof_role:"طالبة دكتوراه · جامعة العلوم والتكنولوجيا",
+    prof_dept:"قسم علوم الحاسوب",prof_joined:"عضوة منذ مارس 2024",
+    prof_edit_photo:"تغيير الصورة",
+    stat_docs:"الوثائق المحللة",stat_docs_delta:"منذ مارس 2024",
+    stat_score:"متوسط النتيجة",stat_score_delta:"عبر جميع التحليلات",
+    stat_member:"العضوية",stat_member_delta:"التجديد في 14 يوليو 2026",
+    stat_storage:"التخزين المستخدم",stat_storage_delta:"من 10 جيجابايت",
+    tab_general:"عام",tab_security:"الأمان",tab_notifications:"الإشعارات",tab_billing:"الفوترة",
+    general_card_title:"المعلومات الشخصية",general_card_sub:"حدّث اسمك وبيانات الاتصال وانتسابك الأكاديمي.",
+    lbl_first:"الاسم الأول",lbl_last:"اسم العائلة",lbl_email:"البريد الإلكتروني",
+    email_hint:"يُستخدم لتسجيل الدخول وإرسال التقارير.",
+    lbl_university:"الجامعة",lbl_dept:"القسم",lbl_role:"أنا",lbl_lang:"اللغة المفضلة",
+    role_phd:"طالب دكتوراه",role_master:"طالب ماستر",role_professor:"أستاذ / هيئة تدريس",role_researcher:"باحث مستقل",
+    lang_en:"English",lang_fr:"Français",lang_ar:"العربية",
+    lbl_bio:"نبذة",bio_placeholder:"أخبرنا عن اهتماماتك البحثية…",
+    btn_save:"حفظ التغييرات",
+    plan_card_title:"الخطة والاستخدام",plan_card_sub:"اشتراكك الحالي واستخدام الموارد.",
+    plan_name:"خطة الجامعة",plan_renew:"التجديد في 14 يوليو 2026",plan_badge:"برو",
+    usage1_label:"تحليلات الذكاء الاصطناعي",usage2_label:"التخزين",btn_manage_plan:"إدارة الخطة",
+    connect_card_title:"الحسابات المرتبطة",connect_card_sub:"اربط الخدمات الخارجية لتبسيط سير عملك.",
+    connect_google_status:"sara.amrani@gmail.com",connect_connected:"متصل",
+    connect_orcid:"ORCID",connect_not_linked:"غير مرتبط",btn_connect:"ربط",
+    connect_university:"تسجيل الدخول الموحد الجامعي",connect_uni_status:"جامعة العلوم والتكنولوجيا",
+    security_card_title:"كلمة المرور",security_card_sub:"اختر كلمة مرور قوية لا تستخدمها في مكان آخر.",
+    lbl_current_pwd:"كلمة المرور الحالية",lbl_new_pwd:"كلمة المرور الجديدة",lbl_confirm_pwd:"تأكيد كلمة المرور الجديدة",
+    btn_update_pwd:"تحديث كلمة المرور",
+    tfa_title:"المصادقة الثنائية",tfa_desc:"أضف طبقة إضافية من الأمان لحسابك باستخدام تطبيق مصادقة.",
+    login_alert_title:"تنبيهات تسجيل الدخول",login_alert_desc:"احصل على بريد إلكتروني عند الوصول إلى حسابك من جهاز جديد.",
+    sessions_card_title:"الجلسات النشطة",sessions_card_sub:"الأجهزة المسجلة الدخول حاليًا إلى حسابك.",
+    session_current:"هذا الجهاز — ويندوز · كروم",session_active_now:"نشط الآن",session_current_badge:"الحالي",
+    session_iphone:"آيفون 14 — سفاري",session_2days:"آخر نشاط منذ يومين",btn_revoke:"إلغاء",
+    danger_title:"حذف الحساب",danger_desc:"سيؤدي هذا إلى حذف حسابك ووثائقك وسجل التحليلات نهائيًا. لا يمكن التراجع عن هذا الإجراء.",
+    btn_delete:"حذف حسابي",
+    notif_card_title:"تفضيلات الإشعارات",notif_card_sub:"اختر ما تريد أن تُعلَم به وكيف.",
+    notif1_title:"اكتمال التحليل",notif1_desc:"احصل على إشعار بالبريد الإلكتروني عند انتهاء تحليل الوثيقة.",
+    notif2_title:"الملخص الأسبوعي",notif2_desc:"ملخص أسبوعي لتقدمك البحثي ونتائجك.",
+    notif3_title:"تحديثات المنتج",notif3_desc:"أخبار حول الميزات الجديدة والتحسينات على DataUnivers.",
+    notif4_title:"تنبيهات الأمان",notif4_desc:"إشعارات مهمة حول أمان حسابك. لا يمكن تعطيلها.",
+    billing_card_title:"وسيلة الدفع",billing_card_sub:"إدارة البطاقة المستخدمة لاشتراكك.",
+    card_expiry:"تنتهي الصلاحية 08/2028",btn_update:"تحديث",
+    billing_history_title:"سجل الفوترة",
+    invoice_jun:"فاتورة — يونيو 2026",invoice_may:"فاتورة — مايو 2026",invoice_apr:"فاتورة — أبريل 2026",
+    btn_download:"تنزيل",
+    current_plan_title:"الخطة الحالية",plan_price:"9 € / شهريًا",
+    plan_includes:"تشمل تحليلات ذكاء اصطناعي غير محدودة ودعمًا ذا أولوية وأدوات تحقق كاملة من الاستشهادات.",
+    btn_change_plan:"تغيير الخطة",btn_cancel_plan:"إلغاء الاشتراك"
+  }
+};
+
+function setLang(lang){
+  const t = T[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(t[k] !== undefined) el.innerHTML = t[k];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-placeholder');
+    if(t[k] !== undefined) el.setAttribute('placeholder', t[k]);
+  });
+  const rtl = lang === 'ar';
+  document.documentElement.setAttribute('dir', rtl ? 'rtl' : 'ltr');
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
+  });
+}
+
+function toggleTheme(){
+  const html = document.documentElement;
+  const dark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', dark ? 'light' : 'dark');
+  document.getElementById('themeBtn').textContent = dark ? '🌙' : '☀️';
+}
+
+function switchTab(name){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.getAttribute('data-tab') === name));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active', p.id === 'tab-' + name));
+}
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=> switchTab(btn.getAttribute('data-tab')));
+});
+
+setLang('en');
+</script>
+</body>
+</html>
