@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DataUnivers — The AI Copilot for Academic Excellence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+/* ════════════════════════════════
+   TOKENS
+════════════════════════════════ */
+:root {
+  --navy:       #0f2d5e;
+  --navy-deep:  #091e42;
+  --navy-mid:   #1a3d72;
+  --navy-light: #2a5298;
+  --navy-mist:  #e8eef7;
+  --gold:       #c9a84c;
+  --gold-light: #e8c96e;
+  --gold-dark:  #a07830;
+  --cream:      #faf8f4;
+  --cream2:     #f2ede4;
+  --white:      #ffffff;
+  --text:       #0f1e35;
+  --text-mid:   #3a4d6b;
+  --text-muted: #6b7a96;
+  --text-light: #9aa4b8;
+  --border:     #dde3ef;
+  --border-soft:#edf0f7;
+  --tag-bg:     #eef1f9;
+  --surface:    #ffffff;
+  --surface2:   #f5f7fc;
+  --nav-bg:     rgba(250,248,244,0.94);
+  --footer-bg:  #091e42;
+  --footer-text:#eef2fb;
+  --footer-mid: #8a9fc0;
+  --accent:     var(--gold);
+  --btn-bg:     var(--navy);
+  --btn-text:   #ffffff;
+}
+[data-theme="dark"] {
+  --cream:      #0d1b33;
+  --cream2:     #111f3a;
+  --white:      #152240;
+  --text:       #dde6f5;
+  --text-mid:   #9ab0d0;
+  --text-muted: #6a85aa;
+  --text-light: #4a6080;
+  --border:     #1e3358;
+  --border-soft:#162844;
+  --tag-bg:     #162540;
+  --surface:    #152240;
+  --surface2:   #1a2b4a;
+  --nav-bg:     rgba(13,27,51,0.95);
+  --footer-bg:  #060f1f;
+  --footer-text:#dde6f5;
+  --footer-mid: #5a74a0;
+  --navy-mist:  #162540;
+}
+
+/* ════════════════════════════════
+   RESET & BASE
+════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.6;
+  transition:background .3s,color .3s;
+}
+
+/* ════════════════════════════════
+   NAV
+════════════════════════════════ */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:var(--nav-bg);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:0 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:62px;
+  transition:background .3s;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  text-decoration:none;
+  font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--navy);
+}
+[data-theme="dark"] .nav-logo{color:var(--text);}
+
+/* ── Brain+Search Logo SVG ── */
+.logo-mark{width:34px;height:34px;flex-shrink:0;}
+
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--text-muted);font-size:.875rem;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--navy);}
+[data-theme="dark"] .nav-links a:hover{color:var(--text);}
+.nav-right{display:flex;align-items:center;gap:.75rem;}
+.nav-controls{display:flex;align-items:center;gap:.5rem;}
+
+.btn-login{background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:.875rem;font-weight:500;font-family:inherit;transition:color .2s;padding:0 4px;}
+.btn-login:hover{color:var(--navy);}
+.btn-start-nav{
+  background:var(--navy);color:#fff;
+  border:none;border-radius:7px;padding:8px 20px;
+  font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;
+  transition:background .2s,transform .15s;
+  box-shadow:0 2px 8px rgba(15,45,94,.25);
+}
+.btn-start-nav:hover{background:var(--navy-mid);transform:translateY(-1px);}
+
+.lang-switcher{display:flex;gap:2px;background:var(--surface2);border-radius:7px;padding:2px;border:1px solid var(--border);}
+.lang-btn{background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:.72rem;font-weight:700;padding:4px 9px;border-radius:5px;font-family:inherit;transition:all .2s;letter-spacing:.04em;}
+.lang-btn.active{background:var(--navy);color:#fff;box-shadow:0 1px 4px rgba(15,45,94,.3);}
+
+.theme-toggle{
+  background:var(--surface2);border:1px solid var(--border);border-radius:7px;
+  width:34px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;transition:all .2s;
+}
+.theme-toggle:hover{background:var(--navy-mist);}
+
+/* ════════════════════════════════
+   HERO
+════════════════════════════════ */
+.hero{
+  text-align:center;
+  padding:90px 2rem 0;
+  background:var(--cream);
+  overflow:hidden;
+  position:relative;
+}
+/* subtle radial glow behind */
+.hero::before{
+  content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);
+  width:800px;height:600px;
+  background:radial-gradient(ellipse at center, rgba(15,45,94,.07) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,5vw,3.9rem);
+  font-weight:900;line-height:1.12;
+  color:var(--navy);margin-bottom:1.2rem;
+  max-width:700px;margin-inline:auto;
+}
+[data-theme="dark"] .hero h1{color:var(--text);}
+.hero p{
+  font-size:1.02rem;color:var(--text-muted);
+  max-width:460px;margin:0 auto 2.2rem;
+  font-weight:400;line-height:1.75;
+}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:64px;}
+.btn-primary{
+  background:var(--navy);color:#fff;
+  border:none;border-radius:9px;padding:13px 32px;
+  font-size:.92rem;font-weight:600;cursor:pointer;font-family:inherit;
+  transition:background .2s,transform .15s,box-shadow .2s;
+  box-shadow:0 4px 16px rgba(15,45,94,.3);
+}
+.btn-primary:hover{background:var(--navy-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,45,94,.35);}
+.btn-secondary{
+  background:var(--surface);color:var(--navy);
+  border:1.5px solid var(--border);border-radius:9px;padding:12px 26px;
+  font-size:.92rem;font-weight:500;cursor:pointer;font-family:inherit;
+  display:flex;align-items:center;gap:9px;
+  transition:border-color .2s,transform .15s;
+}
+[data-theme="dark"] .btn-secondary{color:var(--text);}
+.btn-secondary:hover{border-color:var(--navy-light);transform:translateY(-2px);}
+.play-circle{
+  width:22px;height:22px;background:var(--navy);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+[data-theme="dark"] .play-circle{background:var(--navy-light);}
+.play-circle svg{fill:#fff;width:8px;height:8px;margin-left:1px;}
+
+/* ════════════════════════════════
+   ROYAL THESIS CARD — 3D FLOATING
+════════════════════════════════ */
+.hero-visual{
+  display:flex;justify-content:center;
+  padding-bottom:80px;
+  perspective:1400px;
+}
+
+.thesis-scene{
+  position:relative;
+  width:380px;height:520px;
+  transform-style:preserve-3d;
+  animation:floatScene 6s ease-in-out infinite;
+  cursor:grab;
+}
+.thesis-scene:active{cursor:grabbing;}
+
+@keyframes floatScene{
+  0%,100%{transform:rotateX(4deg) rotateY(-6deg) translateY(0px);}
+  25%{transform:rotateX(2deg) rotateY(-3deg) translateY(-10px);}
+  50%{transform:rotateX(5deg) rotateY(-8deg) translateY(-18px);}
+  75%{transform:rotateX(3deg) rotateY(-4deg) translateY(-8px);}
+}
+
+/* shadow that breathes under the card */
+.thesis-shadow{
+  position:absolute;bottom:-40px;left:50%;
+  transform:translateX(-50%) translateZ(-60px) rotateX(90deg);
+  width:300px;height:40px;
+  background:radial-gradient(ellipse,rgba(15,45,94,.35) 0%,transparent 70%);
+  animation:shadowPulse 6s ease-in-out infinite;
+  border-radius:50%;
+}
+@keyframes shadowPulse{
+  0%,100%{width:300px;opacity:.7;}
+  50%{width:240px;opacity:.35;}
+}
+
+/* ── THE THESIS BOOK ── */
+.thesis-book{
+  position:absolute;inset:0;
+  transform-style:preserve-3d;
+}
+
+/* spine on the left side */
+.book-spine{
+  position:absolute;
+  top:0;left:-22px;
+  width:22px;height:100%;
+  background:linear-gradient(135deg,#0a2050 0%,#1a3d72 40%,#0d2860 100%);
+  transform-origin:right center;
+  transform:rotateY(-90deg) translateZ(0);
+  border-radius:4px 0 0 4px;
+  box-shadow:inset -3px 0 8px rgba(0,0,0,.4);
+  display:flex;align-items:center;justify-content:center;
+}
+.spine-text{
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-family:'EB Garamond',serif;
+  font-size:.55rem;letter-spacing:.18em;
+  color:rgba(201,168,76,.7);text-transform:uppercase;
+  white-space:nowrap;
+}
+
+/* front cover */
+.book-cover{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,#0d2555 0%,#0f2d5e 35%,#0a1f48 70%,#091830 100%);
+  border-radius:0 8px 8px 0;
+  transform:translateZ(11px);
+  overflow:hidden;
+  box-shadow:
+    0 30px 80px rgba(9,30,66,.6),
+    0 10px 30px rgba(9,30,66,.4),
+    inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+/* gold border frame inside cover */
+.cover-frame{
+  position:absolute;inset:14px;
+  border:1.5px solid rgba(201,168,76,.35);
+  border-radius:4px;
+  pointer-events:none;
+}
+.cover-frame::after{
+  content:'';position:absolute;inset:6px;
+  border:0.5px solid rgba(201,168,76,.15);
+  border-radius:2px;
+}
+
+/* subtle texture lines */
+.cover-texture{
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    0deg,
+    transparent,transparent 3px,
+    rgba(255,255,255,.012) 3px,rgba(255,255,255,.012) 4px
+  );
+}
+
+/* university seal */
+.cover-seal{
+  position:absolute;top:32px;left:50%;transform:translateX(-50%);
+  width:52px;height:52px;
+}
+.seal-ring{
+  position:absolute;inset:0;
+  border:1.5px solid rgba(201,168,76,.55);
+  border-radius:50%;
+}
+.seal-ring-inner{
+  position:absolute;inset:6px;
+  border:0.5px solid rgba(201,168,76,.3);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+/* star inside seal */
+.seal-star{
+  width:20px;height:20px;
+  background:conic-gradient(from 0deg,transparent 0deg 36deg,rgba(201,168,76,.7) 36deg 72deg,transparent 72deg 108deg,rgba(201,168,76,.7) 108deg 144deg,transparent 144deg 180deg,rgba(201,168,76,.7) 180deg 216deg,transparent 216deg 252deg,rgba(201,168,76,.7) 252deg 288deg,transparent 288deg 324deg,rgba(201,168,76,.7) 324deg 360deg);
+  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  opacity:.8;
+}
+
+.cover-content{
+  position:absolute;top:96px;left:0;right:0;
+  padding:0 28px;text-align:center;
+}
+.cover-univ{
+  font-family:'EB Garamond',serif;
+  font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(201,168,76,.65);
+  margin-bottom:4px;line-height:1.5;
+}
+.cover-dept{
+  font-family:'EB Garamond',serif;
+  font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);margin-bottom:18px;
+}
+.cover-rule{
+  width:60px;height:.5px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,.6),transparent);
+  margin:0 auto 18px;
+}
+.cover-type-label{
+  font-family:'EB Garamond',serif;font-style:italic;
+  font-size:.72rem;color:rgba(201,168,76,.55);
+  letter-spacing:.1em;margin-bottom:10px;
+}
+.cover-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem;font-weight:700;line-height:1.4;
+  color:#ffffff;margin-bottom:14px;
+  text-shadow:0 2px 12px rgba(0,0,0,.4);
+}
+.cover-subtitle{
+  font-family:'EB Garamond',serif;
+  font-size:.64rem;line-height:1.55;
+  color:rgba(255,255,255,.45);
+  letter-spacing:.04em;
+  margin-bottom:18px;
+}
+.cover-rule2{
+  width:40px;height:.5px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent);
+  margin:0 auto 14px;
+}
+.cover-author{
+  font-family:'EB Garamond',serif;
+  font-size:.7rem;color:rgba(255,255,255,.55);
+  letter-spacing:.06em;margin-bottom:3px;
+}
+.cover-author-name{
+  font-family:'Playfair Display',serif;
+  font-size:.85rem;font-weight:600;
+  color:rgba(201,168,76,.9);letter-spacing:.04em;
+}
+.cover-year{
+  position:absolute;bottom:32px;left:0;right:0;
+  text-align:center;
+  font-family:'EB Garamond',serif;
+  font-size:.6rem;letter-spacing:.2em;
+  color:rgba(201,168,76,.45);
+}
+
+/* ── DATA PANEL (floats to the right) ── */
+.report-panel{
+  position:absolute;
+  top:30px;right:-200px;
+  width:188px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:18px 16px;
+  box-shadow:0 16px 48px rgba(15,45,94,.18),0 4px 12px rgba(15,45,94,.1);
+  transform:translateZ(40px) rotateY(4deg) rotateX(-2deg);
+  animation:panelFloat 6s ease-in-out infinite;
+}
+@keyframes panelFloat{
+  0%,100%{transform:translateZ(40px) rotateY(4deg) rotateX(-2deg) translateY(0);}
+  50%{transform:translateZ(40px) rotateY(4deg) rotateX(-2deg) translateY(-14px);}
+}
+.panel-header{
+  display:flex;align-items:center;gap:7px;margin-bottom:14px;
+  padding-bottom:10px;border-bottom:1px solid var(--border-soft);
+}
+.panel-dot{width:7px;height:7px;border-radius:50%;background:var(--navy);}
+.panel-title{font-size:.67rem;font-weight:700;color:var(--navy);letter-spacing:.06em;text-transform:uppercase;}
+[data-theme="dark"] .panel-title{color:var(--text);}
+
+.panel-row{margin-bottom:9px;}
+.panel-row-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
+.panel-label{font-size:.65rem;color:var(--text-muted);font-weight:500;}
+.panel-pct{font-size:.65rem;font-weight:700;color:var(--navy);}
+[data-theme="dark"] .panel-pct{color:var(--text);}
+.pct-red{color:#c0392b!important;}
+.bar-track{background:var(--border-soft);border-radius:6px;height:5px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--navy-light),var(--navy));}
+.bar-fill-red{background:linear-gradient(90deg,#e74c3c,#c0392b)!important;}
+.bar-fill-gold{background:linear-gradient(90deg,var(--gold-light),var(--gold))!important;}
+
+.panel-score{
+  margin-top:12px;padding-top:10px;border-top:1px solid var(--border-soft);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.score-label{font-size:.62rem;color:var(--text-muted);font-weight:500;}
+.score-big{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:900;color:var(--navy);line-height:1;}
+[data-theme="dark"] .score-big{color:var(--text);}
+.score-sub{font-size:.55rem;color:var(--text-light);}
+.btn-panel{
+  display:block;width:100%;margin-top:10px;
+  background:var(--navy);color:#fff;
+  border:none;border-radius:6px;padding:7px;
+  font-size:.67rem;font-weight:600;cursor:pointer;font-family:inherit;
+  transition:background .2s;letter-spacing:.03em;
+}
+.btn-panel:hover{background:var(--navy-mid);}
+
+/* floating sparkle particles */
+.sparkle{
+  position:absolute;border-radius:50%;
+  background:var(--gold);opacity:0;
+  animation:sparkleAnim 4s ease-in-out infinite;
+}
+.sparkle-1{width:6px;height:6px;top:5%;left:15%;animation-delay:0s;}
+.sparkle-2{width:4px;height:4px;top:15%;right:5%;animation-delay:1.2s;}
+.sparkle-3{width:5px;height:5px;bottom:25%;left:5%;animation-delay:2.4s;}
+.sparkle-4{width:3px;height:3px;bottom:10%;right:20%;animation-delay:.8s;}
+.sparkle-5{width:4px;height:4px;top:40%;left:2%;animation-delay:3.1s;}
+@keyframes sparkleAnim{
+  0%,100%{opacity:0;transform:scale(.5);}
+  50%{opacity:.9;transform:scale(1.2);}
+}
+
+/* ════════════════════════════════
+   TRUST BAR
+════════════════════════════════ */
+.trust-bar{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.trust-item{
+  background:var(--cream);padding:24px 20px;
+  display:flex;align-items:flex-start;gap:14px;
+  border-right:1px solid var(--border);
+  transition:background .2s;
+}
+.trust-item:last-child{border-right:none;}
+.trust-item:hover{background:var(--navy-mist);}
+.trust-icon-box{
+  width:38px;height:38px;flex-shrink:0;
+  background:var(--navy-mist);border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(15,45,94,.12);
+}
+.trust-icon-box svg{width:18px;height:18px;stroke:var(--navy);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+[data-theme="dark"] .trust-icon-box{background:var(--surface2);border-color:var(--border);}
+[data-theme="dark"] .trust-icon-box svg{stroke:var(--gold);}
+.trust-text h4{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:3px;}
+.trust-text p{font-size:.77rem;color:var(--text-muted);line-height:1.5;}
+
+/* ════════════════════════════════
+   SECTIONS COMMON
+════════════════════════════════ */
+.section{padding:88px 2.5rem;}
+.section-eyebrow{
+  font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-dark);margin-bottom:14px;text-align:center;
+}
+[data-theme="dark"] .section-eyebrow{color:var(--gold);}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.85rem,3vw,2.7rem);font-weight:900;
+  text-align:center;color:var(--navy);margin-bottom:12px;
+}
+[data-theme="dark"] .section-title{color:var(--text);}
+.section-sub{
+  font-size:.92rem;color:var(--text-muted);text-align:center;
+  max-width:500px;margin:0 auto 52px;line-height:1.75;
+}
+
+/* ════════════════════════════════
+   FEATURES GRID
+════════════════════════════════ */
+.features-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;background:var(--border);
+  max-width:1080px;margin:0 auto;
+  border:1px solid var(--border);border-radius:14px;overflow:hidden;
+}
+.feature-card{
+  background:var(--surface);padding:34px 28px;
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  transition:background .2s;
+}
+.feature-card:hover{background:var(--navy-mist);}
+[data-theme="dark"] .feature-card:hover{background:var(--surface2);}
+
+.feat-icon-box{
+  width:44px;height:44px;
+  background:var(--navy-mist);border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:18px;
+  border:1px solid rgba(15,45,94,.1);
+  transition:background .2s;
+}
+.feature-card:hover .feat-icon-box{background:rgba(15,45,94,.12);}
+[data-theme="dark"] .feat-icon-box{background:var(--surface2);border-color:var(--border);}
+.feat-icon-box svg{width:20px;height:20px;stroke:var(--navy);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+[data-theme="dark"] .feat-icon-box svg{stroke:var(--gold);}
+
+.feature-card h3{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:8px;}
+.feature-card p{font-size:.82rem;color:var(--text-muted);line-height:1.68;margin-bottom:14px;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{
+  background:var(--tag-bg);color:var(--navy-light);
+  font-size:.67rem;font-weight:600;padding:3px 11px;border-radius:20px;
+  letter-spacing:.03em;border:1px solid rgba(42,82,152,.1);
+}
+[data-theme="dark"] .tag{color:var(--text-mid);background:var(--surface2);}
+
+/* ════════════════════════════════
+   WORKFLOW
+════════════════════════════════ */
+.workflow-section{background:var(--cream2);}
+[data-theme="dark"] .workflow-section{background:var(--cream2);}
+.workflow-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:940px;margin:0 auto;}
+.workflow-step{text-align:center;}
+.step-num{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:1.05rem;
+  margin:0 auto 22px;
+  font-family:'Playfair Display',serif;
+  box-shadow:0 4px 16px rgba(15,45,94,.3);
+}
+.workflow-step h3{font-size:.97rem;font-weight:700;color:var(--text);margin-bottom:10px;}
+.workflow-step p{font-size:.83rem;color:var(--text-muted);line-height:1.68;}
+.wf-icon{
+  width:56px;height:56px;
+  background:var(--navy-mist);border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+  border:1px solid rgba(15,45,94,.1);
+}
+[data-theme="dark"] .wf-icon{background:var(--surface2);}
+.wf-icon svg{width:24px;height:24px;stroke:var(--navy);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+[data-theme="dark"] .wf-icon svg{stroke:var(--gold);}
+
+/* ════════════════════════════════
+   PRICING
+════════════════════════════════ */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:920px;margin:0 auto;}
+.pricing-card{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:14px;padding:34px 28px;text-align:center;position:relative;
+  transition:transform .2s,box-shadow .2s;
+}
+.pricing-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(15,45,94,.12);}
+.pricing-card.popular{border-color:var(--navy);box-shadow:0 8px 32px rgba(15,45,94,.18);}
+.popular-badge{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--navy);color:#fff;
+  font-size:.62rem;font-weight:700;letter-spacing:.12em;
+  padding:4px 16px;border-radius:20px;text-transform:uppercase;white-space:nowrap;
+}
+.pricing-tier{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+.pricing-desc{font-size:.79rem;color:var(--text-muted);margin-bottom:20px;}
+.pricing-amount{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;font-weight:900;color:var(--navy);line-height:1;
+}
+[data-theme="dark"] .pricing-amount{color:var(--text);}
+.pricing-amount span{font-size:1rem;font-weight:400;color:var(--text-muted);font-family:'Inter',sans-serif;}
+.pricing-note{font-size:.75rem;color:var(--text-light);margin:7px 0 28px;}
+.btn-pricing-outline{
+  background:none;border:1.5px solid var(--border);border-radius:9px;
+  padding:11px 24px;font-size:.86rem;font-weight:600;
+  cursor:pointer;font-family:inherit;color:var(--text);width:100%;
+  transition:border-color .2s,background .2s;
+}
+.btn-pricing-outline:hover{border-color:var(--navy);background:var(--navy-mist);}
+.btn-pricing-filled{
+  background:var(--navy);color:#fff;border:none;border-radius:9px;
+  padding:12px 24px;font-size:.86rem;font-weight:600;
+  cursor:pointer;font-family:inherit;width:100%;
+  transition:background .2s,transform .15s;
+  box-shadow:0 3px 12px rgba(15,45,94,.25);
+}
+.btn-pricing-filled:hover{background:var(--navy-mid);transform:translateY(-1px);}
+
+/* ════════════════════════════════
+   CONTACT SECTION
+════════════════════════════════ */
+.contact-section{
+  background:var(--navy-mist);
+  padding:88px 2.5rem;
+  border-top:1px solid var(--border);
+}
+[data-theme="dark"] .contact-section{background:var(--cream2);}
+.contact-inner{max-width:560px;margin:0 auto;text-align:center;}
+.contact-inner .section-title{margin-bottom:12px;}
+.contact-inner .section-sub{margin-bottom:36px;}
+
+.contact-email-card{
+  background:var(--surface);
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  padding:28px 32px;
+  display:flex;align-items:center;gap:18px;
+  margin-bottom:36px;
+  box-shadow:0 4px 20px rgba(15,45,94,.08);
+  transition:box-shadow .2s,transform .2s;
+  text-decoration:none;
+}
+.contact-email-card:hover{
+  box-shadow:0 8px 32px rgba(15,45,94,.15);
+  transform:translateY(-2px);
+}
+.email-icon-box{
+  width:50px;height:50px;flex-shrink:0;
+  background:var(--navy);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+}
+.email-icon-box svg{width:22px;height:22px;stroke:#fff;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.email-text{text-align:left;}
+.email-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px;}
+.email-addr{font-size:1.05rem;font-weight:600;color:var(--navy);}
+[data-theme="dark"] .email-addr{color:var(--text);}
+
+.social-label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;}
+.social-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.social-btn{
+  display:flex;align-items:center;gap:8px;
+  background:var(--surface);
+  border:1.5px solid var(--border);
+  border-radius:10px;padding:10px 18px;
+  text-decoration:none;
+  color:var(--text-mid);
+  font-size:.8rem;font-weight:600;
+  transition:border-color .2s,background .2s,transform .15s,color .2s;
+}
+.social-btn:hover{
+  border-color:var(--navy);
+  background:var(--navy-mist);
+  color:var(--navy);
+  transform:translateY(-2px);
+}
+[data-theme="dark"] .social-btn:hover{background:var(--surface2);}
+.social-btn svg{width:17px;height:17px;flex-shrink:0;}
+
+/* ════════════════════════════════
+   CTA BANNER
+════════════════════════════════ */
+.cta-banner{
+  background:var(--navy-deep);
+  padding:88px 2rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-banner::before{
+  content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);
+  width:600px;height:300px;
+  background:radial-gradient(ellipse,rgba(201,168,76,.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+.cta-banner h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:900;
+  color:#fff;margin-bottom:16px;position:relative;
+}
+.cta-banner p{
+  font-size:.93rem;color:rgba(255,255,255,.55);
+  max-width:480px;margin:0 auto 36px;line-height:1.75;position:relative;
+}
+.btn-cta{
+  background:var(--gold);color:var(--navy-deep);
+  border:none;border-radius:9px;padding:14px 36px;
+  font-size:.92rem;font-weight:700;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;gap:8px;
+  box-shadow:0 6px 24px rgba(201,168,76,.4);
+  transition:background .2s,transform .15s;
+  position:relative;
+}
+.btn-cta:hover{background:var(--gold-light);transform:translateY(-2px);}
+
+/* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
+footer{
+  background:var(--footer-bg);
+  color:var(--footer-text);
+  padding:64px 2.5rem 32px;
+}
+.footer-inner{max-width:1100px;margin:0 auto;}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;
+  gap:44px;margin-bottom:52px;
+}
+.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.footer-brand-name{font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--footer-text);}
+.footer-brand-desc{font-size:.8rem;color:var(--footer-mid);line-height:1.7;max-width:220px;}
+.footer-col h5{font-size:.78rem;font-weight:700;color:var(--footer-text);margin-bottom:16px;letter-spacing:.04em;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:9px;}
+.footer-col ul li a{text-decoration:none;font-size:.8rem;color:var(--footer-mid);transition:color .2s;}
+.footer-col ul li a:hover{color:var(--footer-text);}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-top:24px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+.footer-bottom p{font-size:.75rem;color:var(--footer-mid);}
+.footer-bottom-links{display:flex;gap:20px;}
+.footer-bottom-links a{font-size:.75rem;color:var(--footer-mid);text-decoration:none;transition:color .2s;}
+.footer-bottom-links a:hover{color:var(--footer-text);}
+
+/* ════════════════════════════════
+   RTL
+════════════════════════════════ */
+[dir="rtl"] .nav-links{flex-direction:row-reverse;}
+[dir="rtl"] .trust-item{flex-direction:row-reverse;text-align:right;}
+[dir="rtl"] .tags,[dir="rtl"] .social-row{flex-direction:row-reverse;}
+[dir="rtl"] .footer-grid,[dir="rtl"] .footer-bottom{direction:rtl;}
+[dir="rtl"] .footer-brand-desc,[dir="rtl"] .footer-col h5,[dir="rtl"] .footer-col ul{text-align:right;}
+[dir="rtl"] .email-text{text-align:right;}
+[dir="rtl"] .contact-email-card{flex-direction:row-reverse;}
+[dir="rtl"] .panel-row-head{flex-direction:row-reverse;}
+[dir="rtl"] .panel-header{flex-direction:row-reverse;}
+[dir="rtl"] .report-panel{right:auto;left:-200px;}
+
+/* ════════════════════════════════
+   RESPONSIVE
+════════════════════════════════ */
+@media(max-width:1100px){.report-panel{display:none;}}
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .features-grid{grid-template-columns:1fr 1fr;}
+  .workflow-steps{grid-template-columns:1fr;}
+  .pricing-grid{grid-template-columns:1fr;max-width:400px;}
+  .trust-bar{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .features-grid{grid-template-columns:1fr;}
+  .trust-bar{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .thesis-scene{width:300px;height:420px;}
+  .hero-visual{padding-bottom:60px;}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ NAV ══════════════════════ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <!-- Brain + Magnifier Logo -->
+    <svg class="logo-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- brain left lobe -->
+      <path d="M17 8 C17 8 12 6 10 9 C8.5 11 9 13 10 14 C8 14.5 7 16 7.5 18 C8 20 10 21 12 20.5 C12 22.5 13.5 24 15.5 24 C16.5 24 17 23.5 17 23.5" stroke="#0f2d5e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- brain right lobe -->
+      <path d="M17 8 C17 8 22 6 24 9 C25.5 11 25 13 24 14 C26 14.5 27 16 26.5 18 C26 20 24 21 22 20.5 C22 22.5 20.5 24 18.5 24 C17.5 24 17 23.5 17 23.5" stroke="#0f2d5e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- center spine -->
+      <line x1="17" y1="8" x2="17" y2="23.5" stroke="#0f2d5e" stroke-width="1.2" stroke-dasharray="2 2"/>
+      <!-- magnifier circle -->
+      <circle cx="22.5" cy="26.5" r="4" stroke="#c9a84c" stroke-width="1.7"/>
+      <!-- magnifier handle -->
+      <line x1="25.5" y1="29.5" x2="28" y2="32" stroke="#c9a84c" stroke-width="1.7" stroke-linecap="round"/>
+      <!-- small glint on magnifier -->
+      <circle cx="21" cy="25" r=".9" fill="#c9a84c" opacity=".6"/>
+    </svg>
+    DATAUNIVERS
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#features" data-i18n="nav_features">Features</a></li>
+    <li><a href="#workflow" data-i18n="nav_solutions">Solutions</a></li>
+    <li><a href="#pricing" data-i18n="nav_pricing">Pricing</a></li>
+    <li><a href="#" data-i18n="nav_resources">Resources</a></li>
+    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="nav-controls">
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn" onclick="setLang('ar')">AR</button>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    </div>
+    <a class="btn-login" data-i18n="nav_login" href="2signin.html">Login</a>
+        <button class="btn-start-nav" data-i18n="nav_start">Start</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<section class="hero">
+  <h1 data-i18n="hero_title">The AI Copilot for<br/>Academic Excellence</h1>
+  <p data-i18n="hero_sub">Analyze, verify and improve academic research using advanced AI-powered academic intelligence.</p>
+  <div class="hero-ctas">
+    <button class="btn-primary" data-i18n="hero_start">Start</button>
+    <button class="btn-secondary">
+      <div class="play-circle"><svg viewBox="0 0 10 10"><polygon points="3,1 9,5 3,9"/></svg></div>
+      <span data-i18n="hero_demo">Watch Demo</span>
+    </button>
+  </div>
+
+  <!-- ── ROYAL THESIS SCENE ── -->
+  <div class="hero-visual">
+    <div class="thesis-scene" id="thesisScene">
+      <div class="sparkle sparkle-1"></div>
+      <div class="sparkle sparkle-2"></div>
+      <div class="sparkle sparkle-3"></div>
+      <div class="sparkle sparkle-4"></div>
+      <div class="sparkle sparkle-5"></div>
+
+      <div class="thesis-shadow"></div>
+
+      <div class="thesis-book">
+        <!-- SPINE -->
+        <div class="book-spine">
+          <div class="spine-text">Université · 2024–2025 · Mémoire de Fin d'études</div>
+        </div>
+
+        <!-- FRONT COVER -->
+        <div class="book-cover">
+          <div class="cover-texture"></div>
+          <div class="cover-frame"></div>
+
+          <!-- Seal -->
+          <div class="cover-seal">
+            <div class="seal-ring"></div>
+            <div class="seal-ring-inner">
+              <div class="seal-star"></div>
+            </div>
+          </div>
+
+          <div class="cover-content">
+            <div class="cover-univ" data-i18n="cover_univ">Université des Sciences<br/>et de la Technologie</div>
+            <div class="cover-dept" data-i18n="cover_dept">Département d'Informatique</div>
+            <div class="cover-rule"></div>
+            <div class="cover-type-label" data-i18n="cover_type">Mémoire de Fin d'études</div>
+            <div class="cover-title" data-i18n="cover_title">Développement d'un Système de Prise en Charge Intelligente</div>
+            <div class="cover-subtitle" data-i18n="cover_subtitle">Spécialité : Génie Logiciel &amp; Intelligence Artificielle</div>
+            <div class="cover-rule2"></div>
+            <div class="cover-author" data-i18n="cover_presented">Présenté par</div>
+            <div class="cover-author-name">Amira Benali</div>
+          </div>
+
+          <div class="cover-year">2024 — 2025</div>
+        </div>
+      </div>
+
+      <!-- FLOATING REPORT PANEL -->
+      <div class="report-panel">
+        <div class="panel-header">
+          <div class="panel-dot"></div>
+          <div class="panel-title" data-i18n="panel_title">Analysis Report</div>
+        </div>
+
+        <div class="panel-row">
+          <div class="panel-row-head">
+            <span class="panel-label" data-i18n="panel_conform">Academic Compliance</span>
+            <span class="panel-pct">86%</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:86%"></div></div>
+        </div>
+
+        <div class="panel-row">
+          <div class="panel-row-head">
+            <span class="panel-label" data-i18n="panel_plagiat">Plagiarism Detected</span>
+            <span class="panel-pct pct-red">12%</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill bar-fill-red" style="width:12%"></div></div>
+        </div>
+
+        <div class="panel-row">
+          <div class="panel-row-head">
+            <span class="panel-label" data-i18n="panel_citations">Citations</span>
+            <span class="panel-pct">75%</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:75%"></div></div>
+        </div>
+
+        <div class="panel-row">
+          <div class="panel-row-head">
+            <span class="panel-label" data-i18n="panel_ai">AI Content</span>
+            <span class="panel-pct" style="color:var(--gold-dark)">87%</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill bar-fill-gold" style="width:87%"></div></div>
+        </div>
+
+        <div class="panel-row">
+          <div class="panel-row-head">
+            <span class="panel-label" data-i18n="panel_quality">Research Quality</span>
+            <span class="panel-pct">69%</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:69%"></div></div>
+        </div>
+
+        <div class="panel-score">
+          <div>
+            <div class="score-label" data-i18n="panel_score_label">Overall Score</div>
+            <div class="score-sub" data-i18n="panel_score_sub">out of 100</div>
+          </div>
+          <div class="score-big">78</div>
+        </div>
+        <button class="btn-panel" data-i18n="panel_btn">View Full Report →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ TRUST BAR ══════════════════════ -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon-box">
+      <!-- Shield Lock -->
+      <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/><path d="M9 12l2 2 4-4"/></svg>
+    </div>
+    <div class="trust-text">
+      <h4 data-i18n="trust1_title">Secure &amp; Confidential</h4>
+      <p data-i18n="trust1_desc">Your data is encrypted and protected.</p>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon-box">
+      <!-- Graduation Cap -->
+      <svg viewBox="0 0 24 24"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/><line x1="22" y1="9" x2="22" y2="15"/></svg>
+    </div>
+    <div class="trust-text">
+      <h4 data-i18n="trust2_title">University Standards</h4>
+      <p data-i18n="trust2_desc">Aligned with national and international norms.</p>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon-box">
+      <!-- Zap -->
+      <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    </div>
+    <div class="trust-text">
+      <h4 data-i18n="trust3_title">Fast &amp; Accurate</h4>
+      <p data-i18n="trust3_desc">AI-powered analysis in just a few minutes.</p>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon-box">
+      <!-- Bar Chart -->
+      <svg viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="9"/><rect x="10" y="7" width="4" height="14"/><rect x="17" y="3" width="4" height="18"/></svg>
+    </div>
+    <div class="trust-text">
+      <h4 data-i18n="trust4_title">Comprehensive Reports</h4>
+      <p data-i18n="trust4_desc">Detailed, easy-to-understand reports you can trust.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ FEATURES ══════════════════════ -->
+<section class="section" id="features">
+  <div class="section-eyebrow" data-i18n="feat_eyebrow">PLATFORM CAPABILITIES</div>
+  <h2 class="section-title" data-i18n="feat_title">Everything your research needs</h2>
+  <p class="section-sub" data-i18n="feat_sub">A complete verification suite built for the academic rigor that universities and journals demand.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feat-icon-box">
+        <!-- Clipboard Check -->
+        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <h3 data-i18n="f1_title">Academic Compliance Verification</h3>
+      <p data-i18n="f1_desc">Automatically verifies conformity to APA, MLA, IEEE, Harvard, and institution-specific templates.</p>
+      <div class="tags">
+        <span class="tag">APA</span><span class="tag">MLA</span><span class="tag">IEEE</span><span class="tag">Harvard</span>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon-box">
+        <!-- Quote marks / Citation -->
+        <svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2.375-2-3H4c-1.25 0-2 1.125-2 2.5V11c0 1.25.75 2.375 2 3 1 .625 1 2 1 3"/><path d="M21 21c-3 0-7-1-7-8V5c0-1.25.75-2.375 2-3h4c1.25 0 2 1.125 2 2.5V11c0 1.25-.75 2.375-2 3-1 .625-1 2-1 3"/></svg>
+      </div>
+      <h3 data-i18n="f2_title">Citation Analysis</h3>
+      <p data-i18n="f2_desc">Detects missing citations, evaluates citation quality, and flags inconsistencies in your reference list.</p>
+      <div class="tags">
+        <span class="tag" data-i18n="tag_missing">Missing citations</span>
+        <span class="tag" data-i18n="tag_quality">Quality scoring</span>
+        <span class="tag" data-i18n="tag_ref">Reference integrity</span>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon-box">
+        <!-- CPU / AI chip -->
+        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+      </div>
+      <h3 data-i18n="f3_title">AI Content Estimation</h3>
+      <p data-i18n="f3_desc">Calculates the probability of AI-generated content and highlights the specific passages for review.</p>
+      <div class="tags">
+        <span class="tag" data-i18n="tag_passage">Passage detection</span>
+        <span class="tag" data-i18n="tag_prob">Probability score</span>
+        <span class="tag" data-i18n="tag_highlight">Section highlight</span>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon-box">
+        <!-- Copy / Similarity -->
+        <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </div>
+      <h3 data-i18n="f4_title">Plagiarism Indicators</h3>
+      <p data-i18n="f4_desc">Identifies suspicious similarities across academic databases and provides actionable recommendations.</p>
+      <div class="tags">
+        <span class="tag" data-i18n="tag_sim">Similarity index</span>
+        <span class="tag" data-i18n="tag_src">Source matching</span>
+        <span class="tag" data-i18n="tag_rec">Recommendations</span>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon-box">
+        <!-- Microscope / Research -->
+        <svg viewBox="0 0 24 24"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14H4s-.5-1-.5-3 .5-3 .5-3h5"/><path d="M9 14v8"/><path d="M9 3v3"/><path d="M11 3H7"/></svg>
+      </div>
+      <h3 data-i18n="f5_title">Research Quality Evaluation</h3>
+      <p data-i18n="f5_desc">Evaluates methodology, argument structure, clarity of expression, and conceptual consistency.</p>
+      <div class="tags">
+        <span class="tag" data-i18n="tag_method">Methodology</span>
+        <span class="tag" data-i18n="tag_struct">Structure</span>
+        <span class="tag" data-i18n="tag_clarity">Clarity</span>
+        <span class="tag" data-i18n="tag_consist">Consistency</span>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon-box">
+        <!-- Trend / Analytics -->
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3 data-i18n="f6_title">Academic Analytics Dashboard</h3>
+      <p data-i18n="f6_desc">Provides detailed visual reports, trend analysis, and improvement roadmaps across your submissions.</p>
+      <div class="tags">
+        <span class="tag" data-i18n="tag_visual">Visual reports</span>
+        <span class="tag" data-i18n="tag_trend">Trend analysis</span>
+        <span class="tag" data-i18n="tag_improve">Improvement tracking</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ WORKFLOW ══════════════════════ -->
+<section class="section workflow-section" id="workflow">
+  <div class="section-eyebrow" data-i18n="wf_eyebrow">WORKFLOW</div>
+  <h2 class="section-title" data-i18n="wf_title">From submission to insight</h2>
+  <div class="workflow-steps">
+    <div class="workflow-step">
+      <div class="wf-icon">
+        <!-- Upload Cloud -->
+        <svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+      </div>
+      <div class="step-num">1</div>
+      <h3 data-i18n="wf1_title">Upload Your Document</h3>
+      <p data-i18n="wf1_desc">Submit your academic work as a PDF or DOCX. Your document is encrypted and processed in a secure environment.</p>
+    </div>
+    <div class="workflow-step">
+      <div class="wf-icon">
+        <!-- Scan / AI analysis -->
+        <svg viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
+      </div>
+      <div class="step-num">2</div>
+      <h3 data-i18n="wf2_title">AI-Assisted Analysis</h3>
+      <p data-i18n="wf2_desc">DataUnivers runs a multi-layered verification across academic standards, citations, structure, and quality indicators.</p>
+    </div>
+    <div class="workflow-step">
+      <div class="wf-icon">
+        <!-- File Download / Report -->
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="12" x2="12" y2="17"/><polyline points="9 15 12 18 15 15"/></svg>
+      </div>
+      <div class="step-num">3</div>
+      <h3 data-i18n="wf3_title">Receive Your Report</h3>
+      <p data-i18n="wf3_desc">Get a detailed, downloadable report with scores, recommendations, and specific improvement guidance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ PRICING ══════════════════════ -->
+<section class="section" id="pricing">
+  <div class="section-eyebrow" data-i18n="pr_eyebrow">PRICING</div>
+  <h2 class="section-title" data-i18n="pr_title">Transparent academic pricing</h2>
+  <p class="section-sub" data-i18n="pr_sub">Access essential verification tools for free. Upgrade anytime to unlock advanced features.</p>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-tier" data-i18n="pr_free">Free</div>
+      <div class="pricing-desc" data-i18n="pr_free_desc">For basic academic verification</div>
+      <div class="pricing-amount">€0<span data-i18n="pr_month">/month</span></div>
+      <div class="pricing-note" data-i18n="pr_free_note">Always free</div>
+      <button class="btn-pricing-outline" data-i18n="pr_get_started">Get started</button>
+    </div>
+    <div class="pricing-card popular">
+      <div class="popular-badge" data-i18n="pr_popular">MOST POPULAR</div>
+      <div class="pricing-tier">Pro</div>
+      <div class="pricing-desc" data-i18n="pr_pro_desc">For students and researchers</div>
+      <div class="pricing-amount">€9<span data-i18n="pr_month">/month</span></div>
+      <div class="pricing-note" data-i18n="pr_pro_note">Cancel anytime</div>
+      <button class="btn-pricing-filled" data-i18n="pr_upgrade">Upgrade to Pro</button>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-tier" data-i18n="pr_inst">Institution</div>
+      <div class="pricing-desc" data-i18n="pr_inst_desc">For universities and teams</div>
+      <div class="pricing-amount" style="font-size:2rem;margin-top:10px" data-i18n="pr_custom">Custom</div>
+      <div class="pricing-note" data-i18n="pr_inst_note">Flexible pricing for your institution</div>
+      <button class="btn-pricing-outline" data-i18n="pr_contact">Contact sales</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ CONTACT ══════════════════════ -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="section-eyebrow" data-i18n="ct_eyebrow">CONTACT US</div>
+    <h2 class="section-title" data-i18n="ct_title">Get in touch</h2>
+    <p class="section-sub" data-i18n="ct_sub">Have a question, partnership inquiry, or need support? We'd love to hear from you.</p>
+
+    <a class="contact-email-card" href="mailto:contact@dataunivers.com">
+      <div class="email-icon-box">
+        <!-- Mail icon -->
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="email-text">
+        <div class="email-label" data-i18n="ct_email_label">Email us directly</div>
+        <div class="email-addr">contact@dataunivers.com</div>
+      </div>
+    </a>
+
+    <div class="social-label" data-i18n="ct_social_label">FOLLOW US</div>
+    <div class="social-row">
+
+      <!-- LinkedIn -->
+      <a href="#" class="social-btn" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+        </svg>
+        LinkedIn
+      </a>
+
+      <!-- X / Twitter -->
+      <a href="#" class="social-btn" aria-label="X / Twitter">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+        Twitter / X
+      </a>
+
+      <!-- Instagram -->
+      <a href="#" class="social-btn" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+        </svg>
+        Instagram
+      </a>
+
+     
+
+      <!-- Facebook -->
+      <a href="#" class="social-btn" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+        Facebook
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ CTA BANNER ══════════════════════ -->
+<div class="cta-banner">
+  <h2 data-i18n="cta_title">Research deserves a higher standard.</h2>
+  <p data-i18n="cta_sub">Join thousands of students and researchers who trust DataUnivers to verify their academic work before submission.</p>
+  <button class="btn-cta"><span data-i18n="cta_btn">Get started free</span> →</button>
+</div>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+            <path d="M17 8 C17 8 12 6 10 9 C8.5 11 9 13 10 14 C8 14.5 7 16 7.5 18 C8 20 10 21 12 20.5 C12 22.5 13.5 24 15.5 24 C16.5 24 17 23.5 17 23.5" stroke="#dde6f5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M17 8 C17 8 22 6 24 9 C25.5 11 25 13 24 14 C26 14.5 27 16 26.5 18 C26 20 24 21 22 20.5 C22 22.5 20.5 24 18.5 24 C17.5 24 17 23.5 17 23.5" stroke="#dde6f5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="17" y1="8" x2="17" y2="23.5" stroke="#dde6f5" stroke-width="1.2" stroke-dasharray="2 2"/>
+            <circle cx="22.5" cy="26.5" r="4" stroke="#c9a84c" stroke-width="1.7"/>
+            <line x1="25.5" y1="29.5" x2="28" y2="32" stroke="#c9a84c" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <span class="footer-brand-name">DATAUNIVERS</span>
+        </div>
+        <p class="footer-brand-desc" data-i18n="footer_desc">Academic research verification platform</p>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer_product">Product</h5>
+        <ul>
+          <li><a href="#" data-i18n="footer_features">Features</a></li>
+          <li><a href="#" data-i18n="footer_solutions">Solutions</a></li>
+          <li><a href="#pricing" data-i18n="footer_pricing">Pricing</a></li>
+          <li><a href="#" data-i18n="footer_changelog">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer_resources">Resources</h5>
+        <ul>
+          <li><a href="#" data-i18n="footer_docs">Documentation</a></li>
+          <li><a href="#" data-i18n="footer_api">API Reference</a></li>
+          <li><a href="#" data-i18n="footer_blog">Blog</a></li>
+          <li><a href="#" data-i18n="footer_research">Research</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer_company">Company</h5>
+        <ul>
+          <li><a href="#" data-i18n="footer_about">About</a></li>
+          <li><a href="#" data-i18n="footer_careers">Careers</a></li>
+          <li><a href="#" data-i18n="footer_press">Press</a></li>
+          <li><a href="#" data-i18n="footer_legal">Legal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer_contact">Contact</h5>
+        <ul>
+          <li><a href="mailto:contact@dataunivers.com" data-i18n="footer_email">Email us</a></li>
+          <li><a href="#" data-i18n="footer_linkedin">LinkedIn</a></li>
+          <li><a href="#" data-i18n="footer_twitter">Twitter / X</a></li>
+          <li><a href="#" data-i18n="footer_instagram">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer_copy">© 2025 DataUnivers. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
+        <a href="#" data-i18n="footer_terms">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ════ TRANSLATIONS ════ */
+const T = {
+  en:{
+    nav_features:"Features",nav_solutions:"Solutions",nav_pricing:"Pricing",
+    nav_resources:"Resources",nav_contact:"Contact",nav_login:"Login",nav_start:"Start",
+    hero_title:"The AI Copilot for<br/>Academic Excellence",
+    hero_sub:"Analyze, verify and improve academic research using advanced AI-powered academic intelligence.",
+    hero_start:"Start",hero_demo:"Watch Demo",
+    cover_univ:"University of Science<br/>and Technology",cover_dept:"Department of Computer Science",
+    cover_type:"Final Year Thesis",cover_title:"Development of an Intelligent Care Management System",
+    cover_subtitle:"Speciality: Software Engineering & Artificial Intelligence",
+    cover_presented:"Presented by",
+    panel_title:"Analysis Report",panel_conform:"Academic Compliance",panel_plagiat:"Plagiarism Detected",
+    panel_citations:"Citations",panel_ai:"AI Content",panel_quality:"Research Quality",
+    panel_score_label:"Overall Score",panel_score_sub:"out of 100",panel_btn:"View Full Report →",
+    trust1_title:"Secure & Confidential",trust1_desc:"Your data is encrypted and protected.",
+    trust2_title:"University Standards",trust2_desc:"Aligned with national and international norms.",
+    trust3_title:"Fast & Accurate",trust3_desc:"AI-powered analysis in just a few minutes.",
+    trust4_title:"Comprehensive Reports",trust4_desc:"Detailed, easy-to-understand reports you can trust.",
+    feat_eyebrow:"PLATFORM CAPABILITIES",feat_title:"Everything your research needs",
+    feat_sub:"A complete verification suite built for the academic rigor that universities and journals demand.",
+    f1_title:"Academic Compliance Verification",
+    f1_desc:"Automatically verifies conformity to APA, MLA, IEEE, Harvard, and institution-specific templates.",
+    f2_title:"Citation Analysis",
+    f2_desc:"Detects missing citations, evaluates citation quality, and flags inconsistencies in your reference list.",
+    f3_title:"AI Content Estimation",
+    f3_desc:"Calculates the probability of AI-generated content and highlights the specific passages for review.",
+    f4_title:"Plagiarism Indicators",
+    f4_desc:"Identifies suspicious similarities across academic databases and provides actionable recommendations.",
+    f5_title:"Research Quality Evaluation",
+    f5_desc:"Evaluates methodology, argument structure, clarity of expression, and conceptual consistency.",
+    f6_title:"Academic Analytics Dashboard",
+    f6_desc:"Provides detailed visual reports, trend analysis, and improvement roadmaps across your submissions.",
+    tag_missing:"Missing citations",tag_quality:"Quality scoring",tag_ref:"Reference integrity",
+    tag_passage:"Passage detection",tag_prob:"Probability score",tag_highlight:"Section highlight",
+    tag_sim:"Similarity index",tag_src:"Source matching",tag_rec:"Recommendations",
+    tag_method:"Methodology",tag_struct:"Structure",tag_clarity:"Clarity",tag_consist:"Consistency",
+    tag_visual:"Visual reports",tag_trend:"Trend analysis",tag_improve:"Improvement tracking",
+    wf_eyebrow:"WORKFLOW",wf_title:"From submission to insight",
+    wf1_title:"Upload Your Document",
+    wf1_desc:"Submit your academic work as a PDF or DOCX. Your document is encrypted and processed in a secure environment.",
+    wf2_title:"AI-Assisted Analysis",
+    wf2_desc:"DataUnivers runs a multi-layered verification across academic standards, citations, structure, and quality indicators.",
+    wf3_title:"Receive Your Report",
+    wf3_desc:"Get a detailed, downloadable report with scores, recommendations, and specific improvement guidance.",
+    pr_eyebrow:"PRICING",pr_title:"Transparent academic pricing",
+    pr_sub:"Access essential verification tools for free. Upgrade anytime to unlock advanced features.",
+    pr_free:"Free",pr_free_desc:"For basic academic verification",pr_month:"/month",
+    pr_free_note:"Always free",pr_get_started:"Get started",
+    pr_popular:"MOST POPULAR",pr_pro_desc:"For students and researchers",pr_pro_note:"Cancel anytime",
+    pr_upgrade:"Upgrade to Pro",pr_inst:"Institution",pr_inst_desc:"For universities and teams",
+    pr_custom:"Custom",pr_inst_note:"Flexible pricing for your institution",pr_contact:"Contact sales",
+    ct_eyebrow:"CONTACT US",ct_title:"Get in touch",
+    ct_sub:"Have a question, partnership inquiry, or need support? We'd love to hear from you.",
+    ct_email_label:"Email us directly",ct_social_label:"FOLLOW US",
+    cta_title:"Research deserves a higher standard.",
+    cta_sub:"Join thousands of students and researchers who trust DataUnivers to verify their academic work before submission.",
+    cta_btn:"Get started free",
+    footer_desc:"Academic research verification platform",
+    footer_product:"Product",footer_features:"Features",footer_solutions:"Solutions",
+    footer_pricing:"Pricing",footer_changelog:"Changelog",
+    footer_resources:"Resources",footer_docs:"Documentation",footer_api:"API Reference",
+    footer_blog:"Blog",footer_research:"Research",
+    footer_company:"Company",footer_about:"About",footer_careers:"Careers",
+    footer_press:"Press",footer_legal:"Legal",
+    footer_contact:"Contact",footer_email:"Email us",footer_linkedin:"LinkedIn",
+    footer_twitter:"Twitter / X",footer_instagram:"Instagram",
+    footer_copy:"© 2025 DataUnivers. All rights reserved.",
+    footer_privacy:"Privacy Policy",footer_terms:"Terms of Service"
+  },
+  fr:{
+    nav_features:"Fonctionnalités",nav_solutions:"Solutions",nav_pricing:"Tarifs",
+    nav_resources:"Ressources",nav_contact:"Contact",nav_login:"Connexion",nav_start:"Démarrer",
+    hero_title:"Le Copilote IA pour<br/>l'Excellence Académique",
+    hero_sub:"Analysez, vérifiez et améliorez vos recherches académiques grâce à notre intelligence artificielle avancée.",
+    hero_start:"Démarrer",hero_demo:"Voir la Démo",
+    cover_univ:"Université des Sciences<br/>et de la Technologie",cover_dept:"Département d'Informatique",
+    cover_type:"Mémoire de Fin d'études",cover_title:"Développement d'un Système de Prise en Charge Intelligente",
+    cover_subtitle:"Spécialité : Génie Logiciel & Intelligence Artificielle",
+    cover_presented:"Présenté par",
+    panel_title:"Rapport d'Analyse",panel_conform:"Conformité académique",panel_plagiat:"Plagiat détecté",
+    panel_citations:"Citations",panel_ai:"Contenu IA",panel_quality:"Qualité de recherche",
+    panel_score_label:"Score global",panel_score_sub:"sur 100",panel_btn:"Voir le rapport →",
+    trust1_title:"Sécurisé & Confidentiel",trust1_desc:"Vos données sont chiffrées et protégées.",
+    trust2_title:"Normes Universitaires",trust2_desc:"Conforme aux standards nationaux et internationaux.",
+    trust3_title:"Rapide & Précis",trust3_desc:"Analyse IA en quelques minutes seulement.",
+    trust4_title:"Rapports Complets",trust4_desc:"Des rapports détaillés et faciles à comprendre.",
+    feat_eyebrow:"CAPACITÉS DE LA PLATEFORME",feat_title:"Tout ce dont votre recherche a besoin",
+    feat_sub:"Une suite de vérification complète conçue pour la rigueur académique exigée par les universités et les revues.",
+    f1_title:"Vérification de Conformité Académique",
+    f1_desc:"Vérifie automatiquement la conformité aux normes APA, MLA, IEEE, Harvard et aux modèles institutionnels.",
+    f2_title:"Analyse des Citations",
+    f2_desc:"Détecte les citations manquantes, évalue leur qualité et signale les incohérences dans vos références.",
+    f3_title:"Estimation du Contenu IA",
+    f3_desc:"Calcule la probabilité de contenu généré par IA et met en évidence les passages concernés.",
+    f4_title:"Indicateurs de Plagiat",
+    f4_desc:"Identifie les similitudes suspectes dans les bases de données académiques et propose des recommandations.",
+    f5_title:"Évaluation de la Qualité de Recherche",
+    f5_desc:"Évalue la méthodologie, la structure argumentative, la clarté d'expression et la cohérence conceptuelle.",
+    f6_title:"Tableau de Bord Analytique",
+    f6_desc:"Fournit des rapports visuels détaillés, une analyse de tendance et des feuilles de route d'amélioration.",
+    tag_missing:"Citations manquantes",tag_quality:"Score qualité",tag_ref:"Intégrité des références",
+    tag_passage:"Détection de passages",tag_prob:"Score de probabilité",tag_highlight:"Surlignage",
+    tag_sim:"Indice de similarité",tag_src:"Correspondance sources",tag_rec:"Recommandations",
+    tag_method:"Méthodologie",tag_struct:"Structure",tag_clarity:"Clarté",tag_consist:"Cohérence",
+    tag_visual:"Rapports visuels",tag_trend:"Analyse de tendance",tag_improve:"Suivi d'amélioration",
+    wf_eyebrow:"PROCESSUS",wf_title:"Du dépôt à l'analyse",
+    wf1_title:"Téléversez Votre Document",
+    wf1_desc:"Soumettez votre travail académique en PDF ou DOCX. Votre document est chiffré et traité en toute sécurité.",
+    wf2_title:"Analyse Assistée par IA",
+    wf2_desc:"DataUnivers effectue une vérification multicouche des normes académiques, citations, structure et qualité.",
+    wf3_title:"Recevez Votre Rapport",
+    wf3_desc:"Obtenez un rapport détaillé et téléchargeable avec des scores, recommandations et conseils d'amélioration.",
+    pr_eyebrow:"TARIFS",pr_title:"Une tarification académique transparente",
+    pr_sub:"Accédez gratuitement aux outils essentiels. Passez à la version supérieure à tout moment.",
+    pr_free:"Gratuit",pr_free_desc:"Pour la vérification académique basique",pr_month:"/mois",
+    pr_free_note:"Toujours gratuit",pr_get_started:"Commencer",
+    pr_popular:"LE PLUS POPULAIRE",pr_pro_desc:"Pour étudiants et chercheurs",pr_pro_note:"Annulez à tout moment",
+    pr_upgrade:"Passer à Pro",pr_inst:"Institution",pr_inst_desc:"Pour universités et équipes",
+    pr_custom:"Personnalisé",pr_inst_note:"Tarification flexible pour votre institution",pr_contact:"Contacter les ventes",
+    ct_eyebrow:"CONTACTEZ-NOUS",ct_title:"Entrez en contact",
+    ct_sub:"Une question, un partenariat, ou besoin d'aide ? Nous serions ravis de vous entendre.",
+    ct_email_label:"Écrivez-nous directement",ct_social_label:"SUIVEZ-NOUS",
+    cta_title:"La recherche mérite un standard plus élevé.",
+    cta_sub:"Rejoignez des milliers d'étudiants et de chercheurs qui font confiance à DataUnivers.",
+    cta_btn:"Commencer gratuitement",
+    footer_desc:"Plateforme de vérification de la recherche académique",
+    footer_product:"Produit",footer_features:"Fonctionnalités",footer_solutions:"Solutions",
+    footer_pricing:"Tarifs",footer_changelog:"Mises à jour",
+    footer_resources:"Ressources",footer_docs:"Documentation",footer_api:"Référence API",
+    footer_blog:"Blog",footer_research:"Recherche",
+    footer_company:"Société",footer_about:"À propos",footer_careers:"Carrières",
+    footer_press:"Presse",footer_legal:"Mentions légales",
+    footer_contact:"Contact",footer_email:"Nous écrire",footer_linkedin:"LinkedIn",
+    footer_twitter:"Twitter / X",footer_instagram:"Instagram",
+    footer_copy:"© 2025 DataUnivers. Tous droits réservés.",
+    footer_privacy:"Politique de confidentialité",footer_terms:"Conditions d'utilisation"
+  },
+  ar:{
+    nav_features:"المميزات",nav_solutions:"الحلول",nav_pricing:"الأسعار",
+    nav_resources:"الموارد",nav_contact:"تواصل معنا",nav_login:"تسجيل الدخول",nav_start:"ابدأ",
+    hero_title:"المساعد الذكي<br/>للتميز الأكاديمي",
+    hero_sub:"حلّل وتحقق وحسّن أبحاثك الأكاديمية باستخدام الذكاء الاصطناعي المتقدم.",
+    hero_start:"ابدأ الآن",hero_demo:"مشاهدة العرض",
+    cover_univ:"جامعة العلوم<br/>والتكنولوجيا",cover_dept:"قسم علوم الحاسوب",
+    cover_type:"مذكرة التخرج",cover_title:"تطوير نظام ذكي لإدارة الرعاية",
+    cover_subtitle:"تخصص: هندسة البرمجيات والذكاء الاصطناعي",
+    cover_presented:"مقدمة من",
+    panel_title:"تقرير التحليل",panel_conform:"الامتثال الأكاديمي",panel_plagiat:"الانتحال المكتشف",
+    panel_citations:"الاستشهادات",panel_ai:"محتوى الذكاء الاصطناعي",panel_quality:"جودة البحث",
+    panel_score_label:"النتيجة الإجمالية",panel_score_sub:"من 100",panel_btn:"عرض التقرير الكامل →",
+    trust1_title:"آمن وسري",trust1_desc:"بياناتك مشفرة ومحمية تمامًا.",
+    trust2_title:"المعايير الجامعية",trust2_desc:"متوافق مع المعايير الوطنية والدولية.",
+    trust3_title:"سريع ودقيق",trust3_desc:"تحليل بالذكاء الاصطناعي في دقائق معدودة.",
+    trust4_title:"تقارير شاملة",trust4_desc:"تقارير تفصيلية وسهلة الفهم يمكنك الوثوق بها.",
+    feat_eyebrow:"إمكانيات المنصة",feat_title:"كل ما يحتاجه بحثك",
+    feat_sub:"مجموعة تحقق متكاملة مصممة للصرامة الأكاديمية التي تطلبها الجامعات والمجلات العلمية.",
+    f1_title:"التحقق من الامتثال الأكاديمي",
+    f1_desc:"يتحقق تلقائيًا من الامتثال لمعايير APA وMLA وIEEE وهارفارد والقوالب المؤسسية.",
+    f2_title:"تحليل الاستشهادات",
+    f2_desc:"يكتشف الاستشهادات المفقودة ويقيّم جودتها ويرصد التناقضات في قائمة مراجعك.",
+    f3_title:"تقدير محتوى الذكاء الاصطناعي",
+    f3_desc:"يحسب احتمالية المحتوى المُولَّد بالذكاء الاصطناعي ويسلط الضوء على المقاطع المعنية.",
+    f4_title:"مؤشرات الانتحال",
+    f4_desc:"يرصد التشابهات المثيرة للريبة عبر قواعد البيانات الأكاديمية ويقدم توصيات قابلة للتنفيذ.",
+    f5_title:"تقييم جودة البحث",
+    f5_desc:"يقيّم المنهجية وبنية الحجة ووضوح التعبير والاتساق المفاهيمي.",
+    f6_title:"لوحة التحليلات الأكاديمية",
+    f6_desc:"يوفر تقارير بصرية تفصيلية وتحليل الاتجاهات وخرائط طريق التحسين.",
+    tag_missing:"استشهادات مفقودة",tag_quality:"تقييم الجودة",tag_ref:"سلامة المراجع",
+    tag_passage:"كشف المقاطع",tag_prob:"نقاط الاحتمالية",tag_highlight:"تمييز الأقسام",
+    tag_sim:"مؤشر التشابه",tag_src:"مطابقة المصادر",tag_rec:"التوصيات",
+    tag_method:"المنهجية",tag_struct:"البنية",tag_clarity:"الوضوح",tag_consist:"الاتساق",
+    tag_visual:"تقارير بصرية",tag_trend:"تحليل الاتجاهات",tag_improve:"تتبع التحسين",
+    wf_eyebrow:"سير العمل",wf_title:"من التقديم إلى الرؤية",
+    wf1_title:"ارفع وثيقتك",
+    wf1_desc:"أرسل عملك الأكاديمي بصيغة PDF أو DOCX. تُشفَّر وثيقتك وتُعالَج في بيئة آمنة.",
+    wf2_title:"تحليل بمساعدة الذكاء الاصطناعي",
+    wf2_desc:"يُجري DataUnivers تحققًا متعدد الطبقات عبر المعايير الأكاديمية والاستشهادات والبنية ومؤشرات الجودة.",
+    wf3_title:"استلم تقريرك",
+    wf3_desc:"احصل على تقرير تفصيلي قابل للتنزيل يتضمن النتائج والتوصيات وإرشادات التحسين.",
+    pr_eyebrow:"الأسعار",pr_title:"تسعير أكاديمي شفاف",
+    pr_sub:"احصل على أدوات التحقق الأساسية مجانًا. ارقَّ في أي وقت لفتح ميزات متقدمة.",
+    pr_free:"مجاني",pr_free_desc:"للتحقق الأكاديمي الأساسي",pr_month:"/شهر",
+    pr_free_note:"مجاني دائمًا",pr_get_started:"ابدأ الآن",
+    pr_popular:"الأكثر شعبية",pr_pro_desc:"للطلاب والباحثين",pr_pro_note:"إلغاء في أي وقت",
+    pr_upgrade:"الترقية إلى Pro",pr_inst:"المؤسسات",pr_inst_desc:"للجامعات والفرق",
+    pr_custom:"مخصص",pr_inst_note:"تسعير مرن لمؤسستك",pr_contact:"تواصل مع المبيعات",
+    ct_eyebrow:"تواصل معنا",ct_title:"ابقَ على تواصل",
+    ct_sub:"هل لديك سؤال أو استفسار عن شراكة أو تحتاج إلى دعم؟ يسعدنا سماعك.",
+    ct_email_label:"راسلنا مباشرة",ct_social_label:"تابعنا",
+    cta_title:"البحث يستحق معيارًا أعلى.",
+    cta_sub:"انضم إلى آلاف الطلاب والباحثين الذين يثقون بـ DataUnivers للتحقق من أعمالهم الأكاديمية.",
+    cta_btn:"ابدأ مجانًا",
+    footer_desc:"منصة التحقق من الأبحاث الأكاديمية",
+    footer_product:"المنتج",footer_features:"المميزات",footer_solutions:"الحلول",
+    footer_pricing:"الأسعار",footer_changelog:"سجل التغييرات",
+    footer_resources:"الموارد",footer_docs:"التوثيق",footer_api:"مرجع API",
+    footer_blog:"المدونة",footer_research:"البحث",
+    footer_company:"الشركة",footer_about:"من نحن",footer_careers:"الوظائف",
+    footer_press:"الصحافة",footer_legal:"القانونية",
+    footer_contact:"تواصل معنا",footer_email:"راسلنا",footer_linkedin:"لينكدإن",
+    footer_twitter:"تويتر / إكس",footer_instagram:"إنستغرام",
+    footer_copy:"© 2025 DataUnivers. جميع الحقوق محفوظة.",
+    footer_privacy:"سياسة الخصوصية",footer_terms:"شروط الخدمة"
+  }
+};
+
+function setLang(lang){
+  const t=T[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(t[k]!==undefined) el.innerHTML=t[k];
+  });
+  const rtl=lang==='ar';
+  document.documentElement.setAttribute('dir',rtl?'rtl':'ltr');
+  document.documentElement.setAttribute('lang',lang);
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang);
+  });
+}
+
+function toggleTheme(){
+  const html=document.documentElement;
+  const dark=html.getAttribute('data-theme')==='dark';
+  html.setAttribute('data-theme',dark?'light':'dark');
+  document.getElementById('themeBtn').textContent=dark?'🌙':'☀️';
+}
+
+/* Mouse parallax on thesis scene */
+const scene=document.getElementById('thesisScene');
+if(scene){
+  document.addEventListener('mousemove',e=>{
+    const cx=window.innerWidth/2, cy=window.innerHeight/2;
+    const dx=(e.clientX-cx)/cx, dy=(e.clientY-cy)/cy;
+    const ry=-6+dx*8, rx=4-dy*4;
+    scene.style.animationPlayState='paused';
+    scene.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
+  });
+  document.addEventListener('mouseleave',()=>{
+    scene.style.animationPlayState='running';
+    scene.style.transform='';
+  });
+}
+
+setLang('en');
+</script>
+</body>
+</html>
