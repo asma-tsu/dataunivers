@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DataUnivers — Settings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy:       #0f2d5e;
+  --navy-deep:  #091e42;
+  --navy-mid:   #1a3d72;
+  --navy-light: #2a5298;
+  --navy-mist:  #e8eef7;
+  --gold:       #c9a84c;
+  --gold-light: #e8c96e;
+  --gold-dark:  #a07830;
+  --cream:      #faf8f4;
+  --cream2:     #f2ede4;
+  --white:      #ffffff;
+  --text:       #0f1e35;
+  --text-mid:   #3a4d6b;
+  --text-muted: #6b7a96;
+  --text-light: #9aa4b8;
+  --border:     #dde3ef;
+  --border-soft:#edf0f7;
+  --tag-bg:     #eef1f9;
+  --surface:    #ffffff;
+  --surface2:   #f5f7fc;
+  --nav-bg:     rgba(250,248,244,0.97);
+  --sidebar-bg: #ffffff;
+  --green:      #1a7a4a;
+  --green-bg:   #eaf5ee;
+  --amber:      #b45309;
+  --amber-bg:   #fef3e2;
+  --red:        #c0392b;
+  --red-bg:     #fdecea;
+}
+[data-theme="dark"] {
+  --cream:      #0d1b33;
+  --cream2:     #111f3a;
+  --white:      #152240;
+  --text:       #dde6f5;
+  --text-mid:   #9ab0d0;
+  --text-muted: #6a85aa;
+  --text-light: #4a6080;
+  --border:     #1e3358;
+  --border-soft:#162844;
+  --tag-bg:     #162540;
+  --surface:    #152240;
+  --surface2:   #1a2b4a;
+  --nav-bg:     rgba(13,27,51,0.97);
+  --sidebar-bg: #0f1e38;
+  --navy-mist:  #162540;
+  --green-bg:   #0e2a1c;
+  --amber-bg:   #2a1a06;
+  --red-bg:     #2a0e0c;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.6;
+  transition:background .3s,color .3s;
+  display:flex;flex-direction:column;min-height:100vh;
+}
+.app-shell{display:flex;flex:1;min-height:0;}
+
+/* ── TOPBAR ── */
+.topbar{
+  position:sticky;top:0;z-index:200;
+  background:var(--nav-bg);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:0 1.5rem 0 0;
+  display:flex;align-items:center;justify-content:space-between;
+  height:58px;transition:background .3s;
+}
+.topbar-left{
+  display:flex;align-items:center;
+  width:230px;flex-shrink:0;
+  border-right:1px solid var(--border);
+  height:100%;padding:0 1.5rem;
+}
+.topbar-logo{
+  display:flex;align-items:center;gap:9px;
+  text-decoration:none;
+  font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--navy);
+}
+[data-theme="dark"] .topbar-logo{color:var(--text);}
+.logo-mark{width:30px;height:30px;flex-shrink:0;}
+.topbar-search{
+  flex:1;display:flex;align-items:center;gap:10px;
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;padding:7px 14px;max-width:340px;margin:0 1.5rem;
+}
+.topbar-search input{background:none;border:none;outline:none;font-family:inherit;font-size:.835rem;color:var(--text);width:100%;}
+.topbar-search input::placeholder{color:var(--text-light);}
+.topbar-search svg{width:15px;height:15px;stroke:var(--text-muted);flex-shrink:0;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.topbar-right{display:flex;align-items:center;gap:.65rem;}
+.icon-btn{
+  width:34px;height:34px;border-radius:8px;
+  background:var(--surface2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;position:relative;transition:background .2s;
+}
+.icon-btn:hover{background:var(--navy-mist);}
+.icon-btn svg{width:16px;height:16px;stroke:var(--text-muted);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.notif-dot{position:absolute;top:6px;right:6px;width:7px;height:7px;border-radius:50%;background:var(--gold);border:1.5px solid var(--surface);}
+.lang-switcher{display:flex;gap:2px;background:var(--surface2);border-radius:7px;padding:2px;border:1px solid var(--border);}
+.lang-btn{background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:.72rem;font-weight:700;padding:4px 9px;border-radius:5px;font-family:inherit;transition:all .2s;letter-spacing:.04em;}
+.lang-btn.active{background:var(--navy);color:#fff;box-shadow:0 1px 4px rgba(15,45,94,.3);}
+.theme-toggle{background:var(--surface2);border:1px solid var(--border);border-radius:7px;width:34px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .2s;}
+.theme-toggle:hover{background:var(--navy-mist);}
+.avatar-btn{
+  width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;font-weight:700;cursor:pointer;letter-spacing:.03em;flex-shrink:0;
+  border:2px solid var(--border);transition:transform .2s;
+}
+.avatar-btn:hover{transform:scale(1.06);}
+.btn-new-analysis{
+  background:var(--navy);color:#fff;border:none;border-radius:8px;padding:8px 18px;
+  font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit;
+  display:flex;align-items:center;gap:7px;
+  transition:background .2s,transform .15s;
+  box-shadow:0 2px 8px rgba(15,45,94,.25);white-space:nowrap;
+}
+.btn-new-analysis:hover{background:var(--navy-mid);transform:translateY(-1px);}
+.btn-new-analysis svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  width:230px;flex-shrink:0;background:var(--sidebar-bg);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;padding:1.5rem 0;
+  position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto;
+  transition:background .3s;
+}
+.sidebar-section{margin-bottom:1.75rem;}
+.sidebar-label{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-light);padding:0 1.4rem;margin-bottom:.6rem;}
+.sidebar-nav{list-style:none;}
+.sidebar-nav li a{
+  display:flex;align-items:center;gap:11px;padding:9px 1.4rem;
+  text-decoration:none;font-size:.845rem;font-weight:500;color:var(--text-muted);
+  border-left:2.5px solid transparent;transition:color .2s,background .2s,border-color .2s;
+}
+.sidebar-nav li a:hover{color:var(--navy);background:var(--navy-mist);border-left-color:var(--border);}
+.sidebar-nav li a.active{color:var(--navy);background:var(--navy-mist);border-left-color:var(--navy);font-weight:600;}
+[data-theme="dark"] .sidebar-nav li a:hover,
+[data-theme="dark"] .sidebar-nav li a.active{background:var(--surface2);color:var(--text);border-left-color:var(--gold);}
+.sidebar-nav li a svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.sidebar-bottom{margin-top:auto;border-top:1px solid var(--border);padding-top:1rem;}
+
+/* ── MAIN ── */
+.main{flex:1;min-width:0;overflow-y:auto;}
+.main-inner{max-width:1000px;padding:2.5rem;margin:0 auto;}
+
+/* ── PAGE HEADER ── */
+.page-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2.2rem;}
+.page-greeting h1{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;color:var(--navy);line-height:1.2;margin-bottom:4px;}
+[data-theme="dark"] .page-greeting h1{color:var(--text);}
+.page-greeting p{font-size:.84rem;color:var(--text-muted);}
+
+/* ── SETTINGS LAYOUT ── */
+.settings-shell{display:grid;grid-template-columns:220px 1fr;gap:1.5rem;align-items:start;}
+
+/* ── SETTINGS NAV ── */
+.settings-nav{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;
+  position:sticky;top:80px;
+}
+.settings-nav-section{padding:.75rem 0;}
+.settings-nav-section + .settings-nav-section{border-top:1px solid var(--border-soft);}
+.settings-nav-label{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-light);padding:.4rem 1.1rem .3rem;display:block;}
+.settings-nav a{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 1.1rem;text-decoration:none;
+  font-size:.825rem;font-weight:500;color:var(--text-muted);
+  border-left:2.5px solid transparent;
+  transition:color .2s,background .2s,border-color .2s;
+}
+.settings-nav a:hover{color:var(--navy);background:var(--navy-mist);border-left-color:var(--border);}
+.settings-nav a.active{color:var(--navy);background:var(--navy-mist);border-left-color:var(--navy);font-weight:600;}
+[data-theme="dark"] .settings-nav a:hover,
+[data-theme="dark"] .settings-nav a.active{background:var(--surface2);color:var(--text);border-left-color:var(--gold);}
+.settings-nav a svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+
+/* ── SETTINGS CONTENT ── */
+.settings-content{}
+.settings-section{display:none;}
+.settings-section.active{display:block;}
+
+/* ── CARD ── */
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:26px 24px;
+  transition:background .3s,border-color .3s;
+  margin-bottom:1.25rem;
+}
+.card:last-child{margin-bottom:0;}
+.card-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+[data-theme="dark"] .card-title{color:var(--text);}
+.card-sub{font-size:.78rem;color:var(--text-muted);margin-bottom:1.25rem;line-height:1.6;}
+
+.eyebrow{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:.55rem;}
+[data-theme="dark"] .eyebrow{color:var(--gold);}
+
+/* ── FIELDS ── */
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.field-grid.full{grid-template-columns:1fr;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:.74rem;font-weight:600;color:var(--text-muted);margin-bottom:6px;letter-spacing:.02em;}
+.field input,.field select,.field textarea{
+  width:100%;padding:10px 14px;
+  border:1.5px solid var(--border);border-radius:8px;
+  font-family:inherit;font-size:.84rem;color:var(--text);
+  background:var(--surface2);outline:none;
+  transition:border-color .2s,background .2s;
+}
+[data-theme="dark"] .field input,[data-theme="dark"] .field select,[data-theme="dark"] .field textarea{background:var(--cream2);}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--navy-light);}
+.field textarea{resize:vertical;min-height:80px;font-family:inherit;}
+.field-hint{font-size:.68rem;color:var(--text-light);margin-top:5px;}
+.field-row{display:flex;align-items:center;gap:10px;}
+.field-row .field{flex:1;margin-bottom:0;}
+
+/* ── TOGGLE ── */
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border-soft);}
+.toggle-row:last-child{border-bottom:none;}
+.toggle-row-info{flex:1;min-width:0;padding-right:16px;}
+.toggle-row-title{font-size:.83rem;font-weight:600;color:var(--text);margin-bottom:2px;}
+.toggle-row-desc{font-size:.73rem;color:var(--text-muted);line-height:1.5;}
+.switch{position:relative;width:42px;height:24px;flex-shrink:0;}
+.switch input{opacity:0;width:0;height:0;position:absolute;}
+.switch-track{position:absolute;inset:0;border-radius:24px;background:var(--border);cursor:pointer;transition:background .2s;}
+.switch-track::before{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .2s;}
+.switch input:checked + .switch-track{background:var(--navy);}
+.switch input:checked + .switch-track::before{transform:translateX(18px);}
+[data-theme="dark"] .switch input:checked + .switch-track{background:var(--gold);}
+
+/* ── DIVIDER ── */
+.divider-line{height:1px;background:var(--border-soft);margin:1.4rem 0;}
+
+/* ── BUTTONS ── */
+.btn-outline-sm{
+  background:none;border:1.5px solid var(--border);border-radius:7px;
+  padding:9px 18px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;
+  color:var(--text-mid);transition:border-color .2s,background .2s;
+  display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+}
+.btn-outline-sm:hover{border-color:var(--navy);background:var(--navy-mist);}
+.btn-outline-sm svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.btn-filled-sm{
+  background:var(--navy);color:#fff;border:none;border-radius:7px;
+  padding:9px 20px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  box-shadow:0 2px 8px rgba(15,45,94,.25);transition:background .2s,transform .15s;
+}
+.btn-filled-sm:hover{background:var(--navy-mid);transform:translateY(-1px);}
+.btn-filled-sm svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;}
+.btn-danger{background:var(--red);color:#fff;border:none;border-radius:7px;padding:9px 18px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.btn-danger:hover{opacity:.88;}
+
+/* ── BADGE ── */
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:.67rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.04em;white-space:nowrap;}
+.badge-green{background:var(--green-bg);color:var(--green);}
+.badge-gold{background:var(--amber-bg);color:var(--amber);}
+.badge-navy{background:var(--navy-mist);color:var(--navy);}
+[data-theme="dark"] .badge-navy{background:var(--surface2);color:var(--text-mid);}
+.badge-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0;}
+
+/* ── CONNECT ROW ── */
+.connect-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-soft);}
+.connect-row:last-child{border-bottom:none;}
+.connect-icon{width:36px;height:36px;border-radius:9px;flex-shrink:0;background:var(--navy-mist);display:flex;align-items:center;justify-content:center;border:1px solid rgba(15,45,94,.08);}
+[data-theme="dark"] .connect-icon{background:var(--surface2);}
+.connect-icon svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+[data-theme="dark"] .connect-icon svg{stroke:var(--gold);}
+.connect-info{flex:1;min-width:0;}
+.connect-name{font-size:.82rem;font-weight:600;color:var(--text);}
+.connect-status{font-size:.71rem;color:var(--text-muted);}
+
+/* ── COLOR SWATCH ── */
+.swatch-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1rem;}
+.swatch{
+  width:34px;height:34px;border-radius:50%;cursor:pointer;
+  border:2.5px solid transparent;transition:transform .15s,border-color .15s;
+  position:relative;
+}
+.swatch:hover{transform:scale(1.12);}
+.swatch.active{border-color:var(--navy);}
+[data-theme="dark"] .swatch.active{border-color:var(--gold);}
+.swatch.active::after{content:'';position:absolute;inset:3px;border-radius:50%;border:2px solid #fff;}
+
+/* ── FONT PREVIEW ── */
+.font-option{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 14px;border-radius:10px;
+  border:1.5px solid var(--border);cursor:pointer;
+  margin-bottom:8px;transition:border-color .2s,background .2s;
+}
+.font-option:hover{background:var(--navy-mist);border-color:var(--navy-light);}
+.font-option.active{border-color:var(--navy);background:var(--navy-mist);}
+[data-theme="dark"] .font-option.active{border-color:var(--gold);background:var(--surface2);}
+.font-preview{font-size:1.3rem;font-weight:600;color:var(--navy);min-width:90px;}
+[data-theme="dark"] .font-preview{color:var(--text);}
+.font-info{flex:1;}
+.font-name{font-size:.83rem;font-weight:600;color:var(--text);}
+.font-desc{font-size:.71rem;color:var(--text-muted);}
+.font-check{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.font-option.active .font-check{background:var(--navy);border-color:var(--navy);}
+[data-theme="dark"] .font-option.active .font-check{background:var(--gold);border-color:var(--gold);}
+.font-check svg{width:10px;height:10px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+
+/* ── DENSITY OPTION ── */
+.density-row{display:flex;gap:10px;margin-bottom:1rem;}
+.density-opt{
+  flex:1;padding:14px 12px;border-radius:10px;
+  border:1.5px solid var(--border);cursor:pointer;text-align:center;
+  transition:border-color .2s,background .2s;
+}
+.density-opt:hover{background:var(--navy-mist);}
+.density-opt.active{border-color:var(--navy);background:var(--navy-mist);}
+[data-theme="dark"] .density-opt.active{border-color:var(--gold);background:var(--surface2);}
+.density-visual{display:flex;flex-direction:column;gap:var(--dg);margin-bottom:8px;align-items:center;}
+.density-bar{height:4px;background:var(--border);border-radius:2px;}
+.density-name{font-size:.78rem;font-weight:600;color:var(--text);}
+.density-desc{font-size:.68rem;color:var(--text-muted);}
+
+/* ── LANGUAGE CARD ── */
+.lang-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.25rem;}
+.lang-opt{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  padding:16px 10px;border-radius:10px;
+  border:1.5px solid var(--border);cursor:pointer;
+  transition:border-color .2s,background .2s;text-align:center;
+}
+.lang-opt:hover{background:var(--navy-mist);}
+.lang-opt.active{border-color:var(--navy);background:var(--navy-mist);}
+[data-theme="dark"] .lang-opt.active{border-color:var(--gold);background:var(--surface2);}
+.lang-flag{font-size:1.5rem;line-height:1;}
+.lang-opt-name{font-size:.8rem;font-weight:600;color:var(--text);}
+.lang-opt-native{font-size:.7rem;color:var(--text-muted);}
+
+/* ── SHORTCUT ROW ── */
+.shortcut-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border-soft);}
+.shortcut-row:last-child{border-bottom:none;}
+.shortcut-label{font-size:.82rem;color:var(--text-mid);}
+.shortcut-keys{display:flex;align-items:center;gap:4px;}
+.key{
+  font-size:.7rem;font-weight:700;color:var(--text-muted);
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:5px;padding:3px 8px;font-family:'Inter',monospace;
+  letter-spacing:.04em;
+}
+
+/* ── EXPORT ROW ── */
+.export-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border-soft);}
+.export-row:last-child{border-bottom:none;}
+.export-info{flex:1;min-width:0;padding-right:16px;}
+.export-title{font-size:.83rem;font-weight:600;color:var(--text);margin-bottom:2px;}
+.export-desc{font-size:.72rem;color:var(--text-muted);}
+
+/* ── DANGER ZONE ── */
+.danger-zone{border:1.5px solid #f5c6c4;border-radius:12px;padding:20px;background:var(--red-bg);}
+.danger-title{font-size:.85rem;font-weight:700;color:var(--red);margin-bottom:4px;}
+.danger-desc{font-size:.74rem;color:var(--text-mid);margin-bottom:14px;line-height:1.55;}
+.danger-actions{display:flex;gap:10px;flex-wrap:wrap;}
+
+/* ── PROGRESS BAR ── */
+.bar-track{background:var(--border-soft);border-radius:6px;height:6px;overflow:hidden;margin-top:6px;}
+.bar-fill{height:100%;border-radius:6px;}
+.bar-navy{background:linear-gradient(90deg,var(--navy-light),var(--navy));}
+.bar-gold{background:linear-gradient(90deg,var(--gold-light),var(--gold));}
+.bar-green{background:linear-gradient(90deg,#34d399,#059669);}
+.bar-red{background:linear-gradient(90deg,#f87171,#dc2626);}
+
+/* ── API KEY ROW ── */
+.apikey-row{
+  display:flex;align-items:center;gap:10px;
+  background:var(--surface2);border:1.5px solid var(--border);
+  border-radius:9px;padding:11px 14px;margin-bottom:10px;
+}
+.apikey-name{font-size:.82rem;font-weight:600;color:var(--text);flex:1;}
+.apikey-value{font-size:.75rem;color:var(--text-muted);font-family:monospace;letter-spacing:.06em;flex:2;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.apikey-meta{font-size:.68rem;color:var(--text-light);white-space:nowrap;}
+.apikey-actions{display:flex;gap:6px;flex-shrink:0;}
+.icon-action{width:28px;height:28px;border-radius:6px;background:none;border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.icon-action:hover{background:var(--navy-mist);}
+.icon-action svg{width:13px;height:13px;stroke:var(--text-muted);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+
+/* ── WEBHOOK TABLE ── */
+.wh-table{width:100%;border-collapse:collapse;}
+.wh-table th{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-light);padding:0 0 10px;text-align:left;border-bottom:1px solid var(--border-soft);}
+.wh-table td{font-size:.8rem;color:var(--text-mid);padding:11px 0;border-bottom:1px solid var(--border-soft);}
+.wh-table tr:last-child td{border-bottom:none;}
+.wh-url{font-family:monospace;font-size:.74rem;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:220px;}
+
+/* ── APPEARANCE PREVIEW ── */
+.appearance-preview{
+  background:var(--navy-mist);border:1px solid var(--border);
+  border-radius:10px;padding:18px;margin-bottom:1.25rem;
+  display:flex;align-items:center;gap:16px;
+}
+[data-theme="dark"] .appearance-preview{background:var(--surface2);}
+.ap-mini-nav{background:var(--navy);border-radius:7px;width:48px;height:72px;display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:6px;flex-shrink:0;}
+.ap-nav-dot{width:18px;height:4px;border-radius:2px;background:rgba(255,255,255,.25);}
+.ap-nav-dot.active{background:rgba(255,255,255,.8);}
+.ap-content{flex:1;}
+.ap-title{font-size:.7rem;font-weight:700;color:var(--navy);margin-bottom:5px;}
+[data-theme="dark"] .ap-title{color:var(--text);}
+.ap-bars{display:flex;flex-direction:column;gap:4px;}
+.ap-bar{height:5px;border-radius:2px;background:var(--border);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .settings-shell{grid-template-columns:1fr;}
+  .settings-nav{position:static;display:flex;flex-wrap:wrap;padding:.5rem;}
+  .settings-nav-section{padding:.3rem;border:none;}
+  .settings-nav-label{display:none;}
+  .settings-nav a{border-left:none;border-radius:7px;padding:7px 12px;font-size:.78rem;}
+  .settings-nav a.active{border-left:none;background:var(--navy-mist);}
+}
+@media(max-width:760px){
+  .sidebar{display:none;}
+  .main-inner{padding:1.5rem;}
+  .topbar-left{width:auto;}
+  .topbar-search{display:none;}
+  .field-grid{grid-template-columns:1fr;}
+  .lang-grid{grid-template-columns:1fr 1fr;}
+  .density-row{flex-direction:column;}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+
+[dir="rtl"] .sidebar-nav li a{border-left:none;border-right:2.5px solid transparent;}
+[dir="rtl"] .sidebar-nav li a:hover,[dir="rtl"] .sidebar-nav li a.active{border-right-color:var(--navy);border-left-color:transparent;}
+[dir="rtl"] .settings-nav a{border-left:none;border-right:2.5px solid transparent;}
+[dir="rtl"] .settings-nav a.active{border-right-color:var(--navy);}
+[dir="rtl"] .toggle-row-info{padding-right:0;padding-left:16px;}
+[dir="rtl"] .switch input:checked + .switch-track::before{transform:translateX(-18px);}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ TOPBAR ══════════════════════ -->
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="../index.html" class="topbar-logo">
+      <svg class="logo-mark" viewBox="0 0 34 34" fill="none">
+        <path d="M17 8 C17 8 12 6 10 9 C8.5 11 9 13 10 14 C8 14.5 7 16 7.5 18 C8 20 10 21 12 20.5 C12 22.5 13.5 24 15.5 24 C16.5 24 17 23.5 17 23.5" stroke="#0f2d5e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 8 C17 8 22 6 24 9 C25.5 11 25 13 24 14 C26 14.5 27 16 26.5 18 C26 20 24 21 22 20.5 C22 22.5 20.5 24 18.5 24 C17.5 24 17 23.5 17 23.5" stroke="#0f2d5e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="17" y1="8" x2="17" y2="23.5" stroke="#0f2d5e" stroke-width="1.2" stroke-dasharray="2 2"/>
+        <circle cx="22.5" cy="26.5" r="4" stroke="#c9a84c" stroke-width="1.7"/>
+        <line x1="25.5" y1="29.5" x2="28" y2="32" stroke="#c9a84c" stroke-width="1.7" stroke-linecap="round"/>
+        <circle cx="21" cy="25" r=".9" fill="#c9a84c" opacity=".6"/>
+      </svg>
+      DATAUNIVERS
+    </a>
+  </div>
+
+  <div class="topbar-search">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" placeholder="Search analyses, reports…" id="searchInput"/>
+  </div>
+
+  <div class="topbar-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('ar')">AR</button>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <div class="icon-btn" title="Notifications">
+      <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <div class="notif-dot"></div>
+    </div>
+    <div class="avatar-btn" title="Sara Amrani">SA</div>
+    <button class="btn-new-analysis" onclick="location.href='dash.html'">
+      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      <span data-i18n="new_analysis">New Analysis</span>
+    </button>
+  </div>
+</header>
+
+<!-- ══════════════════════ SHELL ══════════════════════ -->
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label" data-i18n="sb_main">Main</div>
+      <ul class="sidebar-nav">
+        <li><a href="dash.html"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span data-i18n="sb_dashboard">Dashboard</span></a></li>
+        <li><a href="dash.html"><svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg><span data-i18n="sb_upload">Upload Document</span></a></li>
+        <li><a href="dash.html"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span data-i18n="sb_analyses">Analyses</span></a></li>
+        <li><a href="dash.html"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span data-i18n="sb_reports">Reports</span></a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label" data-i18n="sb_account">Account</div>
+      <ul class="sidebar-nav">
+        <li><a href="profile.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span data-i18n="sb_profile">Profile</span></a></li>
+        <li><a href="settings.html" class="active"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span data-i18n="sb_settings">Settings</span></a></li>
+      </ul>
+    </div>
+    <div class="sidebar-bottom">
+      <ul class="sidebar-nav">
+        <li><a href="index.html" style="color:var(--text-light);"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span data-i18n="sb_signout">Sign out</span></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ══════════════════════ MAIN ══════════════════════ -->
+  <main class="main">
+    <div class="main-inner">
+
+      <div class="page-header">
+        <div class="page-greeting">
+          <h1 data-i18n="settings_title">Settings</h1>
+          <p data-i18n="settings_sub">Manage your workspace, appearance, integrations, and advanced preferences.</p>
+        </div>
+      </div>
+
+      <div class="settings-shell">
+
+        <!-- ── SETTINGS NAV ── -->
+        <nav class="settings-nav">
+          <div class="settings-nav-section">
+            <span class="settings-nav-label" data-i18n="snav_workspace">Workspace</span>
+            <a href="#" class="active" data-section="appearance" onclick="showSection('appearance');return false;">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              <span data-i18n="snav_appearance">Appearance</span>
+            </a>
+            <a href="#" data-section="language" onclick="showSection('language');return false;">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span data-i18n="snav_language">Language &amp; Region</span>
+            </a>
+            <a href="#" data-section="accessibility" onclick="showSection('accessibility');return false;">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+              <span data-i18n="snav_accessibility">Accessibility</span>
+            </a>
+            <a href="#" data-section="keyboard" onclick="showSection('keyboard');return false;">
+              <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg>
+              <span data-i18n="snav_keyboard">Keyboard Shortcuts</span>
+            </a>
+          </div>
+          <div class="settings-nav-section">
+            <span class="settings-nav-label" data-i18n="snav_analysis">Analysis</span>
+            <a href="#" data-section="analysis" onclick="showSection('analysis');return false;">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <span data-i18n="snav_analysis_prefs">Analysis Preferences</span>
+            </a>
+            <a href="#" data-section="reports" onclick="showSection('reports');return false;">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span data-i18n="snav_reports">Report Format</span>
+            </a>
+          </div>
+          <div class="settings-nav-section">
+            <span class="settings-nav-label" data-i18n="snav_integrations">Integrations</span>
+            <a href="#" data-section="api" onclick="showSection('api');return false;">
+              <svg viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+              <span data-i18n="snav_api">API &amp; Webhooks</span>
+            </a>
+            <a href="#" data-section="storage" onclick="showSection('storage');return false;">
+              <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              <span data-i18n="snav_storage">Storage &amp; Export</span>
+            </a>
+          </div>
+          <div class="settings-nav-section">
+            <span class="settings-nav-label" data-i18n="snav_advanced">Advanced</span>
+            <a href="#" data-section="advanced" onclick="showSection('advanced');return false;">
+              <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+              <span data-i18n="snav_advanced_settings">Advanced</span>
+            </a>
+          </div>
+        </nav>
+
+        <!-- ══════════════════════════════════════
+             SETTINGS SECTIONS
+        ══════════════════════════════════════ -->
+        <div class="settings-content">
+
+          <!-- ── APPEARANCE ── -->
+          <div class="settings-section active" id="section-appearance">
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="app_theme_eyebrow">THEME</div>
+              <div class="card-title" data-i18n="app_theme_title">Interface theme</div>
+              <div class="card-sub" data-i18n="app_theme_sub">Choose how DataUnivers looks for you. Applies across all pages.</div>
+
+              <div class="appearance-preview" id="appPreview">
+                <div class="ap-mini-nav">
+                  <div class="ap-nav-dot active"></div>
+                  <div class="ap-nav-dot"></div>
+                  <div class="ap-nav-dot"></div>
+                  <div class="ap-nav-dot"></div>
+                </div>
+                <div class="ap-content">
+                  <div class="ap-title" data-i18n="app_preview_label">Preview</div>
+                  <div class="ap-bars">
+                    <div class="ap-bar" style="width:80%"></div>
+                    <div class="ap-bar" style="width:55%"></div>
+                    <div class="ap-bar" style="width:70%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display:flex;gap:10px;margin-bottom:1.25rem;">
+                <div class="density-opt active" id="theme-light" onclick="setThemeOpt('light')" style="flex:1;display:flex;align-items:center;gap:10px;padding:12px 14px;">
+                  <span style="font-size:1.2rem;">☀️</span>
+                  <div>
+                    <div class="density-name" data-i18n="theme_light">Light</div>
+                    <div class="density-desc" data-i18n="theme_light_desc">Clean white interface</div>
+                  </div>
+                </div>
+                <div class="density-opt" id="theme-dark" onclick="setThemeOpt('dark')" style="flex:1;display:flex;align-items:center;gap:10px;padding:12px 14px;">
+                  <span style="font-size:1.2rem;">🌙</span>
+                  <div>
+                    <div class="density-name" data-i18n="theme_dark">Dark</div>
+                    <div class="density-desc" data-i18n="theme_dark_desc">Easy on the eyes</div>
+                  </div>
+                </div>
+                <div class="density-opt" id="theme-auto" onclick="setThemeOpt('auto')" style="flex:1;display:flex;align-items:center;gap:10px;padding:12px 14px;">
+                  <span style="font-size:1.2rem;">⚙️</span>
+                  <div>
+                    <div class="density-name" data-i18n="theme_auto">Auto</div>
+                    <div class="density-desc" data-i18n="theme_auto_desc">Follows your system</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="app_density_eyebrow">DENSITY</div>
+              <div class="card-title" data-i18n="app_density_title">Information density</div>
+              <div class="card-sub" data-i18n="app_density_sub">Control how compact or spacious the interface feels.</div>
+              <div class="density-row">
+                <div class="density-opt active" id="density-comfortable" onclick="setDensity('comfortable')">
+                  <div class="density-visual" style="--dg:6px;">
+                    <div class="density-bar" style="width:60%"></div>
+                    <div class="density-bar" style="width:40%"></div>
+                    <div class="density-bar" style="width:70%"></div>
+                  </div>
+                  <div class="density-name" data-i18n="density_comfortable">Comfortable</div>
+                  <div class="density-desc" data-i18n="density_comfortable_desc">More spacing</div>
+                </div>
+                <div class="density-opt" id="density-compact" onclick="setDensity('compact')">
+                  <div class="density-visual" style="--dg:3px;">
+                    <div class="density-bar" style="width:60%"></div>
+                    <div class="density-bar" style="width:40%"></div>
+                    <div class="density-bar" style="width:70%"></div>
+                    <div class="density-bar" style="width:55%"></div>
+                    <div class="density-bar" style="width:30%"></div>
+                  </div>
+                  <div class="density-name" data-i18n="density_compact">Compact</div>
+                  <div class="density-desc" data-i18n="density_compact_desc">More content</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="app_font_eyebrow">TYPOGRAPHY</div>
+              <div class="card-title" data-i18n="app_font_title">Display font</div>
+              <div class="card-sub" data-i18n="app_font_sub">Choose the typeface used for headings and titles.</div>
+              <div class="font-option active" id="font-playfair" onclick="setFont('playfair')">
+                <div class="font-preview" style="font-family:'Playfair Display',serif;">Aa</div>
+                <div class="font-info">
+                  <div class="font-name">Playfair Display</div>
+                  <div class="font-desc" data-i18n="font_playfair_desc">Elegant serif — default</div>
+                </div>
+                <div class="font-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </div>
+              <div class="font-option" id="font-garamond" onclick="setFont('garamond')">
+                <div class="font-preview" style="font-family:'EB Garamond',serif;">Aa</div>
+                <div class="font-info">
+                  <div class="font-name">EB Garamond</div>
+                  <div class="font-desc" data-i18n="font_garamond_desc">Classic academic serif</div>
+                </div>
+                <div class="font-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </div>
+              <div class="font-option" id="font-inter" onclick="setFont('inter')">
+                <div class="font-preview" style="font-family:'Inter',sans-serif;font-weight:700;">Aa</div>
+                <div class="font-info">
+                  <div class="font-name">Inter</div>
+                  <div class="font-desc" data-i18n="font_inter_desc">Modern sans-serif</div>
+                </div>
+                <div class="font-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="app_accent_eyebrow">ACCENT COLOR</div>
+              <div class="card-title" data-i18n="app_accent_title">Accent color</div>
+              <div class="card-sub" data-i18n="app_accent_sub">Used for highlights, active states, and key UI elements.</div>
+              <div class="swatch-row">
+                <div class="swatch active" style="background:#0f2d5e;" onclick="setAccent(this)" title="Navy" data-color="navy"></div>
+                <div class="swatch" style="background:#c9a84c;" onclick="setAccent(this)" title="Gold" data-color="gold"></div>
+                <div class="swatch" style="background:#1a7a4a;" onclick="setAccent(this)" title="Green" data-color="green"></div>
+                <div class="swatch" style="background:#7c3aed;" onclick="setAccent(this)" title="Violet" data-color="violet"></div>
+                <div class="swatch" style="background:#0e7490;" onclick="setAccent(this)" title="Teal" data-color="teal"></div>
+                <div class="swatch" style="background:#b91c1c;" onclick="setAccent(this)" title="Red" data-color="red"></div>
+                <div class="swatch" style="background:#374151;" onclick="setAccent(this)" title="Slate" data-color="slate"></div>
+              </div>
+              <div style="font-size:.73rem;color:var(--text-muted);" data-i18n="app_accent_note">Accent color updates active states, sidebar highlights, and button fills.</div>
+            </div>
+
+          </div><!-- /appearance -->
+
+          <!-- ── LANGUAGE & REGION ── -->
+          <div class="settings-section" id="section-language">
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="lang_eyebrow">INTERFACE LANGUAGE</div>
+              <div class="card-title" data-i18n="lang_title">Language</div>
+              <div class="card-sub" data-i18n="lang_sub">The language used across all menus, labels, and interface text.</div>
+              <div class="lang-grid">
+                <div class="lang-opt active" id="lang-en" onclick="setLangOpt('en')">
+                  <div class="lang-flag">🇬🇧</div>
+                  <div class="lang-opt-name">English</div>
+                  <div class="lang-opt-native">English</div>
+                </div>
+                <div class="lang-opt" id="lang-fr" onclick="setLangOpt('fr')">
+                  <div class="lang-flag">🇫🇷</div>
+                  <div class="lang-opt-name">Français</div>
+                  <div class="lang-opt-native">French</div>
+                </div>
+                <div class="lang-opt" id="lang-ar" onclick="setLangOpt('ar')">
+                  <div class="lang-flag">🇩🇿</div>
+                  <div class="lang-opt-name">العربية</div>
+                  <div class="lang-opt-native">Arabic</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="region_eyebrow">DATE &amp; TIME</div>
+              <div class="card-title" data-i18n="region_title">Regional format</div>
+              <div class="card-sub" data-i18n="region_sub">Choose how dates, times, and numbers are displayed.</div>
+              <div class="field-grid">
+                <div class="field">
+                  <label data-i18n="lbl_timezone">Timezone</label>
+                  <select>
+                    <option>UTC+01:00 — Central European Time</option>
+                    <option>UTC+00:00 — Greenwich Mean Time</option>
+                    <option>UTC+03:00 — Arabia Standard Time</option>
+                    <option>UTC-05:00 — Eastern Standard Time</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label data-i18n="lbl_date_format">Date format</label>
+                  <select>
+                    <option>DD / MM / YYYY</option>
+                    <option>MM / DD / YYYY</option>
+                    <option>YYYY-MM-DD</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field-grid">
+                <div class="field">
+                  <label data-i18n="lbl_time_format">Time format</label>
+                  <select>
+                    <option data-i18n="time_24h">24-hour (14:30)</option>
+                    <option data-i18n="time_12h">12-hour (2:30 PM)</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label data-i18n="lbl_first_day">First day of week</label>
+                  <select>
+                    <option data-i18n="day_monday">Monday</option>
+                    <option data-i18n="day_sunday">Sunday</option>
+                    <option data-i18n="day_saturday">Saturday</option>
+                  </select>
+                </div>
+              </div>
+              <button class="btn-filled-sm"><span data-i18n="btn_save">Save changes</span></button>
+            </div>
+
+          </div><!-- /language -->
+
+          <!-- ── ACCESSIBILITY ── -->
+          <div class="settings-section" id="section-accessibility">
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="a11y_motion_eyebrow">MOTION &amp; ANIMATION</div>
+              <div class="card-title" data-i18n="a11y_motion_title">Motion preferences</div>
+              <div class="card-sub" data-i18n="a11y_motion_sub">Control transitions and animations throughout the interface.</div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="a11y_reduce_motion">Reduce motion</div>
+                  <div class="toggle-row-desc" data-i18n="a11y_reduce_motion_desc">Disables non-essential animations. Recommended for users with vestibular sensitivity.</div>
+                </div>
+                <label class="switch"><input type="checkbox"><span class="switch-track"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="a11y_smooth_scroll">Smooth scrolling</div>
+                  <div class="toggle-row-desc" data-i18n="a11y_smooth_scroll_desc">Enables animated scrolling when navigating the page.</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="a11y_display_eyebrow">DISPLAY</div>
+              <div class="card-title" data-i18n="a11y_display_title">Display adjustments</div>
+              <div class="card-sub" data-i18n="a11y_display_sub">Improve legibility and visual clarity.</div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="a11y_high_contrast">High contrast mode</div>
+                  <div class="toggle-row-desc" data-i18n="a11y_high_contrast_desc">Increases border contrast and text sharpness for better readability.</div>
+                </div>
+                <label class="switch"><input type="checkbox"><span class="switch-track"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="a11y_larger_text">Larger text</div>
+                  <div class="toggle-row-desc" data-i18n="a11y_larger_text_desc">Increases base font size from 14px to 16px across all interface elements.</div>
+                </div>
+                <label class="switch"><input type="checkbox"><span class="switch-track"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="a11y_focus_ring">Always show focus ring</div>
+                  <div class="toggle-row-desc" data-i18n="a11y_focus_ring_desc">Keeps keyboard focus indicators visible at all times, not just during keyboard navigation.</div>
+                </div>
+                <label class="switch"><input type="checkbox"><span class="switch-track"></span></label>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="a11y_reading_eyebrow">READING</div>
+              <div class="card-title" data-i18n="a11y_reading_title">Reading preferences</div>
+              <div class="card-sub" data-i18n="a11y_reading_sub">Optimise the presentation of document content and analysis reports.</div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="a11y_dyslexia">Dyslexia-friendly font</div>
+                  <div class="toggle-row-desc" data-i18n="a11y_dyslexia_desc">Uses OpenDyslexic as the body font for better letter recognition.</div>
+                </div>
+                <label class="switch"><input type="checkbox"><span class="switch-track"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="a11y_line_height">Increased line spacing</div>
+                  <div class="toggle-row-desc" data-i18n="a11y_line_height_desc">Raises paragraph line-height from 1.6 to 2.0 for easier reading.</div>
+                </div>
+                <label class="switch"><input type="checkbox"><span class="switch-track"></span></label>
+              </div>
+            </div>
+
+          </div><!-- /accessibility -->
+
+          <!-- ── KEYBOARD SHORTCUTS ── -->
+          <div class="settings-section" id="section-keyboard">
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="kb_global_eyebrow">GLOBAL</div>
+              <div class="card-title" data-i18n="kb_global_title">Global shortcuts</div>
+              <div class="card-sub" data-i18n="kb_global_sub">Available on any page of DataUnivers.</div>
+              <div class="shortcut-row"><span class="shortcut-label" data-i18n="kb_new_analysis">New analysis</span><div class="shortcut-keys"><span class="key">⌘</span><span class="key">N</span></div></div>
+              <div class="shortcut-row"><span class="shortcut-label" data-i18n="kb_search">Search</span><div class="shortcut-keys"><span class="key">⌘</span><span class="key">K</span></div></div>
+              <div class="shortcut-row"><span class="shortcut-label" data-i18n="kb_dashboard">Go to Dashboard</span><div class="shortcut-keys"><span class="key">G</span><span class="key">D</span></div></div>
+              <div class="shortcut-row"><span class="shortcut-label" data-i18n="kb_analyses">Go to Analyses</span><div class="shortcut-keys"><span class="key">G</span><span class="key">A</span></div></div>
+              <div class="shortcut-row"><span class="shortcut-label" data-i18n="kb_settings">Go to Settings</span><div class="shortcut-keys"><span class="key">G</span><span class="key">S</span></div></div>
+              <div class="shortcut-row"><span class="shortcut-label" data-i18n="kb_theme">Toggle theme</span><div class="shortcut-keys"><span class="key">⌘</span><span class="key">⇧</span><span class="key">T</span></div></div>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="kb_analysis_eyebrow">ANALYSIS VIEW</div>
+              <div class="card-title" data-i18n="kb_analysis_title">Analysis shortcuts</div>
+              <div class="card-sub" data-i18n="kb_analysis_sub">Available when viewing an analysis report.</div>
+              <div class="shortcut-row"><span class="shortcut-label" data-i18n="kb_download_report">Download report</span><div class="shortcut-keys"><span class="key">⌘</span><span class="key">D</span></div></div>
+              <div class="shortcut-row"><span class="shortcut-label" data-i18n="kb_share">Share</span><div class="shortcut-keys"><span class="key">⌘</span><span class="key">⇧</span><span class="key">S</span></div></div>
+              <div class="shortcut-row"><span class="shortcut-label" data-i18n="kb_next_issue">Next issue</span><div class="shortcut-keys"><span class="key">J</span></div></div>
+              <div class="shortcut-row"><span class="shortcut-label" data-i18n="kb_prev_issue">Previous issue</span><div class="shortcut-keys"><span class="key">K</span></div></div>
+              <div class="shortcut-row"><span class="shortcut-label" data-i18n="kb_close">Close / Back</span><div class="shortcut-keys"><span class="key">Esc</span></div></div>
+            </div>
+
+            <div class="card">
+              <div class="toggle-row" style="padding-top:0;">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="kb_enable">Enable keyboard shortcuts</div>
+                  <div class="toggle-row-desc" data-i18n="kb_enable_desc">Turn off if shortcuts conflict with your browser or other tools.</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+              </div>
+            </div>
+
+          </div><!-- /keyboard -->
+
+          <!-- ── ANALYSIS PREFERENCES ── -->
+          <div class="settings-section" id="section-analysis">
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="ap_defaults_eyebrow">DEFAULT MODULES</div>
+              <div class="card-title" data-i18n="ap_defaults_title">Default analysis modules</div>
+              <div class="card-sub" data-i18n="ap_defaults_sub">These modules will be pre-selected each time you start a new analysis. You can always adjust them per document.</div>
+              <div class="toggle-row"><div class="toggle-row-info"><div class="toggle-row-title" data-i18n="mod1_name">Academic Standards Check</div><div class="toggle-row-desc" data-i18n="mod1_desc">Verifies compliance with APA, MLA, IEEE, Harvard, and your institution's templates.</div></div><label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label></div>
+              <div class="toggle-row"><div class="toggle-row-info"><div class="toggle-row-title" data-i18n="mod2_name">Citation Analysis</div><div class="toggle-row-desc" data-i18n="mod2_desc">Detects missing references, evaluates citation quality, and flags inconsistencies.</div></div><label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label></div>
+              <div class="toggle-row"><div class="toggle-row-info"><div class="toggle-row-title" data-i18n="mod3_name">AI Content Detection</div><div class="toggle-row-desc" data-i18n="mod3_desc">Estimates the probability of AI-generated sections and highlights flagged passages.</div></div><label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label></div>
+              <div class="toggle-row"><div class="toggle-row-info"><div class="toggle-row-title" data-i18n="mod4_name">Plagiarism Screening</div><div class="toggle-row-desc" data-i18n="mod4_desc">Identifies suspicious similarities across global academic databases.</div></div><label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label></div>
+              <div class="toggle-row"><div class="toggle-row-info"><div class="toggle-row-title" data-i18n="mod5_name">Grammar &amp; Writing Quality</div><div class="toggle-row-desc" data-i18n="mod5_desc">Evaluates grammar, style clarity, and academic register.</div></div><label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label></div>
+              <div class="toggle-row"><div class="toggle-row-info"><div class="toggle-row-title" data-i18n="mod6_name">Methodology Validation</div><div class="toggle-row-desc" data-i18n="mod6_desc">Reviews the soundness and consistency of your research methodology section.</div></div><label class="switch"><input type="checkbox"><span class="switch-track"></span></label></div>
+              <div class="toggle-row"><div class="toggle-row-info"><div class="toggle-row-title" data-i18n="mod7_name">Research Structure Analysis</div><div class="toggle-row-desc" data-i18n="mod7_desc">Checks overall structure, argument flow, and chapter organization.</div></div><label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label></div>
+              <div class="toggle-row"><div class="toggle-row-info"><div class="toggle-row-title" data-i18n="mod8_name">Formatting Verification</div><div class="toggle-row-desc" data-i18n="mod8_desc">Ensures margins, headings, fonts, and spacing conform to academic standards.</div></div><label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label></div>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="ap_style_eyebrow">CITATION STYLE</div>
+              <div class="card-title" data-i18n="ap_style_title">Default citation style</div>
+              <div class="card-sub" data-i18n="ap_style_sub">Used as the primary style for citation analysis. Can be overridden per document.</div>
+              <div class="field-grid">
+                <div class="field">
+                  <label data-i18n="lbl_citation_style">Citation style</label>
+                  <select>
+                    <option>APA 7th Edition</option>
+                    <option>MLA 9th Edition</option>
+                    <option>IEEE</option>
+                    <option>Harvard</option>
+                    <option>Chicago 17th Edition</option>
+                    <option>Vancouver</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label data-i18n="lbl_doc_lang">Document language</label>
+                  <select>
+                    <option>English</option>
+                    <option>Français</option>
+                    <option>العربية</option>
+                  </select>
+                </div>
+              </div>
+              <div class="toggle-row" style="padding-top:.5rem;">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="ap_auto_detect">Auto-detect citation style</div>
+                  <div class="toggle-row-desc" data-i18n="ap_auto_detect_desc">Automatically identifies the citation style used in uploaded documents.</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="ap_sensitivity_eyebrow">DETECTION SENSITIVITY</div>
+              <div class="card-title" data-i18n="ap_sensitivity_title">AI detection sensitivity</div>
+              <div class="card-sub" data-i18n="ap_sensitivity_sub">Adjust the threshold for flagging AI-generated content. Higher sensitivity means more passages may be flagged.</div>
+              <div class="field-grid full">
+                <div class="field">
+                  <label data-i18n="lbl_ai_threshold">Sensitivity level</label>
+                  <select>
+                    <option data-i18n="sens_low">Low — flag only high-confidence sections</option>
+                    <option selected data-i18n="sens_medium">Medium — balanced detection (recommended)</option>
+                    <option data-i18n="sens_high">High — flag all suspicious passages</option>
+                  </select>
+                  <div class="field-hint" data-i18n="sens_hint">Medium is recommended for most academic contexts.</div>
+                </div>
+              </div>
+              <button class="btn-filled-sm"><span data-i18n="btn_save">Save changes</span></button>
+            </div>
+
+          </div><!-- /analysis -->
+
+          <!-- ── REPORT FORMAT ── -->
+          <div class="settings-section" id="section-reports">
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="rf_format_eyebrow">OUTPUT FORMAT</div>
+              <div class="card-title" data-i18n="rf_format_title">Default report format</div>
+              <div class="card-sub" data-i18n="rf_format_sub">Choose how your analysis reports are delivered and displayed.</div>
+              <div class="field-grid">
+                <div class="field">
+                  <label data-i18n="lbl_report_format">Download format</label>
+                  <select>
+                    <option>PDF — formatted report</option>
+                    <option>DOCX — editable Word document</option>
+                    <option>JSON — structured data</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label data-i18n="lbl_report_lang">Report language</label>
+                  <select>
+                    <option>Same as document</option>
+                    <option>English</option>
+                    <option>Français</option>
+                    <option>العربية</option>
+                  </select>
+                </div>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="rf_include_summary">Include executive summary</div>
+                  <div class="toggle-row-desc" data-i18n="rf_include_summary_desc">Adds a one-page overview at the start of every report.</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="rf_include_annotated">Include annotated document</div>
+                  <div class="toggle-row-desc" data-i18n="rf_include_annotated_desc">Attaches an annotated version of your document with inline comments.</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="rf_email_report">Email report on completion</div>
+                  <div class="toggle-row-desc" data-i18n="rf_email_report_desc">Automatically sends the report to your registered email when analysis finishes.</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="rf_branding">Show DataUnivers branding</div>
+                  <div class="toggle-row-desc" data-i18n="rf_branding_desc">Includes DataUnivers logo and footer in downloaded reports.</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+              </div>
+              <button class="btn-filled-sm" style="margin-top:.75rem;"><span data-i18n="btn_save">Save changes</span></button>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="rf_scoring_eyebrow">SCORING</div>
+              <div class="card-title" data-i18n="rf_scoring_title">Score thresholds</div>
+              <div class="card-sub" data-i18n="rf_scoring_sub">Customize the score boundaries for each quality rating badge.</div>
+              <div class="field-grid">
+                <div class="field">
+                  <label data-i18n="lbl_score_excellent">Excellent (green badge)</label>
+                  <div class="field-row">
+                    <input type="number" value="90" min="50" max="100" style="max-width:80px;">
+                    <span style="font-size:.8rem;color:var(--text-muted);" data-i18n="score_and_above">and above</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label data-i18n="lbl_score_good">Good (amber badge)</label>
+                  <div class="field-row">
+                    <input type="number" value="75" min="40" max="89" style="max-width:80px;">
+                    <span style="font-size:.8rem;color:var(--text-muted);" data-i18n="score_to">to 89</span>
+                  </div>
+                </div>
+              </div>
+              <div style="font-size:.72rem;color:var(--text-muted);" data-i18n="score_note">Scores below the Good threshold are marked as "Needs work".</div>
+            </div>
+
+          </div><!-- /reports -->
+
+          <!-- ── API & WEBHOOKS ── -->
+          <div class="settings-section" id="section-api">
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="api_keys_eyebrow">API KEYS</div>
+              <div class="card-title" data-i18n="api_keys_title">API keys</div>
+              <div class="card-sub" data-i18n="api_keys_sub">Use these keys to authenticate requests to the DataUnivers API from your own applications.</div>
+
+              <div class="apikey-row">
+                <div class="apikey-name" data-i18n="apikey_production">Production</div>
+                <div class="apikey-value">dv_live_•••••••••••••••••••••••••••9f2a</div>
+                <div class="apikey-meta" data-i18n="apikey_created_mar">Created Mar 2024</div>
+                <div class="apikey-actions">
+                  <button class="icon-action" title="Copy">
+                    <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  </button>
+                  <button class="icon-action" title="Regenerate">
+                    <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                  </button>
+                  <button class="icon-action" title="Delete" style="border-color:var(--red-bg);">
+                    <svg viewBox="0 0 24 24" style="stroke:var(--red);"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="apikey-row">
+                <div class="apikey-name" data-i18n="apikey_test">Test</div>
+                <div class="apikey-value">dv_test_•••••••••••••••••••••••••••4c8d</div>
+                <div class="apikey-meta" data-i18n="apikey_created_jun">Created Jun 2026</div>
+                <div class="apikey-actions">
+                  <button class="icon-action" title="Copy"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                  <button class="icon-action" title="Regenerate"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></button>
+                  <button class="icon-action" title="Delete" style="border-color:var(--red-bg);"><svg viewBox="0 0 24 24" style="stroke:var(--red);"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg></button>
+                </div>
+              </div>
+
+              <button class="btn-outline-sm" style="margin-top:.5rem;">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <span data-i18n="btn_create_key">Create new key</span>
+              </button>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="wh_eyebrow">WEBHOOKS</div>
+              <div class="card-title" data-i18n="wh_title">Webhooks</div>
+              <div class="card-sub" data-i18n="wh_sub">Send real-time events to your own endpoints when analyses complete, documents upload, or reports are ready.</div>
+              <table class="wh-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="wh_col_url">Endpoint URL</th>
+                    <th data-i18n="wh_col_events">Events</th>
+                    <th data-i18n="wh_col_status">Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><div class="wh-url">https://hooks.mylab.io/dataunivers</div></td>
+                    <td><span class="badge badge-navy">analysis.complete</span></td>
+                    <td><span class="badge badge-green"><span class="badge-dot"></span>Active</span></td>
+                    <td style="text-align:right;"><div style="display:flex;gap:6px;justify-content:flex-end;"><button class="icon-action"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button class="icon-action" style="border-color:var(--red-bg);"><svg viewBox="0 0 24 24" style="stroke:var(--red);"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg></button></div></td>
+                  </tr>
+                  <tr>
+                    <td><div class="wh-url">https://n8n.research.local/webhook/du</div></td>
+                    <td><span class="badge badge-navy">report.ready</span></td>
+                    <td><span class="badge badge-gold"><span class="badge-dot"></span>Paused</span></td>
+                    <td style="text-align:right;"><div style="display:flex;gap:6px;justify-content:flex-end;"><button class="icon-action"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button class="icon-action" style="border-color:var(--red-bg);"><svg viewBox="0 0 24 24" style="stroke:var(--red);"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg></button></div></td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btn-outline-sm" style="margin-top:1rem;">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <span data-i18n="btn_add_webhook">Add webhook</span>
+              </button>
+            </div>
+
+          </div><!-- /api -->
+
+          <!-- ── STORAGE & EXPORT ── -->
+          <div class="settings-section" id="section-storage">
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="st_usage_eyebrow">STORAGE USAGE</div>
+              <div class="card-title" data-i18n="st_usage_title">Storage breakdown</div>
+              <div class="card-sub" data-i18n="st_usage_sub">Your Pro plan includes 10 GB of document storage. Uploaded files and generated reports both count toward this limit.</div>
+
+              <div style="margin-bottom:1.25rem;">
+                <div style="display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:6px;"><span style="font-weight:600;color:var(--text-mid);" data-i18n="st_total_used">Total used</span><span style="color:var(--text-muted);">4.1 GB / 10 GB</span></div>
+                <div class="bar-track" style="height:10px;border-radius:8px;"><div class="bar-fill bar-navy" style="width:41%;height:100%;border-radius:8px;"></div></div>
+              </div>
+
+              <div class="export-row">
+                <div class="export-info">
+                  <div class="export-title" data-i18n="st_documents">Uploaded documents</div>
+                  <div class="export-desc">12 files</div>
+                </div>
+                <span style="font-size:.83rem;font-weight:600;color:var(--text-mid);">2.8 GB</span>
+              </div>
+              <div class="export-row">
+                <div class="export-info">
+                  <div class="export-title" data-i18n="st_reports">Generated reports</div>
+                  <div class="export-desc">12 PDF reports</div>
+                </div>
+                <span style="font-size:.83rem;font-weight:600;color:var(--text-mid);">1.1 GB</span>
+              </div>
+              <div class="export-row">
+                <div class="export-info">
+                  <div class="export-title" data-i18n="st_cache">Temporary cache</div>
+                  <div class="export-desc" data-i18n="st_cache_desc">Processing files, cleared automatically after 7 days</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:.83rem;font-weight:600;color:var(--text-mid);">0.2 GB</span><button class="btn-outline-sm" style="padding:5px 12px;font-size:.73rem;" data-i18n="btn_clear_cache">Clear</button></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="st_export_eyebrow">EXPORT YOUR DATA</div>
+              <div class="card-title" data-i18n="st_export_title">Export data</div>
+              <div class="card-sub" data-i18n="st_export_sub">Download a full copy of your data in portable formats. Exports are prepared asynchronously and sent to your email.</div>
+
+              <div class="export-row">
+                <div class="export-info">
+                  <div class="export-title" data-i18n="export_analyses">All analyses &amp; reports</div>
+                  <div class="export-desc" data-i18n="export_analyses_desc">Includes all documents, reports, and scores in PDF + JSON.</div>
+                </div>
+                <button class="btn-outline-sm">
+                  <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span data-i18n="btn_export">Export</span>
+                </button>
+              </div>
+              <div class="export-row">
+                <div class="export-info">
+                  <div class="export-title" data-i18n="export_profile">Profile &amp; settings</div>
+                  <div class="export-desc" data-i18n="export_profile_desc">Your account information, preferences, and configuration.</div>
+                </div>
+                <button class="btn-outline-sm">
+                  <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span data-i18n="btn_export">Export</span>
+                </button>
+              </div>
+
+              <div class="toggle-row" style="margin-top:.5rem;">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="st_auto_backup">Automatic weekly backup</div>
+                  <div class="toggle-row-desc" data-i18n="st_auto_backup_desc">DataUnivers will send a backup archive to your email every Sunday.</div>
+                </div>
+                <label class="switch"><input type="checkbox"><span class="switch-track"></span></label>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="st_retention_eyebrow">RETENTION POLICY</div>
+              <div class="card-title" data-i18n="st_retention_title">Data retention</div>
+              <div class="card-sub" data-i18n="st_retention_sub">Control how long DataUnivers stores your documents and reports.</div>
+              <div class="field-grid full">
+                <div class="field">
+                  <label data-i18n="lbl_doc_retention">Keep uploaded documents for</label>
+                  <select>
+                    <option data-i18n="ret_forever">Forever</option>
+                    <option data-i18n="ret_1year">1 year after upload</option>
+                    <option data-i18n="ret_6months">6 months after upload</option>
+                    <option data-i18n="ret_90days">90 days after upload</option>
+                  </select>
+                  <div class="field-hint" data-i18n="ret_hint">Documents are permanently deleted after the retention period. Reports are kept regardless.</div>
+                </div>
+              </div>
+              <button class="btn-filled-sm"><span data-i18n="btn_save">Save changes</span></button>
+            </div>
+
+          </div><!-- /storage -->
+
+          <!-- ── ADVANCED ── -->
+          <div class="settings-section" id="section-advanced">
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="adv_beta_eyebrow">BETA FEATURES</div>
+              <div class="card-title" data-i18n="adv_beta_title">Early access features</div>
+              <div class="card-sub" data-i18n="adv_beta_sub">Try experimental features before they're released. These may change or be removed without notice.</div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title">
+                    <span data-i18n="adv_collab">Collaborative annotations</span>
+                    <span class="badge badge-gold" style="margin-left:8px;font-size:.6rem;">BETA</span>
+                  </div>
+                  <div class="toggle-row-desc" data-i18n="adv_collab_desc">Share analysis reports with supervisors or peers for inline comments and discussion.</div>
+                </div>
+                <label class="switch"><input type="checkbox"><span class="switch-track"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title">
+                    <span data-i18n="adv_chat">AI Research Assistant</span>
+                    <span class="badge badge-gold" style="margin-left:8px;font-size:.6rem;">BETA</span>
+                  </div>
+                  <div class="toggle-row-desc" data-i18n="adv_chat_desc">Chat with an AI about your document's findings, get rewriting suggestions, and clarify issues.</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title">
+                    <span data-i18n="adv_compare">Version comparison</span>
+                    <span class="badge badge-gold" style="margin-left:8px;font-size:.6rem;">BETA</span>
+                  </div>
+                  <div class="toggle-row-desc" data-i18n="adv_compare_desc">Compare two versions of the same document and see how scores evolved between drafts.</div>
+                </div>
+                <label class="switch"><input type="checkbox"><span class="switch-track"></span></label>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow" data-i18n="adv_debug_eyebrow">DIAGNOSTICS</div>
+              <div class="card-title" data-i18n="adv_debug_title">Diagnostic tools</div>
+              <div class="card-sub" data-i18n="adv_debug_sub">Tools for troubleshooting and improving your experience.</div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="adv_analytics">Usage analytics</div>
+                  <div class="toggle-row-desc" data-i18n="adv_analytics_desc">Allow DataUnivers to collect anonymised usage data to improve the product. No personal data is shared.</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-row-info">
+                  <div class="toggle-row-title" data-i18n="adv_crash">Crash reports</div>
+                  <div class="toggle-row-desc" data-i18n="adv_crash_desc">Automatically send error reports when something goes wrong, to help us fix issues faster.</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+              </div>
+              <div class="divider-line"></div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                <button class="btn-outline-sm" data-i18n="btn_clear_cache2">Clear local cache</button>
+                <button class="btn-outline-sm" data-i18n="btn_reset_settings">Reset all settings</button>
+                <button class="btn-outline-sm" data-i18n="btn_view_logs">View error logs</button>
+              </div>
+            </div>
+
+            <div class="danger-zone">
+              <div class="danger-title" data-i18n="danger_data_title">Danger zone</div>
+              <div class="danger-desc" data-i18n="danger_data_desc">These actions are permanent and cannot be undone. Proceed with caution.</div>
+              <div class="danger-actions">
+                <button class="btn-danger" data-i18n="btn_delete_all_docs">Delete all documents</button>
+                <button class="btn-danger" data-i18n="btn_delete_all_analyses">Delete all analyses</button>
+                <button class="btn-danger" style="background:var(--navy-deep);" data-i18n="btn_delete_account">Delete account</button>
+              </div>
+            </div>
+
+          </div><!-- /advanced -->
+
+        </div><!-- /settings-content -->
+      </div><!-- /settings-shell -->
+
+    </div><!-- /main-inner -->
+  </main>
+</div><!-- /app-shell -->
+
+<script>
+const T = {
+  en:{
+    new_analysis:"New Analysis",
+    sb_main:"Main",sb_dashboard:"Dashboard",sb_upload:"Upload Document",
+    sb_analyses:"Analyses",sb_reports:"Reports",sb_account:"Account",
+    sb_profile:"Profile",sb_settings:"Settings",sb_signout:"Sign out",
+    settings_title:"Settings",
+    settings_sub:"Manage your workspace, appearance, integrations, and advanced preferences.",
+    snav_workspace:"Workspace",snav_appearance:"Appearance",snav_language:"Language & Region",
+    snav_accessibility:"Accessibility",snav_keyboard:"Keyboard Shortcuts",
+    snav_analysis:"Analysis",snav_analysis_prefs:"Analysis Preferences",snav_reports:"Report Format",
+    snav_integrations:"Integrations",snav_api:"API & Webhooks",snav_storage:"Storage & Export",
+    snav_advanced:"Advanced",snav_advanced_settings:"Advanced",
+    app_theme_eyebrow:"THEME",app_theme_title:"Interface theme",
+    app_theme_sub:"Choose how DataUnivers looks for you. Applies across all pages.",
+    app_preview_label:"Preview",
+    theme_light:"Light",theme_light_desc:"Clean white interface",
+    theme_dark:"Dark",theme_dark_desc:"Easy on the eyes",
+    theme_auto:"Auto",theme_auto_desc:"Follows your system",
+    app_density_eyebrow:"DENSITY",app_density_title:"Information density",
+    app_density_sub:"Control how compact or spacious the interface feels.",
+    density_comfortable:"Comfortable",density_comfortable_desc:"More spacing",
+    density_compact:"Compact",density_compact_desc:"More content",
+    app_font_eyebrow:"TYPOGRAPHY",app_font_title:"Display font",
+    app_font_sub:"Choose the typeface used for headings and titles.",
+    font_playfair_desc:"Elegant serif — default",
+    font_garamond_desc:"Classic academic serif",
+    font_inter_desc:"Modern sans-serif",
+    app_accent_eyebrow:"ACCENT COLOR",app_accent_title:"Accent color",
+    app_accent_sub:"Used for highlights, active states, and key UI elements.",
+    app_accent_note:"Accent color updates active states, sidebar highlights, and button fills.",
+    lang_eyebrow:"INTERFACE LANGUAGE",lang_title:"Language",
+    lang_sub:"The language used across all menus, labels, and interface text.",
+    region_eyebrow:"DATE & TIME",region_title:"Regional format",
+    region_sub:"Choose how dates, times, and numbers are displayed.",
+    lbl_timezone:"Timezone",lbl_date_format:"Date format",
+    lbl_time_format:"Time format",time_24h:"24-hour (14:30)",time_12h:"12-hour (2:30 PM)",
+    lbl_first_day:"First day of week",day_monday:"Monday",day_sunday:"Sunday",day_saturday:"Saturday",
+    btn_save:"Save changes",
+    a11y_motion_eyebrow:"MOTION & ANIMATION",a11y_motion_title:"Motion preferences",
+    a11y_motion_sub:"Control transitions and animations throughout the interface.",
+    a11y_reduce_motion:"Reduce motion",a11y_reduce_motion_desc:"Disables non-essential animations. Recommended for users with vestibular sensitivity.",
+    a11y_smooth_scroll:"Smooth scrolling",a11y_smooth_scroll_desc:"Enables animated scrolling when navigating the page.",
+    a11y_display_eyebrow:"DISPLAY",a11y_display_title:"Display adjustments",
+    a11y_display_sub:"Improve legibility and visual clarity.",
+    a11y_high_contrast:"High contrast mode",a11y_high_contrast_desc:"Increases border contrast and text sharpness for better readability.",
+    a11y_larger_text:"Larger text",a11y_larger_text_desc:"Increases base font size from 14px to 16px across all interface elements.",
+    a11y_focus_ring:"Always show focus ring",a11y_focus_ring_desc:"Keeps keyboard focus indicators visible at all times, not just during keyboard navigation.",
+    a11y_reading_eyebrow:"READING",a11y_reading_title:"Reading preferences",
+    a11y_reading_sub:"Optimise the presentation of document content and analysis reports.",
+    a11y_dyslexia:"Dyslexia-friendly font",a11y_dyslexia_desc:"Uses OpenDyslexic as the body font for better letter recognition.",
+    a11y_line_height:"Increased line spacing",a11y_line_height_desc:"Raises paragraph line-height from 1.6 to 2.0 for easier reading.",
+    kb_global_eyebrow:"GLOBAL",kb_global_title:"Global shortcuts",
+    kb_global_sub:"Available on any page of DataUnivers.",
+    kb_new_analysis:"New analysis",kb_search:"Search",kb_dashboard:"Go to Dashboard",
+    kb_analyses:"Go to Analyses",kb_settings:"Go to Settings",kb_theme:"Toggle theme",
+    kb_analysis_eyebrow:"ANALYSIS VIEW",kb_analysis_title:"Analysis shortcuts",
+    kb_analysis_sub:"Available when viewing an analysis report.",
+    kb_download_report:"Download report",kb_share:"Share",
+    kb_next_issue:"Next issue",kb_prev_issue:"Previous issue",kb_close:"Close / Back",
+    kb_enable:"Enable keyboard shortcuts",kb_enable_desc:"Turn off if shortcuts conflict with your browser or other tools.",
+    ap_defaults_eyebrow:"DEFAULT MODULES",ap_defaults_title:"Default analysis modules",
+    ap_defaults_sub:"These modules will be pre-selected each time you start a new analysis. You can always adjust them per document.",
+    mod1_name:"Academic Standards Check",mod1_desc:"Verifies compliance with APA, MLA, IEEE, Harvard, and your institution's templates.",
+    mod2_name:"Citation Analysis",mod2_desc:"Detects missing references, evaluates citation quality, and flags inconsistencies.",
+    mod3_name:"AI Content Detection",mod3_desc:"Estimates the probability of AI-generated sections and highlights flagged passages.",
+    mod4_name:"Plagiarism Screening",mod4_desc:"Identifies suspicious similarities across global academic databases.",
+    mod5_name:"Grammar & Writing Quality",mod5_desc:"Evaluates grammar, style clarity, and academic register.",
+    mod6_name:"Methodology Validation",mod6_desc:"Reviews the soundness and consistency of your research methodology section.",
+    mod7_name:"Research Structure Analysis",mod7_desc:"Checks overall structure, argument flow, and chapter organization.",
+    mod8_name:"Formatting Verification",mod8_desc:"Ensures margins, headings, fonts, and spacing conform to academic standards.",
+    ap_style_eyebrow:"CITATION STYLE",ap_style_title:"Default citation style",
+    ap_style_sub:"Used as the primary style for citation analysis. Can be overridden per document.",
+    lbl_citation_style:"Citation style",lbl_doc_lang:"Document language",
+    ap_auto_detect:"Auto-detect citation style",ap_auto_detect_desc:"Automatically identifies the citation style used in uploaded documents.",
+    ap_sensitivity_eyebrow:"DETECTION SENSITIVITY",ap_sensitivity_title:"AI detection sensitivity",
+    ap_sensitivity_sub:"Adjust the threshold for flagging AI-generated content. Higher sensitivity means more passages may be flagged.",
+    lbl_ai_threshold:"Sensitivity level",
+    sens_low:"Low — flag only high-confidence sections",
+    sens_medium:"Medium — balanced detection (recommended)",
+    sens_high:"High — flag all suspicious passages",
+    sens_hint:"Medium is recommended for most academic contexts.",
+    rf_format_eyebrow:"OUTPUT FORMAT",rf_format_title:"Default report format",
+    rf_format_sub:"Choose how your analysis reports are delivered and displayed.",
+    lbl_report_format:"Download format",lbl_report_lang:"Report language",
+    rf_include_summary:"Include executive summary",rf_include_summary_desc:"Adds a one-page overview at the start of every report.",
+    rf_include_annotated:"Include annotated document",rf_include_annotated_desc:"Attaches an annotated version of your document with inline comments.",
+    rf_email_report:"Email report on completion",rf_email_report_desc:"Automatically sends the report to your registered email when analysis finishes.",
+    rf_branding:"Show DataUnivers branding",rf_branding_desc:"Includes DataUnivers logo and footer in downloaded reports.",
+    rf_scoring_eyebrow:"SCORING",rf_scoring_title:"Score thresholds",
+    rf_scoring_sub:"Customize the score boundaries for each quality rating badge.",
+    lbl_score_excellent:"Excellent (green badge)",lbl_score_good:"Good (amber badge)",
+    score_and_above:"and above",score_to:"to 89",
+    score_note:"Scores below the Good threshold are marked as \"Needs work\".",
+    api_keys_eyebrow:"API KEYS",api_keys_title:"API keys",
+    api_keys_sub:"Use these keys to authenticate requests to the DataUnivers API from your own applications.",
+    apikey_production:"Production",apikey_test:"Test",
+    apikey_created_mar:"Created Mar 2024",apikey_created_jun:"Created Jun 2026",
+    btn_create_key:"Create new key",
+    wh_eyebrow:"WEBHOOKS",wh_title:"Webhooks",
+    wh_sub:"Send real-time events to your own endpoints when analyses complete, documents upload, or reports are ready.",
+    wh_col_url:"Endpoint URL",wh_col_events:"Events",wh_col_status:"Status",
+    btn_add_webhook:"Add webhook",
+    st_usage_eyebrow:"STORAGE USAGE",st_usage_title:"Storage breakdown",
+    st_usage_sub:"Your Pro plan includes 10 GB of document storage. Uploaded files and generated reports both count toward this limit.",
+    st_total_used:"Total used",st_documents:"Uploaded documents",st_reports:"Generated reports",
+    st_cache:"Temporary cache",st_cache_desc:"Processing files, cleared automatically after 7 days",
+    btn_clear_cache:"Clear",
+    st_export_eyebrow:"EXPORT YOUR DATA",st_export_title:"Export data",
+    st_export_sub:"Download a full copy of your data in portable formats. Exports are prepared asynchronously and sent to your email.",
+    export_analyses:"All analyses & reports",export_analyses_desc:"Includes all documents, reports, and scores in PDF + JSON.",
+    export_profile:"Profile & settings",export_profile_desc:"Your account information, preferences, and configuration.",
+    btn_export:"Export",
+    st_auto_backup:"Automatic weekly backup",st_auto_backup_desc:"DataUnivers will send a backup archive to your email every Sunday.",
+    st_retention_eyebrow:"RETENTION POLICY",st_retention_title:"Data retention",
+    st_retention_sub:"Control how long DataUnivers stores your documents and reports.",
+    lbl_doc_retention:"Keep uploaded documents for",
+    ret_forever:"Forever",ret_1year:"1 year after upload",ret_6months:"6 months after upload",ret_90days:"90 days after upload",
+    ret_hint:"Documents are permanently deleted after the retention period. Reports are kept regardless.",
+    adv_beta_eyebrow:"BETA FEATURES",adv_beta_title:"Early access features",
+    adv_beta_sub:"Try experimental features before they're released. These may change or be removed without notice.",
+    adv_collab:"Collaborative annotations",adv_collab_desc:"Share analysis reports with supervisors or peers for inline comments and discussion.",
+    adv_chat:"AI Research Assistant",adv_chat_desc:"Chat with an AI about your document's findings, get rewriting suggestions, and clarify issues.",
+    adv_compare:"Version comparison",adv_compare_desc:"Compare two versions of the same document and see how scores evolved between drafts.",
+    adv_debug_eyebrow:"DIAGNOSTICS",adv_debug_title:"Diagnostic tools",
+    adv_debug_sub:"Tools for troubleshooting and improving your experience.",
+    adv_analytics:"Usage analytics",adv_analytics_desc:"Allow DataUnivers to collect anonymised usage data to improve the product. No personal data is shared.",
+    adv_crash:"Crash reports",adv_crash_desc:"Automatically send error reports when something goes wrong, to help us fix issues faster.",
+    btn_clear_cache2:"Clear local cache",btn_reset_settings:"Reset all settings",btn_view_logs:"View error logs",
+    danger_data_title:"Danger zone",
+    danger_data_desc:"These actions are permanent and cannot be undone. Proceed with caution.",
+    btn_delete_all_docs:"Delete all documents",btn_delete_all_analyses:"Delete all analyses",btn_delete_account:"Delete account"
+  },
+  fr:{
+    new_analysis:"Nouvelle Analyse",
+    sb_main:"Principal",sb_dashboard:"Tableau de bord",sb_upload:"Déposer un document",
+    sb_analyses:"Analyses",sb_reports:"Rapports",sb_account:"Compte",
+    sb_profile:"Profil",sb_settings:"Paramètres",sb_signout:"Déconnexion",
+    settings_title:"Paramètres",
+    settings_sub:"Gérez votre espace de travail, l'apparence, les intégrations et les préférences avancées.",
+    snav_workspace:"Espace de travail",snav_appearance:"Apparence",snav_language:"Langue & Région",
+    snav_accessibility:"Accessibilité",snav_keyboard:"Raccourcis clavier",
+    snav_analysis:"Analyse",snav_analysis_prefs:"Préférences d'analyse",snav_reports:"Format des rapports",
+    snav_integrations:"Intégrations",snav_api:"API & Webhooks",snav_storage:"Stockage & Export",
+    snav_advanced:"Avancé",snav_advanced_settings:"Avancé",
+    app_theme_eyebrow:"THÈME",app_theme_title:"Thème de l'interface",
+    app_theme_sub:"Choisissez l'apparence de DataUnivers. S'applique sur toutes les pages.",
+    app_preview_label:"Aperçu",
+    theme_light:"Clair",theme_light_desc:"Interface blanche et propre",
+    theme_dark:"Sombre",theme_dark_desc:"Reposant pour les yeux",
+    theme_auto:"Automatique",theme_auto_desc:"Suit votre système",
+    app_density_eyebrow:"DENSITÉ",app_density_title:"Densité de l'information",
+    app_density_sub:"Contrôlez la compacité ou l'espacement de l'interface.",
+    density_comfortable:"Confortable",density_comfortable_desc:"Plus d'espacement",
+    density_compact:"Compact",density_compact_desc:"Plus de contenu",
+    app_font_eyebrow:"TYPOGRAPHIE",app_font_title:"Police d'affichage",
+    app_font_sub:"Choisissez la police utilisée pour les titres et en-têtes.",
+    font_playfair_desc:"Serif élégant — par défaut",
+    font_garamond_desc:"Serif académique classique",
+    font_inter_desc:"Sans-serif moderne",
+    app_accent_eyebrow:"COULEUR D'ACCENTUATION",app_accent_title:"Couleur d'accentuation",
+    app_accent_sub:"Utilisée pour les surlignages, états actifs et éléments clés.",
+    app_accent_note:"La couleur d'accentuation met à jour les états actifs, les surbrillances de la barre latérale et les boutons.",
+    lang_eyebrow:"LANGUE DE L'INTERFACE",lang_title:"Langue",
+    lang_sub:"La langue utilisée dans tous les menus, étiquettes et textes de l'interface.",
+    region_eyebrow:"DATE & HEURE",region_title:"Format régional",
+    region_sub:"Choisissez comment les dates, heures et nombres sont affichés.",
+    lbl_timezone:"Fuseau horaire",lbl_date_format:"Format de date",
+    lbl_time_format:"Format d'heure",time_24h:"24h (14:30)",time_12h:"12h (2:30 PM)",
+    lbl_first_day:"Premier jour de la semaine",day_monday:"Lundi",day_sunday:"Dimanche",day_saturday:"Samedi",
+    btn_save:"Enregistrer",
+    a11y_motion_eyebrow:"MOUVEMENT & ANIMATION",a11y_motion_title:"Préférences de mouvement",
+    a11y_motion_sub:"Contrôlez les transitions et animations dans l'interface.",
+    a11y_reduce_motion:"Réduire les animations",a11y_reduce_motion_desc:"Désactive les animations non essentielles. Recommandé pour les utilisateurs sensibles aux mouvements.",
+    a11y_smooth_scroll:"Défilement fluide",a11y_smooth_scroll_desc:"Active le défilement animé lors de la navigation.",
+    a11y_display_eyebrow:"AFFICHAGE",a11y_display_title:"Ajustements d'affichage",
+    a11y_display_sub:"Améliorez la lisibilité et la clarté visuelle.",
+    a11y_high_contrast:"Mode contraste élevé",a11y_high_contrast_desc:"Augmente le contraste des bordures et la netteté du texte.",
+    a11y_larger_text:"Texte plus grand",a11y_larger_text_desc:"Augmente la taille de police de base de 14px à 16px.",
+    a11y_focus_ring:"Toujours afficher le focus",a11y_focus_ring_desc:"Garde les indicateurs de focus clavier visibles en permanence.",
+    a11y_reading_eyebrow:"LECTURE",a11y_reading_title:"Préférences de lecture",
+    a11y_reading_sub:"Optimisez la présentation du contenu des documents et rapports.",
+    a11y_dyslexia:"Police adaptée à la dyslexie",a11y_dyslexia_desc:"Utilise OpenDyslexic comme police de corps pour une meilleure reconnaissance des lettres.",
+    a11y_line_height:"Interligne augmenté",a11y_line_height_desc:"Augmente l'interligne des paragraphes de 1,6 à 2,0 pour une lecture plus facile.",
+    kb_global_eyebrow:"GLOBAL",kb_global_title:"Raccourcis globaux",
+    kb_global_sub:"Disponibles sur toutes les pages de DataUnivers.",
+    kb_new_analysis:"Nouvelle analyse",kb_search:"Rechercher",kb_dashboard:"Aller au tableau de bord",
+    kb_analyses:"Aller aux analyses",kb_settings:"Aller aux paramètres",kb_theme:"Basculer le thème",
+    kb_analysis_eyebrow:"VUE ANALYSE",kb_analysis_title:"Raccourcis d'analyse",
+    kb_analysis_sub:"Disponibles lors de la consultation d'un rapport d'analyse.",
+    kb_download_report:"Télécharger le rapport",kb_share:"Partager",
+    kb_next_issue:"Problème suivant",kb_prev_issue:"Problème précédent",kb_close:"Fermer / Retour",
+    kb_enable:"Activer les raccourcis clavier",kb_enable_desc:"Désactivez si les raccourcis entrent en conflit avec votre navigateur.",
+    ap_defaults_eyebrow:"MODULES PAR DÉFAUT",ap_defaults_title:"Modules d'analyse par défaut",
+    ap_defaults_sub:"Ces modules seront pré-sélectionnés à chaque nouvelle analyse. Vous pouvez les ajuster par document.",
+    mod1_name:"Vérification des normes académiques",mod1_desc:"Vérifie la conformité APA, MLA, IEEE, Harvard et les modèles institutionnels.",
+    mod2_name:"Analyse des citations",mod2_desc:"Détecte les références manquantes, évalue la qualité et signale les incohérences.",
+    mod3_name:"Détection du contenu IA",mod3_desc:"Estime la probabilité de contenu généré par IA et surligne les passages signalés.",
+    mod4_name:"Détection de plagiat",mod4_desc:"Identifie les similitudes suspectes dans les bases de données académiques mondiales.",
+    mod5_name:"Grammaire & qualité rédactionnelle",mod5_desc:"Évalue la grammaire, la clarté du style et le registre académique.",
+    mod6_name:"Validation méthodologique",mod6_desc:"Vérifie la solidité et la cohérence de votre section méthodologique.",
+    mod7_name:"Analyse de la structure",mod7_desc:"Vérifie la structure globale, le flux argumentatif et l'organisation des chapitres.",
+    mod8_name:"Vérification du formatage",mod8_desc:"Contrôle les marges, titres, polices et espacements selon les normes académiques.",
+    ap_style_eyebrow:"STYLE DE CITATION",ap_style_title:"Style de citation par défaut",
+    ap_style_sub:"Utilisé comme style principal pour l'analyse des citations. Peut être remplacé par document.",
+    lbl_citation_style:"Style de citation",lbl_doc_lang:"Langue du document",
+    ap_auto_detect:"Détection automatique du style",ap_auto_detect_desc:"Identifie automatiquement le style de citation utilisé dans les documents.",
+    ap_sensitivity_eyebrow:"SENSIBILITÉ DE DÉTECTION",ap_sensitivity_title:"Sensibilité de détection IA",
+    ap_sensitivity_sub:"Ajustez le seuil pour signaler le contenu généré par IA.",
+    lbl_ai_threshold:"Niveau de sensibilité",
+    sens_low:"Faible — signaler uniquement les sections à haute confiance",
+    sens_medium:"Moyen — détection équilibrée (recommandé)",
+    sens_high:"Élevé — signaler tous les passages suspects",
+    sens_hint:"Le niveau moyen est recommandé pour la plupart des contextes académiques.",
+    rf_format_eyebrow:"FORMAT DE SORTIE",rf_format_title:"Format de rapport par défaut",
+    rf_format_sub:"Choisissez comment vos rapports d'analyse sont fournis et affichés.",
+    lbl_report_format:"Format de téléchargement",lbl_report_lang:"Langue du rapport",
+    rf_include_summary:"Inclure un résumé exécutif",rf_include_summary_desc:"Ajoute un aperçu d'une page au début de chaque rapport.",
+    rf_include_annotated:"Inclure le document annoté",rf_include_annotated_desc:"Joint une version annotée de votre document avec des commentaires en ligne.",
+    rf_email_report:"Envoyer le rapport par e-mail",rf_email_report_desc:"Envoie automatiquement le rapport à votre e-mail enregistré à la fin de l'analyse.",
+    rf_branding:"Afficher la marque DataUnivers",rf_branding_desc:"Inclut le logo et le pied de page DataUnivers dans les rapports téléchargés.",
+    rf_scoring_eyebrow:"NOTATION",rf_scoring_title:"Seuils de score",
+    rf_scoring_sub:"Personnalisez les limites de score pour chaque badge de qualité.",
+    lbl_score_excellent:"Excellent (badge vert)",lbl_score_good:"Bien (badge ambré)",
+    score_and_above:"et plus",score_to:"à 89",
+    score_note:"Les scores en dessous du seuil Bien sont marqués comme \"À améliorer\".",
+    api_keys_eyebrow:"CLÉS API",api_keys_title:"Clés API",
+    api_keys_sub:"Utilisez ces clés pour authentifier les requêtes à l'API DataUnivers depuis vos applications.",
+    apikey_production:"Production",apikey_test:"Test",
+    apikey_created_mar:"Créée en mars 2024",apikey_created_jun:"Créée en juin 2026",
+    btn_create_key:"Créer une clé",
+    wh_eyebrow:"WEBHOOKS",wh_title:"Webhooks",
+    wh_sub:"Envoyez des événements en temps réel à vos endpoints lors des analyses, uploads et rapports.",
+    wh_col_url:"URL de l'endpoint",wh_col_events:"Événements",wh_col_status:"Statut",
+    btn_add_webhook:"Ajouter un webhook",
+    st_usage_eyebrow:"UTILISATION DU STOCKAGE",st_usage_title:"Détail du stockage",
+    st_usage_sub:"Votre forfait Pro inclut 10 Go de stockage. Les fichiers et rapports comptent dans cette limite.",
+    st_total_used:"Total utilisé",st_documents:"Documents téléchargés",st_reports:"Rapports générés",
+    st_cache:"Cache temporaire",st_cache_desc:"Fichiers de traitement, effacés automatiquement après 7 jours",
+    btn_clear_cache:"Vider",
+    st_export_eyebrow:"EXPORTER VOS DONNÉES",st_export_title:"Exporter les données",
+    st_export_sub:"Téléchargez une copie complète de vos données en formats portables.",
+    export_analyses:"Toutes les analyses & rapports",export_analyses_desc:"Inclut tous les documents, rapports et scores en PDF + JSON.",
+    export_profile:"Profil & paramètres",export_profile_desc:"Vos informations de compte, préférences et configuration.",
+    btn_export:"Exporter",
+    st_auto_backup:"Sauvegarde hebdomadaire automatique",st_auto_backup_desc:"DataUnivers enverra une archive de sauvegarde à votre e-mail chaque dimanche.",
+    st_retention_eyebrow:"POLITIQUE DE CONSERVATION",st_retention_title:"Conservation des données",
+    st_retention_sub:"Contrôlez la durée pendant laquelle DataUnivers conserve vos documents et rapports.",
+    lbl_doc_retention:"Conserver les documents téléchargés pendant",
+    ret_forever:"Indéfiniment",ret_1year:"1 an après le téléchargement",ret_6months:"6 mois après le téléchargement",ret_90days:"90 jours après le téléchargement",
+    ret_hint:"Les documents sont définitivement supprimés après la période de conservation. Les rapports sont conservés.",
+    adv_beta_eyebrow:"FONCTIONNALITÉS BÊTA",adv_beta_title:"Fonctionnalités en accès anticipé",
+    adv_beta_sub:"Essayez les fonctionnalités expérimentales avant leur sortie. Elles peuvent changer sans préavis.",
+    adv_collab:"Annotations collaboratives",adv_collab_desc:"Partagez les rapports avec des superviseurs ou pairs pour des commentaires en ligne.",
+    adv_chat:"Assistant de recherche IA",adv_chat_desc:"Discutez avec une IA des résultats de votre document et obtenez des suggestions de réécriture.",
+    adv_compare:"Comparaison de versions",adv_compare_desc:"Comparez deux versions d'un même document et voyez l'évolution des scores.",
+    adv_debug_eyebrow:"DIAGNOSTICS",adv_debug_title:"Outils de diagnostic",
+    adv_debug_sub:"Outils pour résoudre les problèmes et améliorer votre expérience.",
+    adv_analytics:"Analyses d'utilisation",adv_analytics_desc:"Permettez à DataUnivers de collecter des données anonymisées pour améliorer le produit.",
+    adv_crash:"Rapports de crash",adv_crash_desc:"Envoyer automatiquement des rapports d'erreur en cas de problème.",
+    btn_clear_cache2:"Vider le cache local",btn_reset_settings:"Réinitialiser les paramètres",btn_view_logs:"Voir les journaux d'erreurs",
+    danger_data_title:"Zone dangereuse",
+    danger_data_desc:"Ces actions sont permanentes et irréversibles. Procédez avec précaution.",
+    btn_delete_all_docs:"Supprimer tous les documents",btn_delete_all_analyses:"Supprimer toutes les analyses",btn_delete_account:"Supprimer le compte"
+  },
+  ar:{
+    new_analysis:"تحليل جديد",
+    sb_main:"الرئيسية",sb_dashboard:"لوحة التحكم",sb_upload:"رفع وثيقة",
+    sb_analyses:"التحليلات",sb_reports:"التقارير",sb_account:"الحساب",
+    sb_profile:"الملف الشخصي",sb_settings:"الإعدادات",sb_signout:"تسجيل الخروج",
+    settings_title:"الإعدادات",
+    settings_sub:"إدارة مساحة العمل والمظهر والتكاملات والتفضيلات المتقدمة.",
+    snav_workspace:"مساحة العمل",snav_appearance:"المظهر",snav_language:"اللغة والمنطقة",
+    snav_accessibility:"إمكانية الوصول",snav_keyboard:"اختصارات لوحة المفاتيح",
+    snav_analysis:"التحليل",snav_analysis_prefs:"تفضيلات التحليل",snav_reports:"تنسيق التقارير",
+    snav_integrations:"التكاملات",snav_api:"API والـ Webhooks",snav_storage:"التخزين والتصدير",
+    snav_advanced:"متقدم",snav_advanced_settings:"متقدم",
+    app_theme_eyebrow:"المظهر",app_theme_title:"سمة الواجهة",
+    app_theme_sub:"اختر كيف يبدو DataUnivers. يُطبَّق على جميع الصفحات.",
+    app_preview_label:"معاينة",
+    theme_light:"فاتح",theme_light_desc:"واجهة بيضاء نظيفة",
+    theme_dark:"داكن",theme_dark_desc:"مريح للعينين",
+    theme_auto:"تلقائي",theme_auto_desc:"يتبع إعدادات نظامك",
+    app_density_eyebrow:"الكثافة",app_density_title:"كثافة المعلومات",
+    app_density_sub:"تحكم في مدى إحكام أو اتساع الواجهة.",
+    density_comfortable:"مريح",density_comfortable_desc:"مسافات أكثر",
+    density_compact:"مضغوط",density_compact_desc:"محتوى أكثر",
+    app_font_eyebrow:"الطباعة",app_font_title:"خط العرض",
+    app_font_sub:"اختر الخط المستخدم للعناوين.",
+    font_playfair_desc:"خط سيريف أنيق — افتراضي",
+    font_garamond_desc:"خط سيريف أكاديمي كلاسيكي",
+    font_inter_desc:"خط sans-serif حديث",
+    app_accent_eyebrow:"لون التمييز",app_accent_title:"لون التمييز",
+    app_accent_sub:"يُستخدم للتمييزات والحالات النشطة وعناصر الواجهة الرئيسية.",
+    app_accent_note:"يُحدّث لون التمييز الحالات النشطة وتمييزات الشريط الجانبي وأزرار التعبئة.",
+    lang_eyebrow:"لغة الواجهة",lang_title:"اللغة",
+    lang_sub:"اللغة المستخدمة في جميع القوائم والتسميات ونصوص الواجهة.",
+    region_eyebrow:"التاريخ والوقت",region_title:"التنسيق الإقليمي",
+    region_sub:"اختر كيف تُعرض التواريخ والأوقات والأرقام.",
+    lbl_timezone:"المنطقة الزمنية",lbl_date_format:"تنسيق التاريخ",
+    lbl_time_format:"تنسيق الوقت",time_24h:"24 ساعة (14:30)",time_12h:"12 ساعة (2:30 م)",
+    lbl_first_day:"أول يوم في الأسبوع",day_monday:"الاثنين",day_sunday:"الأحد",day_saturday:"السبت",
+    btn_save:"حفظ التغييرات",
+    a11y_motion_eyebrow:"الحركة والرسوم المتحركة",a11y_motion_title:"تفضيلات الحركة",
+    a11y_motion_sub:"تحكم في التحولات والرسوم المتحركة في الواجهة.",
+    a11y_reduce_motion:"تقليل الحركة",a11y_reduce_motion_desc:"تعطيل الرسوم المتحركة غير الضرورية. موصى به للمستخدمين الحساسين للحركة.",
+    a11y_smooth_scroll:"التمرير السلس",a11y_smooth_scroll_desc:"يُفعّل التمرير المتحرك عند التنقل في الصفحة.",
+    a11y_display_eyebrow:"العرض",a11y_display_title:"تعديلات العرض",
+    a11y_display_sub:"تحسين وضوح القراءة والوضوح البصري.",
+    a11y_high_contrast:"وضع التباين العالي",a11y_high_contrast_desc:"يزيد تباين الحدود وحدة النص لقراءة أفضل.",
+    a11y_larger_text:"نص أكبر",a11y_larger_text_desc:"يزيد حجم الخط الأساسي من 14px إلى 16px.",
+    a11y_focus_ring:"إظهار حلقة التركيز دائمًا",a11y_focus_ring_desc:"يُبقي مؤشرات تركيز لوحة المفاتيح مرئية في جميع الأوقات.",
+    a11y_reading_eyebrow:"القراءة",a11y_reading_title:"تفضيلات القراءة",
+    a11y_reading_sub:"تحسين عرض محتوى الوثائق وتقارير التحليل.",
+    a11y_dyslexia:"خط ملائم للديسلكسيا",a11y_dyslexia_desc:"يستخدم OpenDyslexic كخط للنص الأساسي لتحسين التعرف على الحروف.",
+    a11y_line_height:"تباعد الأسطر المزيد",a11y_line_height_desc:"يرفع ارتفاع سطر الفقرة من 1.6 إلى 2.0 لقراءة أسهل.",
+    kb_global_eyebrow:"عام",kb_global_title:"الاختصارات العامة",
+    kb_global_sub:"متاحة في أي صفحة من DataUnivers.",
+    kb_new_analysis:"تحليل جديد",kb_search:"بحث",kb_dashboard:"الانتقال للوحة التحكم",
+    kb_analyses:"الانتقال للتحليلات",kb_settings:"الانتقال للإعدادات",kb_theme:"تبديل السمة",
+    kb_analysis_eyebrow:"عرض التحليل",kb_analysis_title:"اختصارات التحليل",
+    kb_analysis_sub:"متاحة عند عرض تقرير التحليل.",
+    kb_download_report:"تنزيل التقرير",kb_share:"مشاركة",
+    kb_next_issue:"المشكلة التالية",kb_prev_issue:"المشكلة السابقة",kb_close:"إغلاق / رجوع",
+    kb_enable:"تفعيل اختصارات لوحة المفاتيح",kb_enable_desc:"أوقف التشغيل إذا تعارضت الاختصارات مع متصفحك.",
+    ap_defaults_eyebrow:"الوحدات الافتراضية",ap_defaults_title:"وحدات التحليل الافتراضية",
+    ap_defaults_sub:"ستكون هذه الوحدات محددة مسبقًا في كل تحليل جديد. يمكنك تعديلها لكل وثيقة.",
+    mod1_name:"فحص المعايير الأكاديمية",mod1_desc:"يتحقق من الامتثال لـ APA وMLA وIEEE وهارفارد والقوالب المؤسسية.",
+    mod2_name:"تحليل الاستشهادات",mod2_desc:"يكتشف المراجع المفقودة ويقيّم الجودة ويرصد التناقضات.",
+    mod3_name:"كشف محتوى الذكاء الاصطناعي",mod3_desc:"يقدّر احتمالية الأقسام المولَّدة بالذكاء الاصطناعي.",
+    mod4_name:"فحص الانتحال",mod4_desc:"يرصد التشابهات المثيرة للريبة عبر قواعد البيانات الأكاديمية.",
+    mod5_name:"القواعد وجودة الكتابة",mod5_desc:"يقيّم القواعد ووضوح الأسلوب والمستوى الأكاديمي.",
+    mod6_name:"التحقق من المنهجية",mod6_desc:"يراجع سلامة واتساق قسم المنهجية البحثية.",
+    mod7_name:"تحليل بنية البحث",mod7_desc:"يفحص البنية الكلية وتدفق الحجج وتنظيم الفصول.",
+    mod8_name:"فحص التنسيق",mod8_desc:"يضمن توافق الهوامش والعناوين والخطوط والتباعد مع المعايير.",
+    ap_style_eyebrow:"أسلوب الاستشهاد",ap_style_title:"أسلوب الاستشهاد الافتراضي",
+    ap_style_sub:"يُستخدم كأسلوب أساسي لتحليل الاستشهادات. يمكن تجاوزه لكل وثيقة.",
+    lbl_citation_style:"أسلوب الاستشهاد",lbl_doc_lang:"لغة الوثيقة",
+    ap_auto_detect:"الكشف التلقائي عن أسلوب الاستشهاد",ap_auto_detect_desc:"يحدد تلقائيًا أسلوب الاستشهاد المستخدم في الوثائق.",
+    ap_sensitivity_eyebrow:"حساسية الكشف",ap_sensitivity_title:"حساسية كشف الذكاء الاصطناعي",
+    ap_sensitivity_sub:"اضبط العتبة للإبلاغ عن المحتوى الذي قد يكون مولَّدًا بالذكاء الاصطناعي.",
+    lbl_ai_threshold:"مستوى الحساسية",
+    sens_low:"منخفض — الإبلاغ فقط عن الأقسام ذات الثقة العالية",
+    sens_medium:"متوسط — كشف متوازن (موصى به)",
+    sens_high:"عالٍ — الإبلاغ عن جميع المقاطع المشبوهة",
+    sens_hint:"يُوصى بالمستوى المتوسط لمعظم السياقات الأكاديمية.",
+    rf_format_eyebrow:"تنسيق المخرجات",rf_format_title:"تنسيق التقرير الافتراضي",
+    rf_format_sub:"اختر كيف يتم تسليم تقارير التحليل وعرضها.",
+    lbl_report_format:"تنسيق التنزيل",lbl_report_lang:"لغة التقرير",
+    rf_include_summary:"تضمين ملخص تنفيذي",rf_include_summary_desc:"يضيف نظرة عامة من صفحة واحدة في بداية كل تقرير.",
+    rf_include_annotated:"تضمين الوثيقة المشروحة",rf_include_annotated_desc:"يرفق نسخة مشروحة من وثيقتك مع تعليقات مدمجة.",
+    rf_email_report:"إرسال التقرير بالبريد الإلكتروني",rf_email_report_desc:"يرسل التقرير تلقائيًا إلى بريدك المسجل عند اكتمال التحليل.",
+    rf_branding:"إظهار علامة DataUnivers التجارية",rf_branding_desc:"يتضمن شعار DataUnivers والتذييل في التقارير المنزَّلة.",
+    rf_scoring_eyebrow:"التقييم",rf_scoring_title:"عتبات النقاط",
+    rf_scoring_sub:"خصص حدود النقاط لكل شارة جودة.",
+    lbl_score_excellent:"ممتاز (شارة خضراء)",lbl_score_good:"جيد (شارة كهرمانية)",
+    score_and_above:"فما فوق",score_to:"إلى 89",
+    score_note:"النقاط الأقل من عتبة جيد تُعلَّم بـ \"يحتاج تحسين\".",
+    api_keys_eyebrow:"مفاتيح API",api_keys_title:"مفاتيح API",
+    api_keys_sub:"استخدم هذه المفاتيح للمصادقة على طلبات API DataUnivers من تطبيقاتك.",
+    apikey_production:"الإنتاج",apikey_test:"الاختبار",
+    apikey_created_mar:"أُنشئت مارس 2024",apikey_created_jun:"أُنشئت يونيو 2026",
+    btn_create_key:"إنشاء مفتاح جديد",
+    wh_eyebrow:"WEBHOOKS",wh_title:"Webhooks",
+    wh_sub:"أرسل أحداثًا في الوقت الفعلي إلى نقاط النهاية الخاصة بك عند اكتمال التحليلات.",
+    wh_col_url:"رابط النقطة الطرفية",wh_col_events:"الأحداث",wh_col_status:"الحالة",
+    btn_add_webhook:"إضافة webhook",
+    st_usage_eyebrow:"استخدام التخزين",st_usage_title:"تفصيل التخزين",
+    st_usage_sub:"تشمل خطة Pro الخاصة بك 10 جيجابايت من التخزين.",
+    st_total_used:"المستخدم الإجمالي",st_documents:"الوثائق المرفوعة",st_reports:"التقارير المولَّدة",
+    st_cache:"ذاكرة التخزين المؤقت",st_cache_desc:"ملفات المعالجة، تُمسح تلقائيًا بعد 7 أيام",
+    btn_clear_cache:"مسح",
+    st_export_eyebrow:"تصدير بياناتك",st_export_title:"تصدير البيانات",
+    st_export_sub:"قم بتنزيل نسخة كاملة من بياناتك بتنسيقات قابلة للنقل.",
+    export_analyses:"جميع التحليلات والتقارير",export_analyses_desc:"يتضمن جميع الوثائق والتقارير والنقاط بصيغة PDF + JSON.",
+    export_profile:"الملف الشخصي والإعدادات",export_profile_desc:"معلومات حسابك وتفضيلاتك وتكوينك.",
+    btn_export:"تصدير",
+    st_auto_backup:"نسخ احتياطي أسبوعي تلقائي",st_auto_backup_desc:"سيرسل DataUnivers أرشيف نسخ احتياطي إلى بريدك كل أحد.",
+    st_retention_eyebrow:"سياسة الاحتفاظ",st_retention_title:"الاحتفاظ بالبيانات",
+    st_retention_sub:"تحكم في مدة احتفاظ DataUnivers بوثائقك وتقاريرك.",
+    lbl_doc_retention:"الاحتفاظ بالوثائق المرفوعة لمدة",
+    ret_forever:"إلى الأبد",ret_1year:"سنة واحدة بعد الرفع",ret_6months:"6 أشهر بعد الرفع",ret_90days:"90 يومًا بعد الرفع",
+    ret_hint:"تُحذف الوثائق نهائيًا بعد فترة الاحتفاظ. تُحفظ التقارير بغض النظر.",
+    adv_beta_eyebrow:"الميزات التجريبية",adv_beta_title:"ميزات الوصول المبكر",
+    adv_beta_sub:"جرّب الميزات التجريبية قبل إصدارها. قد تتغير أو تُحذف دون إشعار.",
+    adv_collab:"التعليقات التعاونية",adv_collab_desc:"شارك تقارير التحليل مع المشرفين أو الزملاء للتعليقات المدمجة.",
+    adv_chat:"مساعد البحث بالذكاء الاصطناعي",adv_chat_desc:"تحدث مع ذكاء اصطناعي حول نتائج وثيقتك واحصل على اقتراحات إعادة كتابة.",
+    adv_compare:"مقارنة الإصدارات",adv_compare_desc:"قارن نسختين من نفس الوثيقة وشاهد كيف تطورت النقاط بين المسودات.",
+    adv_debug_eyebrow:"التشخيصات",adv_debug_title:"أدوات التشخيص",
+    adv_debug_sub:"أدوات لحل المشكلات وتحسين تجربتك.",
+    adv_analytics:"تحليلات الاستخدام",adv_analytics_desc:"السماح لـ DataUnivers بجمع بيانات الاستخدام المجهولة لتحسين المنتج.",
+    adv_crash:"تقارير الأعطال",adv_crash_desc:"إرسال تقارير الأخطاء تلقائيًا عند حدوث خطأ للمساعدة في إصلاح المشكلات بشكل أسرع.",
+    btn_clear_cache2:"مسح ذاكرة التخزين المحلية",btn_reset_settings:"إعادة تعيين جميع الإعدادات",btn_view_logs:"عرض سجلات الأخطاء",
+    danger_data_title:"منطقة الخطر",
+    danger_data_desc:"هذه الإجراءات دائمة ولا يمكن التراجع عنها. تصرف بحذر.",
+    btn_delete_all_docs:"حذف جميع الوثائق",btn_delete_all_analyses:"حذف جميع التحليلات",btn_delete_account:"حذف الحساب"
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang){
+  currentLang = lang;
+  const t = T[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(t[k] !== undefined) el.innerHTML = t[k];
+  });
+  const rtl = lang === 'ar';
+  document.documentElement.setAttribute('dir', rtl ? 'rtl' : 'ltr');
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
+  });
+  // sync lang options
+  document.querySelectorAll('.lang-opt').forEach(o=>o.classList.remove('active'));
+  const lo = document.getElementById('lang-' + lang);
+  if(lo) lo.classList.add('active');
+}
+
+function toggleTheme(){
+  const html = document.documentElement;
+  const dark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', dark ? 'light' : 'dark');
+  document.getElementById('themeBtn').textContent = dark ? '🌙' : '☀️';
+  document.getElementById('theme-light').classList.toggle('active', dark);
+  document.getElementById('theme-dark').classList.toggle('active', !dark);
+  document.getElementById('theme-auto').classList.remove('active');
+}
+
+function showSection(name){
+  document.querySelectorAll('.settings-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.settings-nav a').forEach(a=>a.classList.remove('active'));
+  const sec = document.getElementById('section-' + name);
+  if(sec) sec.classList.add('active');
+  const link = document.querySelector('.settings-nav a[data-section="' + name + '"]');
+  if(link) link.classList.add('active');
+}
+
+function setThemeOpt(val){
+  ['light','dark','auto'].forEach(v=>{
+    document.getElementById('theme-' + v).classList.toggle('active', v === val);
+  });
+  if(val !== 'auto'){
+    document.documentElement.setAttribute('data-theme', val);
+    document.getElementById('themeBtn').textContent = val === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function setDensity(val){
+  ['comfortable','compact'].forEach(v=>{
+    document.getElementById('density-' + v).classList.toggle('active', v === val);
+  });
+}
+
+function setFont(val){
+  document.querySelectorAll('.font-option').forEach(f=>f.classList.remove('active'));
+  const el = document.getElementById('font-' + val);
+  if(el) el.classList.add('active');
+}
+
+function setAccent(el){
+  document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function setLangOpt(lang){
+  document.querySelectorAll('.lang-opt').forEach(o=>o.classList.remove('active'));
+  document.getElementById('lang-' + lang).classList.add('active');
+  setLang(lang);
+}
+
+setLang('en');
+</script>
+</body>
+</html>
