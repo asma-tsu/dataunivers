@@ -8,352 +8,110 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
-/* ════════════════════════════════
-   TOKENS — identical to landing page
-════════════════════════════════ */
 :root {
-  --navy:       #0f2d5e;
-  --navy-deep:  #091e42;
-  --navy-mid:   #1a3d72;
-  --navy-light: #2a5298;
-  --navy-mist:  #e8eef7;
-  --gold:       #c9a84c;
-  --gold-light: #e8c96e;
-  --gold-dark:  #a07830;
-  --cream:      #faf8f4;
-  --cream2:     #f2ede4;
-  --white:      #ffffff;
-  --text:       #0f1e35;
-  --text-mid:   #3a4d6b;
-  --text-muted: #6b7a96;
-  --text-light: #9aa4b8;
-  --border:     #dde3ef;
-  --border-soft:#edf0f7;
-  --tag-bg:     #eef1f9;
-  --surface:    #ffffff;
-  --surface2:   #f5f7fc;
-  --nav-bg:     rgba(250,248,244,0.97);
-  --sidebar-bg: #ffffff;
-  --green:      #1a7a4a;
-  --green-bg:   #eaf5ee;
-  --amber:      #b45309;
-  --amber-bg:   #fef3e2;
-  --red:        #c0392b;
-  --red-bg:     #fdecea;
+  --navy:#0f2d5e;--navy-deep:#091e42;--navy-mid:#1a3d72;--navy-light:#2a5298;--navy-mist:#e8eef7;
+  --gold:#c9a84c;--gold-light:#e8c96e;--gold-dark:#a07830;
+  --cream:#faf8f4;--cream2:#f2ede4;--white:#ffffff;
+  --text:#0f1e35;--text-mid:#3a4d6b;--text-muted:#6b7a96;--text-light:#9aa4b8;
+  --border:#dde3ef;--border-soft:#edf0f7;--tag-bg:#eef1f9;
+  --surface:#ffffff;--surface2:#f5f7fc;--nav-bg:rgba(250,248,244,0.97);--sidebar-bg:#ffffff;
+  --green:#1a7a4a;--green-bg:#eaf5ee;--amber:#b45309;--amber-bg:#fef3e2;--red:#c0392b;--red-bg:#fdecea;
 }
-[data-theme="dark"] {
-  --cream:      #0d1b33;
-  --cream2:     #111f3a;
-  --white:      #152240;
-  --text:       #dde6f5;
-  --text-mid:   #9ab0d0;
-  --text-muted: #6a85aa;
-  --text-light: #4a6080;
-  --border:     #1e3358;
-  --border-soft:#162844;
-  --tag-bg:     #162540;
-  --surface:    #152240;
-  --surface2:   #1a2b4a;
-  --nav-bg:     rgba(13,27,51,0.97);
-  --sidebar-bg: #0f1e38;
-  --navy-mist:  #162540;
-  --green-bg:   #0e2a1c;
-  --amber-bg:   #2a1a06;
-  --red-bg:     #2a0e0c;
+[data-theme="dark"]{
+  --cream:#0d1b33;--cream2:#111f3a;--white:#152240;
+  --text:#dde6f5;--text-mid:#9ab0d0;--text-muted:#6a85aa;--text-light:#4a6080;
+  --border:#1e3358;--border-soft:#162844;--tag-bg:#162540;
+  --surface:#152240;--surface2:#1a2b4a;--nav-bg:rgba(13,27,51,0.97);--sidebar-bg:#0f1e38;
+  --navy-mist:#162540;--green-bg:#0e2a1c;--amber-bg:#2a1a06;--red-bg:#2a0e0c;
 }
-
-/* ════════════════════════════════
-   RESET
-════════════════════════════════ */
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{
-  font-family:'Inter',sans-serif;
-  background:var(--cream);
-  color:var(--text);
-  line-height:1.6;
-  transition:background .3s,color .3s;
-  display:flex;flex-direction:column;min-height:100vh;
-}
-
-/* ════════════════════════════════
-   LAYOUT SHELL
-════════════════════════════════ */
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;transition:background .3s,color .3s;display:flex;flex-direction:column;min-height:100vh;}
 .app-shell{display:flex;flex:1;min-height:0;}
 
-/* ════════════════════════════════
-   TOPBAR
-════════════════════════════════ */
-.topbar{
-  position:sticky;top:0;z-index:200;
-  background:var(--nav-bg);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-  padding:0 1.5rem 0 0;
-  display:flex;align-items:center;justify-content:space-between;
-  height:58px;
-  transition:background .3s;
-}
-.topbar-left{
-  display:flex;align-items:center;gap:0;
-  width:230px;flex-shrink:0;
-  border-right:1px solid var(--border);
-  height:100%;padding:0 1.5rem;
-}
-.topbar-logo{
-  display:flex;align-items:center;gap:9px;
-  text-decoration:none;
-  font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--navy);
-}
+/* TOPBAR */
+.topbar{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 1.5rem 0 0;display:flex;align-items:center;justify-content:space-between;height:58px;transition:background .3s;}
+.topbar-left{display:flex;align-items:center;gap:0;width:230px;flex-shrink:0;border-right:1px solid var(--border);height:100%;padding:0 1.5rem;}
+.topbar-logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);}
 [data-theme="dark"] .topbar-logo{color:var(--text);}
 .logo-mark{width:30px;height:30px;flex-shrink:0;}
-
-.topbar-search{
-  flex:1;display:flex;align-items:center;gap:10px;
-  background:var(--surface2);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:7px 14px;
-  max-width:340px;
-  margin:0 1.5rem;
-}
-.topbar-search input{
-  background:none;border:none;outline:none;
-  font-family:inherit;font-size:.835rem;color:var(--text);
-  width:100%;
-}
+.topbar-search{flex:1;display:flex;align-items:center;gap:10px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:7px 14px;max-width:340px;margin:0 1.5rem;}
+.topbar-search input{background:none;border:none;outline:none;font-family:inherit;font-size:.835rem;color:var(--text);width:100%;}
 .topbar-search input::placeholder{color:var(--text-light);}
 .topbar-search svg{width:15px;height:15px;stroke:var(--text-muted);flex-shrink:0;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-
-.topbar-right{
-  display:flex;align-items:center;gap:.65rem;
-}
-.icon-btn{
-  width:34px;height:34px;border-radius:8px;
-  background:var(--surface2);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;position:relative;
-  transition:background .2s;
-}
+.topbar-right{display:flex;align-items:center;gap:.65rem;}
+.icon-btn{width:34px;height:34px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;transition:background .2s;}
 .icon-btn:hover{background:var(--navy-mist);}
 .icon-btn svg{width:16px;height:16px;stroke:var(--text-muted);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-.notif-dot{
-  position:absolute;top:6px;right:6px;
-  width:7px;height:7px;border-radius:50%;
-  background:var(--gold);border:1.5px solid var(--surface);
-}
-
+.notif-dot{position:absolute;top:6px;right:6px;width:7px;height:7px;border-radius:50%;background:var(--gold);border:1.5px solid var(--surface);}
 .lang-switcher{display:flex;gap:2px;background:var(--surface2);border-radius:7px;padding:2px;border:1px solid var(--border);}
 .lang-btn{background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:.72rem;font-weight:700;padding:4px 9px;border-radius:5px;font-family:inherit;transition:all .2s;letter-spacing:.04em;}
 .lang-btn.active{background:var(--navy);color:#fff;box-shadow:0 1px 4px rgba(15,45,94,.3);}
-.theme-toggle{
-  background:var(--surface2);border:1px solid var(--border);border-radius:7px;
-  width:34px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;
-  font-size:.9rem;transition:all .2s;
-}
+.theme-toggle{background:var(--surface2);border:1px solid var(--border);border-radius:7px;width:34px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .2s;}
 .theme-toggle:hover{background:var(--navy-mist);}
-
-.avatar-btn{
-  width:34px;height:34px;border-radius:50%;
-  background:var(--navy);color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  font-size:.75rem;font-weight:700;cursor:pointer;
-  letter-spacing:.03em;flex-shrink:0;
-  border:2px solid var(--border);
-  transition:transform .2s;
-}
+.avatar-btn{width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;cursor:pointer;letter-spacing:.03em;flex-shrink:0;border:2px solid var(--border);transition:transform .2s;}
 .avatar-btn:hover{transform:scale(1.06);}
-
-.btn-new-analysis{
-  background:var(--navy);color:#fff;
-  border:none;border-radius:8px;padding:8px 18px;
-  font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit;
-  display:flex;align-items:center;gap:7px;
-  transition:background .2s,transform .15s;
-  box-shadow:0 2px 8px rgba(15,45,94,.25);
-  white-space:nowrap;
-}
+.btn-new-analysis{background:var(--navy);color:#fff;border:none;border-radius:8px;padding:8px 18px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:7px;transition:background .2s,transform .15s;box-shadow:0 2px 8px rgba(15,45,94,.25);white-space:nowrap;}
 .btn-new-analysis:hover{background:var(--navy-mid);transform:translateY(-1px);}
 .btn-new-analysis svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;}
 
-/* ════════════════════════════════
-   SIDEBAR
-════════════════════════════════ */
-.sidebar{
-  width:230px;flex-shrink:0;
-  background:var(--sidebar-bg);
-  border-right:1px solid var(--border);
-  display:flex;flex-direction:column;
-  padding:1.5rem 0;
-  position:sticky;top:58px;
-  height:calc(100vh - 58px);
-  overflow-y:auto;
-  transition:background .3s;
-}
+/* SIDEBAR */
+.sidebar{width:230px;flex-shrink:0;background:var(--sidebar-bg);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:1.5rem 0;position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto;transition:background .3s;}
 .sidebar-section{margin-bottom:1.75rem;}
-.sidebar-label{
-  font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--text-light);padding:0 1.4rem;margin-bottom:.6rem;
-}
+.sidebar-label{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-light);padding:0 1.4rem;margin-bottom:.6rem;}
 .sidebar-nav{list-style:none;}
-.sidebar-nav li a{
-  display:flex;align-items:center;gap:11px;
-  padding:9px 1.4rem;
-  text-decoration:none;
-  font-size:.845rem;font-weight:500;
-  color:var(--text-muted);
-  border-left:2.5px solid transparent;
-  transition:color .2s,background .2s,border-color .2s;
-}
+.sidebar-nav li a{display:flex;align-items:center;gap:11px;padding:9px 1.4rem;text-decoration:none;font-size:.845rem;font-weight:500;color:var(--text-muted);border-left:2.5px solid transparent;transition:color .2s,background .2s,border-color .2s;}
 .sidebar-nav li a:hover{color:var(--navy);background:var(--navy-mist);border-left-color:var(--border);}
-.sidebar-nav li a.active{
-  color:var(--navy);
-  background:var(--navy-mist);
-  border-left-color:var(--navy);
-  font-weight:600;
-}
-[data-theme="dark"] .sidebar-nav li a:hover,
-[data-theme="dark"] .sidebar-nav li a.active{
-  background:var(--surface2);
-  color:var(--text);
-  border-left-color:var(--gold);
-}
-.sidebar-nav li a svg{
-  width:16px;height:16px;
-  stroke:currentColor;fill:none;stroke-width:1.8;
-  stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;
-}
+.sidebar-nav li a.active{color:var(--navy);background:var(--navy-mist);border-left-color:var(--navy);font-weight:600;}
+[data-theme="dark"] .sidebar-nav li a:hover,[data-theme="dark"] .sidebar-nav li a.active{background:var(--surface2);color:var(--text);border-left-color:var(--gold);}
+.sidebar-nav li a svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.sidebar-bottom{margin-top:auto;border-top:1px solid var(--border);padding-top:1rem;}
 
-.sidebar-bottom{
-  margin-top:auto;border-top:1px solid var(--border);
-  padding-top:1rem;
-}
-
-/* ════════════════════════════════
-   MAIN CONTENT
-════════════════════════════════ */
+/* MAIN */
 .main{flex:1;min-width:0;overflow-y:auto;}
-.main-inner{
-  max-width:1000px;
-  padding:2.5rem 2.5rem;
-  margin:0 auto;
-}
+.main-inner{max-width:1000px;padding:2.5rem 2.5rem;margin:0 auto;}
 
-/* ════════════════════════════════
-   PAGE HEADER
-════════════════════════════════ */
-.page-header{
-  display:flex;align-items:flex-start;justify-content:space-between;
-  margin-bottom:2.2rem;
-}
-.page-greeting h1{
-  font-family:'Playfair Display',serif;
-  font-size:1.9rem;font-weight:900;
-  color:var(--navy);line-height:1.2;margin-bottom:4px;
-}
+/* PAGE HEADER */
+.page-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2.2rem;}
+.page-greeting h1{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;color:var(--navy);line-height:1.2;margin-bottom:4px;}
 [data-theme="dark"] .page-greeting h1{color:var(--text);}
 .page-greeting p{font-size:.84rem;color:var(--text-muted);}
-.header-date{
-  font-size:.75rem;color:var(--text-light);
-  background:var(--surface2);border:1px solid var(--border);
-  border-radius:8px;padding:7px 14px;
-  font-weight:500;letter-spacing:.02em;
-  white-space:nowrap;
-}
+.header-date{font-size:.75rem;color:var(--text-light);background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:7px 14px;font-weight:500;letter-spacing:.02em;white-space:nowrap;}
 
-/* ════════════════════════════════
-   STAT CARDS
-════════════════════════════════ */
-.stat-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:0;
-  border:1px solid var(--border);
-  border-radius:14px;overflow:hidden;
-  margin-bottom:2rem;
-  background:var(--border);
-}
-.stat-card{
-  background:var(--surface);padding:24px 22px;
-  border-right:1px solid var(--border);
-  transition:background .2s;
-}
+/* STAT CARDS */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:2rem;background:var(--border);}
+.stat-card{background:var(--surface);padding:24px 22px;border-right:1px solid var(--border);transition:background .2s;}
 .stat-card:last-child{border-right:none;}
 .stat-card:hover{background:var(--navy-mist);}
 [data-theme="dark"] .stat-card:hover{background:var(--surface2);}
-.stat-icon-label{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:12px;
-}
+.stat-icon-label{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
 .stat-label{font-size:.72rem;font-weight:600;color:var(--text-muted);letter-spacing:.03em;}
-.stat-icon-box{
-  width:32px;height:32px;border-radius:8px;
-  background:var(--navy-mist);
-  display:flex;align-items:center;justify-content:center;
-  border:1px solid rgba(15,45,94,.08);
-}
+.stat-icon-box{width:32px;height:32px;border-radius:8px;background:var(--navy-mist);display:flex;align-items:center;justify-content:center;border:1px solid rgba(15,45,94,.08);}
 .stat-icon-box svg{width:15px;height:15px;stroke:var(--navy);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
 [data-theme="dark"] .stat-icon-box{background:var(--surface2);}
 [data-theme="dark"] .stat-icon-box svg{stroke:var(--gold);}
-.stat-value{
-  font-family:'Playfair Display',serif;
-  font-size:2.1rem;font-weight:900;color:var(--navy);line-height:1;
-  margin-bottom:4px;
-}
+.stat-value{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:900;color:var(--navy);line-height:1;margin-bottom:4px;}
 [data-theme="dark"] .stat-value{color:var(--text);}
-.stat-delta{
-  font-size:.72rem;color:var(--text-muted);
-  display:flex;align-items:center;gap:4px;
-}
+.stat-delta{font-size:.72rem;color:var(--text-muted);display:flex;align-items:center;gap:4px;}
 .delta-up{color:var(--green);}
 .delta-dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;}
 
-/* ════════════════════════════════
-   SECTION TITLE ROW
-════════════════════════════════ */
-.section-row{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:1rem;
-}
-.section-row h2{
-  font-family:'Playfair Display',serif;
-  font-size:1.1rem;font-weight:700;color:var(--navy);
-}
+/* SECTION TITLE */
+.section-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
+.section-row h2{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);}
 [data-theme="dark"] .section-row h2{color:var(--text);}
-.view-all{
-  font-size:.77rem;font-weight:600;color:var(--gold-dark);
-  text-decoration:none;display:flex;align-items:center;gap:4px;
-  transition:color .2s;
-}
+.view-all{font-size:.77rem;font-weight:600;color:var(--gold-dark);text-decoration:none;display:flex;align-items:center;gap:4px;transition:color .2s;}
 [data-theme="dark"] .view-all{color:var(--gold);}
 .view-all:hover{color:var(--navy);}
 .view-all svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 
-/* ════════════════════════════════
-   RECENT ANALYSES TABLE
-════════════════════════════════ */
-.analyses-table{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:14px;overflow:hidden;
-  margin-bottom:2rem;
-}
-.analysis-row{
-  display:flex;align-items:center;gap:16px;
-  padding:16px 20px;
-  border-bottom:1px solid var(--border-soft);
-  transition:background .2s;
-  cursor:pointer;text-decoration:none;color:inherit;
-}
+/* ANALYSES TABLE */
+.analyses-table{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:2rem;}
+.analysis-row{display:flex;align-items:center;gap:16px;padding:16px 20px;border-bottom:1px solid var(--border-soft);transition:background .2s;cursor:pointer;text-decoration:none;color:inherit;}
 .analysis-row:last-child{border-bottom:none;}
 .analysis-row:hover{background:var(--navy-mist);}
 [data-theme="dark"] .analysis-row:hover{background:var(--surface2);}
-.doc-thumb{
-  width:36px;height:44px;flex-shrink:0;
-  background:var(--navy-mist);border-radius:5px;
-  display:flex;align-items:center;justify-content:center;
-  border:1px solid rgba(15,45,94,.1);
-}
+.doc-thumb{width:36px;height:44px;flex-shrink:0;background:var(--navy-mist);border-radius:5px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(15,45,94,.1);}
 [data-theme="dark"] .doc-thumb{background:var(--surface2);}
 .doc-thumb svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 [data-theme="dark"] .doc-thumb svg{stroke:var(--gold);}
@@ -362,61 +120,30 @@ body{
 .analysis-sub{font-size:.745rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .analysis-meta{display:flex;align-items:center;gap:10px;flex-shrink:0;}
 .analysis-time{font-size:.72rem;color:var(--text-light);white-space:nowrap;}
-.badge{
-  display:inline-flex;align-items:center;gap:4px;
-  font-size:.67rem;font-weight:700;padding:3px 10px;border-radius:20px;
-  letter-spacing:.04em;white-space:nowrap;
-}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:.67rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.04em;white-space:nowrap;}
 .badge-green{background:var(--green-bg);color:var(--green);}
 .badge-gold{background:var(--amber-bg);color:var(--amber);}
 .badge-red{background:var(--red-bg);color:var(--red);}
 .badge-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0;}
-.analysis-score{
-  font-family:'Playfair Display',serif;
-  font-size:1.25rem;font-weight:900;color:var(--navy);
-  min-width:28px;text-align:right;
-}
+.analysis-score{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:900;color:var(--navy);min-width:28px;text-align:right;}
 [data-theme="dark"] .analysis-score{color:var(--text);}
-.row-arrow{
-  width:20px;height:20px;flex-shrink:0;
-  stroke:var(--text-light);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
-}
+.row-arrow{width:20px;height:20px;flex-shrink:0;stroke:var(--text-light);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 
-/* ════════════════════════════════
-   BOTTOM TWO-COL
-════════════════════════════════ */
+/* TWO COL */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2rem;}
 
-/* ── Quick Upload Card ── */
-.card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:14px;padding:26px 24px;
-  transition:box-shadow .2s;
-}
+/* CARD */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 24px;transition:box-shadow .2s;}
 .card:hover{box-shadow:0 6px 24px rgba(15,45,94,.08);}
-.card-title{
-  font-family:'Playfair Display',serif;
-  font-size:1rem;font-weight:700;color:var(--navy);
-  margin-bottom:4px;
-}
+.card-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
 [data-theme="dark"] .card-title{color:var(--text);}
 .card-sub{font-size:.78rem;color:var(--text-muted);margin-bottom:1.25rem;line-height:1.6;}
 
-.upload-zone{
-  border:1.5px dashed var(--border);border-radius:10px;
-  padding:24px 16px;text-align:center;
-  cursor:pointer;
-  transition:border-color .2s,background .2s;
-  margin-bottom:.85rem;
-}
+/* UPLOAD ZONE */
+.upload-zone{border:1.5px dashed var(--border);border-radius:10px;padding:24px 16px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;margin-bottom:.85rem;}
 .upload-zone:hover{border-color:var(--navy-light);background:var(--navy-mist);}
 [data-theme="dark"] .upload-zone:hover{background:var(--surface2);}
-.upload-icon{
-  width:42px;height:42px;border-radius:11px;
-  background:var(--navy-mist);border:1px solid rgba(15,45,94,.1);
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 10px;
-}
+.upload-icon{width:42px;height:42px;border-radius:11px;background:var(--navy-mist);border:1px solid rgba(15,45,94,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;}
 [data-theme="dark"] .upload-icon{background:var(--surface2);}
 .upload-icon svg{width:18px;height:18px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 [data-theme="dark"] .upload-icon svg{stroke:var(--gold);}
@@ -425,34 +152,29 @@ body{
 [data-theme="dark"] .upload-text span{color:var(--gold);}
 .upload-hint{font-size:.68rem;color:var(--text-light);}
 .upload-types{display:flex;gap:6px;justify-content:center;margin-top:8px;}
-.type-tag{
-  font-size:.62rem;font-weight:700;letter-spacing:.06em;
-  padding:2px 9px;border-radius:5px;
-  background:var(--tag-bg);color:var(--navy-light);
-  border:1px solid rgba(42,82,152,.1);
-}
+.type-tag{font-size:.62rem;font-weight:700;letter-spacing:.06em;padding:2px 9px;border-radius:5px;background:var(--tag-bg);color:var(--navy-light);border:1px solid rgba(42,82,152,.1);}
 [data-theme="dark"] .type-tag{background:var(--surface2);color:var(--text-mid);}
-
-.upload-privacy{
-  background:var(--navy-mist);border-radius:8px;
-  padding:9px 13px;font-size:.71rem;color:var(--text-muted);
-  display:flex;align-items:flex-start;gap:8px;line-height:1.5;
-}
+.upload-privacy{background:var(--navy-mist);border-radius:8px;padding:9px 13px;font-size:.71rem;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
 [data-theme="dark"] .upload-privacy{background:var(--surface2);}
 .upload-privacy svg{width:13px;height:13px;stroke:var(--gold-dark);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;margin-top:1px;}
 [data-theme="dark"] .upload-privacy svg{stroke:var(--gold);}
 
-/* ── Progress Card ── */
-.progress-card{}
-.progress-month-label{
-  font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--gold-dark);margin-bottom:.9rem;
-}
+/* FORM FIELDS */
+.form-field{margin-bottom:1rem;}
+.form-label{font-size:.78rem;font-weight:600;color:var(--text-muted);margin-bottom:.4rem;display:block;}
+.form-label span.required{color:var(--red);margin-left:3px;}
+.form-input,.form-textarea,.form-select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:.845rem;color:var(--text);background:var(--surface);outline:none;transition:border-color .2s;}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--navy-light);}
+[data-theme="dark"] .form-input,[data-theme="dark"] .form-textarea,[data-theme="dark"] .form-select{background:var(--surface2);}
+.form-textarea{resize:vertical;min-height:80px;line-height:1.6;}
+.form-textarea[dir="rtl"]{text-align:right;}
+.field-hint{font-size:.68rem;color:var(--text-light);margin-top:4px;}
+
+/* PROGRESS */
+.progress-month-label{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:.9rem;}
 [data-theme="dark"] .progress-month-label{color:var(--gold);}
 .progress-row{margin-bottom:14px;}
-.progress-row-head{
-  display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;
-}
+.progress-row-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
 .progress-label{font-size:.77rem;color:var(--text-mid);font-weight:500;}
 .progress-pct{font-size:.75rem;font-weight:700;color:var(--navy);}
 [data-theme="dark"] .progress-pct{color:var(--text);}
@@ -462,149 +184,84 @@ body{
 .bar-gold{background:linear-gradient(90deg,var(--gold-light),var(--gold));}
 .bar-green{background:linear-gradient(90deg,#34d399,#059669);}
 .bar-red{background:linear-gradient(90deg,#f87171,#dc2626);}
-
-.score-summary{
-  margin-top:1.2rem;padding-top:1.1rem;border-top:1px solid var(--border-soft);
-  display:flex;align-items:center;justify-content:space-between;
-}
+.score-summary{margin-top:1.2rem;padding-top:1.1rem;border-top:1px solid var(--border-soft);display:flex;align-items:center;justify-content:space-between;}
 .score-summary-label{font-size:.73rem;color:var(--text-muted);}
-.score-summary-val{
-  font-family:'Playfair Display',serif;
-  font-size:2.4rem;font-weight:900;color:var(--navy);line-height:1;
-}
+.score-summary-val{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--navy);line-height:1;}
 [data-theme="dark"] .score-summary-val{color:var(--text);}
 .score-summary-sub{font-size:.64rem;color:var(--text-light);}
 .score-badge-row{display:flex;align-items:center;gap:6px;margin-top:4px;}
-.trend-pill{
-  display:inline-flex;align-items:center;gap:4px;
-  background:var(--green-bg);color:var(--green);
-  font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:20px;
-}
+.trend-pill{display:inline-flex;align-items:center;gap:4px;background:var(--green-bg);color:var(--green);font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:20px;}
 .trend-pill svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;}
 
-/* ════════════════════════════════
-   MODULES SECTION
-════════════════════════════════ */
-.modules-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:0;background:var(--border);
-  border:1px solid var(--border);border-radius:14px;overflow:hidden;
-  margin-bottom:2rem;
-}
-.module-card{
-  background:var(--surface);padding:20px 18px;
-  border-right:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  transition:background .2s;cursor:pointer;
-}
+/* MODULES */
+.modules-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:0;}
+.module-card{background:var(--surface);padding:20px 18px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background .2s;cursor:pointer;position:relative;}
 .module-card:hover{background:var(--navy-mist);}
 [data-theme="dark"] .module-card:hover{background:var(--surface2);}
+.module-card.selected{background:var(--navy-mist);}
+[data-theme="dark"] .module-card.selected{background:var(--surface2);}
 .module-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;}
-.module-icon{
-  width:36px;height:36px;border-radius:9px;
-  background:var(--navy-mist);
-  display:flex;align-items:center;justify-content:center;
-  border:1px solid rgba(15,45,94,.08);
-}
+.module-icon{width:36px;height:36px;border-radius:9px;background:var(--navy-mist);display:flex;align-items:center;justify-content:center;border:1px solid rgba(15,45,94,.08);}
 [data-theme="dark"] .module-icon{background:var(--surface2);}
 .module-icon svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 [data-theme="dark"] .module-icon svg{stroke:var(--gold);}
-.module-check{
-  width:18px;height:18px;border-radius:5px;
-  background:var(--navy);border:1.5px solid var(--navy);
-  display:flex;align-items:center;justify-content:center;
-}
-.module-check svg{width:10px;height:10px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+
+/* CUSTOM CHECKBOX */
+.module-checkbox{display:none;}
+.module-check-box{width:20px;height:20px;border-radius:6px;border:2px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;cursor:pointer;}
+.module-check-box svg{width:11px;height:11px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .15s;}
+.module-checkbox:checked + .module-check-box{background:var(--navy);border-color:var(--navy);}
+.module-checkbox:checked + .module-check-box svg{opacity:1;}
+
 .module-name{font-size:.83rem;font-weight:700;color:var(--text);margin-bottom:4px;}
 .module-desc{font-size:.73rem;color:var(--text-muted);line-height:1.55;margin-bottom:9px;}
 .module-time{font-size:.67rem;color:var(--text-light);display:flex;align-items:center;gap:5px;}
 .module-time svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;}
-
-.modules-footer{
-  display:flex;align-items:center;justify-content:space-between;
-  background:var(--surface);border-top:1px solid var(--border);
-  padding:16px 20px;
-}
+.modules-footer{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border-top:1px solid var(--border);padding:16px 20px;}
 .modules-selected{font-size:.8rem;color:var(--text-muted);}
 .modules-selected strong{color:var(--navy);font-weight:700;}
 [data-theme="dark"] .modules-selected strong{color:var(--text);}
 .modules-est{font-size:.72rem;color:var(--text-light);margin-top:2px;}
 .modules-actions{display:flex;gap:8px;}
-.btn-outline-sm{
-  background:none;border:1.5px solid var(--border);border-radius:7px;
-  padding:7px 16px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;
-  color:var(--text-mid);transition:border-color .2s,background .2s;
-}
+.btn-outline-sm{background:none;border:1.5px solid var(--border);border-radius:7px;padding:7px 16px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;color:var(--text-mid);transition:border-color .2s,background .2s;}
 .btn-outline-sm:hover{border-color:var(--navy);background:var(--navy-mist);}
-.btn-filled-sm{
-  background:var(--navy);color:#fff;border:none;border-radius:7px;
-  padding:8px 20px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;
-  display:flex;align-items:center;gap:6px;
-  box-shadow:0 2px 8px rgba(15,45,94,.25);
-  transition:background .2s,transform .15s;
-}
+.btn-filled-sm{background:var(--navy);color:#fff;border:none;border-radius:7px;padding:8px 20px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;box-shadow:0 2px 8px rgba(15,45,94,.25);transition:background .2s,transform .15s;}
 .btn-filled-sm:hover{background:var(--navy-mid);transform:translateY(-1px);}
 .btn-filled-sm svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;}
-
-/* ════════════════════════════════
-   EYEBROW / DIVIDER SECTIONS
-════════════════════════════════ */
-.eyebrow{
-  font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--gold-dark);margin-bottom:.55rem;
-}
+.eyebrow{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:.55rem;}
 [data-theme="dark"] .eyebrow{color:var(--gold);}
-
-/* ════════════════════════════════
-   REPORTS PAGE (hidden by default)
-════════════════════════════════ */
 .page{display:none;}
 .page.active{display:block;}
 
-/* ════════════════════════════════
-   RESPONSIVE
-════════════════════════════════ */
-@media(max-width:1024px){
-  .stat-grid{grid-template-columns:1fr 1fr;}
-  .two-col{grid-template-columns:1fr;}
-  .modules-grid{grid-template-columns:1fr 1fr;}
-}
-@media(max-width:760px){
-  .sidebar{display:none;}
-  .main-inner{padding:1.5rem;}
-  .stat-grid{grid-template-columns:1fr 1fr;}
-  .modules-grid{grid-template-columns:1fr;}
-  .topbar-left{width:auto;}
-  .topbar-search{display:none;}
-}
-@media(prefers-reduced-motion:reduce){
-  *{transition:none!important;animation:none!important;}
-}
+/* ARABIC SUPPORT */
+[dir="rtl"] .topbar-left{border-right:none;border-left:1px solid var(--border);}
+[dir="rtl"] .sidebar-nav li a{border-left:none;border-right:2.5px solid transparent;}
+[dir="rtl"] .sidebar-nav li a.active,[dir="rtl"] .sidebar-nav li a:hover{border-right-color:var(--navy);border-left-color:transparent;}
+
+@media(max-width:1024px){.stat-grid{grid-template-columns:1fr 1fr;}.two-col{grid-template-columns:1fr;}.modules-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:760px){.sidebar{display:none;}.main-inner{padding:1.5rem;}.stat-grid{grid-template-columns:1fr 1fr;}.modules-grid{grid-template-columns:1fr;}.topbar-left{width:auto;}.topbar-search{display:none;}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════ TOPBAR ══════════════════════ -->
 <header class="topbar">
   <div class="topbar-left">
-    <a href="index.html" class="topbar-logo">
-      <svg class="logo-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <a href="#" class="topbar-logo">
+      <svg class="logo-mark" viewBox="0 0 34 34" fill="none">
         <path d="M17 8 C17 8 12 6 10 9 C8.5 11 9 13 10 14 C8 14.5 7 16 7.5 18 C8 20 10 21 12 20.5 C12 22.5 13.5 24 15.5 24 C16.5 24 17 23.5 17 23.5" stroke="#0f2d5e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M17 8 C17 8 22 6 24 9 C25.5 11 25 13 24 14 C26 14.5 27 16 26.5 18 C26 20 24 21 22 20.5 C22 22.5 20.5 24 18.5 24 C17.5 24 17 23.5 17 23.5" stroke="#0f2d5e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         <line x1="17" y1="8" x2="17" y2="23.5" stroke="#0f2d5e" stroke-width="1.2" stroke-dasharray="2 2"/>
         <circle cx="22.5" cy="26.5" r="4" stroke="#c9a84c" stroke-width="1.7"/>
         <line x1="25.5" y1="29.5" x2="28" y2="32" stroke="#c9a84c" stroke-width="1.7" stroke-linecap="round"/>
-        <circle cx="21" cy="25" r=".9" fill="#c9a84c" opacity=".6"/>
       </svg>
       DATAUNIVERS
     </a>
   </div>
-
   <div class="topbar-search">
     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" placeholder="Search analyses, reports…" id="searchInput"/>
+    <input type="text" placeholder="Search analyses, reports…"/>
   </div>
-
   <div class="topbar-right">
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLang('en')">EN</button>
@@ -612,11 +269,11 @@ body{
       <button class="lang-btn" onclick="setLang('ar')">AR</button>
     </div>
     <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
-    <div class="icon-btn" title="Notifications">
+    <div class="icon-btn">
       <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
       <div class="notif-dot"></div>
     </div>
-    <div class="avatar-btn" title="Sara Amrani">SA</div>
+    <div class="avatar-btn">SA</div>
     <button class="btn-new-analysis" onclick="setPage('upload')">
       <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       <span data-i18n="new_analysis">New Analysis</span>
@@ -624,79 +281,57 @@ body{
   </div>
 </header>
 
-<!-- ══════════════════════ SHELL ══════════════════════ -->
 <div class="app-shell">
-
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-section">
       <div class="sidebar-label" data-i18n="sb_main">Main</div>
       <ul class="sidebar-nav">
-        <li>
-          <a href="#" class="active" onclick="setPage('dashboard');return false;">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            <span data-i18n="sb_dashboard">Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" onclick="setPage('upload');return false;">
-            <svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
-            <span data-i18n="sb_upload">Upload Document</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" onclick="setPage('analyses');return false;">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            <span data-i18n="sb_analyses">Analyses</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" onclick="setPage('reports');return false;">
-            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            <span data-i18n="sb_reports">Reports</span>
-          </a>
-        </li>
+        <li><a href="#" class="active" onclick="setPage('dashboard');return false;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span data-i18n="sb_dashboard">Dashboard</span>
+        </a></li>
+        <li><a href="#" onclick="setPage('upload');return false;">
+          <svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+          <span data-i18n="sb_upload">Upload Document</span>
+        </a></li>
+        <li><a href="#" onclick="setPage('analyses');return false;">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span data-i18n="sb_analyses">Analyses</span>
+        </a></li>
+        <li><a href="#" onclick="setPage('reports');return false;">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <span data-i18n="sb_reports">Reports</span>
+        </a></li>
       </ul>
     </div>
-
     <div class="sidebar-section">
       <div class="sidebar-label" data-i18n="sb_account">Account</div>
       <ul class="sidebar-nav">
-        <li>
-          <a href="profile.html">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            <span data-i18n="sb_profile">Profile</span>
-          </a>
-        </li>
-        <li>
-          <a href="settings.html">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-            <span data-i18n="sb_settings">Settings</span>
-          </a>
-        </li>
+        <li><a href="#">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span data-i18n="sb_profile">Profile</span>
+        </a></li>
+        <li><a href="#">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span data-i18n="sb_settings">Settings</span>
+        </a></li>
       </ul>
     </div>
-
     <div class="sidebar-bottom">
       <ul class="sidebar-nav">
-        <li>
-          <a href="index.html" style="color:var(--text-light);">
-            <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-            <span data-i18n="sb_signout">Sign out</span>
-          </a>
-        </li>
+        <li><a href="#" style="color:var(--text-light);">
+          <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <span data-i18n="sb_signout">Sign out</span>
+        </a></li>
       </ul>
     </div>
   </aside>
 
-  <!-- ══════════════════════ MAIN ══════════════════════ -->
   <main class="main">
 
-    <!-- ── DASHBOARD PAGE ── -->
+    <!-- DASHBOARD PAGE -->
     <div class="page active" id="page-dashboard">
       <div class="main-inner">
-
-        <!-- Header -->
         <div class="page-header">
           <div class="page-greeting">
             <h1 data-i18n="dash_hello">Good morning, Sara.</h1>
@@ -704,15 +339,11 @@ body{
           </div>
           <div class="header-date" id="headerDate"></div>
         </div>
-
-        <!-- Stats -->
         <div class="stat-grid">
           <div class="stat-card">
             <div class="stat-icon-label">
               <span class="stat-label" data-i18n="stat_docs">Documents Analyzed</span>
-              <div class="stat-icon-box">
-                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              </div>
+              <div class="stat-icon-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
             </div>
             <div class="stat-value">12</div>
             <div class="stat-delta"><span class="delta-dot"></span><span class="delta-up" data-i18n="stat_docs_delta">+3 this month</span></div>
@@ -720,9 +351,7 @@ body{
           <div class="stat-card">
             <div class="stat-icon-label">
               <span class="stat-label" data-i18n="stat_score">Average Score</span>
-              <div class="stat-icon-box">
-                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-              </div>
+              <div class="stat-icon-box"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
             </div>
             <div class="stat-value">84</div>
             <div class="stat-delta"><span class="delta-dot"></span><span class="delta-up" data-i18n="stat_score_delta">Across all analyses</span></div>
@@ -730,9 +359,7 @@ body{
           <div class="stat-card">
             <div class="stat-icon-label">
               <span class="stat-label" data-i18n="stat_issues">Issues Detected</span>
-              <div class="stat-icon-box">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              </div>
+              <div class="stat-icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
             </div>
             <div class="stat-value">7</div>
             <div class="stat-delta" data-i18n="stat_issues_delta">Across all documents</div>
@@ -740,16 +367,13 @@ body{
           <div class="stat-card">
             <div class="stat-icon-label">
               <span class="stat-label" data-i18n="stat_compliant">Compliant Checks</span>
-              <div class="stat-icon-box">
-                <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/><path d="M9 12l2 2 4-4"/></svg>
-              </div>
+              <div class="stat-icon-box"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/><path d="M9 12l2 2 4-4"/></svg></div>
             </div>
             <div class="stat-value">94<span style="font-size:1rem;font-weight:400;font-family:'Inter',sans-serif;color:var(--text-muted);">%</span></div>
             <div class="stat-delta"><span class="delta-dot"></span><span class="delta-up" data-i18n="stat_compliant_delta">Pass rate this month</span></div>
           </div>
         </div>
 
-        <!-- Recent Analyses -->
         <div class="section-row">
           <div>
             <div class="eyebrow" data-i18n="recent_eyebrow">RECENT WORK</div>
@@ -763,9 +387,7 @@ body{
 
         <div class="analyses-table">
           <a class="analysis-row" href="#">
-            <div class="doc-thumb">
-              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
+            <div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
             <div class="analysis-info">
               <div class="analysis-title" data-i18n="row1_title">Mémoire de Fin d'études</div>
               <div class="analysis-sub" data-i18n="row1_sub">Développement d'un Système AI pour l'Audit…</div>
@@ -778,9 +400,7 @@ body{
             </div>
           </a>
           <a class="analysis-row" href="#">
-            <div class="doc-thumb">
-              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
+            <div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
             <div class="analysis-info">
               <div class="analysis-title" data-i18n="row2_title">Research Proposal — Machine Learning</div>
               <div class="analysis-sub" data-i18n="row2_sub">Comparative study on neural network architectures…</div>
@@ -793,9 +413,7 @@ body{
             </div>
           </a>
           <a class="analysis-row" href="#">
-            <div class="doc-thumb">
-              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
+            <div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
             <div class="analysis-info">
               <div class="analysis-title" data-i18n="row3_title">Literature Review Draft v2</div>
               <div class="analysis-sub" data-i18n="row3_sub">Systematic review of renewable energy adoption…</div>
@@ -809,86 +427,54 @@ body{
           </a>
         </div>
 
-        <!-- Two-col: Upload + Progress -->
         <div class="two-col">
-
-          <!-- Upload card -->
           <div class="card">
             <div class="card-title" data-i18n="upload_card_title">Upload a new document</div>
             <div class="card-sub" data-i18n="upload_card_sub">Submit a PDF or DOCX for a full academic quality analysis.</div>
             <div class="upload-zone" onclick="setPage('upload')">
-              <div class="upload-icon">
-                <svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
-              </div>
+              <div class="upload-icon"><svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg></div>
               <div class="upload-text"><span data-i18n="upload_cta">Drop your file or browse</span></div>
               <div class="upload-hint" data-i18n="upload_hint">Drag & drop or click to select</div>
-              <div class="upload-types">
-                <span class="type-tag">PDF</span>
-                <span class="type-tag">DOCX</span>
-                <span class="type-tag" data-i18n="max_size">Max 50 MB</span>
-              </div>
+              <div class="upload-types"><span class="type-tag">PDF</span><span class="type-tag">DOCX</span><span class="type-tag" data-i18n="max_size">Max 50 MB</span></div>
             </div>
             <div class="upload-privacy">
               <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg>
-              <span data-i18n="upload_privacy">Your document is processed in a secure, encrypted environment. DataUnivers does not store, share, or use your document for any purpose other than producing your analysis report.</span>
+              <span data-i18n="upload_privacy">Your document is processed in a secure, encrypted environment.</span>
             </div>
           </div>
-
-          <!-- Progress card -->
           <div class="card progress-card">
             <div class="progress-month-label" data-i18n="progress_eyebrow">YOUR PROGRESS THIS MONTH</div>
             <div class="card-sub" style="margin-bottom:1.2rem;" data-i18n="progress_sub">Average score improved by +8 points compared to last month.</div>
-
             <div class="progress-row">
-              <div class="progress-row-head">
-                <span class="progress-label" data-i18n="prog_compliance">Academic Compliance</span>
-                <span class="progress-pct">86%</span>
-              </div>
+              <div class="progress-row-head"><span class="progress-label" data-i18n="prog_compliance">Academic Compliance</span><span class="progress-pct">86%</span></div>
               <div class="bar-track"><div class="bar-fill bar-navy" style="width:86%"></div></div>
             </div>
             <div class="progress-row">
-              <div class="progress-row-head">
-                <span class="progress-label" data-i18n="prog_citations">Citation Quality</span>
-                <span class="progress-pct">75%</span>
-              </div>
+              <div class="progress-row-head"><span class="progress-label" data-i18n="prog_citations">Citation Quality</span><span class="progress-pct">75%</span></div>
               <div class="bar-track"><div class="bar-fill bar-navy" style="width:75%"></div></div>
             </div>
             <div class="progress-row">
-              <div class="progress-row-head">
-                <span class="progress-label" data-i18n="prog_quality">Research Quality</span>
-                <span class="progress-pct">69%</span>
-              </div>
+              <div class="progress-row-head"><span class="progress-label" data-i18n="prog_quality">Research Quality</span><span class="progress-pct">69%</span></div>
               <div class="bar-track"><div class="bar-fill bar-gold" style="width:69%"></div></div>
             </div>
             <div class="progress-row">
-              <div class="progress-row-head">
-                <span class="progress-label" data-i18n="prog_plagiat">Plagiarism Risk</span>
-                <span class="progress-pct" style="color:var(--red)">12%</span>
-              </div>
+              <div class="progress-row-head"><span class="progress-label" data-i18n="prog_plagiat">Plagiarism Risk</span><span class="progress-pct" style="color:var(--red)">12%</span></div>
               <div class="bar-track"><div class="bar-fill bar-red" style="width:12%"></div></div>
             </div>
-
             <div class="score-summary">
               <div>
                 <div class="score-summary-label" data-i18n="overall_score">Overall Score</div>
                 <div class="score-summary-sub" data-i18n="out_of">out of 100</div>
-                <div class="score-badge-row">
-                  <div class="trend-pill">
-                    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-                    +8 pts
-                  </div>
-                </div>
+                <div class="score-badge-row"><div class="trend-pill"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>+8 pts</div></div>
               </div>
               <div class="score-summary-val">84</div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-      </div><!-- /main-inner -->
-    </div><!-- /dashboard page -->
-
-
-    <!-- ── UPLOAD PAGE ── -->
+    <!-- UPLOAD PAGE -->
     <div class="page" id="page-upload">
       <div class="main-inner">
         <div class="page-header">
@@ -898,39 +484,58 @@ body{
           </div>
         </div>
 
-        <!-- Upload zone -->
-        <div class="card" style="max-width:640px;margin:0 auto 2rem;">
-          <div class="upload-zone" style="padding:40px 24px;">
+        <div class="card" style="max-width:680px;margin:0 auto 1.5rem;">
+
+          <!-- Titre du mémoire -->
+          <div class="form-field">
+            <label class="form-label" data-i18n="field_title_label">Document title<span class="required">*</span></label>
+            <input type="text" class="form-input" id="memoireTitle" data-i18n-placeholder="field_title_placeholder" placeholder="e.g. Développement d'un Système AI pour l'Audit Académique"/>
+            <div class="field-hint" data-i18n="field_title_hint">Enter the full official title as it appears on your document.</div>
+          </div>
+
+          <!-- إشكالية -->
+          <div class="form-field">
+            <label class="form-label" id="ishkaliyaLabel">الإشكالية / Research Problem<span class="required">*</span></label>
+            <textarea class="form-textarea" id="ishkaliyaText" dir="rtl" data-i18n-placeholder="field_ishkaliya_placeholder" placeholder="اكتب إشكاليتك البحثية هنا…" rows="3"></textarea>
+            <div class="field-hint" data-i18n="field_ishkaliya_hint">State the central research question or problem your work addresses (you may write in Arabic, French, or English).</div>
+          </div>
+
+          <!-- Document type -->
+          <div class="form-field">
+            <label class="form-label" data-i18n="doc_type_label">Document type</label>
+            <select class="form-select" id="docTypeSelect">
+              <option value="thesis" data-i18n="doc_type_thesis">Master's Thesis / Mémoire</option>
+              <option value="phd" data-i18n="doc_type_phd">PhD Dissertation</option>
+              <option value="paper" data-i18n="doc_type_paper">Research Paper</option>
+              <option value="proposal" data-i18n="doc_type_proposal">Research Proposal</option>
+              <option value="review" data-i18n="doc_type_review">Literature Review</option>
+              <option value="data" data-i18n="doc_type_data">Data Analysis Report</option>
+            </select>
+          </div>
+
+          <!-- Upload zone -->
+          <div class="upload-zone" style="padding:36px 24px;" id="uploadDropZone">
             <div class="upload-icon" style="width:52px;height:52px;border-radius:13px;">
               <svg viewBox="0 0 24 24" style="width:22px;height:22px;"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
             </div>
             <div class="upload-text" style="font-size:.9rem;margin-bottom:6px;" data-i18n="drop_zone_title">Drop your academic document here</div>
-            <div class="upload-hint"><span data-i18n="or_browse">or</span> <span style="color:var(--navy);font-weight:600;cursor:pointer;" data-i18n="browse_files">browse files</span></div>
-            <div class="upload-types" style="margin-top:10px;">
-              <span class="type-tag">PDF</span>
-              <span class="type-tag">DOCX</span>
-              <span class="type-tag" data-i18n="max_size">Max 50 MB</span>
-            </div>
+            <div class="upload-hint"><span data-i18n="or_browse">or</span> <span style="color:var(--navy);font-weight:600;cursor:pointer;" onclick="document.getElementById('fileInput').click()" data-i18n="browse_files">browse files</span></div>
+            <div class="upload-types" style="margin-top:10px;"><span class="type-tag">PDF</span><span class="type-tag">DOCX</span><span class="type-tag" data-i18n="max_size">Max 50 MB</span></div>
+            <input type="file" id="fileInput" accept=".pdf,.docx" style="display:none;" onchange="handleFile(this)"/>
           </div>
+          <div id="fileNameDisplay" style="display:none;background:var(--green-bg);border-radius:8px;padding:9px 14px;font-size:.8rem;color:var(--green);font-weight:600;margin-bottom:.85rem;display:none;align-items:center;gap:8px;">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
+            <span id="fileNameText"></span>
+          </div>
+
           <div class="upload-privacy">
             <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg>
             <span data-i18n="upload_privacy">Your document is processed in a secure, encrypted environment. DataUnivers does not store, share, or use your document for any purpose other than producing your analysis report.</span>
           </div>
-
-          <div style="margin-top:1.2rem;">
-            <div style="font-size:.78rem;font-weight:600;color:var(--text-muted);margin-bottom:.5rem;" data-i18n="doc_type_label">Document type</div>
-            <select style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:.845rem;color:var(--text);background:var(--surface);cursor:pointer;outline:none;">
-              <option data-i18n="doc_type_thesis">Master's Thesis / Mémoire</option>
-              <option data-i18n="doc_type_phd">PhD Dissertation</option>
-              <option data-i18n="doc_type_paper">Research Paper</option>
-              <option data-i18n="doc_type_proposal">Research Proposal</option>
-              <option data-i18n="doc_type_review">Literature Review</option>
-            </select>
-          </div>
         </div>
 
-        <!-- Configure modules -->
-        <div class="section-row" style="max-width:640px;margin:0 auto 1rem;">
+        <!-- Modules -->
+        <div class="section-row" style="max-width:680px;margin:0 auto 1rem;">
           <div>
             <div class="eyebrow" data-i18n="config_eyebrow">ANALYSIS MODULES</div>
             <h2 data-i18n="config_title">Configure your analysis</h2>
@@ -938,148 +543,189 @@ body{
           </div>
         </div>
 
-        <div class="modules-grid" style="max-width:640px;margin:0 auto 0;">
-          <!-- Row 1 -->
-          <div class="module-card">
+        <div class="modules-grid" style="max-width:680px;margin:0 auto 0;" id="modulesGrid">
+
+          <!-- Module 1 -->
+          <div class="module-card selected" onclick="toggleModule(this)">
             <div class="module-top">
-              <div class="module-icon">
-                <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12l2 2 4-4"/></svg>
-              </div>
-              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12l2 2 4-4"/></svg></div>
+              <label style="cursor:pointer;" onclick="event.stopPropagation()">
+                <input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/>
+                <div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </label>
             </div>
             <div class="module-name" data-i18n="mod1_name">Academic Standards Check</div>
             <div class="module-desc" data-i18n="mod1_desc">Verifies compliance with APA, MLA, IEEE, Harvard, and your institution's templates.</div>
             <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div>
           </div>
-          <div class="module-card">
+
+          <!-- Module 2 -->
+          <div class="module-card selected" onclick="toggleModule(this)">
             <div class="module-top">
-              <div class="module-icon">
-                <svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2.375-2-3H4c-1.25 0-2 1.125-2 2.5V11c0 1.25.75 2.375 2 3 1 .625 1 2 1 3"/><path d="M21 21c-3 0-7-1-7-8V5c0-1.25.75-2.375 2-3h4c1.25 0 2 1.125 2 2.5V11c0 1.25-.75 2.375-2 3-1 .625-1 2-1 3"/></svg>
-              </div>
-              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2.375-2-3H4c-1.25 0-2 1.125-2 2.5V11c0 1.25.75 2.375 2 3 1 .625 1 2 1 3"/><path d="M21 21c-3 0-7-1-7-8V5c0-1.25.75-2.375 2-3h4c1.25 0 2 1.125 2 2.5V11c0 1.25-.75 2.375-2 3-1 .625-1 2-1 3"/></svg></div>
+              <label style="cursor:pointer;" onclick="event.stopPropagation()">
+                <input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/>
+                <div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </label>
             </div>
             <div class="module-name" data-i18n="mod2_name">Citation Analysis</div>
             <div class="module-desc" data-i18n="mod2_desc">Detects missing references, evaluates citation quality, and flags inconsistencies.</div>
             <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~45s</div>
           </div>
-          <!-- Row 2 -->
-          <div class="module-card">
+
+          <!-- Module 3 -->
+          <div class="module-card selected" onclick="toggleModule(this)">
             <div class="module-top">
-              <div class="module-icon">
-                <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
-              </div>
-              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="module-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
+              <label style="cursor:pointer;" onclick="event.stopPropagation()">
+                <input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/>
+                <div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </label>
             </div>
             <div class="module-name" data-i18n="mod3_name">AI Content Detection</div>
             <div class="module-desc" data-i18n="mod3_desc">Estimates the probability of AI-generated sections and highlights flagged passages.</div>
             <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~1 min</div>
           </div>
-          <div class="module-card">
+
+          <!-- Module 4 -->
+          <div class="module-card selected" onclick="toggleModule(this)">
             <div class="module-top">
-              <div class="module-icon">
-                <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              </div>
-              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="module-icon"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+              <label style="cursor:pointer;" onclick="event.stopPropagation()">
+                <input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/>
+                <div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </label>
             </div>
             <div class="module-name" data-i18n="mod4_name">Plagiarism Screening</div>
             <div class="module-desc" data-i18n="mod4_desc">Identifies suspicious similarities across global academic databases.</div>
             <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~13 min</div>
           </div>
-          <!-- Row 3 -->
-          <div class="module-card">
+
+          <!-- Module 5 -->
+          <div class="module-card selected" onclick="toggleModule(this)">
             <div class="module-top">
-              <div class="module-icon">
-                <svg viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
-              </div>
-              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="module-icon"><svg viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div>
+              <label style="cursor:pointer;" onclick="event.stopPropagation()">
+                <input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/>
+                <div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </label>
             </div>
             <div class="module-name" data-i18n="mod5_name">Grammar &amp; Writing Quality</div>
             <div class="module-desc" data-i18n="mod5_desc">Evaluates grammar, style clarity, and academic register.</div>
             <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div>
           </div>
-          <div class="module-card">
+
+          <!-- Module 6 -->
+          <div class="module-card selected" onclick="toggleModule(this)">
             <div class="module-top">
-              <div class="module-icon">
-                <svg viewBox="0 0 24 24"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14H4s-.5-1-.5-3 .5-3 .5-3h5"/><path d="M9 14v8"/></svg>
-              </div>
-              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14H4s-.5-1-.5-3 .5-3 .5-3h5"/><path d="M9 14v8"/></svg></div>
+              <label style="cursor:pointer;" onclick="event.stopPropagation()">
+                <input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/>
+                <div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </label>
             </div>
             <div class="module-name" data-i18n="mod6_name">Methodology Validation</div>
             <div class="module-desc" data-i18n="mod6_desc">Reviews the soundness and consistency of your research methodology section.</div>
             <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~1 min</div>
           </div>
-          <!-- Row 4 -->
-          <div class="module-card">
+
+          <!-- Module 7 -->
+          <div class="module-card selected" onclick="toggleModule(this)">
             <div class="module-top">
-              <div class="module-icon">
-                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-              </div>
-              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+              <label style="cursor:pointer;" onclick="event.stopPropagation()">
+                <input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/>
+                <div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </label>
             </div>
             <div class="module-name" data-i18n="mod7_name">Research Structure Analysis</div>
             <div class="module-desc" data-i18n="mod7_desc">Checks overall structure, argument flow, and chapter organization.</div>
             <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~48s</div>
           </div>
-          <div class="module-card">
+
+          <!-- Module 8 -->
+          <div class="module-card selected" onclick="toggleModule(this)">
             <div class="module-top">
-              <div class="module-icon">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-              </div>
-              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="module-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+              <label style="cursor:pointer;" onclick="event.stopPropagation()">
+                <input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/>
+                <div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </label>
             </div>
             <div class="module-name" data-i18n="mod8_name">Formatting Verification</div>
             <div class="module-desc" data-i18n="mod8_desc">Ensures margins, headings, fonts, and spacing conform to academic standards.</div>
             <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div>
           </div>
-          <!-- Row 5 -->
-          <div class="module-card">
+
+          <!-- Module 9 -->
+          <div class="module-card selected" onclick="toggleModule(this)">
             <div class="module-top">
-              <div class="module-icon">
-                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-              </div>
-              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="module-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+              <label style="cursor:pointer;" onclick="event.stopPropagation()">
+                <input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/>
+                <div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </label>
             </div>
             <div class="module-name" data-i18n="mod9_name">Research Quality Score</div>
             <div class="module-desc" data-i18n="mod9_desc">Produces an overall academic quality score with detailed sub-scores.</div>
             <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div>
           </div>
-          <div class="module-card">
+
+          <!-- Module 10 -->
+          <div class="module-card selected" onclick="toggleModule(this)">
             <div class="module-top">
-              <div class="module-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg>
-              </div>
-              <div class="module-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg></div>
+              <label style="cursor:pointer;" onclick="event.stopPropagation()">
+                <input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/>
+                <div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </label>
             </div>
             <div class="module-name" data-i18n="mod10_name">University Compliance Check</div>
             <div class="module-desc" data-i18n="mod10_desc">Cross-references your institution's specific submission requirements.</div>
             <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~45s</div>
           </div>
+
+          <!-- Module 11 — DATA ANALYSIS (NEW) -->
+          <div class="module-card selected" onclick="toggleModule(this)">
+            <div class="module-top">
+              <div class="module-icon"><svg viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="8" rx="1"/><rect x="9.5" y="7" width="4" height="13" rx="1"/><rect x="16" y="3" width="4" height="17" rx="1"/><line x1="2" y1="21" x2="22" y2="21"/></svg></div>
+              <label style="cursor:pointer;" onclick="event.stopPropagation()">
+                <input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/>
+                <div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </label>
+            </div>
+            <div class="module-name" data-i18n="mod11_name">Data Analysis Review</div>
+            <div class="module-desc" data-i18n="mod11_desc">Validates statistical methods, charts, tables, and data interpretation consistency.</div>
+            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~2 min</div>
+          </div>
+
+          <!-- Empty cell to keep grid balanced -->
+          <div style="background:var(--surface2);border-bottom:1px solid var(--border);"></div>
+
         </div>
 
-        <!-- Footer bar -->
-        <div class="modules-footer" style="max-width:640px;margin:0 auto;border:1px solid var(--border);border-top:none;border-radius:0 0 14px 14px;">
+        <div class="modules-footer" style="max-width:680px;margin:0 auto;border:1px solid var(--border);border-top:none;border-radius:0 0 14px 14px;">
           <div>
-            <div class="modules-selected"><strong data-i18n="mods_selected">10 of 10 modules</strong> <span data-i18n="mods_selected2">selected</span></div>
-            <div class="modules-est" data-i18n="mods_est">⏱ Estimated time: ~5 min</div>
+            <div class="modules-selected"><strong id="selectedCount">11 of 11 modules</strong> <span data-i18n="mods_selected2">selected</span></div>
+            <div class="modules-est" id="estTime">⏱ <span data-i18n="mods_est">Estimated time: ~20 min</span></div>
           </div>
           <div class="modules-actions">
-            <button class="btn-outline-sm" data-i18n="clear_all">Clear all</button>
-            <button class="btn-outline-sm" data-i18n="select_all">Select all</button>
+            <button class="btn-outline-sm" onclick="setAllModules(false)" data-i18n="clear_all">Clear all</button>
+            <button class="btn-outline-sm" onclick="setAllModules(true)" data-i18n="select_all">Select all</button>
           </div>
         </div>
 
-        <div style="max-width:640px;margin:1.5rem auto 0;">
-          <button class="btn-filled-sm" style="width:100%;justify-content:center;padding:14px 24px;font-size:.9rem;" onclick="setPage('dashboard')">
+        <div style="max-width:680px;margin:1.5rem auto 0;">
+          <button class="btn-filled-sm" style="width:100%;justify-content:center;padding:14px 24px;font-size:.9rem;" onclick="startAnalysis()">
             <span data-i18n="start_analysis">Start Analysis</span>
             <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </button>
         </div>
 
-      </div><!-- /main-inner -->
-    </div><!-- /upload page -->
+      </div>
+    </div>
 
-
-    <!-- ── ANALYSES PAGE ── -->
+    <!-- ANALYSES PAGE -->
     <div class="page" id="page-analyses">
       <div class="main-inner">
         <div class="page-header">
@@ -1100,10 +746,9 @@ body{
           <a class="analysis-row" href="#"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="analysis-info"><div class="analysis-title">Abstract &amp; Introduction Draft</div><div class="analysis-sub">Introductory sections of the final thesis document…</div></div><div class="analysis-meta"><span class="analysis-time">Jun 14, 2025</span><span class="badge badge-green"><span class="badge-dot"></span>Excellent</span><span class="analysis-score">91</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></a>
         </div>
       </div>
-    </div><!-- /analyses page -->
+    </div>
 
-
-    <!-- ── REPORTS PAGE ── -->
+    <!-- REPORTS PAGE -->
     <div class="page" id="page-reports">
       <div class="main-inner">
         <div class="page-header">
@@ -1118,23 +763,22 @@ body{
           <a class="analysis-row" href="#"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="12" x2="12" y2="17"/><polyline points="9 15 12 18 15 15"/></svg></div><div class="analysis-info"><div class="analysis-title">Report — Literature Review Draft v2</div><div class="analysis-sub">Full analysis report · 9 pages · Jun 20, 2025</div></div><div class="analysis-meta"><span class="badge badge-red"><span class="badge-dot"></span>Score 74</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></a>
         </div>
       </div>
-    </div><!-- /reports page -->
+    </div>
 
   </main>
-</div><!-- /app-shell -->
+</div>
 
 <script>
-/* ════ TRANSLATIONS ════ */
+const TOTAL = 11;
+
 const T = {
   en:{
-    new_analysis:"New Analysis",
-    sb_main:"Main",sb_dashboard:"Dashboard",sb_upload:"Upload Document",
-    sb_analyses:"Analyses",sb_reports:"Reports",sb_account:"Account",
-    sb_profile:"Profile",sb_settings:"Settings",sb_signout:"Sign out",
+    new_analysis:"New Analysis",sb_main:"Main",sb_dashboard:"Dashboard",sb_upload:"Upload Document",
+    sb_analyses:"Analyses",sb_reports:"Reports",sb_account:"Account",sb_profile:"Profile",
+    sb_settings:"Settings",sb_signout:"Sign out",
     dash_hello:"Good morning, Sara.",dash_sub:"Here's an overview of your recent academic analyses.",
-    stat_docs:"Documents Analyzed",stat_docs_delta:"+3 this month",
-    stat_score:"Average Score",stat_score_delta:"Across all analyses",
-    stat_issues:"Issues Detected",stat_issues_delta:"Across all documents",
+    stat_docs:"Documents Analyzed",stat_docs_delta:"+3 this month",stat_score:"Average Score",
+    stat_score_delta:"Across all analyses",stat_issues:"Issues Detected",stat_issues_delta:"Across all documents",
     stat_compliant:"Compliant Checks",stat_compliant_delta:"Pass rate this month",
     recent_eyebrow:"RECENT WORK",recent_title:"Recent Analyses",view_all:"View all",
     row1_title:"Mémoire de Fin d'études",row1_sub:"Développement d'un Système AI pour l'Audit…",row1_time:"Today, 14:32",
@@ -1148,10 +792,16 @@ const T = {
     prog_compliance:"Academic Compliance",prog_citations:"Citation Quality",prog_quality:"Research Quality",prog_plagiat:"Plagiarism Risk",
     overall_score:"Overall Score",out_of:"out of 100",
     upload_page_title:"Upload your document",upload_page_sub:"Submit your academic work for a comprehensive quality analysis.",
+    field_title_label:"Document title",field_title_placeholder:"e.g. Développement d'un Système AI pour l'Audit Académique",
+    field_title_hint:"Enter the full official title as it appears on your document.",
+    field_ishkaliya_placeholder:"Write your research problem here…",
+    field_ishkaliya_hint:"State the central research question or problem your work addresses (Arabic, French, or English).",
     drop_zone_title:"Drop your academic document here",or_browse:"or",browse_files:"browse files",
     doc_type_label:"Document type",doc_type_thesis:"Master's Thesis / Mémoire",doc_type_phd:"PhD Dissertation",
     doc_type_paper:"Research Paper",doc_type_proposal:"Research Proposal",doc_type_review:"Literature Review",
-    config_eyebrow:"ANALYSIS MODULES",config_title:"Configure your analysis",config_sub:"Select the verification modules you want to run on your document.",
+    doc_type_data:"Data Analysis Report",
+    config_eyebrow:"ANALYSIS MODULES",config_title:"Configure your analysis",
+    config_sub:"Select the verification modules you want to run on your document.",
     mod1_name:"Academic Standards Check",mod1_desc:"Verifies compliance with APA, MLA, IEEE, Harvard, and your institution's templates.",
     mod2_name:"Citation Analysis",mod2_desc:"Detects missing references, evaluates citation quality, and flags inconsistencies.",
     mod3_name:"AI Content Detection",mod3_desc:"Estimates the probability of AI-generated sections and highlights flagged passages.",
@@ -1162,20 +812,19 @@ const T = {
     mod8_name:"Formatting Verification",mod8_desc:"Ensures margins, headings, fonts, and spacing conform to academic standards.",
     mod9_name:"Research Quality Score",mod9_desc:"Produces an overall academic quality score with detailed sub-scores.",
     mod10_name:"University Compliance Check",mod10_desc:"Cross-references your institution's specific submission requirements.",
-    mods_selected:"10 of 10 modules",mods_selected2:"selected",mods_est:"⏱ Estimated time: ~5 min",
+    mod11_name:"Data Analysis Review",mod11_desc:"Validates statistical methods, charts, tables, and data interpretation consistency.",
+    mods_selected2:"selected",mods_est:"Estimated time: ~20 min",
     clear_all:"Clear all",select_all:"Select all",start_analysis:"Start Analysis",
     analyses_title:"All Analyses",analyses_sub:"Review every document you've submitted for analysis.",
     reports_title:"Reports",reports_sub:"Download and review your detailed analysis reports."
   },
   fr:{
-    new_analysis:"Nouvelle Analyse",
-    sb_main:"Principal",sb_dashboard:"Tableau de bord",sb_upload:"Déposer un document",
-    sb_analyses:"Analyses",sb_reports:"Rapports",sb_account:"Compte",
-    sb_profile:"Profil",sb_settings:"Paramètres",sb_signout:"Déconnexion",
+    new_analysis:"Nouvelle Analyse",sb_main:"Principal",sb_dashboard:"Tableau de bord",sb_upload:"Déposer un document",
+    sb_analyses:"Analyses",sb_reports:"Rapports",sb_account:"Compte",sb_profile:"Profil",
+    sb_settings:"Paramètres",sb_signout:"Déconnexion",
     dash_hello:"Bonjour, Sara.",dash_sub:"Voici un aperçu de vos analyses académiques récentes.",
-    stat_docs:"Documents analysés",stat_docs_delta:"+3 ce mois",
-    stat_score:"Score moyen",stat_score_delta:"Toutes analyses confondues",
-    stat_issues:"Problèmes détectés",stat_issues_delta:"Sur tous les documents",
+    stat_docs:"Documents analysés",stat_docs_delta:"+3 ce mois",stat_score:"Score moyen",
+    stat_score_delta:"Toutes analyses confondues",stat_issues:"Problèmes détectés",stat_issues_delta:"Sur tous les documents",
     stat_compliant:"Vérifications conformes",stat_compliant_delta:"Taux de réussite ce mois",
     recent_eyebrow:"TRAVAUX RÉCENTS",recent_title:"Analyses récentes",view_all:"Tout voir",
     row1_title:"Mémoire de Fin d'études",row1_sub:"Développement d'un Système AI pour l'Audit…",row1_time:"Aujourd'hui, 14:32",
@@ -1189,10 +838,16 @@ const T = {
     prog_compliance:"Conformité académique",prog_citations:"Qualité des citations",prog_quality:"Qualité de recherche",prog_plagiat:"Risque de plagiat",
     overall_score:"Score global",out_of:"sur 100",
     upload_page_title:"Déposez votre document",upload_page_sub:"Soumettez votre travail académique pour une analyse qualité complète.",
+    field_title_label:"Titre du document",field_title_placeholder:"ex. Développement d'un Système AI pour l'Audit Académique",
+    field_title_hint:"Saisissez le titre officiel complet tel qu'il apparaît sur votre document.",
+    field_ishkaliya_placeholder:"Rédigez votre problématique de recherche ici…",
+    field_ishkaliya_hint:"Énoncez la question ou problématique centrale de votre travail (arabe, français ou anglais).",
     drop_zone_title:"Déposez votre document académique ici",or_browse:"ou",browse_files:"parcourir",
     doc_type_label:"Type de document",doc_type_thesis:"Mémoire de master",doc_type_phd:"Thèse de doctorat",
     doc_type_paper:"Article de recherche",doc_type_proposal:"Proposition de recherche",doc_type_review:"Revue de littérature",
-    config_eyebrow:"MODULES D'ANALYSE",config_title:"Configurez votre analyse",config_sub:"Sélectionnez les modules de vérification à exécuter sur votre document.",
+    doc_type_data:"Rapport d'analyse de données",
+    config_eyebrow:"MODULES D'ANALYSE",config_title:"Configurez votre analyse",
+    config_sub:"Sélectionnez les modules de vérification à exécuter sur votre document.",
     mod1_name:"Vérification des normes académiques",mod1_desc:"Vérifie la conformité APA, MLA, IEEE, Harvard et les modèles institutionnels.",
     mod2_name:"Analyse des citations",mod2_desc:"Détecte les références manquantes, évalue la qualité et signale les incohérences.",
     mod3_name:"Détection du contenu IA",mod3_desc:"Estime la probabilité de contenu généré par IA et surligne les passages signalés.",
@@ -1203,20 +858,19 @@ const T = {
     mod8_name:"Vérification du formatage",mod8_desc:"Contrôle les marges, titres, polices et espacements selon les normes académiques.",
     mod9_name:"Score qualité de recherche",mod9_desc:"Produit un score global de qualité académique avec des sous-scores détaillés.",
     mod10_name:"Conformité institutionnelle",mod10_desc:"Croise les exigences de soumission spécifiques à votre institution.",
-    mods_selected:"10 modules sur 10",mods_selected2:"sélectionnés",mods_est:"⏱ Durée estimée : ~5 min",
+    mod11_name:"Analyse des données",mod11_desc:"Valide les méthodes statistiques, graphiques, tableaux et l'interprétation des données.",
+    mods_selected2:"sélectionnés",mods_est:"Durée estimée : ~20 min",
     clear_all:"Tout effacer",select_all:"Tout sélectionner",start_analysis:"Lancer l'analyse",
     analyses_title:"Toutes les analyses",analyses_sub:"Consultez tous les documents soumis pour analyse.",
     reports_title:"Rapports",reports_sub:"Téléchargez et consultez vos rapports d'analyse détaillés."
   },
   ar:{
-    new_analysis:"تحليل جديد",
-    sb_main:"الرئيسية",sb_dashboard:"لوحة التحكم",sb_upload:"رفع وثيقة",
-    sb_analyses:"التحليلات",sb_reports:"التقارير",sb_account:"الحساب",
-    sb_profile:"الملف الشخصي",sb_settings:"الإعدادات",sb_signout:"تسجيل الخروج",
+    new_analysis:"تحليل جديد",sb_main:"الرئيسية",sb_dashboard:"لوحة التحكم",sb_upload:"رفع وثيقة",
+    sb_analyses:"التحليلات",sb_reports:"التقارير",sb_account:"الحساب",sb_profile:"الملف الشخصي",
+    sb_settings:"الإعدادات",sb_signout:"تسجيل الخروج",
     dash_hello:"صباح الخير، سارة.",dash_sub:"إليك نظرة عامة على تحليلاتك الأكاديمية الأخيرة.",
-    stat_docs:"الوثائق المحللة",stat_docs_delta:"+3 هذا الشهر",
-    stat_score:"متوسط النتيجة",stat_score_delta:"عبر جميع التحليلات",
-    stat_issues:"المشكلات المكتشفة",stat_issues_delta:"عبر جميع الوثائق",
+    stat_docs:"الوثائق المحللة",stat_docs_delta:"+3 هذا الشهر",stat_score:"متوسط النتيجة",
+    stat_score_delta:"عبر جميع التحليلات",stat_issues:"المشكلات المكتشفة",stat_issues_delta:"عبر جميع الوثائق",
     stat_compliant:"الفحوصات الممتثلة",stat_compliant_delta:"معدل النجاح هذا الشهر",
     recent_eyebrow:"العمل الأخير",recent_title:"التحليلات الأخيرة",view_all:"عرض الكل",
     row1_title:"مذكرة التخرج",row1_sub:"تطوير نظام ذكي للتدقيق…",row1_time:"اليوم، 14:32",
@@ -1230,10 +884,16 @@ const T = {
     prog_compliance:"الامتثال الأكاديمي",prog_citations:"جودة الاستشهادات",prog_quality:"جودة البحث",prog_plagiat:"خطر الانتحال",
     overall_score:"النتيجة الإجمالية",out_of:"من 100",
     upload_page_title:"ارفع وثيقتك",upload_page_sub:"أرسل عملك الأكاديمي للحصول على تحليل جودة شامل.",
+    field_title_label:"عنوان الوثيقة",field_title_placeholder:"مثال: تطوير نظام ذكاء اصطناعي للتدقيق الأكاديمي",
+    field_title_hint:"أدخل العنوان الرسمي الكامل كما يظهر على وثيقتك.",
+    field_ishkaliya_placeholder:"اكتب إشكاليتك البحثية هنا…",
+    field_ishkaliya_hint:"حدّد السؤال أو الإشكالية المحورية لعملك البحثي (بالعربية أو الفرنسية أو الإنجليزية).",
     drop_zone_title:"أسقط وثيقتك الأكاديمية هنا",or_browse:"أو",browse_files:"تصفح الملفات",
     doc_type_label:"نوع الوثيقة",doc_type_thesis:"مذكرة الماستر",doc_type_phd:"أطروحة الدكتوراه",
     doc_type_paper:"ورقة بحثية",doc_type_proposal:"مقترح بحثي",doc_type_review:"مراجعة الأدبيات",
-    config_eyebrow:"وحدات التحليل",config_title:"اضبط تحليلك",config_sub:"اختر وحدات التحقق التي تريد تشغيلها على وثيقتك.",
+    doc_type_data:"تقرير تحليل البيانات",
+    config_eyebrow:"وحدات التحليل",config_title:"اضبط تحليلك",
+    config_sub:"اختر وحدات التحقق التي تريد تشغيلها على وثيقتك.",
     mod1_name:"فحص المعايير الأكاديمية",mod1_desc:"يتحقق من الامتثال لـ APA وMLA وIEEE وهارفارد والقوالب المؤسسية.",
     mod2_name:"تحليل الاستشهادات",mod2_desc:"يكتشف المراجع المفقودة ويقيّم جودة الاستشهادات ويرصد التناقضات.",
     mod3_name:"كشف محتوى الذكاء الاصطناعي",mod3_desc:"يقدّر احتمالية الأقسام المولَّدة بالذكاء الاصطناعي ويسلط الضوء على المقاطع المُعلَّمة.",
@@ -1244,7 +904,8 @@ const T = {
     mod8_name:"فحص التنسيق",mod8_desc:"يضمن توافق الهوامش والعناوين والخطوط والتباعد مع المعايير الأكاديمية.",
     mod9_name:"نقاط جودة البحث",mod9_desc:"يُنتج نقاطاً كلية لجودة البحث الأكاديمي مع نقاط فرعية تفصيلية.",
     mod10_name:"فحص الامتثال المؤسسي",mod10_desc:"يتقاطع مع متطلبات التقديم الخاصة بمؤسستك.",
-    mods_selected:"10 من 10 وحدات",mods_selected2:"محددة",mods_est:"⏱ الوقت المقدر: ~5 دقائق",
+    mod11_name:"مراجعة تحليل البيانات",mod11_desc:"يتحقق من الأساليب الإحصائية والمخططات والجداول واتساق تفسير البيانات.",
+    mods_selected2:"محددة",mods_est:"الوقت المقدر: ~20 دقيقة",
     clear_all:"مسح الكل",select_all:"تحديد الكل",start_analysis:"بدء التحليل",
     analyses_title:"جميع التحليلات",analyses_sub:"راجع كل وثيقة قدمتها للتحليل.",
     reports_title:"التقارير",reports_sub:"نزّل وراجع تقارير التحليل التفصيلية."
@@ -1260,12 +921,24 @@ function setLang(lang){
     const k = el.getAttribute('data-i18n');
     if(t[k] !== undefined) el.innerHTML = t[k];
   });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-placeholder');
+    if(t[k] !== undefined) el.setAttribute('placeholder', t[k]);
+  });
   const rtl = lang === 'ar';
   document.documentElement.setAttribute('dir', rtl ? 'rtl' : 'ltr');
   document.documentElement.setAttribute('lang', lang);
   document.querySelectorAll('.lang-btn').forEach(b=>{
     b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
   });
+  // Ishkaliya label
+  const lbl = document.getElementById('ishkaliyaLabel');
+  if(lbl){
+    if(lang==='ar') lbl.innerHTML = 'الإشكالية البحثية<span class="required">*</span>';
+    else if(lang==='fr') lbl.innerHTML = 'Problématique <span class="required">*</span>';
+    else lbl.innerHTML = ' Research Problem<span class="required">*</span>';
+  }
+  updateCount();
 }
 
 function toggleTheme(){
@@ -1279,20 +952,72 @@ function setPage(name){
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById('page-' + name);
   if(target) target.classList.add('active');
-  // update sidebar active state
   document.querySelectorAll('.sidebar-nav a').forEach(a => {
     a.classList.remove('active');
-    if(a.getAttribute('onclick') && a.getAttribute('onclick').includes("'" + name + "'")){
-      a.classList.add('active');
-    }
+    const oc = a.getAttribute('onclick') || '';
+    if(oc.includes("'" + name + "'")) a.classList.add('active');
   });
 }
 
-// Set date
+function toggleModule(card){
+  const cb = card.querySelector('.module-checkbox');
+  if(!cb) return;
+  cb.checked = !cb.checked;
+  card.classList.toggle('selected', cb.checked);
+  updateCount();
+}
+
+function setAllModules(state){
+  document.querySelectorAll('.module-checkbox').forEach(cb=>{
+    cb.checked = state;
+    cb.closest('.module-card').classList.toggle('selected', state);
+  });
+  updateCount();
+}
+
+function updateCount(){
+  const all = document.querySelectorAll('.module-checkbox');
+  const checked = [...all].filter(c=>c.checked).length;
+  const el = document.getElementById('selectedCount');
+  const t = T[currentLang];
+  if(el) el.textContent = checked + ' of ' + TOTAL + ' modules';
+}
+
+function handleFile(input){
+  if(input.files && input.files[0]){
+    const name = input.files[0].name;
+    const display = document.getElementById('fileNameDisplay');
+    const text = document.getElementById('fileNameText');
+    if(display && text){
+      text.textContent = name;
+      display.style.display = 'flex';
+    }
+  }
+}
+
+function startAnalysis(){
+  const title = document.getElementById('memoireTitle').value.trim();
+  const ishkaliya = document.getElementById('ishkaliyaText').value.trim();
+  if(!title){
+    document.getElementById('memoireTitle').focus();
+    document.getElementById('memoireTitle').style.borderColor = 'var(--red)';
+    setTimeout(()=>document.getElementById('memoireTitle').style.borderColor='',2000);
+    return;
+  }
+  if(!ishkaliya){
+    document.getElementById('ishkaliyaText').focus();
+    document.getElementById('ishkaliyaText').style.borderColor = 'var(--red)';
+    setTimeout(()=>document.getElementById('ishkaliyaText').style.borderColor='',2000);
+    return;
+  }
+  setPage('dashboard');
+}
+
 (function(){
   const d = new Date();
   const opts = {weekday:'long', year:'numeric', month:'long', day:'numeric'};
-  document.getElementById('headerDate').textContent = d.toLocaleDateString('en-US', opts);
+  const el = document.getElementById('headerDate');
+  if(el) el.textContent = d.toLocaleDateString('en-US', opts);
 })();
 
 setLang('en');
