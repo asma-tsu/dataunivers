@@ -575,6 +575,63 @@ function isPersonalEmail(email) {
   return BLOCKED_DOMAINS.includes(domain);
 }
 
+/* ════════════════════════════════════════════════════
+   USER ACCOUNT STORAGE
+   Stores all signed-up users in localStorage under
+   'dataunivers_users' (keyed by lowercase email) and the
+   currently logged-in user under 'dataunivers_current_user'.
+   dash.html reads 'dataunivers_current_user' on load.
+   ════════════════════════════════════════════════════ */
+const USERS_KEY = 'dataunivers_users';
+const SESSION_KEY = 'dataunivers_current_user';
+
+function getUsers() {
+  try {
+    return JSON.parse(localStorage.getItem(USERS_KEY)) || {};
+  } catch (e) { return {}; }
+}
+
+function saveUsers(users) {
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+}
+
+function getInitials(first, last) {
+  const a = (first || '').trim().charAt(0).toUpperCase();
+  const b = (last || '').trim().charAt(0).toUpperCase();
+  return (a + b) || 'U';
+}
+
+const ROLE_LABELS = {
+  student:   { en:"Student (Undergraduate)",            fr:"Étudiant(e) (Licence)",        ar:"طالب (ليسانس)" },
+  master:    { en:"Student (Master's / Postgraduate)",   fr:"Étudiant(e) (Master)",          ar:"طالب (ماستر)" },
+  phd:       { en:"PhD Candidate",                       fr:"Doctorant(e)",                  ar:"طالب دكتوراه" },
+  researcher:{ en:"Researcher",                          fr:"Chercheur(e)",                  ar:"باحث" },
+  faculty:   { en:"Faculty / Lecturer",                  fr:"Enseignant(e) / Maître de conférences", ar:"أستاذ / محاضر" }
+};
+
+function createUserRecord({ firstName, lastName, email, role, institution, password }) {
+  return {
+    firstName: firstName || '',
+    lastName: lastName || '',
+    fullName: ((firstName || '') + ' ' + (lastName || '')).trim() || 'User',
+    initials: getInitials(firstName, lastName),
+    email: email || '',
+    role: role || 'student',
+    institution: institution || '',
+    password: password || '', // demo only — never store plaintext passwords in production
+    joined: new Date().toISOString(),
+    docsAnalyzed: 0,
+    avgScore: 0,
+    plan: 'Free'
+  };
+}
+
+function setCurrentUser(userRecord) {
+  localStorage.setItem(SESSION_KEY, JSON.stringify(userRecord));
+}
+
+/* ════════════════════════════════════════════════════ */
+
 function validateSigninEmail(input) {
   const val = input.value.trim();
   const warn = document.getElementById('signinEmailWarn');
@@ -695,6 +752,39 @@ function handleSignin() {
     document.getElementById('signinEmailWarn').classList.add('visible');
     return;
   }
+
+  /* ─── Look up the account by email ─── */
+  const users = getUsers();
+  const key = email.toLowerCase();
+  let userRecord = users[key];
+
+  if (userRecord) {
+    // Account exists — verify password (demo-level check)
+    if (userRecord.password && userRecord.password !== pw) {
+      showSigninError(T[currentLang].error_invalid_creds);
+      return;
+    }
+  } else {
+    // No account found for this email — create a lightweight session
+    // so sign-in still works end-to-end in this demo (no real backend).
+    const namePart = email.split('@')[0].replace(/[._]+/g,' ').trim();
+    const pieces = namePart.split(' ').filter(Boolean);
+    const guessFirst = pieces[0] ? pieces[0].charAt(0).toUpperCase() + pieces[0].slice(1) : 'User';
+    const guessLast = pieces[1] ? pieces[1].charAt(0).toUpperCase() + pieces[1].slice(1) : '';
+    userRecord = createUserRecord({
+      firstName: guessFirst,
+      lastName: guessLast,
+      email: email,
+      role: 'student',
+      institution: '',
+      password: pw
+    });
+    users[key] = userRecord;
+    saveUsers(users);
+  }
+
+  setCurrentUser(userRecord);
+
   const btn = document.getElementById('signinBtn');
   btn.classList.add('loading');
   btn.innerHTML = '<div class="spinner"></div>';
@@ -710,12 +800,26 @@ function handleSignup() {
   if (pw.length < 8) { showSignupError('Password must be at least 8 characters.'); return; }
   if (pw !== cpw) { showSignupError(T[currentLang].err_pw_mismatch); return; }
   if (!terms || !age) { showSignupError('Please accept the terms and confirm your academic status.'); return; }
+
   const btn = document.getElementById('signupBtn');
   btn.classList.add('loading');
   btn.innerHTML = '<div class="spinner"></div>';
+
   setTimeout(() => {
     btn.classList.remove('loading');
     const email = document.getElementById('univEmail').value.trim();
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const role = document.getElementById('roleSelect').value;
+    const institution = document.getElementById('institution').value.trim();
+
+    /* ─── Persist the new account ─── */
+    const userRecord = createUserRecord({ firstName, lastName, email, role, institution, password: pw });
+    const users = getUsers();
+    users[email.toLowerCase()] = userRecord;
+    saveUsers(users);
+    setCurrentUser(userRecord);
+
     document.getElementById('verifyEmailDisplay').textContent = email;
     document.getElementById('signupContent').style.display = 'none';
     document.getElementById('verifyScreen').classList.add('visible');
@@ -723,6 +827,23 @@ function handleSignup() {
 }
 
 function handleOAuth(provider) {
+  /* Demo OAuth: create/sign-in a placeholder user so dash.html has data to show */
+  const users = getUsers();
+  const demoEmail = 'oauth.user@university.edu';
+  let userRecord = users[demoEmail];
+  if (!userRecord) {
+    userRecord = createUserRecord({
+      firstName: 'OAuth',
+      lastName: 'User',
+      email: demoEmail,
+      role: 'student',
+      institution: provider + ' Workspace',
+      password: ''
+    });
+    users[demoEmail] = userRecord;
+    saveUsers(users);
+  }
+  setCurrentUser(userRecord);
   window.location.href = 'dash.html';
 }
 

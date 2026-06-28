@@ -590,7 +590,7 @@ button{font-family:inherit;}
         <div class="notif-panel-footer"><button class="notif-see-all" onclick="toggleNotif();setPage('profile')" data-i18n="notif_see_all">View all notifications</button></div>
       </div>
     </div>
-    <div class="avatar-btn" onclick="setPage('profile')" title="Sara Amrani">SA</div>
+    <div class="avatar-btn" onclick="setPage('profile')" id="topAvatarBtn" title="Sara Amrani">SA</div>
     <button class="btn-new-analysis" onclick="setPage('upload')">
       <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       <span data-i18n="new_analysis">New Analysis</span>
@@ -618,7 +618,7 @@ button{font-family:inherit;}
     </div>
     <div class="sidebar-bottom">
       <ul class="sidebar-nav">
-        <li><a href="index.html" style="color:var(--text-light);"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span data-i18n="sb_signout">Sign out</span></a></li>
+        <li><a href="#" onclick="handleSignOut();return false;" style="color:var(--text-light);"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span data-i18n="sb_signout">Sign out</span></a></li>
       </ul>
     </div>
   </aside>
@@ -630,7 +630,7 @@ button{font-family:inherit;}
       <div class="main-inner">
         <div class="page-header">
           <div class="page-greeting">
-            <h1 data-i18n="dash_hello">Good morning, Sara.</h1>
+            <h1 id="dashGreeting" data-i18n-greeting="dash_hello">Good morning, Sara.</h1>
             <p data-i18n="dash_sub">Here's an overview of your recent academic analyses.</p>
           </div>
           <div class="header-date" id="headerDate"></div>
@@ -767,14 +767,14 @@ button{font-family:inherit;}
       <div class="main-inner">
         <div class="page-header"><div class="page-greeting"><h1 data-i18n="prof_title">My Profile</h1><p data-i18n="prof_sub">Manage your personal information, preferences, and account security.</p></div></div>
         <div class="profile-hero">
-          <div class="profile-avatar-lg">SA</div>
+          <div class="profile-avatar-lg" id="profileAvatarLg">SA</div>
           <div class="profile-hero-info">
-            <div class="profile-hero-name">Sara Amrani</div>
-            <div class="profile-hero-role" data-i18n="prof_role">PhD Candidate · University of Science and Technology</div>
+            <div class="profile-hero-name" id="profileHeroName">Sara Amrani</div>
+            <div class="profile-hero-role" id="profileHeroRole" data-i18n="prof_role">PhD Candidate · University of Science and Technology</div>
             <div class="profile-hero-meta">
-              <div class="profile-hero-meta-item"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>sara.amrani@univ-est.edu</div>
-              <div class="profile-hero-meta-item"><svg viewBox="0 0 24 24"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg><span data-i18n="prof_dept">Computer Science Department</span></div>
-              <div class="profile-hero-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="prof_joined">Joined March 2024</span></div>
+              <div class="profile-hero-meta-item"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span id="profileHeroEmail">sara.amrani@univ-est.edu</span></div>
+              <div class="profile-hero-meta-item"><svg viewBox="0 0 24 24"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg><span id="profileHeroDept" data-i18n="prof_dept">Computer Science Department</span></div>
+              <div class="profile-hero-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span id="profileHeroJoined" data-i18n="prof_joined">Joined March 2024</span></div>
             </div>
           </div>
           <div class="profile-hero-actions"><button class="btn-outline-sm"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg><span data-i18n="prof_edit_photo">Change photo</span></button></div>
@@ -782,7 +782,7 @@ button{font-family:inherit;}
         <div class="stat-grid">
           <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_docs">Documents Analyzed</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div></div><div class="stat-value" id="profileDocsCount">12</div><div class="stat-delta" data-i18n="prof_stat_since">Since March 2024</div></div>
           <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_score">Average Score</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div></div><div class="stat-value">84</div><div class="stat-delta" data-i18n="stat_score_delta">Across all analyses</div></div>
-          <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_member">Membership</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg></div></div><div class="stat-value" style="font-size:1.3rem;">Pro</div><div class="stat-delta" data-i18n="stat_member_delta">Renews Jul 14, 2026</div></div>
+          <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_member">Membership</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg></div></div><div class="stat-value" id="profilePlanVal" style="font-size:1.3rem;">Pro</div><div class="stat-delta" data-i18n="stat_member_delta">Renews Jul 14, 2026</div></div>
           <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_storage">Storage Used</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div></div><div class="stat-value">4.1<span style="font-size:1rem;font-weight:400;font-family:'Inter',sans-serif;color:var(--text-muted);">GB</span></div><div class="stat-delta" data-i18n="stat_storage_delta">of 10 GB</div></div>
         </div>
         <div class="tab-bar">
@@ -796,15 +796,15 @@ button{font-family:inherit;}
             <div class="card">
               <div class="card-title" data-i18n="general_card_title">Personal information</div>
               <div class="card-sub" data-i18n="general_card_sub">Update your name, contact details, and academic affiliation.</div>
-              <div class="field-grid"><div class="field"><label data-i18n="lbl_first">First name</label><input type="text" value="Sara"/></div><div class="field"><label data-i18n="lbl_last">Last name</label><input type="text" value="Amrani"/></div></div>
-              <div class="field-grid full"><div class="field"><label data-i18n="lbl_email">Email address</label><input type="email" value="sara.amrani@univ-est.edu"/></div></div>
-              <div class="field-grid"><div class="field"><label data-i18n="lbl_university">University</label><input type="text" value="University of Science and Technology"/></div><div class="field"><label data-i18n="lbl_dept">Department</label><input type="text" value="Computer Science"/></div></div>
-              <button class="btn-filled-sm" style="margin-top:6px;"><span data-i18n="btn_save">Save changes</span></button>
+              <div class="field-grid"><div class="field"><label data-i18n="lbl_first">First name</label><input type="text" id="genFirstName" value="Sara"/></div><div class="field"><label data-i18n="lbl_last">Last name</label><input type="text" id="genLastName" value="Amrani"/></div></div>
+              <div class="field-grid full"><div class="field"><label data-i18n="lbl_email">Email address</label><input type="email" id="genEmail" value="sara.amrani@univ-est.edu"/></div></div>
+              <div class="field-grid"><div class="field"><label data-i18n="lbl_university">University</label><input type="text" id="genUniversity" value="University of Science and Technology"/></div><div class="field"><label data-i18n="lbl_dept">Department</label><input type="text" id="genDept" value="Computer Science"/></div></div>
+              <button class="btn-filled-sm" style="margin-top:6px;" onclick="saveGeneralInfo()"><span data-i18n="btn_save">Save changes</span></button>
             </div>
             <div>
               <div class="card" style="margin-bottom:1.25rem;">
                 <div class="card-title" data-i18n="plan_card_title">Plan &amp; usage</div>
-                <div class="plan-summary"><div class="plan-summary-top"><div><div class="plan-name" data-i18n="plan_name">University Plan</div><div class="plan-renew" data-i18n="plan_renew">Renews on July 14, 2026</div></div><span class="plan-badge">PRO</span></div></div>
+                <div class="plan-summary"><div class="plan-summary-top"><div><div class="plan-name" data-i18n="plan_name">University Plan</div><div class="plan-renew" data-i18n="plan_renew">Renews on July 14, 2026</div></div><span class="plan-badge" id="planBadge">PRO</span></div></div>
                 <div class="usage-row"><div class="usage-top"><span class="l" data-i18n="usage1_label">AI Analyses</span><span class="v">347 / 500</span></div><div class="bar-track"><div class="bar-fill bar-navy" style="width:69%"></div></div></div>
                 <div class="usage-row"><div class="usage-top"><span class="l" data-i18n="usage2_label">Storage</span><span class="v">4.1 GB / 10 GB</span></div><div class="bar-track"><div class="bar-fill bar-gold" style="width:41%"></div></div></div>
               </div>
@@ -826,7 +826,7 @@ button{font-family:inherit;}
               <div class="divider-line"></div>
               <div class="toggle-row"><div class="toggle-row-info"><div class="toggle-row-title" data-i18n="tfa_title">Two-factor authentication</div><div class="toggle-row-desc" data-i18n="tfa_desc">Add an extra layer of security using an authenticator app.</div></div><label class="switch"><input type="checkbox" checked/><span class="switch-track"></span></label></div>
             </div>
-            <div class="danger-zone"><div class="danger-title" data-i18n="danger_title">Delete account</div><div class="danger-desc" data-i18n="danger_desc">This permanently deletes your account, documents, and analysis history. This action cannot be undone.</div><button class="btn-danger" data-i18n="btn_delete">Delete my account</button></div>
+            <div class="danger-zone"><div class="danger-title" data-i18n="danger_title">Delete account</div><div class="danger-desc" data-i18n="danger_desc">This permanently deletes your account, documents, and analysis history. This action cannot be undone.</div><button class="btn-danger" onclick="handleDeleteAccount()" data-i18n="btn_delete">Delete my account</button></div>
           </div>
         </div>
         <div class="tab-panel" id="tab-prof-notifications">
@@ -971,6 +971,180 @@ let totalDocs = 12;
 
 const MOON_PATH = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
 const SUN_PATH = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+
+/* ════════════════════════════════════════════════════
+   LOGGED-IN USER (read from localStorage, set by signin.html)
+   ════════════════════════════════════════════════════ */
+const SESSION_KEY = 'dataunivers_current_user';
+const USERS_KEY = 'dataunivers_users';
+
+const ROLE_LABELS = {
+  student:   { en:"Student",            fr:"Étudiant(e)",        ar:"طالب" },
+  master:    { en:"Master's Student",   fr:"Étudiant(e) (Master)", ar:"طالب ماستر" },
+  phd:       { en:"PhD Candidate",      fr:"Doctorant(e)",        ar:"طالب دكتوراه" },
+  researcher:{ en:"Researcher",         fr:"Chercheur(e)",        ar:"باحث" },
+  faculty:   { en:"Faculty / Lecturer", fr:"Enseignant(e)",       ar:"أستاذ" }
+};
+
+function getCurrentUser() {
+  try {
+    const raw = localStorage.getItem(SESSION_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch (e) { return null; }
+}
+
+function saveCurrentUser(user) {
+  localStorage.setItem(SESSION_KEY, JSON.stringify(user));
+  // also keep the master users table in sync
+  try {
+    const users = JSON.parse(localStorage.getItem(USERS_KEY)) || {};
+    if (user.email) {
+      users[user.email.toLowerCase()] = user;
+      localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    }
+  } catch(e) {}
+}
+
+function formatJoinedDate(isoString, lang) {
+  if (!isoString) return '';
+  const d = new Date(isoString);
+  if (isNaN(d.getTime())) return '';
+  const months = {
+    en: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+    fr: ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"],
+    ar: ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"]
+  };
+  const m = months[lang] ? months[lang][d.getMonth()] : months.en[d.getMonth()];
+  const joinedWord = lang === 'fr' ? 'Inscrit(e) depuis ' + m + ' ' + d.getFullYear()
+                    : lang === 'ar' ? 'عضو منذ ' + m + ' ' + d.getFullYear()
+                    : 'Joined ' + m + ' ' + d.getFullYear();
+  return joinedWord;
+}
+
+/* Renders the logged-in user's data across the whole dashboard */
+function applyUserToUI() {
+  const user = getCurrentUser();
+  const lang = currentLang;
+
+  // Fallback to the default demo user (Sara Amrani) if nobody is logged in,
+  // so the dashboard still looks complete when opened directly.
+  const fallback = {
+    firstName:'Sara', lastName:'Amrani', fullName:'Sara Amrani', initials:'SA',
+    email:'sara.amrani@univ-est.edu', role:'phd', institution:'University of Science and Technology',
+    joined: '2024-03-01T00:00:00.000Z', docsAnalyzed: 12, plan: 'Pro'
+  };
+  const u = user || fallback;
+
+  const initials = u.initials || (u.fullName ? u.fullName.split(' ').map(p=>p.charAt(0).toUpperCase()).slice(0,2).join('') : 'U');
+  const fullName = u.fullName || ((u.firstName||'') + ' ' + (u.lastName||'')).trim() || 'User';
+  const roleLabel = ROLE_LABELS[u.role] ? (ROLE_LABELS[u.role][lang] || ROLE_LABELS[u.role].en) : (u.role || '');
+  const institution = u.institution || '';
+
+  // Topbar avatar
+  const topAvatar = document.getElementById('topAvatarBtn');
+  if (topAvatar) { topAvatar.textContent = initials; topAvatar.title = fullName; }
+
+  // Profile page hero
+  const profAvatar = document.getElementById('profileAvatarLg');
+  if (profAvatar) profAvatar.textContent = initials;
+  const profName = document.getElementById('profileHeroName');
+  if (profName) profName.textContent = fullName;
+  const profRole = document.getElementById('profileHeroRole');
+  if (profRole) {
+    profRole.removeAttribute('data-i18n');
+    profRole.textContent = roleLabel + (institution ? ' · ' + institution : '');
+  }
+  const profEmail = document.getElementById('profileHeroEmail');
+  if (profEmail) profEmail.textContent = u.email || '';
+  const profDept = document.getElementById('profileHeroDept');
+  if (profDept && institution) {
+    profDept.removeAttribute('data-i18n');
+    profDept.textContent = institution;
+  }
+  const profJoined = document.getElementById('profileHeroJoined');
+  if (profJoined && u.joined) {
+    const joinedText = formatJoinedDate(u.joined, lang);
+    if (joinedText) {
+      profJoined.removeAttribute('data-i18n');
+      profJoined.textContent = joinedText;
+    }
+  }
+
+  // Dashboard greeting — "Good morning, <FirstName>."
+  const greetingEl = document.getElementById('dashGreeting');
+  if (greetingEl) {
+    const firstName = u.firstName || fullName.split(' ')[0] || '';
+    const greetTexts = {
+      en: 'Good morning, ' + firstName + '.',
+      fr: 'Bonjour, ' + firstName + '.',
+      ar: 'صباح الخير، ' + firstName + '.'
+    };
+    greetingEl.removeAttribute('data-i18n');
+    greetingEl.textContent = greetTexts[lang] || greetTexts.en;
+  }
+
+  // General settings tab — editable personal info fields
+  const gf = document.getElementById('genFirstName'); if (gf) gf.value = u.firstName || '';
+  const gl = document.getElementById('genLastName'); if (gl) gl.value = u.lastName || '';
+  const ge = document.getElementById('genEmail'); if (ge) ge.value = u.email || '';
+  const gu = document.getElementById('genUniversity'); if (gu) gu.value = institution;
+  const gd = document.getElementById('genDept'); if (gd) gd.value = u.department || '';
+
+  // Plan badge
+  const planBadge = document.getElementById('planBadge');
+  if (planBadge) planBadge.textContent = (u.plan || 'Free').toUpperCase();
+  const planVal = document.getElementById('profilePlanVal');
+  if (planVal) planVal.textContent = u.plan || 'Free';
+
+  // Doc counters — start from user's stored count if present
+  if (typeof u.docsAnalyzed === 'number' && u.docsAnalyzed > 0) {
+    totalDocs = u.docsAnalyzed;
+  }
+  const statEl = document.getElementById('statDocsCount');
+  if (statEl) statEl.textContent = totalDocs;
+  const profEl = document.getElementById('profileDocsCount');
+  if (profEl) profEl.textContent = totalDocs;
+}
+
+/* Persist edits made on the General info tab back into the session */
+function saveGeneralInfo() {
+  const user = getCurrentUser() || {};
+  user.firstName = (document.getElementById('genFirstName')||{}).value || user.firstName;
+  user.lastName = (document.getElementById('genLastName')||{}).value || user.lastName;
+  user.email = (document.getElementById('genEmail')||{}).value || user.email;
+  user.institution = (document.getElementById('genUniversity')||{}).value || user.institution;
+  user.department = (document.getElementById('genDept')||{}).value || user.department;
+  user.fullName = (user.firstName + ' ' + user.lastName).trim();
+  user.initials = ((user.firstName||'').charAt(0) + (user.lastName||'').charAt(0)).toUpperCase() || 'U';
+  saveCurrentUser(user);
+  applyUserToUI();
+}
+
+/* Sign out: clear session and go back to signin.html */
+function handleSignOut() {
+  localStorage.removeItem(SESSION_KEY);
+  window.location.href = 'signin.html';
+}
+
+/* Delete account: remove from both the session and the users table */
+function handleDeleteAccount() {
+  const lang = currentLang;
+  const msg = lang==='ar' ? 'هل أنت متأكد أنك تريد حذف حسابك؟ لا يمكن التراجع عن هذا الإجراء.'
+            : lang==='fr' ? 'Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible.'
+            : 'Are you sure you want to delete your account? This cannot be undone.';
+  if (!confirm(msg)) return;
+  const user = getCurrentUser();
+  if (user && user.email) {
+    try {
+      const users = JSON.parse(localStorage.getItem(USERS_KEY)) || {};
+      delete users[user.email.toLowerCase()];
+      localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    } catch(e) {}
+  }
+  localStorage.removeItem(SESSION_KEY);
+  window.location.href = 'signin.html';
+}
 
 /* ─── REPORT DATA ─── */
 const REPORT_DATA = {
@@ -1389,6 +1563,13 @@ function addNewEntryToLists(){
   if(statEl)statEl.textContent=totalDocs;
   const profEl=document.getElementById('profileDocsCount');
   if(profEl)profEl.textContent=totalDocs;
+
+  // Persist updated doc count to the logged-in user's record
+  const user=getCurrentUser();
+  if(user){
+    user.docsAnalyzed=totalDocs;
+    saveCurrentUser(user);
+  }
 }
 
 function escapeHtml(s){
@@ -1534,6 +1715,9 @@ function setLang(lang){
   });
 
   updateCount();
+
+  // Re-apply user-specific text (greeting, role label, joined date) in the new language
+  applyUserToUI();
 }
 function setLangOpt(lang){setLang(lang);}
 
@@ -1544,6 +1728,7 @@ function setLangOpt(lang){setLang(lang);}
   if(el)el.textContent=d.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 })();
 setLang('en');
+applyUserToUI();
 </script>
 </body>
 </html>
