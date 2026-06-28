@@ -381,19 +381,6 @@ button{font-family:inherit;}
 [data-theme="dark"] .density-opt.active{border-color:var(--gold);background:var(--surface2);}
 .density-name{font-size:.78rem;font-weight:600;color:var(--text);}
 .density-desc{font-size:.68rem;color:var(--text-muted);}
-.font-option{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:10px;border:1.5px solid var(--border);cursor:pointer;margin-bottom:8px;transition:border-color .2s,background .2s;}
-.font-option:hover{background:var(--navy-mist);border-color:var(--navy-light);}
-.font-option.active{border-color:var(--navy);background:var(--navy-mist);}
-[data-theme="dark"] .font-option.active{border-color:var(--gold);background:var(--surface2);}
-.font-preview{font-size:1.3rem;font-weight:600;color:var(--navy);min-width:90px;}
-[data-theme="dark"] .font-preview{color:var(--text);}
-.font-info{flex:1;}
-.font-name{font-size:.83rem;font-weight:600;color:var(--text);}
-.font-desc{font-size:.71rem;color:var(--text-muted);}
-.font-check{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.font-option.active .font-check{background:var(--navy);border-color:var(--navy);}
-[data-theme="dark"] .font-option.active .font-check{background:var(--gold);border-color:var(--gold);}
-.font-check svg{width:10px;height:10px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
 .swatch-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1rem;}
 .swatch{width:34px;height:34px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:transform .15s,border-color .15s;position:relative;}
 .swatch:hover{transform:scale(1.12);}
@@ -408,29 +395,6 @@ button{font-family:inherit;}
 .lang-flag{font-size:1.5rem;line-height:1;}
 .lang-opt-name{font-size:.8rem;font-weight:600;color:var(--text);}
 .lang-opt-native{font-size:.7rem;color:var(--text-muted);}
-.shortcut-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border-soft);}
-.shortcut-row:last-child{border-bottom:none;}
-.shortcut-label{font-size:.82rem;color:var(--text-mid);}
-.shortcut-keys{display:flex;align-items:center;gap:4px;}
-.key{font-size:.7rem;font-weight:700;color:var(--text-muted);background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:3px 8px;font-family:'Inter',monospace;letter-spacing:.04em;}
-.export-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border-soft);}
-.export-row:last-child{border-bottom:none;}
-.export-info{flex:1;min-width:0;padding-right:16px;}
-.export-title{font-size:.83rem;font-weight:600;color:var(--text);margin-bottom:2px;}
-.export-desc{font-size:.72rem;color:var(--text-muted);}
-.apikey-row{display:flex;align-items:center;gap:10px;background:var(--surface2);border:1.5px solid var(--border);border-radius:9px;padding:11px 14px;margin-bottom:10px;}
-.apikey-name{font-size:.82rem;font-weight:600;color:var(--text);flex:1;}
-.apikey-value{font-size:.75rem;color:var(--text-muted);font-family:monospace;letter-spacing:.06em;flex:2;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.apikey-meta{font-size:.68rem;color:var(--text-light);white-space:nowrap;}
-.apikey-actions{display:flex;gap:6px;flex-shrink:0;}
-.icon-action{width:28px;height:28px;border-radius:6px;background:none;border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
-.icon-action:hover{background:var(--navy-mist);}
-.icon-action svg{width:13px;height:13px;stroke:var(--text-muted);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
-.wh-table{width:100%;border-collapse:collapse;}
-.wh-table th{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-light);padding:0 0 10px;text-align:left;border-bottom:1px solid var(--border-soft);}
-.wh-table td{font-size:.8rem;color:var(--text-mid);padding:11px 0;border-bottom:1px solid var(--border-soft);}
-.wh-table tr:last-child td{border-bottom:none;}
-.wh-url{font-family:monospace;font-size:.74rem;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:220px;}
 .appearance-preview{background:var(--navy-mist);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:1.25rem;display:flex;align-items:center;gap:16px;}
 [data-theme="dark"] .appearance-preview{background:var(--surface2);}
 .ap-mini-nav{background:var(--navy);border-radius:7px;width:48px;height:72px;display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:6px;flex-shrink:0;}
@@ -443,8 +407,6 @@ button{font-family:inherit;}
 .ap-bar{height:5px;border-radius:2px;background:var(--border);}
 
 /* REPORT DETAIL */
-.report-detail{display:none;}
-.report-detail.active{display:block;}
 .report-detail-header{display:flex;align-items:center;gap:12px;margin-bottom:2rem;}
 .back-btn{display:flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600;color:var(--text-muted);cursor:pointer;background:none;border:none;font-family:inherit;transition:color .2s;padding:7px 14px;border:1px solid var(--border);border-radius:7px;}
 .back-btn:hover{color:var(--navy);border-color:var(--navy);background:var(--navy-mist);}
@@ -499,6 +461,10 @@ button{font-family:inherit;}
 .fi-green svg{stroke:var(--green);}
 .fi-amber svg{stroke:var(--amber);}
 .fi-red svg{stroke:var(--red);}
+
+/* NEW ENTRY HIGHLIGHT */
+@keyframes newRowIn{from{background:rgba(196,153,60,.18);}to{background:transparent;}}
+.analysis-row.new-entry{animation:newRowIn 2s ease forwards;}
 
 /* RTL */
 [dir="rtl"] .topbar-left{border-right:none;border-left:1px solid var(--border);}
@@ -595,12 +561,10 @@ button{font-family:inherit;}
       <button class="lang-btn" onclick="setLang('ar')">AR</button>
     </div>
     <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle dark mode">
-      <svg id="themeIcon" viewBox="0 0 24 24">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-      </svg>
+      <svg id="themeIcon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
     <div class="notif-wrap">
-      <div class="icon-btn" onclick="toggleNotif(event)" id="notifBtn" title="Notifications">
+      <div class="icon-btn" onclick="toggleNotif(event)" title="Notifications">
         <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
         <div class="notif-dot" id="notifDot"></div>
       </div>
@@ -611,30 +575,19 @@ button{font-family:inherit;}
         </div>
         <div class="notif-item unread" onclick="markItemRead(this)">
           <div class="notif-icon-box green"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-          <div class="notif-body">
-            <div class="notif-text"><strong data-i18n="notif1_strong">Analysis complete</strong> — <span data-i18n="notif1_text">Mémoire de Fin d'études scored 96/100.</span></div>
-            <div class="notif-time" data-i18n="notif1_time">Today, 14:33</div>
-          </div>
+          <div class="notif-body"><div class="notif-text"><strong data-i18n="notif1_strong">Analysis complete</strong> — <span data-i18n="notif1_text">Mémoire de Fin d'études scored 96/100.</span></div><div class="notif-time" data-i18n="notif1_time">Today, 14:33</div></div>
           <div class="notif-unread-dot"></div>
         </div>
         <div class="notif-item unread" onclick="markItemRead(this)">
           <div class="notif-icon-box amber"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-          <div class="notif-body">
-            <div class="notif-text"><strong data-i18n="notif2_strong">Plagiarism risk</strong> — <span data-i18n="notif2_text">Literature Review v2 has 12% similarity detected.</span></div>
-            <div class="notif-time" data-i18n="notif2_time">Yesterday, 11:08</div>
-          </div>
+          <div class="notif-body"><div class="notif-text"><strong data-i18n="notif2_strong">Plagiarism risk</strong> — <span data-i18n="notif2_text">Literature Review v2 has 12% similarity detected.</span></div><div class="notif-time" data-i18n="notif2_time">Yesterday, 11:08</div></div>
           <div class="notif-unread-dot"></div>
         </div>
         <div class="notif-item" onclick="markItemRead(this)">
           <div class="notif-icon-box navy"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg></div>
-          <div class="notif-body">
-            <div class="notif-text"><strong data-i18n="notif3_strong">Pro plan</strong> — <span data-i18n="notif3_text">Your subscription renews in 17 days.</span></div>
-            <div class="notif-time" data-i18n="notif3_time">Jun 25, 2026</div>
-          </div>
+          <div class="notif-body"><div class="notif-text"><strong data-i18n="notif3_strong">Pro plan</strong> — <span data-i18n="notif3_text">Your subscription renews in 17 days.</span></div><div class="notif-time" data-i18n="notif3_time">Jun 25, 2026</div></div>
         </div>
-        <div class="notif-panel-footer">
-          <button class="notif-see-all" onclick="toggleNotif();setPage('profile')" data-i18n="notif_see_all">View all notifications</button>
-        </div>
+        <div class="notif-panel-footer"><button class="notif-see-all" onclick="toggleNotif();setPage('profile')" data-i18n="notif_see_all">View all notifications</button></div>
       </div>
     </div>
     <div class="avatar-btn" onclick="setPage('profile')" title="Sara Amrani">SA</div>
@@ -683,7 +636,7 @@ button{font-family:inherit;}
           <div class="header-date" id="headerDate"></div>
         </div>
         <div class="stat-grid">
-          <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_docs">Documents Analyzed</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div></div><div class="stat-value">12</div><div class="stat-delta"><span class="delta-dot"></span><span class="delta-up" data-i18n="stat_docs_delta">+3 this month</span></div></div>
+          <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_docs">Documents Analyzed</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div></div><div class="stat-value" id="statDocsCount">12</div><div class="stat-delta"><span class="delta-dot"></span><span class="delta-up" data-i18n="stat_docs_delta">+3 this month</span></div></div>
           <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_score">Average Score</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div></div><div class="stat-value">84</div><div class="stat-delta"><span class="delta-dot"></span><span class="delta-up" data-i18n="stat_score_delta">Across all analyses</span></div></div>
           <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_issues">Issues Detected</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div></div><div class="stat-value">7</div><div class="stat-delta" data-i18n="stat_issues_delta">Across all documents</div></div>
           <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_compliant">Compliant Checks</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/><path d="M9 12l2 2 4-4"/></svg></div></div><div class="stat-value">94<span style="font-size:1rem;font-weight:400;font-family:'Inter',sans-serif;color:var(--text-muted);">%</span></div><div class="stat-delta"><span class="delta-dot"></span><span class="delta-up" data-i18n="stat_compliant_delta">Pass rate this month</span></div></div>
@@ -692,7 +645,8 @@ button{font-family:inherit;}
           <div><div class="eyebrow" data-i18n="recent_eyebrow">RECENT WORK</div><h2 data-i18n="recent_title">Recent Analyses</h2></div>
           <a class="view-all" onclick="setPage('analyses')"><span data-i18n="view_all">View all</span><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
         </div>
-        <div class="analyses-table">
+        <!-- Dashboard recent list (top 3 shown) -->
+        <div class="analyses-table" id="dashRecentTable">
           <div class="analysis-row" onclick="setPage('analyses')"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="analysis-info"><div class="analysis-title" data-i18n="row1_title">Mémoire de Fin d'études</div><div class="analysis-sub" data-i18n="row1_sub">Développement d'un Système AI pour l'Audit…</div></div><div class="analysis-meta"><span class="analysis-time" data-i18n="row1_time">Today, 14:32</span><span class="badge badge-green"><span class="badge-dot"></span><span data-i18n="badge_excellent">Excellent</span></span><span class="analysis-score">96</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
           <div class="analysis-row" onclick="setPage('analyses')"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="analysis-info"><div class="analysis-title" data-i18n="row2_title">Research Proposal — Machine Learning</div><div class="analysis-sub" data-i18n="row2_sub">Comparative study on neural network architectures…</div></div><div class="analysis-meta"><span class="analysis-time" data-i18n="row2_time">Yesterday, 09:15</span><span class="badge badge-gold"><span class="badge-dot"></span><span data-i18n="badge_good">Good</span></span><span class="analysis-score">81</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
           <div class="analysis-row" onclick="setPage('analyses')"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="analysis-info"><div class="analysis-title" data-i18n="row3_title">Literature Review Draft v2</div><div class="analysis-sub" data-i18n="row3_sub">Systematic review of renewable energy adoption…</div></div><div class="analysis-meta"><span class="analysis-time">Jun 20, 2025</span><span class="badge badge-red"><span class="badge-dot"></span><span data-i18n="badge_needs">Needs work</span></span><span class="analysis-score">74</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
@@ -704,7 +658,7 @@ button{font-family:inherit;}
             <div class="upload-zone" onclick="setPage('upload')">
               <div class="upload-icon"><svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg></div>
               <div class="upload-text"><span data-i18n="upload_cta">Drop your file or browse</span></div>
-              <div class="upload-hint" data-i18n="upload_hint">Drag & drop or click to select</div>
+              <div class="upload-hint" data-i18n="upload_hint">Drag &amp; drop or click to select</div>
               <div class="upload-types"><span class="type-tag">PDF</span><span class="type-tag">DOCX</span><span class="type-tag" data-i18n="max_size">Max 50 MB</span></div>
             </div>
             <div class="upload-privacy"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg><span data-i18n="upload_privacy">Your document is processed in a secure, encrypted environment.</span></div>
@@ -730,142 +684,36 @@ button{font-family:inherit;}
       <div class="main-inner">
         <div class="page-header"><div class="page-greeting"><h1 data-i18n="upload_page_title">Upload your document</h1><p data-i18n="upload_page_sub">Submit your academic work for a comprehensive quality analysis.</p></div></div>
         <div class="card" style="max-width:680px;margin:0 auto 1.5rem;">
-          <div class="form-field"><label class="form-label" data-i18n="field_title_label">Document title<span class="required">*</span></label><input type="text" class="form-input" id="memoireTitle" placeholder="e.g. Développement d'un Système AI pour l'Audit Académique"/><div class="field-hint" data-i18n="field_title_hint">Enter the full official title as it appears on your document.</div></div>
-          <div class="form-field"><label class="form-label" id="ishkaliyaLabel">الإشكالية / Research Problem<span class="required">*</span></label><textarea class="form-textarea" id="ishkaliyaText" dir="rtl" placeholder="اكتب إشكاليتك البحثية هنا…" rows="3"></textarea><div class="field-hint" data-i18n="field_ishkaliya_hint">State the central research question or problem.</div></div>
+          <!-- FIX 1 & 2: placeholder updated via JS on language change -->
+          <div class="form-field">
+            <label class="form-label" data-i18n="field_title_label">Document title<span class="required">*</span></label>
+            <input type="text" class="form-input" id="memoireTitle" data-placeholder-i18n="field_title_placeholder"/>
+            <div class="field-hint" data-i18n="field_title_hint">Enter the full official title as it appears on your document.</div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" data-i18n="field_ishkaliya_label">Research Problem<span class="required">*</span></label>
+            <textarea class="form-textarea" id="ishkaliyaText" data-placeholder-i18n="field_ishkaliya_placeholder" rows="3"></textarea>
+            <div class="field-hint" data-i18n="field_ishkaliya_hint">State the central research question or problem.</div>
+          </div>
           <div class="form-field"><label class="form-label" data-i18n="doc_type_label">Document type</label><select class="form-select"><option data-i18n="doc_type_thesis">Master's Thesis / Mémoire</option><option data-i18n="doc_type_phd">PhD Dissertation</option><option data-i18n="doc_type_paper">Research Paper</option><option data-i18n="doc_type_proposal">Research Proposal</option><option data-i18n="doc_type_review">Literature Review</option></select></div>
           <div class="upload-zone" style="padding:36px 24px;"><div class="upload-icon" style="width:52px;height:52px;border-radius:13px;"><svg viewBox="0 0 24 24" style="width:22px;height:22px;"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg></div><div class="upload-text" style="font-size:.9rem;margin-bottom:6px;" data-i18n="drop_zone_title">Drop your academic document here</div><div class="upload-hint"><span data-i18n="or_browse">or</span> <span style="color:var(--navy);font-weight:600;cursor:pointer;" onclick="document.getElementById('fileInput').click()" data-i18n="browse_files">browse files</span></div><div class="upload-types" style="margin-top:10px;"><span class="type-tag">PDF</span><span class="type-tag">DOCX</span><span class="type-tag" data-i18n="max_size">Max 50 MB</span></div><input type="file" id="fileInput" accept=".pdf,.docx" style="display:none;" onchange="handleFile(this)"/></div>
           <div id="fileNameDisplay" style="display:none;background:var(--green-bg);border-radius:8px;padding:9px 14px;font-size:.8rem;color:var(--green);font-weight:600;margin-bottom:.85rem;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg><span id="fileNameText"></span></div>
           <div class="upload-privacy"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg><span data-i18n="upload_privacy">Your document is processed in a secure, encrypted environment. DataUnivers does not store, share, or use your document for any purpose other than producing your analysis report.</span></div>
         </div>
         <div class="section-row" style="max-width:680px;margin:0 auto 1rem;"><div><div class="eyebrow" data-i18n="config_eyebrow">ANALYSIS MODULES</div><h2 data-i18n="config_title">Configure your analysis</h2><p style="font-size:.8rem;color:var(--text-muted);margin-top:3px;" data-i18n="config_sub">Select the verification modules you want to run on your document.</p></div></div>
-
-        <!-- 11 MODULES GRID -->
         <div class="modules-grid" style="max-width:680px;margin:0 auto 0;" id="modulesGrid">
-
-          <!-- 1. Academic Standards Check -->
-          <div class="module-card selected" onclick="toggleModule(this)">
-            <div class="module-top">
-              <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12l2 2 4-4"/></svg></div>
-              <label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label>
-            </div>
-            <div class="module-name" data-i18n="mod1_name">Academic Standards Check</div>
-            <div class="module-desc" data-i18n="mod1_desc">Verifies compliance with APA, MLA, IEEE, Harvard, and your institution's templates.</div>
-            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div>
-          </div>
-
-          <!-- 2. Citation Analysis -->
-          <div class="module-card selected" onclick="toggleModule(this)">
-            <div class="module-top">
-              <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2.375-2-3H4c-1.25 0-2 1.125-2 2.5V11c0 1.25.75 2.375 2 3 1 .625 1 2 1 3"/><path d="M21 21c-3 0-7-1-7-8V5c0-1.25.75-2.375 2-3h4c1.25 0 2 1.125 2 2.5V11c0 1.25-.75 2.375-2 3-1 .625-1 2-1 3"/></svg></div>
-              <label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label>
-            </div>
-            <div class="module-name" data-i18n="mod2_name">Citation Analysis</div>
-            <div class="module-desc" data-i18n="mod2_desc">Detects missing references, evaluates citation quality, and flags inconsistencies.</div>
-            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~45s</div>
-          </div>
-
-          <!-- 3. AI Content Detection -->
-          <div class="module-card selected" onclick="toggleModule(this)">
-            <div class="module-top">
-              <div class="module-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></div>
-              <label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label>
-            </div>
-            <div class="module-name" data-i18n="mod3_name">AI Content Detection</div>
-            <div class="module-desc" data-i18n="mod3_desc">Estimates the probability of AI-generated sections and highlights flagged passages.</div>
-            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~1 min</div>
-          </div>
-
-          <!-- 4. Plagiarism Screening -->
-          <div class="module-card selected" onclick="toggleModule(this)">
-            <div class="module-top">
-              <div class="module-icon"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
-              <label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label>
-            </div>
-            <div class="module-name" data-i18n="mod4_name">Plagiarism Screening</div>
-            <div class="module-desc" data-i18n="mod4_desc">Identifies suspicious similarities across global academic databases.</div>
-            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~13 min</div>
-          </div>
-
-          <!-- 5. Grammar & Writing Quality -->
-          <div class="module-card selected" onclick="toggleModule(this)">
-            <div class="module-top">
-              <div class="module-icon"><svg viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div>
-              <label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label>
-            </div>
-            <div class="module-name" data-i18n="mod5_name">Grammar &amp; Writing Quality</div>
-            <div class="module-desc" data-i18n="mod5_desc">Evaluates grammar, style clarity, and academic register.</div>
-            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div>
-          </div>
-
-          <!-- 6. Methodology Validation -->
-          <div class="module-card selected" onclick="toggleModule(this)">
-            <div class="module-top">
-              <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-              <label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label>
-            </div>
-            <div class="module-name" data-i18n="mod6_name">Methodology Validation</div>
-            <div class="module-desc" data-i18n="mod6_desc">Reviews the soundness and consistency of your research methodology section.</div>
-            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~1 min</div>
-          </div>
-
-          <!-- 7. Research Structure Analysis -->
-          <div class="module-card selected" onclick="toggleModule(this)">
-            <div class="module-top">
-              <div class="module-icon"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
-              <label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label>
-            </div>
-            <div class="module-name" data-i18n="mod7_name">Research Structure Analysis</div>
-            <div class="module-desc" data-i18n="mod7_desc">Checks overall structure, argument flow, and chapter organization.</div>
-            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~48s</div>
-          </div>
-
-          <!-- 8. Formatting Verification -->
-          <div class="module-card selected" onclick="toggleModule(this)">
-            <div class="module-top">
-              <div class="module-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-              <label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label>
-            </div>
-            <div class="module-name" data-i18n="mod8_name">Formatting Verification</div>
-            <div class="module-desc" data-i18n="mod8_desc">Ensures margins, headings, fonts, and spacing conform to academic standards.</div>
-            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div>
-          </div>
-
-          <!-- 9. Research Quality Score -->
-          <div class="module-card selected" onclick="toggleModule(this)">
-            <div class="module-top">
-              <div class="module-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-              <label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label>
-            </div>
-            <div class="module-name" data-i18n="mod9_name">Research Quality Score</div>
-            <div class="module-desc" data-i18n="mod9_desc">Produces an overall academic quality score with detailed sub-scores.</div>
-            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div>
-          </div>
-
-          <!-- 10. University Compliance Check -->
-          <div class="module-card selected" onclick="toggleModule(this)">
-            <div class="module-top">
-              <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg></div>
-              <label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label>
-            </div>
-            <div class="module-name" data-i18n="mod10_name">University Compliance Check</div>
-            <div class="module-desc" data-i18n="mod10_desc">Cross-references your institution's specific submission requirements.</div>
-            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~45s</div>
-          </div>
-
-          <!-- 11. Data Analysis Review -->
-          <div class="module-card selected" onclick="toggleModule(this)">
-            <div class="module-top">
-              <div class="module-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-              <label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label>
-            </div>
-            <div class="module-name" data-i18n="mod11_name">Data Analysis Review</div>
-            <div class="module-desc" data-i18n="mod11_desc">Validates statistical methods, charts, tables, and data interpretation consistency.</div>
-            <div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~2 min</div>
-          </div>
-
-          <!-- Empty filler cell to complete the 4th row in a 3-col grid -->
+          <div class="module-card selected" onclick="toggleModule(this)"><div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12l2 2 4-4"/></svg></div><label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label></div><div class="module-name" data-i18n="mod1_name">Academic Standards Check</div><div class="module-desc" data-i18n="mod1_desc">Verifies compliance with APA, MLA, IEEE, Harvard, and your institution's templates.</div><div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div></div>
+          <div class="module-card selected" onclick="toggleModule(this)"><div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2.375-2-3H4c-1.25 0-2 1.125-2 2.5V11c0 1.25.75 2.375 2 3 1 .625 1 2 1 3"/><path d="M21 21c-3 0-7-1-7-8V5c0-1.25.75-2.375 2-3h4c1.25 0 2 1.125 2 2.5V11c0 1.25-.75 2.375-2 3-1 .625-1 2-1 3"/></svg></div><label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label></div><div class="module-name" data-i18n="mod2_name">Citation Analysis</div><div class="module-desc" data-i18n="mod2_desc">Detects missing references, evaluates citation quality, and flags inconsistencies.</div><div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~45s</div></div>
+          <div class="module-card selected" onclick="toggleModule(this)"><div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></div><label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label></div><div class="module-name" data-i18n="mod3_name">AI Content Detection</div><div class="module-desc" data-i18n="mod3_desc">Estimates the probability of AI-generated sections and highlights flagged passages.</div><div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~1 min</div></div>
+          <div class="module-card selected" onclick="toggleModule(this)"><div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div><label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label></div><div class="module-name" data-i18n="mod4_name">Plagiarism Screening</div><div class="module-desc" data-i18n="mod4_desc">Identifies suspicious similarities across global academic databases.</div><div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~13 min</div></div>
+          <div class="module-card selected" onclick="toggleModule(this)"><div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div><label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label></div><div class="module-name" data-i18n="mod5_name">Grammar &amp; Writing Quality</div><div class="module-desc" data-i18n="mod5_desc">Evaluates grammar, style clarity, and academic register.</div><div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div></div>
+          <div class="module-card selected" onclick="toggleModule(this)"><div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label></div><div class="module-name" data-i18n="mod6_name">Methodology Validation</div><div class="module-desc" data-i18n="mod6_desc">Reviews the soundness and consistency of your research methodology section.</div><div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~1 min</div></div>
+          <div class="module-card selected" onclick="toggleModule(this)"><div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div><label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label></div><div class="module-name" data-i18n="mod7_name">Research Structure Analysis</div><div class="module-desc" data-i18n="mod7_desc">Checks overall structure, argument flow, and chapter organization.</div><div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~48s</div></div>
+          <div class="module-card selected" onclick="toggleModule(this)"><div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label></div><div class="module-name" data-i18n="mod8_name">Formatting Verification</div><div class="module-desc" data-i18n="mod8_desc">Ensures margins, headings, fonts, and spacing conform to academic standards.</div><div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div></div>
+          <div class="module-card selected" onclick="toggleModule(this)"><div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label></div><div class="module-name" data-i18n="mod9_name">Research Quality Score</div><div class="module-desc" data-i18n="mod9_desc">Produces an overall academic quality score with detailed sub-scores.</div><div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~30s</div></div>
+          <div class="module-card selected" onclick="toggleModule(this)"><div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg></div><label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label></div><div class="module-name" data-i18n="mod10_name">University Compliance Check</div><div class="module-desc" data-i18n="mod10_desc">Cross-references your institution's specific submission requirements.</div><div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~45s</div></div>
+          <div class="module-card selected" onclick="toggleModule(this)"><div class="module-top"><div class="module-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><label style="cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" class="module-checkbox" checked onchange="updateCount()"/><div class="module-check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div></label></div><div class="module-name" data-i18n="mod11_name">Data Analysis Review</div><div class="module-desc" data-i18n="mod11_desc">Validates statistical methods, charts, tables, and data interpretation consistency.</div><div class="module-time"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~2 min</div></div>
           <div style="background:var(--surface2);border-bottom:1px solid var(--border);"></div>
-
         </div>
         <div class="modules-footer" style="max-width:680px;margin:0 auto;border:1px solid var(--border);border-top:none;border-radius:0 0 14px 14px;">
           <div><div class="modules-selected"><strong id="selectedCount">11 of 11 modules</strong> <span data-i18n="mods_selected2">selected</span></div><div class="modules-est" id="estTime">⏱ <span data-i18n="mods_est">Estimated time: ~19 min</span></div></div>
@@ -882,7 +730,8 @@ button{font-family:inherit;}
           <div class="page-greeting"><h1 data-i18n="analyses_title">All Analyses</h1><p data-i18n="analyses_sub">Review every document you've submitted for analysis.</p></div>
           <button class="btn-new-analysis" onclick="setPage('upload')"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg><span data-i18n="new_analysis">New Analysis</span></button>
         </div>
-        <div class="analyses-table">
+        <!-- FIX 3: New entries prepended here by JS -->
+        <div class="analyses-table" id="allAnalysesTable">
           <div class="analysis-row" onclick="openReport('memoire')"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="analysis-info"><div class="analysis-title" data-i18n="row1_title">Mémoire de Fin d'études</div><div class="analysis-sub" data-i18n="row1_sub">Développement d'un Système AI pour l'Audit…</div></div><div class="analysis-meta"><span class="analysis-time" data-i18n="row1_time">Today, 14:32</span><span class="badge badge-green"><span class="badge-dot"></span><span data-i18n="badge_excellent">Excellent</span></span><span class="analysis-score">96</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
           <div class="analysis-row" onclick="openReport('ml')"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="analysis-info"><div class="analysis-title" data-i18n="row2_title">Research Proposal — Machine Learning</div><div class="analysis-sub" data-i18n="row2_sub">Comparative study on neural network architectures…</div></div><div class="analysis-meta"><span class="analysis-time" data-i18n="row2_time">Yesterday, 09:15</span><span class="badge badge-gold"><span class="badge-dot"></span><span data-i18n="badge_good">Good</span></span><span class="analysis-score">81</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
           <div class="analysis-row" onclick="openReport('lit')"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="analysis-info"><div class="analysis-title" data-i18n="row3_title">Literature Review Draft v2</div><div class="analysis-sub" data-i18n="row3_sub">Systematic review of renewable energy adoption…</div></div><div class="analysis-meta"><span class="analysis-time">Jun 20, 2025</span><span class="badge badge-red"><span class="badge-dot"></span><span data-i18n="badge_needs">Needs work</span></span><span class="analysis-score">74</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
@@ -897,31 +746,17 @@ button{font-family:inherit;}
       <div class="main-inner">
         <div id="reports-list">
           <div class="page-header"><div class="page-greeting"><h1 data-i18n="reports_title">Reports</h1><p data-i18n="reports_sub">Download and review your detailed analysis reports.</p></div></div>
-          <div class="analyses-table">
+          <!-- FIX 3: New report entries prepended here by JS -->
+          <div class="analyses-table" id="allReportsTable">
             <div class="analysis-row" onclick="showReportDetail('memoire')"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="12" x2="12" y2="17"/><polyline points="9 15 12 18 15 15"/></svg></div><div class="analysis-info"><div class="analysis-title" data-i18n="rpt1_title">Report — Mémoire de Fin d'études</div><div class="analysis-sub" data-i18n="rpt1_sub">Full analysis report · 14 pages · Jun 24, 2025</div></div><div class="analysis-meta"><span class="badge badge-green"><span class="badge-dot"></span><span data-i18n="score_label">Score</span> 96</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
             <div class="analysis-row" onclick="showReportDetail('ml')"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="12" x2="12" y2="17"/><polyline points="9 15 12 18 15 15"/></svg></div><div class="analysis-info"><div class="analysis-title" data-i18n="rpt2_title">Report — Research Proposal ML</div><div class="analysis-sub" data-i18n="rpt2_sub">Full analysis report · 11 pages · Jun 23, 2025</div></div><div class="analysis-meta"><span class="badge badge-gold"><span class="badge-dot"></span><span data-i18n="score_label">Score</span> 81</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
             <div class="analysis-row" onclick="showReportDetail('lit')"><div class="doc-thumb"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="12" x2="12" y2="17"/><polyline points="9 15 12 18 15 15"/></svg></div><div class="analysis-info"><div class="analysis-title" data-i18n="rpt3_title">Report — Literature Review Draft v2</div><div class="analysis-sub" data-i18n="rpt3_sub">Full analysis report · 9 pages · Jun 20, 2025</div></div><div class="analysis-meta"><span class="badge badge-red"><span class="badge-dot"></span><span data-i18n="score_label">Score</span> 74</span><svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
           </div>
         </div>
         <div id="reports-detail" style="display:none;">
-          <div class="report-detail-header">
-            <button class="back-btn" onclick="hideReportDetail()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg><span data-i18n="back_to_reports">Back to reports</span></button>
-          </div>
-          <div class="report-score-hero">
-            <div class="score-circle"><div class="score-circle-num" id="detailScore">96</div><div class="score-circle-label" data-i18n="out_of_100">/ 100</div></div>
-            <div class="report-score-info">
-              <div class="report-score-title" id="detailTitle">Mémoire de Fin d'études</div>
-              <div class="report-score-meta" id="detailMeta">Analysed Jun 24, 2025 · 14 pages · Master's Thesis</div>
-              <div class="report-score-badges" id="detailBadges"></div>
-            </div>
-          </div>
-          <div class="report-download-box">
-            <div class="report-dl-text"><h4 data-i18n="dl_title">Download your report</h4><p data-i18n="dl_sub">Full detailed report with all findings, recommendations, and annotated excerpts.</p></div>
-            <div class="report-dl-btns">
-              <button class="btn-dl-pdf" onclick="triggerDownload('pdf')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span data-i18n="dl_pdf">Download PDF</span></button>
-              <button class="btn-dl-doc" onclick="triggerDownload('docx')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span data-i18n="dl_docx">Download DOCX</span></button>
-            </div>
-          </div>
+          <div class="report-detail-header"><button class="back-btn" onclick="hideReportDetail()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg><span data-i18n="back_to_reports">Back to reports</span></button></div>
+          <div class="report-score-hero"><div class="score-circle"><div class="score-circle-num" id="detailScore">96</div><div class="score-circle-label" data-i18n="out_of_100">/ 100</div></div><div class="report-score-info"><div class="report-score-title" id="detailTitle">Mémoire de Fin d'études</div><div class="report-score-meta" id="detailMeta">Analysed Jun 24, 2025 · 14 pages · Master's Thesis</div><div class="report-score-badges" id="detailBadges"></div></div></div>
+          <div class="report-download-box"><div class="report-dl-text"><h4 data-i18n="dl_title">Download your report</h4><p data-i18n="dl_sub">Full detailed report with all findings, recommendations, and annotated excerpts.</p></div><div class="report-dl-btns"><button class="btn-dl-pdf" onclick="triggerDownload('pdf')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span data-i18n="dl_pdf">Download PDF</span></button><button class="btn-dl-doc" onclick="triggerDownload('docx')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span data-i18n="dl_docx">Download DOCX</span></button></div></div>
           <div class="findings-grid" id="detailFindings"></div>
         </div>
       </div>
@@ -945,7 +780,7 @@ button{font-family:inherit;}
           <div class="profile-hero-actions"><button class="btn-outline-sm"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg><span data-i18n="prof_edit_photo">Change photo</span></button></div>
         </div>
         <div class="stat-grid">
-          <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_docs">Documents Analyzed</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div></div><div class="stat-value">12</div><div class="stat-delta" data-i18n="prof_stat_since">Since March 2024</div></div>
+          <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_docs">Documents Analyzed</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div></div><div class="stat-value" id="profileDocsCount">12</div><div class="stat-delta" data-i18n="prof_stat_since">Since March 2024</div></div>
           <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_score">Average Score</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div></div><div class="stat-value">84</div><div class="stat-delta" data-i18n="stat_score_delta">Across all analyses</div></div>
           <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_member">Membership</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V6L12 2z"/></svg></div></div><div class="stat-value" style="font-size:1.3rem;">Pro</div><div class="stat-delta" data-i18n="stat_member_delta">Renews Jul 14, 2026</div></div>
           <div class="stat-card"><div class="stat-icon-label"><span class="stat-label" data-i18n="stat_storage">Storage Used</span><div class="stat-icon-box"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div></div><div class="stat-value">4.1<span style="font-size:1rem;font-weight:400;font-family:'Inter',sans-serif;color:var(--text-muted);">GB</span></div><div class="stat-delta" data-i18n="stat_storage_delta">of 10 GB</div></div>
@@ -1097,10 +932,7 @@ button{font-family:inherit;}
 <div class="analysis-overlay" id="analysisOverlay">
   <div class="analysis-modal">
     <div class="analysis-modal-body">
-      <div class="analysis-spinner-wrap">
-        <div class="analysis-spinner"></div>
-        <div class="analysis-spinner-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-      </div>
+      <div class="analysis-spinner-wrap"><div class="analysis-spinner"></div><div class="analysis-spinner-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div></div>
       <div class="analysis-modal-title" data-i18n="am_title">Analyzing your document…</div>
       <div class="analysis-modal-sub" id="analysisModalSub" data-i18n="am_sub">This usually takes a few minutes. Please don't close this window.</div>
       <div class="analysis-progress-track"><div class="analysis-progress-fill" id="analysisProgressFill"></div></div>
@@ -1117,10 +949,7 @@ button{font-family:inherit;}
       <div class="result-check-wrap"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
       <div class="result-modal-title" data-i18n="rm_title">Analysis complete</div>
       <div class="result-modal-doc" id="resultDocTitle">Document title</div>
-      <div class="result-score-circle">
-        <div class="result-score-num" id="resultScoreNum">0</div>
-        <div class="result-score-label" data-i18n="out_of_100">/ 100</div>
-      </div>
+      <div class="result-score-circle"><div class="result-score-num" id="resultScoreNum">0</div><div class="result-score-label" data-i18n="out_of_100">/ 100</div></div>
       <div class="result-badge-row" id="resultBadgeRow"></div>
       <div class="result-modules-summary">
         <div class="result-mini-stat"><div class="result-mini-stat-val" id="resultModulesCount">0</div><div class="result-mini-stat-label" data-i18n="rm_modules">Modules run</div></div>
@@ -1136,24 +965,166 @@ button{font-family:inherit;}
 </div>
 
 <script>
-const TOTAL = 11;
 let currentLang = 'en';
+// Counter for total docs (base 12 + new ones)
+let totalDocs = 12;
 
 const MOON_PATH = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
 const SUN_PATH = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
 
+/* ─── REPORT DATA ─── */
 const REPORT_DATA = {
-  memoire:{score:96,title:{en:"Mémoire de Fin d'études",fr:"Mémoire de Fin d'études",ar:"مذكرة التخرج"},meta:{en:"Analysed Jun 24, 2025 · 14 pages · Master's Thesis",fr:"Analysé le 24 juin 2025 · 14 pages · Mémoire de master",ar:"تم التحليل في 24 يونيو 2025 · 14 صفحة · مذكرة الماستر"},badge:'green',findings:[{icon:'green',verdict:'pass',title:{en:'Academic Standards',fr:'Normes académiques',ar:'المعايير الأكاديمية'},detail:{en:'The document fully conforms to APA 7th Edition guidelines. All sections are present.',fr:'Le document est entièrement conforme aux directives APA 7e édition.',ar:'الوثيقة مطابقة تمامًا لمعايير APA الطبعة السابعة.'},items:[{cls:'fi-green',t:{en:'APA 7th Edition — Fully compliant',fr:'APA 7e — Entièrement conforme',ar:'APA السابعة — ممتثل'}},{cls:'fi-green',t:{en:'All required sections present',fr:'Toutes les sections requises présentes',ar:'جميع الأقسام موجودة'}},{cls:'fi-green',t:{en:'Page margins and formatting correct',fr:'Marges et mise en forme correctes',ar:'الهوامش والتنسيق صحيحان'}}]},{icon:'green',verdict:'pass',title:{en:'Citation Quality',fr:'Qualité des citations',ar:'جودة الاستشهادات'},detail:{en:'48 references found. All in-text citations match the bibliography.',fr:'48 références trouvées. Toutes les citations correspondent à la bibliographie.',ar:'تم العثور على 48 مرجعًا. جميع الاستشهادات متطابقة.'},items:[{cls:'fi-green',t:{en:'48 references, all verified',fr:'48 références, toutes vérifiées',ar:'48 مرجعًا، جميعها مُتحقق منها'}},{cls:'fi-green',t:{en:'No missing in-text citations',fr:'Aucune citation manquante',ar:'لا استشهادات مفقودة'}},{cls:'fi-green',t:{en:'DOIs present on 44 of 48 entries',fr:'DOIs présents sur 44 des 48 entrées',ar:'روابط DOI في 44 من 48 إدخالًا'}}]},{icon:'green',verdict:'pass',title:{en:'Plagiarism Screening',fr:'Détection de plagiat',ar:'فحص الانتحال'},detail:{en:'Overall similarity: 4%. No suspicious passages found.',fr:'Similarité globale : 4%. Aucun passage suspect détecté.',ar:'نسبة التشابه: 4%. لا توجد مقاطع مشبوهة.'},items:[{cls:'fi-green',t:{en:'Similarity index: 4% — within acceptable range',fr:'Indice de similarité : 4%',ar:'مؤشر التشابه: 4%'}},{cls:'fi-green',t:{en:'No flagged passages',fr:'Aucun passage signalé',ar:'لا توجد مقاطع مُعلَّمة'}},{cls:'fi-green',t:{en:'Methodology phrasing overlap is standard',fr:'Chevauchement standard',ar:'التداخل في المنهجية اعتيادي'}}]},{icon:'green',verdict:'pass',title:{en:'Grammar & Writing',fr:'Grammaire et rédaction',ar:'القواعد والكتابة'},detail:{en:'Writing quality is high. 3 minor grammatical suggestions noted.',fr:'Qualité rédactionnelle élevée. 3 suggestions mineures.',ar:'جودة الكتابة عالية. 3 اقتراحات نحوية طفيفة.'},items:[{cls:'fi-green',t:{en:'Academic register maintained throughout',fr:'Registre académique maintenu',ar:'المستوى الأكاديمي محافظ عليه'}},{cls:'fi-amber',t:{en:'3 minor grammatical suggestions in §5',fr:'3 suggestions mineures en §5',ar:'3 اقتراحات في القسم §5'}},{cls:'fi-green',t:{en:'Terminology consistency: excellent',fr:'Cohérence terminologique : excellente',ar:'اتساق المصطلحات: ممتاز'}}]}]},
-  ml:{score:81,title:{en:"Research Proposal — Machine Learning",fr:"Proposition de recherche — ML",ar:"مقترح بحثي — التعلم الآلي"},meta:{en:"Analysed Jun 23, 2025 · 11 pages · Research Proposal",fr:"Analysé le 23 juin 2025 · 11 pages",ar:"تم التحليل في 23 يونيو 2025 · 11 صفحة"},badge:'gold',findings:[{icon:'green',verdict:'pass',title:{en:'Academic Standards',fr:'Normes académiques',ar:'المعايير الأكاديمية'},detail:{en:'Document structure conforms to IEEE proposal guidelines.',fr:'La structure est conforme aux directives IEEE.',ar:'بنية الوثيقة مطابقة لإرشادات IEEE.'},items:[{cls:'fi-green',t:{en:'IEEE format — Compliant',fr:'Format IEEE — Conforme',ar:'صيغة IEEE — ممتثل'}},{cls:'fi-amber',t:{en:'Objectives section could be more specific',fr:'La section objectifs pourrait être plus précise',ar:'قسم الأهداف يمكن أن يكون أكثر تحديدًا'}}]},{icon:'amber',verdict:'warn',title:{en:'Citation Quality',fr:'Qualité des citations',ar:'جودة الاستشهادات'},detail:{en:'32 references found. 6 in-text citations could not be matched to the bibliography.',fr:'32 références trouvées. 6 citations sans correspondance.',ar:'32 مرجعًا. 6 استشهادات لم تتطابق.'},items:[{cls:'fi-red',t:{en:'6 unmatched in-text citations',fr:'6 citations sans correspondance',ar:'6 استشهادات غير متطابقة'}},{cls:'fi-amber',t:{en:'4 references older than 10 years',fr:'4 références de plus de 10 ans',ar:'4 مراجع تجاوزت 10 سنوات'}},{cls:'fi-green',t:{en:'Format consistent: IEEE',fr:'Format cohérent : IEEE',ar:'التنسيق متسق: IEEE'}}]},{icon:'green',verdict:'pass',title:{en:'Plagiarism Screening',fr:'Détection de plagiat',ar:'فحص الانتحال'},detail:{en:'Overall similarity: 8%. No intentional copying detected.',fr:'Similarité globale : 8%.',ar:'نسبة التشابه: 8%. لا نسخ متعمد.'},items:[{cls:'fi-amber',t:{en:'Similarity: 8% — acceptable but worth reviewing',fr:'8% — acceptable mais à surveiller',ar:'8% — مقبول لكن يستحق المراجعة'}},{cls:'fi-green',t:{en:'Related works overlap is expected',fr:'Chevauchement des travaux connexes attendu',ar:'التداخل في الأعمال ذات الصلة متوقع'}}]},{icon:'amber',verdict:'warn',title:{en:'Research Structure',fr:'Structure de recherche',ar:'بنية البحث'},detail:{en:'Methodology section lacks detail on data collection procedures.',fr:'La section méthodologie manque de détails.',ar:'يفتقر قسم المنهجية إلى تفاصيل.'},items:[{cls:'fi-red',t:{en:'Data collection procedure not described',fr:'Procédure de collecte non décrite',ar:'إجراء جمع البيانات غير موصوف'}},{cls:'fi-amber',t:{en:'Timeline and milestones missing',fr:'Calendrier et jalons manquants',ar:'الجدول الزمني مفقود'}},{cls:'fi-amber',t:{en:'Hypothesis needs operationalization',fr:'Hypothèse à opérationnaliser',ar:'الفرضية تحتاج تشغيلًا'}}]}]},
-  lit:{score:74,title:{en:"Literature Review Draft v2",fr:"Revue de littérature — Brouillon v2",ar:"مراجعة الأدبيات — مسودة v2"},meta:{en:"Analysed Jun 20, 2025 · 9 pages · Literature Review",fr:"Analysé le 20 juin 2025 · 9 pages",ar:"تم التحليل في 20 يونيو 2025 · 9 صفحات"},badge:'red',findings:[{icon:'amber',verdict:'warn',title:{en:'Academic Standards',fr:'Normes académiques',ar:'المعايير الأكاديمية'},detail:{en:'Overall structure follows APA. Headings inconsistent; abstract 80 words over limit.',fr:'Structure APA. Titres incohérents ; abstract trop long.',ar:'بنية APA. العناوين غير متسقة؛ الملخص طويل.'},items:[{cls:'fi-amber',t:{en:'Heading levels 2 and 3 inconsistently formatted',fr:'Niveaux 2 et 3 incohérents',ar:'مستويات العناوين غير متسقة'}},{cls:'fi-red',t:{en:'Abstract is 330 words — limit is 250',fr:"L'abstract fait 330 mots — limite 250",ar:'الملخص 330 كلمة — الحد 250'}}]},{icon:'red',verdict:'fail',title:{en:'Citation Quality',fr:'Qualité des citations',ar:'جودة الاستشهادات'},detail:{en:'18 references detected. 9 in-text citations do not appear in the bibliography.',fr:'18 références. 9 citations sans correspondance.',ar:'18 مرجعًا. 9 استشهادات غير موجودة في القائمة.'},items:[{cls:'fi-red',t:{en:'9 unmatched in-text citations — critical',fr:'9 citations sans correspondance — critique',ar:'9 استشهادات غير متطابقة — حرج'}},{cls:'fi-red',t:{en:'3 incomplete bibliography entries',fr:'3 entrées incomplètes',ar:'3 إدخالات غير مكتملة'}},{cls:'fi-amber',t:{en:'2 sources from non-peer-reviewed publications',fr:'2 sources non évaluées par les pairs',ar:'مصدران من منشورات غير محكّمة'}}]},{icon:'amber',verdict:'warn',title:{en:'Plagiarism Screening',fr:'Détection de plagiat',ar:'فحص الانتحال'},detail:{en:'Overall similarity: 12%. Two passages mirror source text without attribution.',fr:'Similarité : 12%. Deux passages à revoir.',ar:'نسبة التشابه: 12%. مقطعان يعكسان النص دون إسناد.'},items:[{cls:'fi-red',t:{en:'12% similarity — above recommended threshold',fr:'12% — au-dessus du seuil',ar:'12% — أعلى من الحد الموصى به'}},{cls:'fi-red',t:{en:'2 passages require paraphrasing or citation',fr:'2 passages à paraphraser',ar:'مقطعان يحتاجان إعادة صياغة'}},{cls:'fi-amber',t:{en:'Introduction section is the main concern',fr:"L'introduction est la principale préoccupation",ar:'قسم المقدمة هو المصدر الرئيسي للقلق'}}]},{icon:'amber',verdict:'warn',title:{en:'Writing Quality',fr:'Qualité rédactionnelle',ar:'جودة الكتابة'},detail:{en:'Several sentences are too informal. Technical terminology inconsistently used.',fr:'Phrases trop informelles. Terminologie incohérente.',ar:'جمل غير رسمية. مصطلحات غير متسقة.'},items:[{cls:'fi-amber',t:{en:'11 sentences flagged for informal register',fr:'11 phrases signalées',ar:'11 جملة مُعلَّمة'}},{cls:'fi-amber',t:{en:'Terminology inconsistency in §3 and §5',fr:'Incohérence terminologique §3 et §5',ar:'عدم اتساق في §3 و§5'}}]}]}
+  memoire:{score:96,title:{en:"Mémoire de Fin d'études",fr:"Mémoire de Fin d'études",ar:"مذكرة التخرج"},meta:{en:"Analysed Jun 24, 2025 · 14 pages · Master's Thesis",fr:"Analysé le 24 juin 2025 · 14 pages · Mémoire de master",ar:"تم التحليل في 24 يونيو 2025 · 14 صفحة · مذكرة الماستر"},badge:'green',findings:[{icon:'green',verdict:'pass',title:{en:'Academic Standards',fr:'Normes académiques',ar:'المعايير الأكاديمية'},detail:{en:'The document fully conforms to APA 7th Edition guidelines. All sections are present.',fr:'Le document est entièrement conforme aux directives APA 7e édition.',ar:'الوثيقة مطابقة تمامًا لمعايير APA الطبعة السابعة.'},items:[{cls:'fi-green',t:{en:'APA 7th Edition — Fully compliant',fr:'APA 7e — Entièrement conforme',ar:'APA السابعة — ممتثل'}},{cls:'fi-green',t:{en:'All required sections present',fr:'Toutes les sections requises présentes',ar:'جميع الأقسام موجودة'}},{cls:'fi-green',t:{en:'Page margins and formatting correct',fr:'Marges et mise en forme correctes',ar:'الهوامش والتنسيق صحيحان'}}]},{icon:'green',verdict:'pass',title:{en:'Citation Quality',fr:'Qualité des citations',ar:'جودة الاستشهادات'},detail:{en:'48 references found. All in-text citations match the bibliography.',fr:'48 références trouvées.',ar:'تم العثور على 48 مرجعًا.'},items:[{cls:'fi-green',t:{en:'48 references, all verified',fr:'48 références vérifiées',ar:'48 مرجعًا مُتحقق منها'}},{cls:'fi-green',t:{en:'No missing in-text citations',fr:'Aucune citation manquante',ar:'لا استشهادات مفقودة'}}]},{icon:'green',verdict:'pass',title:{en:'Plagiarism Screening',fr:'Détection de plagiat',ar:'فحص الانتحال'},detail:{en:'Overall similarity: 4%. No suspicious passages found.',fr:'Similarité globale : 4%.',ar:'نسبة التشابه: 4%.'},items:[{cls:'fi-green',t:{en:'Similarity index: 4%',fr:'Indice de similarité : 4%',ar:'مؤشر التشابه: 4%'}},{cls:'fi-green',t:{en:'No flagged passages',fr:'Aucun passage signalé',ar:'لا توجد مقاطع مُعلَّمة'}}]},{icon:'green',verdict:'pass',title:{en:'Grammar & Writing',fr:'Grammaire et rédaction',ar:'القواعد والكتابة'},detail:{en:'Writing quality is high. 3 minor grammatical suggestions noted.',fr:'Qualité rédactionnelle élevée.',ar:'جودة الكتابة عالية.'},items:[{cls:'fi-green',t:{en:'Academic register maintained',fr:'Registre académique maintenu',ar:'المستوى الأكاديمي محافظ عليه'}},{cls:'fi-amber',t:{en:'3 minor suggestions in §5',fr:'3 suggestions mineures en §5',ar:'3 اقتراحات في §5'}}]}]},
+  ml:{score:81,title:{en:"Research Proposal — Machine Learning",fr:"Proposition de recherche — ML",ar:"مقترح بحثي — التعلم الآلي"},meta:{en:"Analysed Jun 23, 2025 · 11 pages · Research Proposal",fr:"Analysé le 23 juin 2025 · 11 pages",ar:"تم التحليل في 23 يونيو 2025 · 11 صفحة"},badge:'gold',findings:[{icon:'green',verdict:'pass',title:{en:'Academic Standards',fr:'Normes académiques',ar:'المعايير الأكاديمية'},detail:{en:'Document structure conforms to IEEE proposal guidelines.',fr:'La structure est conforme aux directives IEEE.',ar:'بنية الوثيقة مطابقة لإرشادات IEEE.'},items:[{cls:'fi-green',t:{en:'IEEE format — Compliant',fr:'Format IEEE — Conforme',ar:'صيغة IEEE — ممتثل'}},{cls:'fi-amber',t:{en:'Objectives section could be more specific',fr:'Section objectifs à préciser',ar:'قسم الأهداف يمكن أن يكون أكثر تحديدًا'}}]},{icon:'amber',verdict:'warn',title:{en:'Citation Quality',fr:'Qualité des citations',ar:'جودة الاستشهادات'},detail:{en:'32 references found. 6 in-text citations unmatched.',fr:'32 références. 6 citations sans correspondance.',ar:'32 مرجعًا. 6 استشهادات لم تتطابق.'},items:[{cls:'fi-red',t:{en:'6 unmatched in-text citations',fr:'6 citations sans correspondance',ar:'6 استشهادات غير متطابقة'}},{cls:'fi-amber',t:{en:'4 references older than 10 years',fr:'4 références de plus de 10 ans',ar:'4 مراجع تجاوزت 10 سنوات'}}]},{icon:'green',verdict:'pass',title:{en:'Plagiarism Screening',fr:'Détection de plagiat',ar:'فحص الانتحال'},detail:{en:'Overall similarity: 8%.',fr:'Similarité globale : 8%.',ar:'نسبة التشابه: 8%.'},items:[{cls:'fi-amber',t:{en:'Similarity: 8% — acceptable',fr:'8% — acceptable',ar:'8% — مقبول'}}]},{icon:'amber',verdict:'warn',title:{en:'Research Structure',fr:'Structure de recherche',ar:'بنية البحث'},detail:{en:'Methodology section lacks detail on data collection.',fr:'La section méthodologie manque de détails.',ar:'يفتقر قسم المنهجية إلى تفاصيل.'},items:[{cls:'fi-red',t:{en:'Data collection procedure not described',fr:'Procédure de collecte non décrite',ar:'إجراء جمع البيانات غير موصوف'}},{cls:'fi-amber',t:{en:'Timeline and milestones missing',fr:'Calendrier manquant',ar:'الجدول الزمني مفقود'}}]}]},
+  lit:{score:74,title:{en:"Literature Review Draft v2",fr:"Revue de littérature — Brouillon v2",ar:"مراجعة الأدبيات — مسودة v2"},meta:{en:"Analysed Jun 20, 2025 · 9 pages · Literature Review",fr:"Analysé le 20 juin 2025 · 9 pages",ar:"تم التحليل في 20 يونيو 2025 · 9 صفحات"},badge:'red',findings:[{icon:'amber',verdict:'warn',title:{en:'Academic Standards',fr:'Normes académiques',ar:'المعايير الأكاديمية'},detail:{en:'Headings inconsistent; abstract 80 words over limit.',fr:'Titres incohérents ; abstract trop long.',ar:'العناوين غير متسقة؛ الملخص طويل.'},items:[{cls:'fi-amber',t:{en:'Heading levels inconsistent',fr:'Niveaux de titres incohérents',ar:'مستويات العناوين غير متسقة'}},{cls:'fi-red',t:{en:'Abstract 330 words — limit 250',fr:"Abstract 330 mots — limite 250",ar:'الملخص 330 كلمة — الحد 250'}}]},{icon:'red',verdict:'fail',title:{en:'Citation Quality',fr:'Qualité des citations',ar:'جودة الاستشهادات'},detail:{en:'9 in-text citations do not appear in the bibliography.',fr:'9 citations sans correspondance.',ar:'9 استشهادات غير موجودة في القائمة.'},items:[{cls:'fi-red',t:{en:'9 unmatched citations — critical',fr:'9 citations sans correspondance',ar:'9 استشهادات غير متطابقة — حرج'}},{cls:'fi-red',t:{en:'3 incomplete bibliography entries',fr:'3 entrées incomplètes',ar:'3 إدخالات غير مكتملة'}}]},{icon:'amber',verdict:'warn',title:{en:'Plagiarism Screening',fr:'Détection de plagiat',ar:'فحص الانتحال'},detail:{en:'Overall similarity: 12%. Two passages mirror source text.',fr:'Similarité : 12%.',ar:'نسبة التشابه: 12%.'},items:[{cls:'fi-red',t:{en:'12% — above threshold',fr:'12% — au-dessus du seuil',ar:'12% — أعلى من الحد'}},{cls:'fi-red',t:{en:'2 passages require citation',fr:'2 passages à citer',ar:'مقطعان يحتاجان استشهادًا'}}]},{icon:'amber',verdict:'warn',title:{en:'Writing Quality',fr:'Qualité rédactionnelle',ar:'جودة الكتابة'},detail:{en:'Several sentences are too informal.',fr:'Phrases trop informelles.',ar:'جمل غير رسمية.'},items:[{cls:'fi-amber',t:{en:'11 sentences flagged',fr:'11 phrases signalées',ar:'11 جملة مُعلَّمة'}}]}]}
 };
 
+/* ─── TRANSLATIONS ─── */
 const T = {
-  en:{new_analysis:"New Analysis",sb_main:"Main",sb_dashboard:"Dashboard",sb_upload:"Upload Document",sb_analyses:"Analyses",sb_reports:"Reports",sb_account:"Account",sb_profile:"Profile",sb_settings:"Settings",sb_signout:"Sign out",dash_hello:"Good morning, Sara.",dash_sub:"Here's an overview of your recent academic analyses.",stat_docs:"Documents Analyzed",stat_docs_delta:"+3 this month",stat_score:"Average Score",stat_score_delta:"Across all analyses",stat_issues:"Issues Detected",stat_issues_delta:"Across all documents",stat_compliant:"Compliant Checks",stat_compliant_delta:"Pass rate this month",recent_eyebrow:"RECENT WORK",recent_title:"Recent Analyses",view_all:"View all",row1_title:"Mémoire de Fin d'études",row1_sub:"Développement d'un Système AI pour l'Audit…",row1_time:"Today, 14:32",row2_title:"Research Proposal — Machine Learning",row2_sub:"Comparative study on neural network architectures…",row2_time:"Yesterday, 09:15",row3_title:"Literature Review Draft v2",row3_sub:"Systematic review of renewable energy adoption…",row4_title:"Chapter 3 — Methodology",row4_sub:"Revised methodology chapter with updated sampling…",row5_title:"Abstract & Introduction Draft",row5_sub:"Introductory sections of the final thesis document…",badge_excellent:"Excellent",badge_good:"Good",badge_needs:"Needs work",upload_card_title:"Upload a new document",upload_card_sub:"Submit a PDF or DOCX for a full academic quality analysis.",upload_cta:"Drop your file or browse",upload_hint:"Drag & drop or click to select",max_size:"Max 50 MB",upload_privacy:"Your document is processed in a secure, encrypted environment.",progress_eyebrow:"YOUR PROGRESS THIS MONTH",progress_sub:"Average score improved by +8 points compared to last month.",prog_compliance:"Academic Compliance",prog_citations:"Citation Quality",prog_quality:"Research Quality",prog_plagiat:"Plagiarism Risk",overall_score:"Overall Score",out_of:"out of 100",upload_page_title:"Upload your document",upload_page_sub:"Submit your academic work for a comprehensive quality analysis.",field_title_label:"Document title",field_title_hint:"Enter the full official title as it appears on your document.",field_ishkaliya_hint:"State the central research question or problem.",drop_zone_title:"Drop your academic document here",or_browse:"or",browse_files:"browse files",doc_type_label:"Document type",doc_type_thesis:"Master's Thesis / Mémoire",doc_type_phd:"PhD Dissertation",doc_type_paper:"Research Paper",doc_type_proposal:"Research Proposal",doc_type_review:"Literature Review",config_eyebrow:"ANALYSIS MODULES",config_title:"Configure your analysis",config_sub:"Select the verification modules you want to run on your document.",mod1_name:"Academic Standards Check",mod1_desc:"Verifies compliance with APA, MLA, IEEE, Harvard, and your institution's templates.",mod2_name:"Citation Analysis",mod2_desc:"Detects missing references, evaluates citation quality, and flags inconsistencies.",mod3_name:"AI Content Detection",mod3_desc:"Estimates the probability of AI-generated sections and highlights flagged passages.",mod4_name:"Plagiarism Screening",mod4_desc:"Identifies suspicious similarities across global academic databases.",mod5_name:"Grammar & Writing Quality",mod5_desc:"Evaluates grammar, style clarity, and academic register.",mod6_name:"Methodology Validation",mod6_desc:"Reviews the soundness and consistency of your research methodology section.",mod7_name:"Research Structure Analysis",mod7_desc:"Checks overall structure, argument flow, and chapter organization.",mod8_name:"Formatting Verification",mod8_desc:"Ensures margins, headings, fonts, and spacing conform to academic standards.",mod9_name:"Research Quality Score",mod9_desc:"Produces an overall academic quality score with detailed sub-scores.",mod10_name:"University Compliance Check",mod10_desc:"Cross-references your institution's specific submission requirements.",mod11_name:"Data Analysis Review",mod11_desc:"Validates statistical methods, charts, tables, and data interpretation consistency.",mods_selected2:"selected",mods_est:"Estimated time: ~19 min",clear_all:"Clear all",select_all:"Select all",start_analysis:"Start Analysis",analyses_title:"All Analyses",analyses_sub:"Review every document you've submitted for analysis.",reports_title:"Reports",reports_sub:"Download and review your detailed analysis reports.",rpt1_title:"Report — Mémoire de Fin d'études",rpt1_sub:"Full analysis report · 14 pages · Jun 24, 2025",rpt2_title:"Report — Research Proposal ML",rpt2_sub:"Full analysis report · 11 pages · Jun 23, 2025",rpt3_title:"Report — Literature Review Draft v2",rpt3_sub:"Full analysis report · 9 pages · Jun 20, 2025",score_label:"Score",back_to_reports:"Back to reports",dl_title:"Download your report",dl_sub:"Full detailed report with all findings, recommendations, and annotated excerpts.",dl_pdf:"Download PDF",dl_docx:"Download DOCX",out_of_100:"/ 100",verdict_pass:"Pass",verdict_warn:"Needs review",verdict_fail:"Action required",prof_title:"My Profile",prof_sub:"Manage your personal information, preferences, and account security.",prof_role:"PhD Candidate · University of Science and Technology",prof_dept:"Computer Science Department",prof_joined:"Joined March 2024",prof_edit_photo:"Change photo",prof_stat_since:"Since March 2024",stat_member:"Membership",stat_member_delta:"Renews Jul 14, 2026",stat_storage:"Storage Used",stat_storage_delta:"of 10 GB",tab_general:"General",tab_security:"Security",tab_notifications:"Notifications",tab_billing:"Billing",general_card_title:"Personal information",general_card_sub:"Update your name, contact details, and academic affiliation.",lbl_first:"First name",lbl_last:"Last name",lbl_email:"Email address",lbl_university:"University",lbl_dept:"Department",btn_save:"Save changes",plan_card_title:"Plan & usage",plan_name:"University Plan",plan_renew:"Renews on July 14, 2026",plan_price:"€9 / month",usage1_label:"AI Analyses",usage2_label:"Storage",connect_card_title:"Connected accounts",connect_university:"University SSO",connect_connected:"Connected",security_card_title:"Password",lbl_current_pwd:"Current password",lbl_new_pwd:"New password",lbl_confirm_pwd:"Confirm",btn_update_pwd:"Update password",tfa_title:"Two-factor authentication",tfa_desc:"Add an extra layer of security using an authenticator app.",danger_title:"Delete account",danger_desc:"This permanently deletes your account, documents, and analysis history. This action cannot be undone.",btn_delete:"Delete my account",notif_card_title:"Notification preferences",notif1_title:"Analysis completed",notif1_desc:"Get notified by email when a document analysis finishes.",notif2_title:"Weekly summary",notif2_desc:"A weekly digest of your research progress and scores.",notif4_title:"Security alerts",notif4_desc:"Important notices about your account's security. Cannot be disabled.",billing_card_title:"Payment method",card_expiry:"Expires 08/2028",btn_update:"Update",invoice_jun:"Invoice — June 2026",invoice_may:"Invoice — May 2026",btn_download:"Download",current_plan_title:"Current plan",plan_includes:"Includes unlimited AI analyses, priority support, and full citation verification tools.",btn_cancel_plan:"Cancel subscription",settings_title:"Settings",settings_sub:"Manage your workspace, appearance, integrations, and advanced preferences.",snav_appearance:"Appearance",snav_language:"Language & Region",snav_analysis_prefs:"Analysis Preferences",app_theme_title:"Interface theme",app_theme_sub:"Choose how DataUnivers looks for you.",app_preview_label:"Preview",theme_light:"Light",theme_light_desc:"Clean white interface",theme_dark:"Dark",theme_dark_desc:"Easy on the eyes",app_accent_title:"Accent color",app_accent_sub:"Used for highlights and active states.",lang_title:"Language",lang_sub:"The language used across all menus, labels, and interface text.",ap_defaults_title:"Default analysis modules",ap_defaults_sub:"These modules will be pre-selected each time you start a new analysis.",notif_panel_title:"Notifications",notif_mark_all:"Mark all as read",notif_see_all:"View all notifications",notif1_strong:"Analysis complete",notif1_text:"Mémoire de Fin d'études scored 96/100.",notif1_time:"Today, 14:33",notif2_strong:"Plagiarism risk",notif2_text:"Literature Review v2 has 12% similarity detected.",notif2_time:"Yesterday, 11:08",notif3_strong:"Pro plan",notif3_text:"Your subscription renews in 17 days.",notif3_time:"Jun 25, 2026",am_title:"Analyzing your document…",am_sub:"This usually takes a few minutes. Please don't close this window.",rm_title:"Analysis complete",rm_modules:"Modules run",rm_issues:"Issues found",rm_time:"Time taken",rm_close:"Close",rm_view:"View full report",am_log_done:"Done",am_log_running:"Running…",am_log_pending:"Pending"},
-  fr:{new_analysis:"Nouvelle Analyse",sb_main:"Principal",sb_dashboard:"Tableau de bord",sb_upload:"Déposer un document",sb_analyses:"Analyses",sb_reports:"Rapports",sb_account:"Compte",sb_profile:"Profil",sb_settings:"Paramètres",sb_signout:"Déconnexion",dash_hello:"Bonjour, Sara.",dash_sub:"Voici un aperçu de vos analyses académiques récentes.",stat_docs:"Documents analysés",stat_docs_delta:"+3 ce mois",stat_score:"Score moyen",stat_score_delta:"Toutes analyses confondues",stat_issues:"Problèmes détectés",stat_issues_delta:"Sur tous les documents",stat_compliant:"Vérifications conformes",stat_compliant_delta:"Taux de réussite ce mois",recent_eyebrow:"TRAVAUX RÉCENTS",recent_title:"Analyses récentes",view_all:"Tout voir",row1_title:"Mémoire de Fin d'études",row1_sub:"Développement d'un Système AI pour l'Audit…",row1_time:"Aujourd'hui, 14:32",row2_title:"Proposition de Recherche — ML",row2_sub:"Étude comparative sur les architectures de réseaux…",row2_time:"Hier, 09:15",row3_title:"Revue de littérature v2",row3_sub:"Revue systématique de l'adoption des énergies…",row4_title:"Chapitre 3 — Méthodologie",row4_sub:"Chapitre méthodologie révisé…",row5_title:"Résumé et Introduction",row5_sub:"Sections introductives du mémoire final…",badge_excellent:"Excellent",badge_good:"Bien",badge_needs:"À améliorer",upload_card_title:"Déposer un nouveau document",upload_card_sub:"Soumettez un PDF ou DOCX pour une analyse qualité complète.",upload_cta:"Déposez votre fichier ou parcourez",upload_hint:"Glissez-déposez ou cliquez pour sélectionner",max_size:"Max 50 Mo",upload_privacy:"Votre document est traité dans un environnement sécurisé et chiffré.",progress_eyebrow:"VOS PROGRÈS CE MOIS",progress_sub:"Score moyen amélioré de +8 points par rapport au mois dernier.",prog_compliance:"Conformité académique",prog_citations:"Qualité des citations",prog_quality:"Qualité de recherche",prog_plagiat:"Risque de plagiat",overall_score:"Score global",out_of:"sur 100",upload_page_title:"Déposez votre document",upload_page_sub:"Soumettez votre travail académique pour une analyse qualité complète.",field_title_label:"Titre du document",field_title_hint:"Saisissez le titre officiel complet.",field_ishkaliya_hint:"Énoncez la question ou problématique centrale.",drop_zone_title:"Déposez votre document académique ici",or_browse:"ou",browse_files:"parcourir",doc_type_label:"Type de document",doc_type_thesis:"Mémoire de master",doc_type_phd:"Thèse de doctorat",doc_type_paper:"Article de recherche",doc_type_proposal:"Proposition de recherche",doc_type_review:"Revue de littérature",config_eyebrow:"MODULES D'ANALYSE",config_title:"Configurez votre analyse",config_sub:"Sélectionnez les modules de vérification à exécuter.",mod1_name:"Vérification des normes académiques",mod1_desc:"Vérifie la conformité APA, MLA, IEEE, Harvard et les modèles institutionnels.",mod2_name:"Analyse des citations",mod2_desc:"Détecte les références manquantes et signale les incohérences.",mod3_name:"Détection de contenu IA",mod3_desc:"Estime la probabilité de sections générées par IA et met en évidence les passages signalés.",mod4_name:"Détection de plagiat",mod4_desc:"Identifie les similitudes suspectes dans les bases de données académiques.",mod5_name:"Grammaire & qualité rédactionnelle",mod5_desc:"Évalue la grammaire, la clarté du style et le registre académique.",mod6_name:"Validation méthodologique",mod6_desc:"Examine la solidité et la cohérence de votre section méthodologie.",mod7_name:"Analyse de la structure de recherche",mod7_desc:"Vérifie la structure globale, le flux argumentatif et l'organisation des chapitres.",mod8_name:"Vérification du formatage",mod8_desc:"S'assure que les marges, titres, polices et espacements sont conformes aux normes.",mod9_name:"Score qualité de recherche",mod9_desc:"Produit un score global de qualité académique avec des sous-scores.",mod10_name:"Vérification conformité universitaire",mod10_desc:"Croise les exigences spécifiques de soumission de votre institution.",mod11_name:"Revue de l'analyse de données",mod11_desc:"Valide les méthodes statistiques, graphiques, tableaux et cohérence d'interprétation.",mods_selected2:"sélectionnés",mods_est:"Durée estimée : ~19 min",clear_all:"Tout effacer",select_all:"Tout sélectionner",start_analysis:"Lancer l'analyse",analyses_title:"Toutes les analyses",analyses_sub:"Consultez tous les documents soumis pour analyse.",reports_title:"Rapports",reports_sub:"Téléchargez et consultez vos rapports d'analyse détaillés.",rpt1_title:"Rapport — Mémoire de Fin d'études",rpt1_sub:"Rapport complet · 14 pages · 24 juin 2025",rpt2_title:"Rapport — Proposition de recherche ML",rpt2_sub:"Rapport complet · 11 pages · 23 juin 2025",rpt3_title:"Rapport — Revue de littérature v2",rpt3_sub:"Rapport complet · 9 pages · 20 juin 2025",score_label:"Score",back_to_reports:"Retour aux rapports",dl_title:"Télécharger votre rapport",dl_sub:"Rapport détaillé complet avec tous les résultats et recommandations.",dl_pdf:"Télécharger en PDF",dl_docx:"Télécharger en DOCX",out_of_100:"/ 100",verdict_pass:"Conforme",verdict_warn:"À réviser",verdict_fail:"Action requise",prof_title:"Mon profil",prof_sub:"Gérez vos informations personnelles, préférences et sécurité.",prof_role:"Doctorante · Université des Sciences et de la Technologie",prof_dept:"Département d'Informatique",prof_joined:"Inscrite depuis mars 2024",prof_edit_photo:"Changer la photo",prof_stat_since:"Depuis mars 2024",stat_member:"Abonnement",stat_member_delta:"Renouvellement le 14 juil. 2026",stat_storage:"Stockage utilisé",stat_storage_delta:"sur 10 Go",tab_general:"Général",tab_security:"Sécurité",tab_notifications:"Notifications",tab_billing:"Facturation",general_card_title:"Informations personnelles",general_card_sub:"Mettez à jour votre nom et vos coordonnées.",lbl_first:"Prénom",lbl_last:"Nom",lbl_email:"Email",lbl_university:"Université",lbl_dept:"Département",btn_save:"Enregistrer",plan_card_title:"Forfait & utilisation",plan_name:"Forfait Université",plan_renew:"Renouvellement le 14 juillet 2026",plan_price:"9 € / mois",usage1_label:"Analyses IA",usage2_label:"Stockage",connect_card_title:"Comptes connectés",connect_university:"SSO universitaire",connect_connected:"Connecté",security_card_title:"Mot de passe",lbl_current_pwd:"Mot de passe actuel",lbl_new_pwd:"Nouveau mot de passe",lbl_confirm_pwd:"Confirmer",btn_update_pwd:"Mettre à jour",tfa_title:"Authentification à deux facteurs",tfa_desc:"Ajoutez une couche de sécurité supplémentaire.",danger_title:"Supprimer le compte",danger_desc:"Cette action supprime définitivement votre compte et votre historique.",btn_delete:"Supprimer mon compte",notif_card_title:"Préférences de notification",notif1_title:"Analyse terminée",notif1_desc:"Recevez un e-mail lorsqu'une analyse se termine.",notif2_title:"Résumé hebdomadaire",notif2_desc:"Un résumé hebdomadaire de vos progrès.",notif4_title:"Alertes de sécurité",notif4_desc:"Notices importantes sur la sécurité. Ne peut pas être désactivé.",billing_card_title:"Moyen de paiement",card_expiry:"Expire 08/2028",btn_update:"Mettre à jour",invoice_jun:"Facture — Juin 2026",invoice_may:"Facture — Mai 2026",btn_download:"Télécharger",current_plan_title:"Forfait actuel",plan_includes:"Inclut des analyses IA illimitées et un support prioritaire.",btn_cancel_plan:"Annuler l'abonnement",settings_title:"Paramètres",settings_sub:"Gérez votre espace de travail, l'apparence, les intégrations et les préférences avancées.",snav_appearance:"Apparence",snav_language:"Langue & Région",snav_analysis_prefs:"Préférences d'analyse",app_theme_title:"Thème de l'interface",app_theme_sub:"Choisissez l'apparence de DataUnivers.",app_preview_label:"Aperçu",theme_light:"Clair",theme_light_desc:"Interface blanche et propre",theme_dark:"Sombre",theme_dark_desc:"Reposant pour les yeux",app_accent_title:"Couleur d'accentuation",app_accent_sub:"Utilisée pour les surlignages et états actifs.",lang_title:"Langue",lang_sub:"La langue utilisée dans tous les menus et textes de l'interface.",ap_defaults_title:"Modules d'analyse par défaut",ap_defaults_sub:"Ces modules seront pré-sélectionnés à chaque nouvelle analyse.",notif_panel_title:"Notifications",notif_mark_all:"Tout marquer comme lu",notif_see_all:"Voir toutes les notifications",notif1_strong:"Analyse terminée",notif1_text:"Mémoire de Fin d'études — score 96/100.",notif1_time:"Aujourd'hui, 14:33",notif2_strong:"Risque de plagiat",notif2_text:"Revue de littérature v2 — 12% de similarité détectée.",notif2_time:"Hier, 11:08",notif3_strong:"Forfait Pro",notif3_text:"Votre abonnement se renouvelle dans 17 jours.",notif3_time:"25 juin 2026",am_title:"Analyse de votre document en cours…",am_sub:"Cela prend généralement quelques minutes. Merci de ne pas fermer cette fenêtre.",rm_title:"Analyse terminée",rm_modules:"Modules exécutés",rm_issues:"Problèmes détectés",rm_time:"Temps écoulé",rm_close:"Fermer",rm_view:"Voir le rapport complet",am_log_done:"Terminé",am_log_running:"En cours…",am_log_pending:"En attente"},
-  ar:{new_analysis:"تحليل جديد",sb_main:"الرئيسية",sb_dashboard:"لوحة التحكم",sb_upload:"رفع وثيقة",sb_analyses:"التحليلات",sb_reports:"التقارير",sb_account:"الحساب",sb_profile:"الملف الشخصي",sb_settings:"الإعدادات",sb_signout:"تسجيل الخروج",dash_hello:"صباح الخير، سارة.",dash_sub:"إليك نظرة عامة على تحليلاتك الأكاديمية الأخيرة.",stat_docs:"الوثائق المحللة",stat_docs_delta:"+3 هذا الشهر",stat_score:"متوسط النتيجة",stat_score_delta:"عبر جميع التحليلات",stat_issues:"المشكلات المكتشفة",stat_issues_delta:"عبر جميع الوثائق",stat_compliant:"الفحوصات الممتثلة",stat_compliant_delta:"معدل النجاح هذا الشهر",recent_eyebrow:"العمل الأخير",recent_title:"التحليلات الأخيرة",view_all:"عرض الكل",row1_title:"مذكرة التخرج",row1_sub:"تطوير نظام ذكي للتدقيق…",row1_time:"اليوم، 14:32",row2_title:"مقترح بحثي — التعلم الآلي",row2_sub:"دراسة مقارنة لبنيات الشبكات العصبية…",row2_time:"أمس، 09:15",row3_title:"مراجعة الأدبيات — مسودة v2",row3_sub:"مراجعة منهجية لاعتماد الطاقة المتجددة…",row4_title:"الفصل 3 — المنهجية",row4_sub:"فصل المنهجية المُراجَع…",row5_title:"الملخص والمقدمة",row5_sub:"الأقسام التمهيدية لمذكرة التخرج النهائية…",badge_excellent:"ممتاز",badge_good:"جيد",badge_needs:"يحتاج تحسين",upload_card_title:"رفع وثيقة جديدة",upload_card_sub:"أرسل ملف PDF أو DOCX للحصول على تحليل أكاديمي شامل.",upload_cta:"أسقط ملفك أو تصفح",upload_hint:"اسحب وأفلت أو انقر للاختيار",max_size:"الحجم الأقصى 50 ميغابايت",upload_privacy:"تتم معالجة وثيقتك في بيئة آمنة ومشفرة.",progress_eyebrow:"تقدمك هذا الشهر",progress_sub:"تحسّن متوسط النتيجة بمقدار +8 نقاط.",prog_compliance:"الامتثال الأكاديمي",prog_citations:"جودة الاستشهادات",prog_quality:"جودة البحث",prog_plagiat:"خطر الانتحال",overall_score:"النتيجة الإجمالية",out_of:"من 100",upload_page_title:"ارفع وثيقتك",upload_page_sub:"أرسل عملك الأكاديمي للحصول على تحليل جودة شامل.",field_title_label:"عنوان الوثيقة",field_title_hint:"أدخل العنوان الرسمي الكامل.",field_ishkaliya_hint:"حدّد السؤال أو الإشكالية المحورية.",drop_zone_title:"أسقط وثيقتك الأكاديمية هنا",or_browse:"أو",browse_files:"تصفح الملفات",doc_type_label:"نوع الوثيقة",doc_type_thesis:"مذكرة الماستر",doc_type_phd:"أطروحة الدكتوراه",doc_type_paper:"ورقة بحثية",doc_type_proposal:"مقترح بحثي",doc_type_review:"مراجعة الأدبيات",config_eyebrow:"وحدات التحليل",config_title:"اضبط تحليلك",config_sub:"اختر وحدات التحقق التي تريد تشغيلها على وثيقتك.",mod1_name:"فحص المعايير الأكاديمية",mod1_desc:"يتحقق من الامتثال لـ APA وMLA وIEEE وهارفارد.",mod2_name:"تحليل الاستشهادات",mod2_desc:"يكتشف المراجع المفقودة ويرصد التناقضات.",mod3_name:"اكتشاف المحتوى الذكاء الاصطناعي",mod3_desc:"يقدر احتمالية المقاطع المولدة بالذكاء الاصطناعي ويعلم الفقرات المشبوهة.",mod4_name:"فحص الانتحال",mod4_desc:"يرصد التشابهات المثيرة للريبة عبر قواعد البيانات.",mod5_name:"القواعد وجودة الكتابة",mod5_desc:"يقيّم القواعد ووضوح الأسلوب والمستوى الأكاديمي.",mod6_name:"التحقق من المنهجية",mod6_desc:"يراجع متانة واتساق قسم المنهجية البحثية.",mod7_name:"تحليل بنية البحث",mod7_desc:"يفحص البنية الكلية وتدفق الحجج وتنظيم الفصول.",mod8_name:"التحقق من التنسيق",mod8_desc:"يضمن أن الهوامش والعناوين والخطوط والتباعد مطابقة للمعايير.",mod9_name:"نقاط جودة البحث",mod9_desc:"يُنتج نقاطاً كلية لجودة البحث الأكاديمي.",mod10_name:"فحص الامتثال الجامعي",mod10_desc:"يراجع متطلبات التقديم الخاصة بمؤسستك.",mod11_name:"مراجعة تحليل البيانات",mod11_desc:"يتحقق من الأساليب الإحصائية والرسوم والجداول واتساق التفسير.",mods_selected2:"محددة",mods_est:"الوقت المقدر: ~19 دقيقة",clear_all:"مسح الكل",select_all:"تحديد الكل",start_analysis:"بدء التحليل",analyses_title:"جميع التحليلات",analyses_sub:"راجع كل وثيقة قدمتها للتحليل.",reports_title:"التقارير",reports_sub:"نزّل وراجع تقارير التحليل التفصيلية.",rpt1_title:"تقرير — مذكرة التخرج",rpt1_sub:"تقرير تحليل كامل · 14 صفحة · 24 يونيو 2025",rpt2_title:"تقرير — مقترح بحثي ML",rpt2_sub:"تقرير تحليل كامل · 11 صفحة · 23 يونيو 2025",rpt3_title:"تقرير — مراجعة الأدبيات v2",rpt3_sub:"تقرير تحليل كامل · 9 صفحات · 20 يونيو 2025",score_label:"النتيجة",back_to_reports:"العودة إلى التقارير",dl_title:"تنزيل تقريرك",dl_sub:"تقرير تفصيلي كامل بجميع النتائج والتوصيات.",dl_pdf:"تنزيل PDF",dl_docx:"تنزيل DOCX",out_of_100:"/ 100",verdict_pass:"ممتثل",verdict_warn:"يحتاج مراجعة",verdict_fail:"يستلزم إجراء",prof_title:"ملفي الشخصي",prof_sub:"إدارة معلوماتك الشخصية وتفضيلاتك وأمان حسابك.",prof_role:"طالبة دكتوراه · جامعة العلوم والتكنولوجيا",prof_dept:"قسم علوم الحاسوب",prof_joined:"عضوة منذ مارس 2024",prof_edit_photo:"تغيير الصورة",prof_stat_since:"منذ مارس 2024",stat_member:"العضوية",stat_member_delta:"التجديد في 14 يوليو 2026",stat_storage:"التخزين المستخدم",stat_storage_delta:"من 10 جيجابايت",tab_general:"عام",tab_security:"الأمان",tab_notifications:"الإشعارات",tab_billing:"الفوترة",general_card_title:"المعلومات الشخصية",general_card_sub:"حدّث اسمك وبيانات الاتصال وانتسابك الأكاديمي.",lbl_first:"الاسم الأول",lbl_last:"اسم العائلة",lbl_email:"البريد الإلكتروني",lbl_university:"الجامعة",lbl_dept:"القسم",btn_save:"حفظ التغييرات",plan_card_title:"الخطة والاستخدام",plan_name:"خطة الجامعة",plan_renew:"التجديد في 14 يوليو 2026",plan_price:"9 € / شهريًا",usage1_label:"تحليلات الذكاء الاصطناعي",usage2_label:"التخزين",connect_card_title:"الحسابات المرتبطة",connect_university:"تسجيل الدخول الموحد الجامعي",connect_connected:"متصل",security_card_title:"كلمة المرور",lbl_current_pwd:"كلمة المرور الحالية",lbl_new_pwd:"كلمة المرور الجديدة",lbl_confirm_pwd:"تأكيد",btn_update_pwd:"تحديث كلمة المرور",tfa_title:"المصادقة الثنائية",tfa_desc:"أضف طبقة إضافية من الأمان باستخدام تطبيق مصادقة.",danger_title:"حذف الحساب",danger_desc:"سيؤدي هذا إلى حذف حسابك نهائيًا. لا يمكن التراجع.",btn_delete:"حذف حسابي",notif_card_title:"تفضيلات الإشعارات",notif1_title:"اكتمال التحليل",notif1_desc:"احصل على إشعار عند انتهاء تحليل الوثيقة.",notif2_title:"الملخص الأسبوعي",notif2_desc:"ملخص أسبوعي لتقدمك البحثي.",notif4_title:"تنبيهات الأمان",notif4_desc:"إشعارات مهمة حول أمان حسابك. لا يمكن تعطيلها.",billing_card_title:"وسيلة الدفع",card_expiry:"تنتهي الصلاحية 08/2028",btn_update:"تحديث",invoice_jun:"فاتورة — يونيو 2026",invoice_may:"فاتورة — مايو 2026",btn_download:"تنزيل",current_plan_title:"الخطة الحالية",plan_includes:"تشمل تحليلات ذكاء اصطناعي غير محدودة.",btn_cancel_plan:"إلغاء الاشتراك",settings_title:"الإعدادات",settings_sub:"إدارة مساحة العمل والمظهر والتكاملات والتفضيلات المتقدمة.",snav_appearance:"المظهر",snav_language:"اللغة والمنطقة",snav_analysis_prefs:"تفضيلات التحليل",app_theme_title:"سمة الواجهة",app_theme_sub:"اختر كيف يبدو DataUnivers.",app_preview_label:"معاينة",theme_light:"فاتح",theme_light_desc:"واجهة بيضاء نظيفة",theme_dark:"داكن",theme_dark_desc:"مريح للعينين",app_accent_title:"لون التمييز",app_accent_sub:"يُستخدم للتمييزات والحالات النشطة.",lang_title:"اللغة",lang_sub:"اللغة المستخدمة في جميع القوائم والنصوص.",ap_defaults_title:"وحدات التحليل الافتراضية",ap_defaults_sub:"ستكون هذه الوحدات محددة مسبقًا في كل تحليل جديد.",notif_panel_title:"الإشعارات",notif_mark_all:"تحديد الكل كمقروء",notif_see_all:"عرض جميع الإشعارات",notif1_strong:"اكتمل التحليل",notif1_text:"مذكرة التخرج — نتيجة 96/100.",notif1_time:"اليوم، 14:33",notif2_strong:"خطر الانتحال",notif2_text:"مراجعة الأدبيات v2 — تم اكتشاف تشابه 12%.",notif2_time:"أمس، 11:08",notif3_strong:"خطة Pro",notif3_text:"يتجدد اشتراكك خلال 17 يومًا.",notif3_time:"25 يونيو 2026",am_title:"جارٍ تحليل وثيقتك…",am_sub:"يستغرق هذا عادةً بضع دقائق. يرجى عدم إغلاق هذه النافذة.",rm_title:"اكتمل التحليل",rm_modules:"الوحدات المُنفَّذة",rm_issues:"المشكلات المكتشفة",rm_time:"الوقت المستغرق",rm_close:"إغلاق",rm_view:"عرض التقرير الكامل",am_log_done:"تم",am_log_running:"قيد التنفيذ…",am_log_pending:"قيد الانتظار"}
+  en:{
+    new_analysis:"New Analysis",sb_main:"Main",sb_dashboard:"Dashboard",sb_upload:"Upload Document",sb_analyses:"Analyses",sb_reports:"Reports",sb_account:"Account",sb_profile:"Profile",sb_settings:"Settings",sb_signout:"Sign out",
+    dash_hello:"Good morning, Sara.",dash_sub:"Here's an overview of your recent academic analyses.",
+    stat_docs:"Documents Analyzed",stat_docs_delta:"+3 this month",stat_score:"Average Score",stat_score_delta:"Across all analyses",stat_issues:"Issues Detected",stat_issues_delta:"Across all documents",stat_compliant:"Compliant Checks",stat_compliant_delta:"Pass rate this month",
+    recent_eyebrow:"RECENT WORK",recent_title:"Recent Analyses",view_all:"View all",
+    row1_title:"Mémoire de Fin d'études",row1_sub:"Développement d'un Système AI pour l'Audit…",row1_time:"Today, 14:32",
+    row2_title:"Research Proposal — Machine Learning",row2_sub:"Comparative study on neural network architectures…",row2_time:"Yesterday, 09:15",
+    row3_title:"Literature Review Draft v2",row3_sub:"Systematic review of renewable energy adoption…",
+    row4_title:"Chapter 3 — Methodology",row4_sub:"Revised methodology chapter with updated sampling…",
+    row5_title:"Abstract & Introduction Draft",row5_sub:"Introductory sections of the final thesis document…",
+    badge_excellent:"Excellent",badge_good:"Good",badge_needs:"Needs work",
+    upload_card_title:"Upload a new document",upload_card_sub:"Submit a PDF or DOCX for a full academic quality analysis.",upload_cta:"Drop your file or browse",upload_hint:"Drag & drop or click to select",max_size:"Max 50 MB",upload_privacy:"Your document is processed in a secure, encrypted environment.",
+    progress_eyebrow:"YOUR PROGRESS THIS MONTH",progress_sub:"Average score improved by +8 points compared to last month.",prog_compliance:"Academic Compliance",prog_citations:"Citation Quality",prog_quality:"Research Quality",prog_plagiat:"Plagiarism Risk",overall_score:"Overall Score",out_of:"out of 100",
+    upload_page_title:"Upload your document",upload_page_sub:"Submit your academic work for a comprehensive quality analysis.",
+    field_title_label:"Document title",field_title_hint:"Enter the full official title as it appears on your document.",
+    /* FIX 1 */ field_title_placeholder:"e.g. Développement d'un Système AI pour l'Audit Académique",
+    field_ishkaliya_label:"Research Problem",field_ishkaliya_hint:"State the central research question or problem.",
+    /* FIX 2 */ field_ishkaliya_placeholder:"Write your research problem here…",
+    drop_zone_title:"Drop your academic document here",or_browse:"or",browse_files:"browse files",
+    doc_type_label:"Document type",doc_type_thesis:"Master's Thesis / Mémoire",doc_type_phd:"PhD Dissertation",doc_type_paper:"Research Paper",doc_type_proposal:"Research Proposal",doc_type_review:"Literature Review",
+    config_eyebrow:"ANALYSIS MODULES",config_title:"Configure your analysis",config_sub:"Select the verification modules you want to run on your document.",
+    mod1_name:"Academic Standards Check",mod1_desc:"Verifies compliance with APA, MLA, IEEE, Harvard, and your institution's templates.",
+    mod2_name:"Citation Analysis",mod2_desc:"Detects missing references, evaluates citation quality, and flags inconsistencies.",
+    mod3_name:"AI Content Detection",mod3_desc:"Estimates the probability of AI-generated sections and highlights flagged passages.",
+    mod4_name:"Plagiarism Screening",mod4_desc:"Identifies suspicious similarities across global academic databases.",
+    mod5_name:"Grammar & Writing Quality",mod5_desc:"Evaluates grammar, style clarity, and academic register.",
+    mod6_name:"Methodology Validation",mod6_desc:"Reviews the soundness and consistency of your research methodology section.",
+    mod7_name:"Research Structure Analysis",mod7_desc:"Checks overall structure, argument flow, and chapter organization.",
+    mod8_name:"Formatting Verification",mod8_desc:"Ensures margins, headings, fonts, and spacing conform to academic standards.",
+    mod9_name:"Research Quality Score",mod9_desc:"Produces an overall academic quality score with detailed sub-scores.",
+    mod10_name:"University Compliance Check",mod10_desc:"Cross-references your institution's specific submission requirements.",
+    mod11_name:"Data Analysis Review",mod11_desc:"Validates statistical methods, charts, tables, and data interpretation consistency.",
+    mods_selected2:"selected",mods_est:"Estimated time: ~19 min",clear_all:"Clear all",select_all:"Select all",start_analysis:"Start Analysis",
+    analyses_title:"All Analyses",analyses_sub:"Review every document you've submitted for analysis.",
+    reports_title:"Reports",reports_sub:"Download and review your detailed analysis reports.",
+    rpt1_title:"Report — Mémoire de Fin d'études",rpt1_sub:"Full analysis report · 14 pages · Jun 24, 2025",
+    rpt2_title:"Report — Research Proposal ML",rpt2_sub:"Full analysis report · 11 pages · Jun 23, 2025",
+    rpt3_title:"Report — Literature Review Draft v2",rpt3_sub:"Full analysis report · 9 pages · Jun 20, 2025",
+    score_label:"Score",back_to_reports:"Back to reports",dl_title:"Download your report",dl_sub:"Full detailed report with all findings, recommendations, and annotated excerpts.",dl_pdf:"Download PDF",dl_docx:"Download DOCX",out_of_100:"/ 100",
+    verdict_pass:"Pass",verdict_warn:"Needs review",verdict_fail:"Action required",
+    prof_title:"My Profile",prof_sub:"Manage your personal information, preferences, and account security.",prof_role:"PhD Candidate · University of Science and Technology",prof_dept:"Computer Science Department",prof_joined:"Joined March 2024",prof_edit_photo:"Change photo",prof_stat_since:"Since March 2024",stat_member:"Membership",stat_member_delta:"Renews Jul 14, 2026",stat_storage:"Storage Used",stat_storage_delta:"of 10 GB",
+    tab_general:"General",tab_security:"Security",tab_notifications:"Notifications",tab_billing:"Billing",general_card_title:"Personal information",general_card_sub:"Update your name, contact details, and academic affiliation.",lbl_first:"First name",lbl_last:"Last name",lbl_email:"Email address",lbl_university:"University",lbl_dept:"Department",btn_save:"Save changes",plan_card_title:"Plan & usage",plan_name:"University Plan",plan_renew:"Renews on July 14, 2026",plan_price:"€9 / month",usage1_label:"AI Analyses",usage2_label:"Storage",connect_card_title:"Connected accounts",connect_university:"University SSO",connect_connected:"Connected",security_card_title:"Password",lbl_current_pwd:"Current password",lbl_new_pwd:"New password",lbl_confirm_pwd:"Confirm",btn_update_pwd:"Update password",tfa_title:"Two-factor authentication",tfa_desc:"Add an extra layer of security using an authenticator app.",danger_title:"Delete account",danger_desc:"This permanently deletes your account, documents, and analysis history. This action cannot be undone.",btn_delete:"Delete my account",notif_card_title:"Notification preferences",notif1_title:"Analysis completed",notif1_desc:"Get notified by email when a document analysis finishes.",notif2_title:"Weekly summary",notif2_desc:"A weekly digest of your research progress and scores.",notif4_title:"Security alerts",notif4_desc:"Important notices about your account's security. Cannot be disabled.",billing_card_title:"Payment method",card_expiry:"Expires 08/2028",btn_update:"Update",invoice_jun:"Invoice — June 2026",invoice_may:"Invoice — May 2026",btn_download:"Download",current_plan_title:"Current plan",plan_includes:"Includes unlimited AI analyses, priority support, and full citation verification tools.",btn_cancel_plan:"Cancel subscription",
+    settings_title:"Settings",settings_sub:"Manage your workspace, appearance, integrations, and advanced preferences.",snav_appearance:"Appearance",snav_language:"Language & Region",snav_analysis_prefs:"Analysis Preferences",app_theme_title:"Interface theme",app_theme_sub:"Choose how DataUnivers looks for you.",app_preview_label:"Preview",theme_light:"Light",theme_light_desc:"Clean white interface",theme_dark:"Dark",theme_dark_desc:"Easy on the eyes",app_accent_title:"Accent color",app_accent_sub:"Used for highlights and active states.",lang_title:"Language",lang_sub:"The language used across all menus, labels, and interface text.",ap_defaults_title:"Default analysis modules",ap_defaults_sub:"These modules will be pre-selected each time you start a new analysis.",
+    notif_panel_title:"Notifications",notif_mark_all:"Mark all as read",notif_see_all:"View all notifications",notif1_strong:"Analysis complete",notif1_text:"Mémoire de Fin d'études scored 96/100.",notif1_time:"Today, 14:33",notif2_strong:"Plagiarism risk",notif2_text:"Literature Review v2 has 12% similarity detected.",notif2_time:"Yesterday, 11:08",notif3_strong:"Pro plan",notif3_text:"Your subscription renews in 17 days.",notif3_time:"Jun 25, 2026",
+    am_title:"Analyzing your document…",am_sub:"This usually takes a few minutes. Please don't close this window.",rm_title:"Analysis complete",rm_modules:"Modules run",rm_issues:"Issues found",rm_time:"Time taken",rm_close:"Close",rm_view:"View full report",
+    today_label:"Today",new_entry_sub:"Newly analysed document"
+  },
+  fr:{
+    new_analysis:"Nouvelle Analyse",sb_main:"Principal",sb_dashboard:"Tableau de bord",sb_upload:"Déposer un document",sb_analyses:"Analyses",sb_reports:"Rapports",sb_account:"Compte",sb_profile:"Profil",sb_settings:"Paramètres",sb_signout:"Déconnexion",
+    dash_hello:"Bonjour, Sara.",dash_sub:"Voici un aperçu de vos analyses académiques récentes.",
+    stat_docs:"Documents analysés",stat_docs_delta:"+3 ce mois",stat_score:"Score moyen",stat_score_delta:"Toutes analyses confondues",stat_issues:"Problèmes détectés",stat_issues_delta:"Sur tous les documents",stat_compliant:"Vérifications conformes",stat_compliant_delta:"Taux de réussite ce mois",
+    recent_eyebrow:"TRAVAUX RÉCENTS",recent_title:"Analyses récentes",view_all:"Tout voir",
+    row1_title:"Mémoire de Fin d'études",row1_sub:"Développement d'un Système AI pour l'Audit…",row1_time:"Aujourd'hui, 14:32",
+    row2_title:"Proposition de Recherche — ML",row2_sub:"Étude comparative sur les architectures de réseaux…",row2_time:"Hier, 09:15",
+    row3_title:"Revue de littérature v2",row3_sub:"Revue systématique de l'adoption des énergies…",
+    row4_title:"Chapitre 3 — Méthodologie",row4_sub:"Chapitre méthodologie révisé…",
+    row5_title:"Résumé et Introduction",row5_sub:"Sections introductives du mémoire final…",
+    badge_excellent:"Excellent",badge_good:"Bien",badge_needs:"À améliorer",
+    upload_card_title:"Déposer un nouveau document",upload_card_sub:"Soumettez un PDF ou DOCX pour une analyse qualité complète.",upload_cta:"Déposez votre fichier ou parcourez",upload_hint:"Glissez-déposez ou cliquez",max_size:"Max 50 Mo",upload_privacy:"Votre document est traité dans un environnement sécurisé et chiffré.",
+    progress_eyebrow:"VOS PROGRÈS CE MOIS",progress_sub:"Score moyen amélioré de +8 points.",prog_compliance:"Conformité académique",prog_citations:"Qualité des citations",prog_quality:"Qualité de recherche",prog_plagiat:"Risque de plagiat",overall_score:"Score global",out_of:"sur 100",
+    upload_page_title:"Déposez votre document",upload_page_sub:"Soumettez votre travail académique pour une analyse qualité complète.",
+    field_title_label:"Titre du document",field_title_hint:"Saisissez le titre officiel complet.",
+    /* FIX 1 */ field_title_placeholder:"ex. Développement d'un Système AI pour l'Audit Académique",
+    field_ishkaliya_label:"Problématique",field_ishkaliya_hint:"Énoncez la question ou problématique centrale.",
+    /* FIX 2 */ field_ishkaliya_placeholder:"Rédigez votre problématique ici…",
+    drop_zone_title:"Déposez votre document académique ici",or_browse:"ou",browse_files:"parcourir",
+    doc_type_label:"Type de document",doc_type_thesis:"Mémoire de master",doc_type_phd:"Thèse de doctorat",doc_type_paper:"Article de recherche",doc_type_proposal:"Proposition de recherche",doc_type_review:"Revue de littérature",
+    config_eyebrow:"MODULES D'ANALYSE",config_title:"Configurez votre analyse",config_sub:"Sélectionnez les modules de vérification à exécuter.",
+    mod1_name:"Vérification des normes académiques",mod1_desc:"Vérifie la conformité APA, MLA, IEEE, Harvard.",
+    mod2_name:"Analyse des citations",mod2_desc:"Détecte les références manquantes et signale les incohérences.",
+    mod3_name:"Détection de contenu IA",mod3_desc:"Estime la probabilité de sections générées par IA.",
+    mod4_name:"Détection de plagiat",mod4_desc:"Identifie les similitudes suspectes dans les bases de données.",
+    mod5_name:"Grammaire & qualité rédactionnelle",mod5_desc:"Évalue la grammaire, le style et le registre académique.",
+    mod6_name:"Validation méthodologique",mod6_desc:"Examine la solidité de votre section méthodologie.",
+    mod7_name:"Analyse de la structure de recherche",mod7_desc:"Vérifie la structure globale et l'organisation des chapitres.",
+    mod8_name:"Vérification du formatage",mod8_desc:"S'assure que les marges et espacements sont conformes.",
+    mod9_name:"Score qualité de recherche",mod9_desc:"Produit un score global de qualité académique.",
+    mod10_name:"Vérification conformité universitaire",mod10_desc:"Croise les exigences spécifiques de votre institution.",
+    mod11_name:"Revue de l'analyse de données",mod11_desc:"Valide les méthodes statistiques et tableaux.",
+    mods_selected2:"sélectionnés",mods_est:"Durée estimée : ~19 min",clear_all:"Tout effacer",select_all:"Tout sélectionner",start_analysis:"Lancer l'analyse",
+    analyses_title:"Toutes les analyses",analyses_sub:"Consultez tous les documents soumis pour analyse.",
+    reports_title:"Rapports",reports_sub:"Téléchargez et consultez vos rapports d'analyse.",
+    rpt1_title:"Rapport — Mémoire de Fin d'études",rpt1_sub:"Rapport complet · 14 pages · 24 juin 2025",
+    rpt2_title:"Rapport — Proposition de recherche ML",rpt2_sub:"Rapport complet · 11 pages · 23 juin 2025",
+    rpt3_title:"Rapport — Revue de littérature v2",rpt3_sub:"Rapport complet · 9 pages · 20 juin 2025",
+    score_label:"Score",back_to_reports:"Retour aux rapports",dl_title:"Télécharger votre rapport",dl_sub:"Rapport détaillé avec tous les résultats et recommandations.",dl_pdf:"Télécharger en PDF",dl_docx:"Télécharger en DOCX",out_of_100:"/ 100",
+    verdict_pass:"Conforme",verdict_warn:"À réviser",verdict_fail:"Action requise",
+    prof_title:"Mon profil",prof_sub:"Gérez vos informations personnelles et sécurité.",prof_role:"Doctorante · Université des Sciences et de la Technologie",prof_dept:"Département d'Informatique",prof_joined:"Inscrite depuis mars 2024",prof_edit_photo:"Changer la photo",prof_stat_since:"Depuis mars 2024",stat_member:"Abonnement",stat_member_delta:"Renouvellement le 14 juil. 2026",stat_storage:"Stockage utilisé",stat_storage_delta:"sur 10 Go",
+    tab_general:"Général",tab_security:"Sécurité",tab_notifications:"Notifications",tab_billing:"Facturation",general_card_title:"Informations personnelles",general_card_sub:"Mettez à jour votre nom et coordonnées.",lbl_first:"Prénom",lbl_last:"Nom",lbl_email:"Email",lbl_university:"Université",lbl_dept:"Département",btn_save:"Enregistrer",plan_card_title:"Forfait & utilisation",plan_name:"Forfait Université",plan_renew:"Renouvellement le 14 juillet 2026",plan_price:"9 € / mois",usage1_label:"Analyses IA",usage2_label:"Stockage",connect_card_title:"Comptes connectés",connect_university:"SSO universitaire",connect_connected:"Connecté",security_card_title:"Mot de passe",lbl_current_pwd:"Mot de passe actuel",lbl_new_pwd:"Nouveau mot de passe",lbl_confirm_pwd:"Confirmer",btn_update_pwd:"Mettre à jour",tfa_title:"Authentification à deux facteurs",tfa_desc:"Ajoutez une couche de sécurité supplémentaire.",danger_title:"Supprimer le compte",danger_desc:"Cette action supprime définitivement votre compte.",btn_delete:"Supprimer mon compte",notif_card_title:"Préférences de notification",notif1_title:"Analyse terminée",notif1_desc:"Recevez un e-mail lorsqu'une analyse se termine.",notif2_title:"Résumé hebdomadaire",notif2_desc:"Un résumé hebdomadaire de vos progrès.",notif4_title:"Alertes de sécurité",notif4_desc:"Notices importantes. Ne peut pas être désactivé.",billing_card_title:"Moyen de paiement",card_expiry:"Expire 08/2028",btn_update:"Mettre à jour",invoice_jun:"Facture — Juin 2026",invoice_may:"Facture — Mai 2026",btn_download:"Télécharger",current_plan_title:"Forfait actuel",plan_includes:"Inclut des analyses IA illimitées et un support prioritaire.",btn_cancel_plan:"Annuler l'abonnement",
+    settings_title:"Paramètres",settings_sub:"Gérez votre espace de travail et les préférences avancées.",snav_appearance:"Apparence",snav_language:"Langue & Région",snav_analysis_prefs:"Préférences d'analyse",app_theme_title:"Thème de l'interface",app_theme_sub:"Choisissez l'apparence de DataUnivers.",app_preview_label:"Aperçu",theme_light:"Clair",theme_light_desc:"Interface blanche et propre",theme_dark:"Sombre",theme_dark_desc:"Reposant pour les yeux",app_accent_title:"Couleur d'accentuation",app_accent_sub:"Utilisée pour les surlignages et états actifs.",lang_title:"Langue",lang_sub:"La langue utilisée dans tous les menus.",ap_defaults_title:"Modules par défaut",ap_defaults_sub:"Ces modules seront pré-sélectionnés à chaque nouvelle analyse.",
+    notif_panel_title:"Notifications",notif_mark_all:"Tout marquer comme lu",notif_see_all:"Voir toutes les notifications",notif1_strong:"Analyse terminée",notif1_text:"Mémoire de Fin d'études — score 96/100.",notif1_time:"Aujourd'hui, 14:33",notif2_strong:"Risque de plagiat",notif2_text:"Revue de littérature v2 — 12% de similarité.",notif2_time:"Hier, 11:08",notif3_strong:"Forfait Pro",notif3_text:"Votre abonnement se renouvelle dans 17 jours.",notif3_time:"25 juin 2026",
+    am_title:"Analyse en cours…",am_sub:"Cela prend quelques minutes. Merci de ne pas fermer cette fenêtre.",rm_title:"Analyse terminée",rm_modules:"Modules exécutés",rm_issues:"Problèmes détectés",rm_time:"Temps écoulé",rm_close:"Fermer",rm_view:"Voir le rapport complet",
+    today_label:"Aujourd'hui",new_entry_sub:"Document nouvellement analysé"
+  },
+  ar:{
+    new_analysis:"تحليل جديد",sb_main:"الرئيسية",sb_dashboard:"لوحة التحكم",sb_upload:"رفع وثيقة",sb_analyses:"التحليلات",sb_reports:"التقارير",sb_account:"الحساب",sb_profile:"الملف الشخصي",sb_settings:"الإعدادات",sb_signout:"تسجيل الخروج",
+    dash_hello:"صباح الخير، سارة.",dash_sub:"إليك نظرة عامة على تحليلاتك الأكاديمية الأخيرة.",
+    stat_docs:"الوثائق المحللة",stat_docs_delta:"+3 هذا الشهر",stat_score:"متوسط النتيجة",stat_score_delta:"عبر جميع التحليلات",stat_issues:"المشكلات المكتشفة",stat_issues_delta:"عبر جميع الوثائق",stat_compliant:"الفحوصات الممتثلة",stat_compliant_delta:"معدل النجاح هذا الشهر",
+    recent_eyebrow:"العمل الأخير",recent_title:"التحليلات الأخيرة",view_all:"عرض الكل",
+    row1_title:"مذكرة التخرج",row1_sub:"تطوير نظام ذكي للتدقيق…",row1_time:"اليوم، 14:32",
+    row2_title:"مقترح بحثي — التعلم الآلي",row2_sub:"دراسة مقارنة لبنيات الشبكات العصبية…",row2_time:"أمس، 09:15",
+    row3_title:"مراجعة الأدبيات — مسودة v2",row3_sub:"مراجعة منهجية لاعتماد الطاقة المتجددة…",
+    row4_title:"الفصل 3 — المنهجية",row4_sub:"فصل المنهجية المُراجَع…",
+    row5_title:"الملخص والمقدمة",row5_sub:"الأقسام التمهيدية لمذكرة التخرج النهائية…",
+    badge_excellent:"ممتاز",badge_good:"جيد",badge_needs:"يحتاج تحسين",
+    upload_card_title:"رفع وثيقة جديدة",upload_card_sub:"أرسل ملف PDF أو DOCX للحصول على تحليل أكاديمي شامل.",upload_cta:"أسقط ملفك أو تصفح",upload_hint:"اسحب وأفلت أو انقر للاختيار",max_size:"الحجم الأقصى 50 ميغابايت",upload_privacy:"تتم معالجة وثيقتك في بيئة آمنة ومشفرة.",
+    progress_eyebrow:"تقدمك هذا الشهر",progress_sub:"تحسّن متوسط النتيجة بمقدار +8 نقاط.",prog_compliance:"الامتثال الأكاديمي",prog_citations:"جودة الاستشهادات",prog_quality:"جودة البحث",prog_plagiat:"خطر الانتحال",overall_score:"النتيجة الإجمالية",out_of:"من 100",
+    upload_page_title:"ارفع وثيقتك",upload_page_sub:"أرسل عملك الأكاديمي للحصول على تحليل جودة شامل.",
+    field_title_label:"عنوان الوثيقة",field_title_hint:"أدخل العنوان الرسمي الكامل.",
+    /* FIX 1 */ field_title_placeholder:"مثال: تطوير نظام ذكاء اصطناعي للتدقيق الأكاديمي",
+    field_ishkaliya_label:"الإشكالية البحثية",field_ishkaliya_hint:"حدّد السؤال أو الإشكالية المحورية.",
+    /* FIX 2 */ field_ishkaliya_placeholder:"اكتب إشكاليتك البحثية هنا…",
+    drop_zone_title:"أسقط وثيقتك الأكاديمية هنا",or_browse:"أو",browse_files:"تصفح الملفات",
+    doc_type_label:"نوع الوثيقة",doc_type_thesis:"مذكرة الماستر",doc_type_phd:"أطروحة الدكتوراه",doc_type_paper:"ورقة بحثية",doc_type_proposal:"مقترح بحثي",doc_type_review:"مراجعة الأدبيات",
+    config_eyebrow:"وحدات التحليل",config_title:"اضبط تحليلك",config_sub:"اختر وحدات التحقق التي تريد تشغيلها على وثيقتك.",
+    mod1_name:"فحص المعايير الأكاديمية",mod1_desc:"يتحقق من الامتثال لـ APA وMLA وIEEE وهارفارد.",
+    mod2_name:"تحليل الاستشهادات",mod2_desc:"يكتشف المراجع المفقودة ويرصد التناقضات.",
+    mod3_name:"اكتشاف محتوى الذكاء الاصطناعي",mod3_desc:"يقدر احتمالية المقاطع المولدة بالذكاء الاصطناعي.",
+    mod4_name:"فحص الانتحال",mod4_desc:"يرصد التشابهات المثيرة للريبة عبر قواعد البيانات.",
+    mod5_name:"القواعد وجودة الكتابة",mod5_desc:"يقيّم القواعد ووضوح الأسلوب والمستوى الأكاديمي.",
+    mod6_name:"التحقق من المنهجية",mod6_desc:"يراجع متانة واتساق قسم المنهجية البحثية.",
+    mod7_name:"تحليل بنية البحث",mod7_desc:"يفحص البنية الكلية وتدفق الحجج وتنظيم الفصول.",
+    mod8_name:"التحقق من التنسيق",mod8_desc:"يضمن أن الهوامش والخطوط مطابقة للمعايير.",
+    mod9_name:"نقاط جودة البحث",mod9_desc:"يُنتج نقاطاً كلية لجودة البحث الأكاديمي.",
+    mod10_name:"فحص الامتثال الجامعي",mod10_desc:"يراجع متطلبات التقديم الخاصة بمؤسستك.",
+    mod11_name:"مراجعة تحليل البيانات",mod11_desc:"يتحقق من الأساليب الإحصائية والجداول.",
+    mods_selected2:"محددة",mods_est:"الوقت المقدر: ~19 دقيقة",clear_all:"مسح الكل",select_all:"تحديد الكل",start_analysis:"بدء التحليل",
+    analyses_title:"جميع التحليلات",analyses_sub:"راجع كل وثيقة قدمتها للتحليل.",
+    reports_title:"التقارير",reports_sub:"نزّل وراجع تقارير التحليل التفصيلية.",
+    rpt1_title:"تقرير — مذكرة التخرج",rpt1_sub:"تقرير تحليل كامل · 14 صفحة · 24 يونيو 2025",
+    rpt2_title:"تقرير — مقترح بحثي ML",rpt2_sub:"تقرير تحليل كامل · 11 صفحة · 23 يونيو 2025",
+    rpt3_title:"تقرير — مراجعة الأدبيات v2",rpt3_sub:"تقرير تحليل كامل · 9 صفحات · 20 يونيو 2025",
+    score_label:"النتيجة",back_to_reports:"العودة إلى التقارير",dl_title:"تنزيل تقريرك",dl_sub:"تقرير تفصيلي كامل بجميع النتائج والتوصيات.",dl_pdf:"تنزيل PDF",dl_docx:"تنزيل DOCX",out_of_100:"/ 100",
+    verdict_pass:"ممتثل",verdict_warn:"يحتاج مراجعة",verdict_fail:"يستلزم إجراء",
+    prof_title:"ملفي الشخصي",prof_sub:"إدارة معلوماتك الشخصية وأمان حسابك.",prof_role:"طالبة دكتوراه · جامعة العلوم والتكنولوجيا",prof_dept:"قسم علوم الحاسوب",prof_joined:"عضوة منذ مارس 2024",prof_edit_photo:"تغيير الصورة",prof_stat_since:"منذ مارس 2024",stat_member:"العضوية",stat_member_delta:"التجديد في 14 يوليو 2026",stat_storage:"التخزين المستخدم",stat_storage_delta:"من 10 جيجابايت",
+    tab_general:"عام",tab_security:"الأمان",tab_notifications:"الإشعارات",tab_billing:"الفوترة",general_card_title:"المعلومات الشخصية",general_card_sub:"حدّث اسمك وبيانات الاتصال.",lbl_first:"الاسم الأول",lbl_last:"اسم العائلة",lbl_email:"البريد الإلكتروني",lbl_university:"الجامعة",lbl_dept:"القسم",btn_save:"حفظ التغييرات",plan_card_title:"الخطة والاستخدام",plan_name:"خطة الجامعة",plan_renew:"التجديد في 14 يوليو 2026",plan_price:"9 € / شهريًا",usage1_label:"تحليلات الذكاء الاصطناعي",usage2_label:"التخزين",connect_card_title:"الحسابات المرتبطة",connect_university:"تسجيل الدخول الموحد الجامعي",connect_connected:"متصل",security_card_title:"كلمة المرور",lbl_current_pwd:"كلمة المرور الحالية",lbl_new_pwd:"كلمة المرور الجديدة",lbl_confirm_pwd:"تأكيد",btn_update_pwd:"تحديث كلمة المرور",tfa_title:"المصادقة الثنائية",tfa_desc:"أضف طبقة إضافية من الأمان.",danger_title:"حذف الحساب",danger_desc:"سيؤدي هذا إلى حذف حسابك نهائيًا.",btn_delete:"حذف حسابي",notif_card_title:"تفضيلات الإشعارات",notif1_title:"اكتمال التحليل",notif1_desc:"احصل على إشعار عند انتهاء تحليل الوثيقة.",notif2_title:"الملخص الأسبوعي",notif2_desc:"ملخص أسبوعي لتقدمك البحثي.",notif4_title:"تنبيهات الأمان",notif4_desc:"إشعارات مهمة. لا يمكن تعطيلها.",billing_card_title:"وسيلة الدفع",card_expiry:"تنتهي الصلاحية 08/2028",btn_update:"تحديث",invoice_jun:"فاتورة — يونيو 2026",invoice_may:"فاتورة — مايو 2026",btn_download:"تنزيل",current_plan_title:"الخطة الحالية",plan_includes:"تشمل تحليلات ذكاء اصطناعي غير محدودة.",btn_cancel_plan:"إلغاء الاشتراك",
+    settings_title:"الإعدادات",settings_sub:"إدارة مساحة العمل والمظهر والتفضيلات المتقدمة.",snav_appearance:"المظهر",snav_language:"اللغة والمنطقة",snav_analysis_prefs:"تفضيلات التحليل",app_theme_title:"سمة الواجهة",app_theme_sub:"اختر كيف يبدو DataUnivers.",app_preview_label:"معاينة",theme_light:"فاتح",theme_light_desc:"واجهة بيضاء نظيفة",theme_dark:"داكن",theme_dark_desc:"مريح للعينين",app_accent_title:"لون التمييز",app_accent_sub:"يُستخدم للتمييزات والحالات النشطة.",lang_title:"اللغة",lang_sub:"اللغة المستخدمة في جميع القوائم.",ap_defaults_title:"وحدات التحليل الافتراضية",ap_defaults_sub:"ستكون هذه الوحدات محددة مسبقًا في كل تحليل جديد.",
+    notif_panel_title:"الإشعارات",notif_mark_all:"تحديد الكل كمقروء",notif_see_all:"عرض جميع الإشعارات",notif1_strong:"اكتمل التحليل",notif1_text:"مذكرة التخرج — نتيجة 96/100.",notif1_time:"اليوم، 14:33",notif2_strong:"خطر الانتحال",notif2_text:"مراجعة الأدبيات v2 — تم اكتشاف تشابه 12%.",notif2_time:"أمس، 11:08",notif3_strong:"خطة Pro",notif3_text:"يتجدد اشتراكك خلال 17 يومًا.",notif3_time:"25 يونيو 2026",
+    am_title:"جارٍ تحليل وثيقتك…",am_sub:"يستغرق هذا عادةً بضع دقائق. يرجى عدم إغلاق هذه النافذة.",rm_title:"اكتمل التحليل",rm_modules:"الوحدات المُنفَّذة",rm_issues:"المشكلات المكتشفة",rm_time:"الوقت المستغرق",rm_close:"إغلاق",rm_view:"عرض التقرير الكامل",
+    today_label:"اليوم",new_entry_sub:"وثيقة تم تحليلها حديثًا"
+  }
 };
 
+/* ─── NAVIGATION ─── */
 function setPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const target=document.getElementById('page-'+name);
@@ -1186,6 +1157,7 @@ function showSection(name){
   if(link)link.classList.add('active');
 }
 
+/* ─── MODULES ─── */
 function toggleModule(card){
   const cb=card.querySelector('.module-checkbox');
   if(!cb)return;
@@ -1216,10 +1188,12 @@ function handleFile(input){
   }
 }
 
-/* ===================== ANALYSIS SIMULATION ===================== */
+/* ─── ANALYSIS SIMULATION ─── */
 let analysisTimer=null;
 let analysisStartTime=null;
 let lastAnalysisTitle='';
+let lastAnalysisScore=0;
+let lastAnalysisBadge='green';
 
 function getSelectedModuleNames(){
   const lang=currentLang;
@@ -1258,14 +1232,13 @@ function openAnalysisModal(modules){
   const log=document.getElementById('analysisModulesLog');
   const fill=document.getElementById('analysisProgressFill');
   const pct=document.getElementById('analysisProgressPct');
-  const lang=currentLang;
 
   fill.style.width='0%';
   pct.textContent='0%';
   log.innerHTML=modules.map((m,i)=>`
     <div class="analysis-log-item" data-idx="${i}">
       <div class="analysis-log-dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-      <span class="analysis-log-text">${m}</span>
+      <span>${m}</span>
     </div>`).join('');
 
   overlay.classList.add('open');
@@ -1277,29 +1250,18 @@ function openAnalysisModal(modules){
 
   function tick(){
     if(step>0){
-      const prevItem=items[step-1];
-      if(prevItem){
-        prevItem.classList.remove('active');
-        prevItem.classList.add('done');
-        const dot=prevItem.querySelector('.analysis-log-dot');
-        if(dot)dot.innerHTML='<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
-      }
+      const prev=items[step-1];
+      if(prev){prev.classList.remove('active');prev.classList.add('done');const d=prev.querySelector('.analysis-log-dot');if(d)d.innerHTML='<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';}
     }
     if(step<totalSteps){
-      const curItem=items[step];
-      if(curItem){
-        curItem.classList.add('active');
-        const dot=curItem.querySelector('.analysis-log-dot');
-        if(dot)dot.innerHTML='<div class="analysis-log-spin"></div>';
-      }
+      const cur=items[step];
+      if(cur){cur.classList.add('active');const d=cur.querySelector('.analysis-log-dot');if(d)d.innerHTML='<div class="analysis-log-spin"></div>';}
       const p=Math.round(((step+1)/totalSteps)*100);
-      fill.style.width=p+'%';
-      pct.textContent=p+'%';
+      fill.style.width=p+'%';pct.textContent=p+'%';
       step++;
-      analysisTimer=setTimeout(tick, 480+Math.random()*420);
+      analysisTimer=setTimeout(tick,480+Math.random()*420);
     }else{
-      fill.style.width='100%';
-      pct.textContent='100%';
+      fill.style.width='100%';pct.textContent='100%';
       setTimeout(()=>finishAnalysis(modules),450);
     }
   }
@@ -1309,22 +1271,21 @@ function openAnalysisModal(modules){
 function finishAnalysis(modules){
   document.getElementById('analysisOverlay').classList.remove('open');
 
-  // Compute a plausible final score based on selected modules (deterministic-ish but with variety)
   let seed=0;
   for(let i=0;i<lastAnalysisTitle.length;i++)seed+=lastAnalysisTitle.charCodeAt(i);
   seed+=modules.length*7;
-  const base=62+(seed%33); // 62-94
-  const bonus=Math.min(modules.length,11); // more modules run -> slightly more thorough/confident score range
-  let score=Math.min(99, base + Math.floor(bonus/3));
+  let score=Math.min(99,62+(seed%33)+Math.floor(Math.min(modules.length,11)/3));
   if(score<55)score=55;
 
-  const issues=Math.max(0, Math.round((100-score)/6));
+  lastAnalysisScore=score;
+  const issues=Math.max(0,Math.round((100-score)/6));
   const elapsedSec=Math.max(3,Math.round((Date.now()-analysisStartTime)/1000));
-  const mins=Math.floor(elapsedSec/60), secs=elapsedSec%60;
+  const mins=Math.floor(elapsedSec/60),secs=elapsedSec%60;
 
-  let badgeClass='badge-green', verdictKey='verdict_pass';
-  if(score<70){badgeClass='badge-red';verdictKey='verdict_fail';}
-  else if(score<85){badgeClass='badge-gold';verdictKey='verdict_warn';}
+  let badgeClass='badge-green',verdictKey='verdict_pass';
+  if(score<70){badgeClass='badge-red';verdictKey='verdict_fail';lastAnalysisBadge='red';}
+  else if(score<85){badgeClass='badge-gold';verdictKey='verdict_warn';lastAnalysisBadge='gold';}
+  else{lastAnalysisBadge='green';}
 
   document.getElementById('resultDocTitle').textContent=lastAnalysisTitle;
   document.getElementById('resultScoreNum').textContent=score;
@@ -1340,16 +1301,129 @@ function finishAnalysis(modules){
   document.getElementById('resultOverlay').classList.add('open');
 }
 
+/* ─── FIX 3: Add to analyses + reports after completion ─── */
+function addNewEntryToLists(){
+  const lang=currentLang;
+  const t=T[lang];
+  const score=lastAnalysisScore;
+  const title=lastAnalysisTitle;
+  const badge=lastAnalysisBadge;
+
+  const badgeClass=badge==='green'?'badge-green':badge==='gold'?'badge-gold':'badge-red';
+  const badgeLabel=badge==='green'?(t.badge_excellent||'Excellent'):badge==='gold'?(t.badge_good||'Good'):(t.badge_needs||'Needs work');
+  const todayLabel=t.today_label||'Today';
+  const now=new Date();
+  const timeStr=todayLabel+', '+now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
+  const newSub=t.new_entry_sub||'Newly analysed document';
+
+  const docSVG=`<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
+  const arrowSVG=`<svg class="row-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>`;
+
+  // --- Add to All Analyses table (prepend) ---
+  const analysesTable=document.getElementById('allAnalysesTable');
+  if(analysesTable){
+    const row=document.createElement('div');
+    row.className='analysis-row new-entry';
+    row.onclick=()=>showDynamicReport(title,score,badge);
+    row.innerHTML=`
+      <div class="doc-thumb">${docSVG}</div>
+      <div class="analysis-info">
+        <div class="analysis-title">${escapeHtml(title)}</div>
+        <div class="analysis-sub">${escapeHtml(newSub)}</div>
+      </div>
+      <div class="analysis-meta">
+        <span class="analysis-time">${timeStr}</span>
+        <span class="badge ${badgeClass}"><span class="badge-dot"></span>${badgeLabel}</span>
+        <span class="analysis-score">${score}</span>
+        ${arrowSVG}
+      </div>`;
+    analysesTable.insertBefore(row,analysesTable.firstChild);
+  }
+
+  // --- Add to Dashboard recent table (prepend, keep max 3 visible) ---
+  const dashTable=document.getElementById('dashRecentTable');
+  if(dashTable){
+    const row=document.createElement('div');
+    row.className='analysis-row new-entry';
+    row.onclick=()=>setPage('analyses');
+    row.innerHTML=`
+      <div class="doc-thumb">${docSVG}</div>
+      <div class="analysis-info">
+        <div class="analysis-title">${escapeHtml(title)}</div>
+        <div class="analysis-sub">${escapeHtml(newSub)}</div>
+      </div>
+      <div class="analysis-meta">
+        <span class="analysis-time">${timeStr}</span>
+        <span class="badge ${badgeClass}"><span class="badge-dot"></span>${badgeLabel}</span>
+        <span class="analysis-score">${score}</span>
+        ${arrowSVG}
+      </div>`;
+    dashTable.insertBefore(row,dashTable.firstChild);
+    // Keep only 3 rows in dashboard
+    while(dashTable.children.length>3)dashTable.removeChild(dashTable.lastChild);
+  }
+
+  // --- Add to Reports table (prepend) ---
+  const reportsTable=document.getElementById('allReportsTable');
+  if(reportsTable){
+    const dlSVG=`<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="12" x2="12" y2="17"/><polyline points="9 15 12 18 15 15"/></svg>`;
+    const row=document.createElement('div');
+    row.className='analysis-row new-entry';
+    row.onclick=()=>showDynamicReport(title,score,badge);
+    row.innerHTML=`
+      <div class="doc-thumb">${dlSVG}</div>
+      <div class="analysis-info">
+        <div class="analysis-title">${t.score_label||'Report'} — ${escapeHtml(title)}</div>
+        <div class="analysis-sub">${t.rpt1_sub?t.rpt1_sub.split('·')[0].trim()+' · '+timeStr:timeStr}</div>
+      </div>
+      <div class="analysis-meta">
+        <span class="badge ${badgeClass}"><span class="badge-dot"></span>${t.score_label||'Score'} ${score}</span>
+        ${arrowSVG}
+      </div>`;
+    reportsTable.insertBefore(row,reportsTable.firstChild);
+  }
+
+  // Update doc count
+  totalDocs++;
+  const statEl=document.getElementById('statDocsCount');
+  if(statEl)statEl.textContent=totalDocs;
+  const profEl=document.getElementById('profileDocsCount');
+  if(profEl)profEl.textContent=totalDocs;
+}
+
+function escapeHtml(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* Show a generic detail page for dynamically added entries */
+function showDynamicReport(title,score,badge){
+  const lang=currentLang;
+  const badgeMap={green:'badge-green',gold:'badge-gold',red:'badge-red'};
+  const verdictMap={green:T[lang].verdict_pass||'Pass',gold:T[lang].verdict_warn||'Needs review',red:T[lang].verdict_fail||'Action required'};
+  setPage('reports');
+  document.getElementById('reports-list').style.display='none';
+  document.getElementById('reports-detail').style.display='block';
+  document.getElementById('detailScore').textContent=score;
+  document.getElementById('detailTitle').textContent=title;
+  document.getElementById('detailMeta').textContent=T[lang].new_entry_sub||'Newly analysed document';
+  document.getElementById('detailBadges').innerHTML=`<span class="badge ${badgeMap[badge]||'badge-navy'}"><span class="badge-dot"></span>${verdictMap[badge]||''}</span>`;
+  document.getElementById('detailFindings').innerHTML=`<div style="grid-column:1/-1;padding:24px;text-align:center;color:var(--text-muted);font-size:.82rem;">${lang==='ar'?'التقرير التفصيلي قيد الإعداد…':lang==='fr'?'Le rapport détaillé est en cours de génération…':'Detailed report is being generated…'}</div>`;
+  window.scrollTo(0,0);
+}
+
 function closeResultModal(){
   document.getElementById('resultOverlay').classList.remove('open');
+  // FIX 3: add entries then go to dashboard
+  addNewEntryToLists();
   setPage('dashboard');
 }
 function goToResultReport(){
   document.getElementById('resultOverlay').classList.remove('open');
+  addNewEntryToLists();
   setPage('analyses');
 }
-/* ================================================================= */
 
+/* ─── THEME ─── */
 function toggleTheme(){
   const html=document.documentElement;
   const dark=html.getAttribute('data-theme')==='dark';
@@ -1368,31 +1442,27 @@ function setAccent(el){
   el.classList.add('active');
 }
 
-function toggleNotif(e){
-  if(e)e.stopPropagation();
-  document.getElementById('notifPanel').classList.toggle('open');
-}
+/* ─── NOTIFICATIONS ─── */
+function toggleNotif(e){if(e)e.stopPropagation();document.getElementById('notifPanel').classList.toggle('open');}
 function closeNotif(){document.getElementById('notifPanel').classList.remove('open');}
 function markAllRead(){
   document.querySelectorAll('.notif-item.unread').forEach(item=>{
     item.classList.remove('unread');
-    const dot=item.querySelector('.notif-unread-dot');
-    if(dot)dot.remove();
+    const dot=item.querySelector('.notif-unread-dot');if(dot)dot.remove();
   });
   document.getElementById('notifDot').style.display='none';
 }
 function markItemRead(item){
   item.classList.remove('unread');
-  const dot=item.querySelector('.notif-unread-dot');
-  if(dot)dot.remove();
-  if(!document.querySelectorAll('.notif-item.unread').length)
-    document.getElementById('notifDot').style.display='none';
+  const dot=item.querySelector('.notif-unread-dot');if(dot)dot.remove();
+  if(!document.querySelectorAll('.notif-item.unread').length)document.getElementById('notifDot').style.display='none';
 }
 document.addEventListener('click',function(e){
   const wrap=document.querySelector('.notif-wrap');
   if(wrap&&!wrap.contains(e.target))closeNotif();
 });
 
+/* ─── REPORTS ─── */
 function openReport(id){setPage('reports');showReportDetail(id);}
 
 function showReportDetail(id){
@@ -1427,16 +1497,34 @@ function triggerDownload(format){
   alert(currentLang==='ar'?'سيبدأ التنزيل قريبًا':currentLang==='fr'?'Téléchargement de "'+name+'" en cours…':'Downloading "'+name+'"…');
 }
 
+/* ─── LANGUAGE (FIXES 1 & 2 included) ─── */
 function setLang(lang){
   currentLang=lang;
   const t=T[lang];
+
+  // Translate all data-i18n elements
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const k=el.getAttribute('data-i18n');
     if(t[k]!==undefined)el.innerHTML=t[k];
   });
+
+  // FIX 1 — Update memoireTitle placeholder
+  const titleInput=document.getElementById('memoireTitle');
+  if(titleInput&&t.field_title_placeholder)titleInput.placeholder=t.field_title_placeholder;
+
+  // FIX 2 — Update ishkaliyaText placeholder + direction
+  const ishkaliyaField=document.getElementById('ishkaliyaText');
+  if(ishkaliyaField){
+    if(t.field_ishkaliya_placeholder)ishkaliyaField.placeholder=t.field_ishkaliya_placeholder;
+    ishkaliyaField.setAttribute('dir',lang==='ar'?'rtl':'ltr');
+  }
+
+  // RTL / LTR
   const rtl=lang==='ar';
   document.documentElement.setAttribute('dir',rtl?'rtl':'ltr');
   document.documentElement.setAttribute('lang',lang);
+
+  // Sync lang buttons
   document.querySelectorAll('.lang-btn').forEach(b=>{
     b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang);
   });
@@ -1444,16 +1532,12 @@ function setLang(lang){
     const el=document.getElementById('sett-lang-'+l);
     if(el)el.classList.toggle('active',l===lang);
   });
-  const lbl=document.getElementById('ishkaliyaLabel');
-  if(lbl){
-    if(lang==='ar')lbl.innerHTML='الإشكالية البحثية<span class="required">*</span>';
-    else if(lang==='fr')lbl.innerHTML='Problématique<span class="required">*</span>';
-    else lbl.innerHTML='Research Problem<span class="required">*</span>';
-  }
+
   updateCount();
 }
 function setLangOpt(lang){setLang(lang);}
 
+/* ─── INIT ─── */
 (function(){
   const d=new Date();
   const el=document.getElementById('headerDate');
